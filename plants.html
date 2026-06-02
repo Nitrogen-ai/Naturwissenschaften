@@ -1,0 +1,468 @@
+<html lang="de"><head>
+<meta charset="UTF-8">
+<title>Blank</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --bg-tray: #2f7d4f;
+    --bg-tray-dark: #1f5a37;
+    --bg-tray-edge: #15402a;
+    --soil: #8b6a3f;
+    --soil-light: #a8855a;
+    --soil-shadow: #5e4423;
+    --ink: #1c1c1c;
+    --ink-soft: #4a4a4a;
+    --accent: #c4471c;
+    --accent-soft: #e8a07a;
+    --paper: #fdfaf2;
+    --line: #d8d2c2;
+    --green-badge: #2f7d4f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 20px 56px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--bg);
+    background-image: radial-gradient(circle at 20% 10%, rgba(196,71,28,0.04) 0%, transparent 40%),
+                      radial-gradient(circle at 80% 80%, rgba(47,125,79,0.05) 0%, transparent 40%);
+    color: var(--ink); min-height: 100vh;
+  }
+  header {
+    max-width: 1400px; margin: 0 auto 20px;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    border-bottom: 2px solid var(--ink); padding-bottom: 14px;
+  }
+  h1 { font-family: 'Georgia', serif; font-size: clamp(24px,3.5vw,40px); font-weight: 400; letter-spacing: -0.02em; margin: 0; font-style: italic; }
+  h1::first-letter { color: var(--accent); font-size: 1.4em; font-weight: 700; font-style: normal; }
+  .subtitle { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); margin-top: 5px; }
+
+  .toolbar {
+    display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+  }
+  .toolbar-group { display: flex; gap: 6px; align-items: center; }
+  .toolbar-sep { width: 1px; height: 28px; background: var(--line); margin: 0 4px; }
+
+  input[type="text"], input[type="file"] {
+    font-family: 'Courier New', monospace; font-size: 12px;
+    padding: 7px 10px; border: 1.5px solid var(--ink);
+    background: var(--paper); border-radius: 0; outline: none;
+  }
+  input[type="text"]:focus { border-color: var(--accent); box-shadow: 2px 2px 0 var(--accent); }
+  #export-name { min-width: 160px; }
+
+  .btn {
+    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 8px 13px;
+    background: var(--ink); color: var(--paper);
+    border: 1.5px solid var(--ink); cursor: pointer;
+    transition: all 0.14s ease; border-radius: 0; font-weight: 700; white-space: nowrap;
+  }
+  .btn:hover { background: var(--accent); border-color: var(--accent); transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
+  .btn.secondary { background: var(--paper); color: var(--ink); }
+  .btn.secondary:hover { background: var(--bg-tray); color: var(--paper); border-color: var(--bg-tray); box-shadow: 3px 3px 0 var(--ink); }
+  .btn.green { background: var(--green-badge); color: var(--paper); border-color: var(--green-badge); }
+  .btn.green:hover { background: #1f5a37; border-color: #1f5a37; box-shadow: 3px 3px 0 var(--ink); }
+  .btn.warn { background: var(--paper); color: #8b1a1a; border-color: #8b1a1a; }
+  .btn.warn:hover { background: #8b1a1a; color: var(--paper); box-shadow: 3px 3px 0 var(--ink); }
+
+  /* Import label styled as button */
+  .btn-label {
+    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 8px 13px;
+    background: var(--paper); color: var(--ink);
+    border: 1.5px solid var(--ink); cursor: pointer;
+    transition: all 0.14s ease; font-weight: 700; white-space: nowrap; display: inline-block;
+  }
+  .btn-label:hover { background: var(--green-badge); color: var(--paper); border-color: var(--green-badge); transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
+  #file-import { display: none; }
+
+  /* Toast */
+  #toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px);
+    background: var(--ink); color: var(--paper);
+    font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.1em;
+    padding: 10px 20px; z-index: 200; transition: transform 0.3s ease;
+    pointer-events: none; white-space: nowrap;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Tray */
+  .tray-wrapper { max-width: 1400px; margin: 0 auto; }
+  .tray {
+    background: linear-gradient(180deg, var(--bg-tray) 0%, var(--bg-tray-dark) 100%);
+    border: 3px solid var(--bg-tray-edge); border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: inset 0 4px 12px rgba(0,0,0,0.25), 0 12px 32px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .tray::before {
+    content: ''; position: absolute; inset: 8px;
+    border: 1px dashed rgba(255,255,255,0.08); border-radius: 10px; pointer-events: none;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, auto); gap: 16px;
+  }
+  .cell {
+    position: relative; aspect-ratio: 1/1;
+    background: radial-gradient(circle at 50% 45%, var(--soil-light) 0%, var(--soil) 55%, var(--soil-shadow) 100%);
+    border-radius: 50%;
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.1), 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer; transition: transform 0.18s ease, box-shadow 0.18s ease;
+    display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+  }
+  .cell::after {
+    content: ''; position: absolute; width: 18%; height: 18%; border-radius: 50%;
+    background: radial-gradient(circle, var(--soil-shadow) 0%, #2a1d0e 100%);
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.6);
+    top: 50%; left: 50%; transform: translate(-50%,-50%); transition: opacity 0.2s ease;
+  }
+  .cell.filled::after { opacity: 0; }
+  .cell:hover { transform: translateY(-2px) scale(1.03); box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.15), 0 8px 18px rgba(0,0,0,0.3); }
+  .cell.filled { background: radial-gradient(circle at 50% 45%, #6b4f2a 0%, #4a3618 60%, #2e2110 100%); }
+  .cell.dragging { opacity: 0.35; transform: scale(0.93); }
+  .cell.drag-over { box-shadow: inset 0 0 0 3px var(--accent), 0 0 16px var(--accent-soft); transform: scale(1.06); }
+
+  .cell-content { position: relative; z-index: 2; color: var(--paper); font-family: 'Georgia', serif; font-size: 11px; line-height: 1.15; padding: 8px; text-shadow: 0 1px 2px rgba(0,0,0,0.6); pointer-events: none; width: 100%; }
+  .cell-name { font-weight: 700; font-size: 11px; margin-bottom: 3px; font-style: italic; word-break: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .cell-meta { font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.04em; opacity: 0.88; }
+  .cell-meta span { display: block; }
+  .cell-empty-label { color: rgba(255,255,255,0.3); font-family: 'Courier New', monospace; font-size: 9px; letter-spacing: 0.12em; }
+
+  /* Modal */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(20,18,12,0.72); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+  .modal-backdrop.active { display: flex; }
+  .modal { background: var(--paper); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); width: 100%; max-width: 440px; padding: 26px; position: relative; }
+  .modal h2 { font-family: 'Georgia', serif; font-style: italic; font-size: 22px; margin: 0 0 4px 0; font-weight: 400; }
+  .modal-sub { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px dashed var(--line); }
+  .field { margin-bottom: 13px; }
+  .field label { display: block; font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 5px; font-weight: 700; }
+  .field input { width: 100%; font-family: 'Georgia', serif; font-size: 14px; padding: 8px 11px; border: 1.5px solid var(--ink); background: white; outline: none; border-radius: 0; }
+  .field input:focus { border-color: var(--accent); box-shadow: 2px 2px 0 var(--accent); }
+  .modal-actions { display: flex; justify-content: space-between; gap: 8px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line); flex-wrap: wrap; }
+  .modal-actions-right { display: flex; gap: 8px; }
+
+  /* Legend */
+  .legend { max-width: 1400px; margin: 20px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--ink-soft); text-transform: uppercase; }
+  .legend-stats { display: flex; gap: 20px; }
+  .legend-stats strong { color: var(--accent); font-size: 14px; }
+  .hint { font-style: italic; font-family: 'Georgia', serif; text-transform: none; letter-spacing: 0; font-size: 12px; }
+
+  @media (max-width: 900px) { .grid { gap: 10px; } .tray { padding: 18px 12px; } }
+  @media (max-width: 640px) { .grid { gap: 6px; } .cell-content { padding: 4px; } .cell-name { font-size: 8px; } .cell-meta { font-size: 7px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Anzuchttreibhaus</h1>
+    <div class="subtitle" id="header-subtitle">Saatplan · gespeichert: 26.5.2026, 09:34:52</div>
+  </div>
+  <div class="toolbar">
+    <div class="toolbar-group">
+      <label class="btn-label" for="file-import">↑ HTML laden</label>
+      <input type="file" id="file-import" accept=".html">
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="toolbar-group">
+      <input type="text" id="export-name" placeholder="Dateiname (z.B. Datum)">
+      <button class="btn secondary" onclick="exportHTML()">↓ HTML</button>
+      <button class="btn secondary" onclick="exportPDF()">↓ PDF</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <button class="btn warn" onclick="clearAll()">⌫ Alles leeren</button>
+  </div>
+</header>
+
+<div class="tray-wrapper">
+  <div class="tray" id="tray">
+    <div class="grid" id="grid"><div class="cell" data-idx="0" draggable="true"><div class="cell-content"><span class="cell-empty-label">1·1</span></div></div><div class="cell" data-idx="1" draggable="true"><div class="cell-content"><span class="cell-empty-label">1·2</span></div></div><div class="cell" data-idx="2" draggable="true"><div class="cell-content"><span class="cell-empty-label">1·3</span></div></div><div class="cell" data-idx="3" draggable="true"><div class="cell-content"><span class="cell-empty-label">1·4</span></div></div><div class="cell" data-idx="4" draggable="true"><div class="cell-content"><span class="cell-empty-label">1·5</span></div></div><div class="cell" data-idx="5" draggable="true"><div class="cell-content"><span class="cell-empty-label">1·6</span></div></div><div class="cell" data-idx="6" draggable="true"><div class="cell-content"><span class="cell-empty-label">1·7</span></div></div><div class="cell" data-idx="7" draggable="true"><div class="cell-content"><span class="cell-empty-label">2·1</span></div></div><div class="cell" data-idx="8" draggable="true"><div class="cell-content"><span class="cell-empty-label">2·2</span></div></div><div class="cell" data-idx="9" draggable="true"><div class="cell-content"><span class="cell-empty-label">2·3</span></div></div><div class="cell" data-idx="10" draggable="true"><div class="cell-content"><span class="cell-empty-label">2·4</span></div></div><div class="cell" data-idx="11" draggable="true"><div class="cell-content"><span class="cell-empty-label">2·5</span></div></div><div class="cell" data-idx="12" draggable="true"><div class="cell-content"><span class="cell-empty-label">2·6</span></div></div><div class="cell" data-idx="13" draggable="true"><div class="cell-content"><span class="cell-empty-label">2·7</span></div></div><div class="cell" data-idx="14" draggable="true"><div class="cell-content"><span class="cell-empty-label">3·1</span></div></div><div class="cell" data-idx="15" draggable="true"><div class="cell-content"><span class="cell-empty-label">3·2</span></div></div><div class="cell" data-idx="16" draggable="true"><div class="cell-content"><span class="cell-empty-label">3·3</span></div></div><div class="cell" data-idx="17" draggable="true"><div class="cell-content"><span class="cell-empty-label">3·4</span></div></div><div class="cell" data-idx="18" draggable="true"><div class="cell-content"><span class="cell-empty-label">3·5</span></div></div><div class="cell" data-idx="19" draggable="true"><div class="cell-content"><span class="cell-empty-label">3·6</span></div></div><div class="cell" data-idx="20" draggable="true"><div class="cell-content"><span class="cell-empty-label">3·7</span></div></div><div class="cell" data-idx="21" draggable="true"><div class="cell-content"><span class="cell-empty-label">4·1</span></div></div><div class="cell" data-idx="22" draggable="true"><div class="cell-content"><span class="cell-empty-label">4·2</span></div></div><div class="cell" data-idx="23" draggable="true"><div class="cell-content"><span class="cell-empty-label">4·3</span></div></div><div class="cell" data-idx="24" draggable="true"><div class="cell-content"><span class="cell-empty-label">4·4</span></div></div><div class="cell" data-idx="25" draggable="true"><div class="cell-content"><span class="cell-empty-label">4·5</span></div></div><div class="cell" data-idx="26" draggable="true"><div class="cell-content"><span class="cell-empty-label">4·6</span></div></div><div class="cell" data-idx="27" draggable="true"><div class="cell-content"><span class="cell-empty-label">4·7</span></div></div></div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-stats">
+    <span>Belegt: <strong id="filled-count">0</strong>/28</span>
+    <span>Frei: <strong id="empty-count">28</strong></span>
+  </div>
+  <div class="hint">Klick zum Bearbeiten · Ziehen zum Verschieben · HTML laden zum Importieren</div>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <h2>Pellet bearbeiten</h2>
+    <div class="modal-sub" id="modal-pos">Position —</div>
+    <div class="field"><label for="f-name">Saatname</label><input type="text" id="f-name" placeholder="z.B. Tomate San Marzano"></div>
+    <div class="field"><label for="f-date">Einpflanzdatum</label><input type="date" id="f-date"></div>
+    <div class="field"><label for="f-amount">Samenmenge</label><input type="text" id="f-amount" placeholder="z.B. 2 Korn"></div>
+    <div class="field"><label for="f-depth">Saattiefe</label><input type="text" id="f-depth" placeholder="z.B. 0,5 cm"></div>
+    <div class="modal-actions">
+      <button class="btn warn" onclick="deleteCell()">Löschen</button>
+      <div class="modal-actions-right">
+        <button class="btn secondary" onclick="closeModal()">Abbrechen</button>
+        <button class="btn" onclick="saveCell()">Speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="">Alle Pellets geleert</div>
+
+<script>
+  const COLS = 7, ROWS = 4, TOTAL = 28;
+
+  // ── Merged initial data (05-11 base + 05-20 updates) ──
+  let cells = [{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""},{"name":"","date":"","amount":"","depth":""}];
+
+  let activeIdx = null;
+
+  // ── Helpers ──
+  const isFilled = c => !!(c && (c.name || c.date || c.amount || c.depth));
+  const esc = s => String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const fmtDate = iso => { if (!iso) return ''; const [y,m,d] = iso.split('-'); return `${d}.${m}.${y}`; };
+  const trunc = (s,n) => { s = String(s); return s.length > n ? s.slice(0,n-1)+'…' : s; };
+
+  function toast(msg, dur = 2400) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), dur);
+  }
+
+  // ── Render ──
+  function render() {
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    for (let i = 0; i < TOTAL; i++) {
+      const c = cells[i], filled = isFilled(c);
+      const div = document.createElement('div');
+      div.className = 'cell' + (filled ? ' filled' : '');
+      div.dataset.idx = i;
+      div.draggable = true;
+      if (filled) {
+        div.innerHTML = `<div class="cell-content">
+          <div class="cell-name">${esc(c.name || '—')}</div>
+          <div class="cell-meta">
+            ${c.date ? `<span>${fmtDate(c.date)}</span>` : ''}
+            ${c.amount ? `<span>${esc(c.amount)}</span>` : ''}
+            ${c.depth ? `<span>${esc(c.depth)}</span>` : ''}
+          </div></div>`;
+      } else {
+        const r = Math.floor(i/COLS)+1, col = (i%COLS)+1;
+        div.innerHTML = `<div class="cell-content"><span class="cell-empty-label">${r}·${col}</span></div>`;
+      }
+      div.addEventListener('click', () => openModal(i));
+      div.addEventListener('dragstart', onDragStart);
+      div.addEventListener('dragover', onDragOver);
+      div.addEventListener('dragleave', onDragLeave);
+      div.addEventListener('drop', onDrop);
+      div.addEventListener('dragend', onDragEnd);
+      grid.appendChild(div);
+    }
+    updateStats();
+  }
+
+  function updateStats() {
+    const f = cells.filter(isFilled).length;
+    document.getElementById('filled-count').textContent = f;
+    document.getElementById('empty-count').textContent = TOTAL - f;
+  }
+
+  // ── Modal ──
+  function openModal(idx) {
+    activeIdx = idx;
+    const c = cells[idx];
+    const r = Math.floor(idx/COLS)+1, col = (idx%COLS)+1;
+    document.getElementById('modal-pos').textContent = `Position · Reihe ${r} · Spalte ${col}`;
+    document.getElementById('f-name').value = c.name || '';
+    document.getElementById('f-date').value = c.date || '';
+    document.getElementById('f-amount').value = c.amount || '';
+    document.getElementById('f-depth').value = c.depth || '';
+    document.getElementById('modal').classList.add('active');
+    setTimeout(() => document.getElementById('f-name').focus(), 50);
+  }
+  function closeModal() { document.getElementById('modal').classList.remove('active'); activeIdx = null; }
+  function saveCell() {
+    if (activeIdx === null) return;
+    cells[activeIdx] = {
+      name: document.getElementById('f-name').value.trim(),
+      date: document.getElementById('f-date').value,
+      amount: document.getElementById('f-amount').value.trim(),
+      depth: document.getElementById('f-depth').value.trim()
+    };
+    closeModal(); render(); toast('✓ Gespeichert');
+  }
+  function deleteCell() {
+    if (activeIdx === null) return;
+    cells[activeIdx] = {name:'',date:'',amount:'',depth:''};
+    closeModal(); render(); toast('Pellet geleert');
+  }
+  function clearAll() {
+    if (!confirm('Wirklich alle 28 Pellets leeren?')) return;
+    cells = new Array(TOTAL).fill(null).map(() => ({name:'',date:'',amount:'',depth:''}));
+    render(); toast('Alle Pellets geleert');
+  }
+
+  // ── Drag & Drop ──
+  let dragSrc = null;
+  function onDragStart(e) { dragSrc = parseInt(e.currentTarget.dataset.idx,10); e.currentTarget.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; }
+  function onDragOver(e) { e.preventDefault(); e.dataTransfer.dropEffect='move'; e.currentTarget.classList.add('drag-over'); }
+  function onDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+  function onDrop(e) {
+    e.preventDefault(); e.currentTarget.classList.remove('drag-over');
+    const dst = parseInt(e.currentTarget.dataset.idx,10);
+    if (dragSrc === null || dragSrc === dst) return;
+    [cells[dragSrc], cells[dst]] = [cells[dst], cells[dragSrc]];
+    render(); toast('↔ Verschoben');
+  }
+  function onDragEnd(e) { e.currentTarget.classList.remove('dragging'); document.querySelectorAll('.cell.drag-over').forEach(el=>el.classList.remove('drag-over')); dragSrc=null; }
+
+  // ── Import HTML ──
+  document.getElementById('file-import').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      try {
+        const html = ev.target.result;
+        // Extract embedded JSON from <script id="anzucht-data">
+        const match = html.match(/<script[^>]*id="anzucht-data"[^>]*>([\s\S]*?)<\/script>/);
+        if (!match) throw new Error('Keine Anzucht-Daten in dieser Datei gefunden.');
+        const parsed = JSON.parse(match[1]);
+        if (!Array.isArray(parsed) || parsed.length !== TOTAL) throw new Error(`Ungültiges Format (erwartet ${TOTAL} Einträge, gefunden: ${parsed.length}).`);
+        cells = parsed;
+        render();
+        // Update subtitle with filename
+        const fn = file.name.replace(/\.html$/i,'');
+        document.getElementById('export-name').value = fn;
+        document.getElementById('header-subtitle').textContent = `Saatplan · geladen: ${fn}`;
+        toast(`✓ "${file.name}" geladen`);
+      } catch(err) {
+        alert('Import fehlgeschlagen: ' + err.message);
+      }
+      // Reset so same file can be re-imported
+      e.target.value = '';
+    };
+    reader.readAsText(file, 'UTF-8');
+  });
+
+  // ── Filename helper ──
+  function getFilename(ext) {
+    const raw = document.getElementById('export-name').value.trim();
+    if (raw) return raw.replace(/\.(pdf|html)$/i,'') + '.' + ext;
+    const d = new Date(), pad = n => String(n).padStart(2,'0');
+    return `Anzucht_${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}.${ext}`;
+  }
+
+  function dl(content, filename, type) {
+    const blob = new Blob([content], {type});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 100);
+  }
+
+  // ── Export HTML (vollständige wiederverwendbare Kopie dieser Datei) ──
+  function exportHTML() {
+    // Wir serialisieren die aktuelle cells-Daten und schreiben sie in eine
+    // Kopie dieser Seite – so ist die exportierte Datei wieder vollständig editierbar.
+    const jsonData = JSON.stringify(cells);
+    const src = document.documentElement.outerHTML;
+
+    // Timestamp im Subtitle aktualisieren
+    const now = new Date().toLocaleString('de-DE');
+
+    // 1) Ersetze den eingebetteten Daten-Block (initial cells = [...])
+    let out = src.replace(
+      /let cells = \[[\s\S]*?\];/,
+      `let cells = ${jsonData};`
+    );
+
+    // 2) Subtitle auf aktuelles Datum setzen
+    out = out.replace(
+      /(<div class="subtitle"[^>]*>)[^<]*/,
+      `$1Saatplan · gespeichert: ${now}`
+    );
+
+    // 3) Title-Tag aktualisieren
+    const fn = getFilename('html').replace(/\.html$/,'');
+    out = out.replace(/<title>[^<]*<\/title>/, `<title>${fn}</title>`);
+
+    dl(out, getFilename('html'), 'text/html');
+    toast(`✓ "${getFilename('html')}" gespeichert`);
+  }
+
+  // ── Export PDF ──
+  async function exportPDF() {
+    const tray = document.getElementById('tray');
+    const btns = document.querySelectorAll('.btn,.btn-label,input[type=text]');
+    btns.forEach(b => b.disabled = true);
+    try {
+      const canvas = await html2canvas(tray, {scale:2, backgroundColor:'#f4f1ea', useCORS:true});
+      const imgData = canvas.toDataURL('image/png');
+      const {jsPDF} = window.jspdf;
+      const pdf = new jsPDF({orientation:'landscape', unit:'mm', format:'a4'});
+      const W = pdf.internal.pageSize.getWidth(), H = pdf.internal.pageSize.getHeight();
+      const m = 12;
+
+      pdf.setFont('times','italic'); pdf.setFontSize(20);
+      pdf.text('Anzuchttreibhaus – Saatplan', m, m+6);
+      pdf.setFont('courier','normal'); pdf.setFontSize(8);
+      pdf.text(`Export: ${new Date().toLocaleString('de-DE')}`, m, m+12);
+
+      const iW = W - m*2, iH = canvas.height*(iW/canvas.width);
+      const maxH = H - m - 22;
+      let fW = iW, fH = iH;
+      if (iH > maxH) { fH = maxH; fW = canvas.width*(fH/canvas.height); }
+      pdf.addImage(imgData, 'PNG', (W-fW)/2, m+16, fW, fH);
+
+      const entries = cells.map((c,i) => ({...c,i})).filter(c => isFilled(c));
+      if (entries.length > 0) {
+        pdf.addPage();
+        pdf.setFont('times','italic'); pdf.setFontSize(16);
+        pdf.text('Saat-Details', m, m+6);
+        const cx = [m, m+20, m+90, m+130, m+170];
+        let y = m+16;
+        pdf.setFont('courier','bold'); pdf.setFontSize(8);
+        ['POSITION','SAATNAME','DATUM','MENGE','TIEFE'].forEach((h,i) => pdf.text(h, cx[i], y));
+        y+=2; pdf.setLineWidth(0.3); pdf.line(m,y,W-m,y); y+=5;
+        pdf.setFont('helvetica','normal'); pdf.setFontSize(9);
+        entries.forEach(c => {
+          if (y > H-m) { pdf.addPage(); y = m+10; }
+          const r = Math.floor(c.i/COLS)+1, col = (c.i%COLS)+1;
+          pdf.text(`R${r}·S${col}`, cx[0], y);
+          pdf.text(trunc(c.name||'—',32), cx[1], y);
+          pdf.text(c.date ? fmtDate(c.date) : '—', cx[2], y);
+          pdf.text(trunc(c.amount||'—',16), cx[3], y);
+          pdf.text(trunc(c.depth||'—',16), cx[4], y);
+          y+=6; pdf.setDrawColor(200); pdf.line(m,y-2,W-m,y-2); pdf.setDrawColor(0);
+        });
+      }
+      pdf.save(getFilename('pdf'));
+      toast(`✓ "${getFilename('pdf')}" gespeichert`);
+    } catch(err) {
+      alert('PDF-Export fehlgeschlagen: '+err.message);
+    } finally {
+      btns.forEach(b => b.disabled = false);
+    }
+  }
+
+  // ── Keyboard ──
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Enter' && document.getElementById('modal').classList.contains('active') && document.activeElement.tagName === 'INPUT') saveCell();
+  });
+  document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+
+  render();
+</script>
+
+
+</body></html>
