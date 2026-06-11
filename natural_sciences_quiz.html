@@ -204,11 +204,12 @@ button { font-family: inherit; cursor: pointer; border: none; }
    ========================= */
 #quiz-b {
   background:
-    linear-gradient(180deg, rgba(120,53,15,0.85) 0%, rgba(146,64,14,0.7) 100%),
+    linear-gradient(180deg, rgba(120,53,15,0.78) 0%, rgba(146,64,14,0.65) 100%),
     repeating-linear-gradient(90deg, #92400e 0 40px, #78350f 40px 80px);
   min-height: 100vh;
   padding: 30px 20px;
   position: relative;
+  overflow: hidden;
 }
 #quiz-b::before {
   content: "";
@@ -218,14 +219,28 @@ button { font-family: inherit; cursor: pointer; border: none; }
     radial-gradient(circle at 90% 80%, rgba(254,243,199,0.15) 0 100px, transparent 101px);
   pointer-events: none;
 }
+/* Food-emoji stacked background layer for Quiz B */
+#quiz-b .food-bg-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+#quiz-b .food-bg-stack span {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.22;
+  user-select: none;
+}
 #quiz-b .table-card {
   position: relative;
   z-index: 2;
-  max-width: 720px;
+  max-width: 560px;
   margin: 0 auto;
   background: #fff;
   border-radius: 16px;
-  padding: 28px;
+  padding: 28px 22px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 #quiz-b h2 { text-align: center; color: #78350f; margin-bottom: 8px; }
@@ -234,8 +249,20 @@ button { font-family: inherit; cursor: pointer; border: none; }
   font-size: 2.2rem;
   margin: 14px 0;
 }
-#quiz-b .question { font-size: 1.2rem; text-align: center; font-weight: 600; color: #111827; margin: 18px 0; }
-#quiz-b .options { display: flex; flex-direction: column; gap: 10px; }
+/* Per-question scattered emojis (decorative inside card area) */
+#quiz-b .qb-per-q {
+  position: relative;
+  height: 0;
+  pointer-events: none;
+}
+#quiz-b .qb-per-q span {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.9;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+#quiz-b .question { font-size: 1.15rem; text-align: center; font-weight: 600; color: #111827; margin: 18px 8px; line-height: 1.4; }
+#quiz-b .options { display: flex; flex-direction: column; gap: 10px; align-items: stretch; max-width: 480px; margin: 0 auto; }
 #quiz-b .option-btn {
   background: #fef3c7;
   padding: 12px 16px;
@@ -244,6 +271,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   color: #78350f;
   transition: all 0.15s;
   border: 2px solid transparent;
+  text-align: center;
 }
 #quiz-b .option-btn:hover:not(:disabled) { background: #fde68a; }
 #quiz-b .option-btn.hidden-wrong { display: none; }
@@ -274,12 +302,15 @@ button { font-family: inherit; cursor: pointer; border: none; }
 #quiz-b .nav-btn:hover { background: #92400e; }
 #quiz-b .estimate-input {
   width: 100%;
+  max-width: 380px;
   padding: 12px;
   font-size: 1.1rem;
   border: 2px solid #fde68a;
   border-radius: 8px;
-  margin-bottom: 8px;
+  margin: 6px auto 8px;
   text-align: center;
+  display: block;
+  box-sizing: border-box;
 }
 #quiz-b .grade-display {
   font-size: 5rem;
@@ -290,6 +321,11 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 #quiz-b .sources { font-size: 0.85rem; color: #4b5563; margin-top: 18px; line-height: 1.6; }
 #quiz-b .sources a { color: #78350f; word-break: break-all; }
+@media (max-width: 600px) {
+  #quiz-b { padding: 20px 12px; }
+  #quiz-b .table-card { padding: 22px 16px; max-width: 100%; }
+  #quiz-b .question { margin: 16px 4px; }
+}
 
 /* =========================
    C) Drohne — Pauline & Anthea
@@ -579,26 +615,34 @@ button { font-family: inherit; cursor: pointer; border: none; }
   position: absolute;
   font-size: 3rem;
   opacity: 0.7;
-  animation: cloudFadeUp 18s linear infinite;
+  animation: cloudDrift 18s linear infinite;
 }
-@keyframes cloudFadeUp {
-  0% { transform: translateY(0); opacity: 0.7; }
-  100% { transform: translateY(-300px); opacity: 0; }
+@keyframes cloudDrift {
+  0%   { transform: translateX(-120px); opacity: 0.4; }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.7; }
+  100% { transform: translateX(120vw); opacity: 0.3; }
 }
-#quiz-f .sinking-drone {
+/* Drones flying left → right (replaces vertical sinking-drone) */
+#quiz-f .drone-fly-lr {
   position: absolute;
-  font-size: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: droneSink 8s ease-in-out infinite alternate;
+  width: 70px;
+  height: 30px;
   z-index: 1;
+  animation: droneFlyAcross linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
 }
-@keyframes droneSink {
-  0% { top: 80px; }
-  100% { top: calc(100vh - 200px); }
+@keyframes droneFlyAcross {
+  0%   { left: -90px; transform: translateY(0) rotate(-2deg); }
+  25%  { transform: translateY(-8px) rotate(2deg); }
+  50%  { transform: translateY(0) rotate(-2deg); }
+  75%  { transform: translateY(-6px) rotate(2deg); }
+  100% { left: calc(100% + 90px); transform: translateY(0) rotate(0); }
 }
 #quiz-f .header { text-align: center; color: #fff; position: relative; z-index: 2; padding-top: 20px; }
 #quiz-f .header h1 { font-size: 2.5rem; text-shadow: 0 3px 8px rgba(0,0,0,0.4); }
+#quiz-f .header h1 .drone-icon { vertical-align: -6px; margin-right: 8px; }
 #quiz-f .layout {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1105,6 +1149,203 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .export-panel .export-buttons button.pdf-btn { background: #dc2626; }
 .export-panel .export-buttons button.pdf-btn:hover { background: #b91c1c; }
 
+/* ============ Shared additions ============ */
+@keyframes shakeWrong {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+}
+.shake-wrong { animation: shakeWrong 0.5s ease; }
+
+@keyframes wrongFlash {
+  0%   { background: #fecaca; box-shadow: 0 0 0 0 rgba(220,38,38,0.6); }
+  50%  { background: #ef4444; box-shadow: 0 0 0 14px rgba(220,38,38,0); color: #fff; }
+  100% { background: #fecaca; box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+}
+.wrong-flash { animation: wrongFlash 0.7s ease; }
+
+@keyframes xPop {
+  0%   { transform: translate(-50%,-50%) scale(0); opacity: 0; }
+  30%  { transform: translate(-50%,-50%) scale(1.4); opacity: 1; }
+  70%  { transform: translate(-50%,-50%) scale(1.0); opacity: 1; }
+  100% { transform: translate(-50%,-50%) scale(1.6); opacity: 0; }
+}
+.x-pop {
+  position: fixed; top: 50%; left: 50%;
+  font-size: 9rem; color: #dc2626; font-weight: 900;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  z-index: 10000; pointer-events: none;
+  animation: xPop 0.9s ease forwards;
+}
+
+/* big celebratory confetti rain at quiz end */
+@keyframes bigConfetti {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.9; }
+}
+.big-confetti-piece {
+  position: fixed; top: -20px;
+  width: 14px; height: 18px;
+  z-index: 4000; pointer-events: none;
+  border-radius: 3px;
+  animation: bigConfetti linear forwards;
+}
+
+/* Hint button used by multiple quizzes */
+.tip-card {
+  background: linear-gradient(135deg, #fff7ed, #fed7aa);
+  border: 2px dashed #f97316;
+  color: #7c2d12;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin: 8px 0 14px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.tip-toggle {
+  background: #fbbf24;
+  color: #78350f;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 6px 0 12px;
+  box-shadow: 0 3px 8px rgba(251,191,36,0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.tip-toggle:hover { transform: translateY(-2px); box-shadow: 0 5px 12px rgba(251,191,36,0.5); }
+.tip-toggle:disabled { opacity: 0.55; cursor: default; transform: none; box-shadow: none; }
+
+/* Trophy display */
+.trophy-display {
+  font-size: 6rem;
+  text-align: center;
+  margin: 20px 0;
+  animation: trophyDrop 0.8s cubic-bezier(.34,1.56,.64,1) both;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+@keyframes trophyDrop {
+  0%   { transform: translateY(-60vh) rotate(-20deg); opacity: 0; }
+  60%  { transform: translateY(8px) rotate(5deg); opacity: 1; }
+  80%  { transform: translateY(-4px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+/* Side score bar - vertical for Quiz C */
+.side-score-rail {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 64px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  padding: 14px 8px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  z-index: 50;
+  text-align: center;
+}
+.side-score-rail .label { font-size: 0.7rem; color: #475569; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.side-score-rail .track { position: relative; height: 200px; width: 14px; margin: 0 auto; background: #e2e8f0; border-radius: 8px; overflow: hidden; }
+.side-score-rail .fill {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, #16a34a, #84cc16);
+  border-radius: 8px;
+  transition: height 0.4s ease;
+}
+.side-score-rail .val { margin-top: 8px; font-size: 1.1rem; font-weight: 800; color: #1e293b; }
+@media (max-width: 720px) {
+  .side-score-rail { width: 50px; right: 8px; }
+  .side-score-rail .track { height: 140px; }
+}
+
+/* Drone left→right flying animation (Quiz F replacement for sinking drone) */
+@keyframes droneFlyLR {
+  0%   { left: -10%; transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { left: 110%; transform: translateY(0); }
+}
+.drone-fly {
+  position: absolute;
+  font-size: 2.4rem;
+  animation: droneFlyLR 11s linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+}
+
+/* SVG drone graphic helper class */
+.drone-svg { display: inline-block; vertical-align: middle; }
+
+/* Quiz B improvements - food emoji background + centered layout */
+.food-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.18;
+}
+.food-bg-layer span {
+  position: absolute;
+  font-size: 2.2rem;
+  user-select: none;
+}
+.qb-center-wrap {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 18px;
+  z-index: 1;
+}
+.qb-per-q-emojis {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.qb-per-q-emojis span {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.65;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-8px) rotate(3deg); }
+}
+
+/* Quiz E - cooler bigger reveal button */
+.cool-reveal-btn {
+  font-size: 1.8rem;
+  font-weight: 900;
+  padding: 22px 40px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #fbbf24, #f97316, #ef4444);
+  background-size: 200% 200%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(249,115,22,0.45), inset 0 -4px 0 rgba(0,0,0,0.15);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  animation: revealPulse 2.4s ease-in-out infinite, revealShift 6s ease infinite;
+  transition: transform 0.2s;
+}
+.cool-reveal-btn:hover { transform: scale(1.06); }
+.cool-reveal-btn:disabled { animation: none; }
+.cool-reveal-btn.green { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 10px 30px rgba(22,163,74,0.45); }
+.cool-reveal-btn.red   { background: linear-gradient(135deg, #ef4444, #b91c1c); box-shadow: 0 10px 30px rgba(220,38,38,0.45); }
+@keyframes revealPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+@keyframes revealShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
 </style>
 </head>
 <body>
@@ -1264,7 +1505,7 @@ const I18N = {
     menu_title: '🔬 Naturwissenschaften – Quizsammlung',
     menu_subtitle: 'Klasse 6 · Wähle eine Kategorie und dann ein Quiz',
     progress_label: 'Fortschritt',
-    cat_floating: 'Schwimmen & Sinken',
+    cat_floating: 'Schwimmen, Schweben & Sinken',
     cat_nutrition: 'Ernährung',
     cat_flying: 'Fliegen',
     back_btn: '← Zurück zum Menü',
@@ -1311,6 +1552,17 @@ const I18N = {
     false_btn: '✗ Falsch',
     yes_no_yes: '✓ Ja / Wahr',
     yes_no_no: '✗ Nein / Falsch',
+    // New shared keys
+    show_tip: '💡 Tipp anzeigen',
+    show_tip_penalty: '💡 Tipp anzeigen (−0,5 Punkte)',
+    tip_used: '💡 Tipp angesehen',
+    tip_used_penalty: '💡 Tipp benutzt (−0,5)',
+    final_result: 'Endergebnis',
+    trophy_gold: 'Goldener Pokal!',
+    trophy_silver: 'Silberner Pokal!',
+    trophy_bronze: 'Bronzener Pokal!',
+    trophy_none: 'Versuche es noch einmal — du schaffst das!',
+    source_for_q: 'Quelle:',
     // Quiz titles and topics for menu cards
     q: {
       a: { title: 'Vogelflug', topic: '7 Fragen (MC + W/F) · Wolken & Vögel' },
@@ -1319,7 +1571,7 @@ const I18N = {
       d: { title: 'Kolibri-Quiz', topic: '7 Wahr/Falsch-Aussagen' },
       e: { title: 'Ernährung & Lebenszeit', topic: '15 Fragen · Schnecke auf Reise' },
       f: { title: 'Drohnen', topic: '6 Fragen · Wie fliegen Drohnen?' },
-      g: { title: 'Ozean-Quiz', topic: '7 Fragen · Prozentsystem' },
+      g: { title: 'Schwimmen, Schweben & Sinken', topic: '7 Fragen · Physik im Wasser' },
       h: { title: 'Ernährungsquiz', topic: '7 Fragen · Gesunde Ernährung' },
       i: { title: 'Sport & Ernährung', topic: '10 Fragen · Sportler vs. normale Personen' }
     },
@@ -1365,7 +1617,7 @@ const I18N = {
       good_guess: '✓ Gute Schätzung!'
     },
     qf: {
-      title: '🚁 Drohnen-Quiz',
+      title: 'Drohnen-Quiz',
       sub: 'Wie fliegen Drohnen?',
       your_progress: 'Dein Fortschritt',
       progress_text: '{n} / {total} Fragen',
@@ -1378,7 +1630,7 @@ const I18N = {
       pts_zero: '0 Punkte'
     },
     qg: {
-      title: '🌊 Ozean-Quiz',
+      title: '🌊 Schwimmen, Schweben & Sinken',
       sub: 'Start bei 100 % — halte den Wert so hoch wie möglich!',
       question_label: 'Frage {n} von {total} · Gewicht: {w}%',
       hint_btn: '💡 Tipp zeigen',
@@ -1411,7 +1663,7 @@ const I18N = {
     menu_title: '🔬 Natural Sciences – Quiz Collection',
     menu_subtitle: 'Grade 6 · Choose a category, then a quiz',
     progress_label: 'Progress',
-    cat_floating: 'Floating & Sinking',
+    cat_floating: 'Floating, Suspending & Sinking',
     cat_nutrition: 'Nutrition',
     cat_flying: 'Flying',
     back_btn: '← Back to menu',
@@ -1457,6 +1709,17 @@ const I18N = {
     false_btn: '✗ False',
     yes_no_yes: '✓ Yes / True',
     yes_no_no: '✗ No / False',
+    // New shared keys
+    show_tip: '💡 Show tip',
+    show_tip_penalty: '💡 Show tip (−0.5 points)',
+    tip_used: '💡 Tip viewed',
+    tip_used_penalty: '💡 Tip used (−0.5)',
+    final_result: 'Final result',
+    trophy_gold: 'Gold trophy!',
+    trophy_silver: 'Silver trophy!',
+    trophy_bronze: 'Bronze trophy!',
+    trophy_none: 'Try again — you can do it!',
+    source_for_q: 'Source:',
     q: {
       a: { title: 'Bird Flight', topic: '7 questions (MC + T/F) · clouds & birds' },
       b: { title: 'Food & Drink', topic: '10 questions · nutrition & eating habits' },
@@ -1464,7 +1727,7 @@ const I18N = {
       d: { title: 'Hummingbird Quiz', topic: '7 true/false statements' },
       e: { title: 'Nutrition & Lifespan', topic: '15 questions · snail on a journey' },
       f: { title: 'Drones', topic: '6 questions · how do drones fly?' },
-      g: { title: 'Ocean Quiz', topic: '7 questions · percentage system' },
+      g: { title: 'Floating, Suspending & Sinking', topic: '7 questions · physics in water' },
       h: { title: 'Nutrition Quiz', topic: '7 questions · healthy eating' },
       i: { title: 'Sport & Nutrition', topic: '10 questions · athletes vs. regular people' }
     },
@@ -1509,7 +1772,7 @@ const I18N = {
       good_guess: '✓ Good guess!'
     },
     qf: {
-      title: '🚁 Drone Quiz',
+      title: 'Drone Quiz',
       sub: 'How do drones fly?',
       your_progress: 'Your progress',
       progress_text: '{n} / {total} questions',
@@ -1522,7 +1785,7 @@ const I18N = {
       pts_zero: '0 points'
     },
     qg: {
-      title: '🌊 Ocean Quiz',
+      title: '🌊 Floating, Suspending & Sinking',
       sub: 'Start at 100 % — keep it as high as you can!',
       question_label: 'Question {n} of {total} · Weight: {w}%',
       hint_btn: '💡 Show hint',
@@ -1850,7 +2113,8 @@ const quizC_questions = [
     funfact: { de: '✨ Fun Fact: Es gibt auch Hexacopter (6 Rotoren) und Oktocopter (8 Rotoren) — die können schwerere Lasten tragen!',
                en: '✨ Fun fact: There are also hexacopters (6 rotors) and octocopters (8 rotors) — they can carry heavier loads!' },
     explanation: { de: 'Eine typische Drohne ist ein Quadrocopter mit 4 Rotoren. Die Anordnung sorgt für Stabilität in der Luft.',
-                   en: 'A typical drone is a quadcopter with 4 rotors. The arrangement keeps it stable in the air.' }
+                   en: 'A typical drone is a quadcopter with 4 rotors. The arrangement keeps it stable in the air.' },
+    source: { label: 'drohnen-vergleich.de', url: 'https://www.drohnen-vergleich.de/wie-funktioniert-eine-drohne/' }
   },
   {
     type: 'mc',
@@ -1872,17 +2136,21 @@ const quizC_questions = [
     funfact: { de: '✨ Fun Fact: Im Deutschen heißt der Propeller auch „Luftschraube" — er schraubt sich quasi durch die Luft!',
                en: '✨ Fun fact: In German, a propeller is also called "Luftschraube" (air screw) — it essentially screws itself through the air!' },
     explanation: { de: 'Die rotierenden Propeller drücken Luft nach unten — als Gegenkraft (Newtons 3. Gesetz) wird die Drohne nach oben gedrückt. Das ist der Auftrieb.',
-                   en: 'The spinning propellers push air downward — as a counter-force (Newton\'s 3rd law) the drone gets pushed upward. This is the lift.' }
+                   en: 'The spinning propellers push air downward — as a counter-force (Newton\'s 3rd law) the drone gets pushed upward. This is the lift.' },
+    source: { label: 'simplyscience.ch', url: 'https://www.simplyscience.ch/teens/wissen/so-fliegen-drohnen' }
   },
   {
     type: 'tf',
     q: { de: 'Eine Drohne fliegt nach vorne, indem sich die hinteren Rotoren schneller drehen als die vorderen.',
          en: 'A drone flies forward when the rear rotors spin faster than the front ones.' },
     correct: true,
+    hint: { de: 'Damit sich die Drohne nach vorne neigen kann, muss hinten mehr Schub her.',
+            en: 'For the drone to tilt forward, the back needs more thrust.' },
     funfact: { de: '✨ Fun Fact: Eine Drohne hat keine Lenkstange — sie wird nur durch unterschiedliche Drehzahlen der vier Propeller gesteuert!',
                en: '✨ Fun fact: A drone has no steering — it is controlled entirely by changing the speeds of its four propellers!' },
     explanation: { de: 'Richtig! Wenn die hinteren Rotoren mehr Schub geben als die vorderen, kippt die Drohne nach vorne und bewegt sich in diese Richtung.',
-                   en: 'Correct! When the rear rotors push harder than the front ones, the drone tilts forward and moves in that direction.' }
+                   en: 'Correct! When the rear rotors push harder than the front ones, the drone tilts forward and moves in that direction.' },
+    source: { label: 'drohnen-vergleich.de', url: 'https://www.drohnen-vergleich.de/wie-funktioniert-eine-drohne/' }
   },
   {
     type: 'mc',
@@ -1904,17 +2172,21 @@ const quizC_questions = [
     funfact: { de: '✨ Fun Fact: Wenn man die Drohne drehen will (Gieren), verlangsamt man gezielt 2 gegenüberliegende Rotoren — so wird das Drehmoment ungleich!',
                en: '✨ Fun fact: To turn the drone (yaw), two opposite rotors are deliberately slowed — making the torque unequal!' },
     explanation: { de: 'Je zwei gegenüberliegende Rotoren drehen in dieselbe Richtung, die anderen beiden in die Gegenrichtung. So heben sich die Drehmomente auf, und die Drohne bleibt stabil.',
-                   en: 'Two opposite rotors spin one way and the other two spin the opposite way. The torques cancel out, and the drone stays stable.' }
+                   en: 'Two opposite rotors spin one way and the other two spin the opposite way. The torques cancel out, and the drone stays stable.' },
+    source: { label: 'u-rob.com', url: 'https://u-rob.com/wissensartikel/wie-funktioniert-eine-drohne/' }
   },
   {
     type: 'tf',
     q: { de: 'Eine Drohne braucht für ihren Flug einen Verbrennungsmotor mit Benzin.',
          en: 'A drone needs a petrol combustion engine to fly.' },
     correct: false,
+    hint: { de: 'Denk daran, wie leise eine Drohne im Vergleich zu einem Mofa ist.',
+            en: 'Think how quiet a drone is compared with a moped.' },
     funfact: { de: '✨ Fun Fact: Weil Drohnen Akkus benutzen, fliegen sie fast geräuschlos im Vergleich zu einem Hubschrauber!',
                en: '✨ Fun fact: Because drones use batteries, they fly almost silently compared with a helicopter!' },
     explanation: { de: 'Falsch! Die meisten Drohnen werden von Elektromotoren angetrieben, die ihren Strom aus einem Akku bekommen. Sie sind dadurch leise und emissionsfrei.',
-                   en: 'False! Most drones are powered by electric motors that draw current from a battery. That makes them quiet and emission-free.' }
+                   en: 'False! Most drones are powered by electric motors that draw current from a battery. That makes them quiet and emission-free.' },
+    source: { label: 'drone-zone.de', url: 'https://www.drone-zone.de/wissen-propeller-fuer-drohnen-6-fragen-einfach-erklaert/' }
   },
   {
     type: 'mc',
@@ -1936,7 +2208,8 @@ const quizC_questions = [
     funfact: { de: '✨ Fun Fact: Gyrosensoren sind die gleichen Bauteile, die in deinem Smartphone die Bildschirmdrehung erkennen!',
                en: '✨ Fun fact: Gyro sensors are the same chips your phone uses to detect screen rotation!' },
     explanation: { de: 'Gyro-Sensoren messen Drehbewegungen. So weiß die Drohne sofort, wenn sie kippt, und kann gegensteuern, um stabil in der Luft zu bleiben.',
-                   en: 'Gyro sensors measure rotational movement. The drone instantly notices any tilt and corrects itself to stay stable in the air.' }
+                   en: 'Gyro sensors measure rotational movement. The drone instantly notices any tilt and corrects itself to stay stable in the air.' },
+    source: { label: 'lehrerfreund.de', url: 'https://www.lehrerfreund.de/technik/1s/drohnen-2/4785' }
   }
 ];
 
@@ -1945,36 +2218,49 @@ const quizD_questions = [
   { stmt: { de: 'Kolibris können in der Luft auf der Stelle schweben, sogar rückwärts und seitwärts fliegen.',
             en: 'Hummingbirds can hover in mid-air and even fly backwards and sideways.' },
     correct: true,
+    hint: { de: 'Denk an einen sehr schnellen Flügelschlag und besondere Schultergelenke.',
+            en: 'Think of a very fast wingbeat and special shoulder joints.' },
     explanation: { de: 'Wahr! ✨ Durch ihren extrem schnellen Flügelschlag und ihre einzigartige Flügelbeweglichkeit sind Kolibris die einzigen Vögel, die wirklich auf der Stelle und rückwärts fliegen können. ✨',
                    en: 'True! ✨ Thanks to their extremely fast wingbeat and unique wing mobility, hummingbirds are the only birds that can really hover and fly backwards. ✨' } },
   { stmt: { de: 'Kolibris schlagen ihre Flügel etwa 5-mal pro Sekunde.',
             en: 'Hummingbirds beat their wings about 5 times per second.' },
     correct: false,
+    hint: { de: '5-mal pro Sekunde wäre für so einen winzigen Vogel sehr langsam — denk lieber an zwei Stellen mehr.',
+            en: '5 times per second would be very slow for such a tiny bird — think two orders of magnitude more.' },
     explanation: { de: 'Falsch! ✨ Kolibris schlagen ihre Flügel etwa 50–80 Mal pro Sekunde, beim Balzflug sogar bis zu 200 Mal! ✨',
                    en: 'False! ✨ Hummingbirds beat their wings about 50–80 times per second, and up to 200 times during courtship flight! ✨' } },
   { stmt: { de: 'Die Hauptnahrung von Kolibris ist Blütennektar.',
             en: 'The main food of hummingbirds is flower nectar.' },
     correct: true,
+    hint: { de: 'Es ist etwas Süßes aus Blüten.', en: 'It is something sweet from flowers.' },
     explanation: { de: 'Wahr! ✨ Kolibris ernähren sich hauptsächlich von zuckerreichem Blütennektar. Zusätzlich fressen sie kleine Insekten und Spinnen für Eiweiß. ✨',
                    en: 'True! ✨ Hummingbirds mainly feed on sugar-rich flower nectar. They also eat small insects and spiders for protein. ✨' } },
   { stmt: { de: 'Kolibris haben ein extrem langsam schlagendes Herz, etwa 40 Schläge pro Minute.',
             en: 'Hummingbirds have an extremely slow heartbeat, about 40 beats per minute.' },
     correct: false,
+    hint: { de: 'Kleine Tiere mit viel Energieverbrauch haben meistens ein sehr schnelles Herz.',
+            en: 'Small animals with very high energy use usually have a very fast heart.' },
     explanation: { de: 'Falsch! ✨ Im Gegenteil: Beim Fliegen schlägt ein Kolibri-Herz bis zu 1.200 Mal pro Minute — das sind 20 Schläge pro Sekunde! ✨',
                    en: 'False! ✨ On the contrary: in flight a hummingbird\'s heart beats up to 1,200 times per minute — that\'s 20 beats per second! ✨' } },
   { stmt: { de: 'Der kleinste Kolibri, die Bienenelfe, wiegt nur etwa 2 Gramm.',
             en: 'The smallest hummingbird, the bee hummingbird, weighs only about 2 grams.' },
     correct: true,
+    hint: { de: 'Das ist etwa so viel wie eine kleine Erdbeere oder zwei Büroklammern.',
+            en: 'That is about as much as a small strawberry or two paper clips.' },
     explanation: { de: 'Wahr! ✨ Die Bienenelfe ist mit ca. 6 cm Länge und 2 g Gewicht der kleinste Vogel der Welt. Sie lebt auf Kuba und ihre Eier sind nur erbsengroß. ✨',
                    en: 'True! ✨ At about 6 cm long and 2 g, the bee hummingbird is the smallest bird in the world. It lives in Cuba and its eggs are no bigger than peas. ✨' } },
   { stmt: { de: 'Während des Flugs malen die Flügelspitzen eines Kolibris eine liegende Acht (Lemniskate).',
             en: 'During flight, the wingtips of a hummingbird trace a horizontal figure-eight (lemniscate).' },
     correct: true,
+    hint: { de: 'Diese Bewegung erzeugt Auftrieb beim Auf- UND beim Abschlag.',
+            en: 'This motion creates lift on BOTH the up- and the downstroke.' },
     explanation: { de: 'Wahr! ✨ Diese besondere achterförmige Bewegung erzeugt sowohl beim Auf- als auch beim Abschlag Auftrieb. Deshalb können Kolibris auf der Stelle „stehen". ✨',
                    en: 'True! ✨ This special figure-eight motion creates lift both on the upstroke and the downstroke. That\'s why hummingbirds can "stand" in mid-air. ✨' } },
   { stmt: { de: 'Kolibris können nicht rückwärts fliegen, weil ihre Flügel zu klein dafür sind.',
             en: 'Hummingbirds cannot fly backwards because their wings are too small.' },
     correct: false,
+    hint: { de: 'Kolibri-Flügel können sich im Schultergelenk drehen — wie eine kleine Drohne.',
+            en: 'Hummingbird wings can rotate at the shoulder — like a tiny drone.' },
     explanation: { de: 'Falsch! ✨ Kolibris sind sogar die einzigen Vögel weltweit, die richtig rückwärts fliegen können. Das schaffen sie durch die Drehbewegung ihrer Flügel im Schultergelenk. ✨',
                    en: 'False! ✨ Hummingbirds are actually the only birds in the world that can truly fly backwards. They achieve this through the rotation of their wings at the shoulder joint. ✨' } }
 ];
@@ -1986,10 +2272,12 @@ const quizE_questions = [
     q: { de: 'Wie viel Salz darf ein Erwachsener laut WHO maximal pro Tag essen?',
          en: 'According to the WHO, what is the maximum daily salt intake for an adult?' },
     options: {
-      de: ['1 g (eine Prise)', '5 g (ca. ein Teelöffel)', '15 g (ein Esslöffel)', '50 g'],
-      en: ['1 g (a pinch)', '5 g (about one teaspoon)', '15 g (one tablespoon)', '50 g']
+      de: ['1 g (eine Prise)', '5 g (ca. ein Teelöffel)', '10 g (ein gehäufter TL)', '15 g (ein EL)'],
+      en: ['1 g (a pinch)', '5 g (about one teaspoon)', '10 g (a heaped tsp)', '15 g (one tablespoon)']
     },
     correct: 1, yearsCost: 2,
+    hint: { de: 'Ein normaler Teelöffel fasst etwa 5 g Salz — mehr als das ist schon zu viel.',
+            en: 'A normal teaspoon holds about 5 g of salt — more than that is already too much.' },
     explanation: { de: 'Die WHO empfiehlt maximal 5 g Salz/Tag. Wer regelmäßig zu viel Salz zusalzt, lebt im Schnitt 1,5–2,3 Jahre kürzer (Studie European Heart Journal, 2022).',
                    en: 'The WHO recommends a maximum of 5 g of salt per day. People who regularly add extra salt live on average 1.5–2.3 years less (European Heart Journal, 2022).' }
   },
@@ -1998,6 +2286,8 @@ const quizE_questions = [
     q: { de: 'Die Schale einer Banane darf man bedenkenlos mitessen.',
          en: 'You can safely eat banana skin without thinking about it.' },
     correct: false, yearsCost: 1,
+    hint: { de: 'Denk daran, was an konventionell angebauten Schalen oft anhaftet.',
+            en: 'Think about what often clings to conventionally grown peels.' },
     explanation: { de: 'Falsch! Bananenschalen sind meist mit Pestiziden behandelt und sollten nicht ungewaschen gegessen werden. Bio-Schalen kann man gewaschen verwenden.',
                    en: 'False! Banana skins are usually treated with pesticides and should not be eaten unwashed. Organic skins can be eaten after washing.' }
   },
@@ -2005,17 +2295,22 @@ const quizE_questions = [
     type: 'mc',
     q: { de: 'Welche Obstsorte hat eine giftige/ungenießbare Schale, die man NICHT mitessen sollte?',
          en: 'Which fruit has a toxic/inedible skin that you should NOT eat?' },
-    options: { de: ['Apfel', 'Birne', 'Avocado', 'Pflaume'], en: ['Apple', 'Pear', 'Avocado', 'Plum'] },
+    options: { de: ['Apfel', 'Birne', 'Avocado', 'Pflaume', 'Kiwi'], en: ['Apple', 'Pear', 'Avocado', 'Plum', 'Kiwi'] },
     correct: 2, yearsCost: 1,
-    explanation: { de: 'Die Avocado-Schale ist hart und enthält Stoffe, die nicht für den Verzehr geeignet sind. Apfel, Birne und Pflaume kann man mit Schale essen (vorher waschen).',
-                   en: 'Avocado skin is tough and contains substances not suited for eating. Apple, pear and plum can be eaten with the skin (after washing).' }
+    hint: { de: 'Diese Frucht hat eine harte, lederartige, dunkelgrüne Schale.',
+            en: 'This fruit has a tough, leathery, dark-green skin.' },
+    explanation: { de: 'Die Avocado-Schale ist hart und enthält Stoffe, die nicht für den Verzehr geeignet sind. Apfel, Birne, Pflaume und Kiwi kann man mit Schale essen (vorher waschen).',
+                   en: 'Avocado skin is tough and contains substances not suited for eating. Apple, pear, plum and kiwi can be eaten with the skin (after washing).' }
   },
   {
     type: 'mc',
     q: { de: 'Welche Pflanze ist roh giftig und darf nur gekocht gegessen werden?',
          en: 'Which plant is toxic when raw and may only be eaten cooked?' },
-    options: { de: ['Möhren', 'Gurke', 'Bohnen (grüne)', 'Salat'], en: ['Carrots', 'Cucumber', 'Green beans', 'Lettuce'] },
+    options: { de: ['Möhren', 'Gurke', 'Bohnen (grüne)', 'Salat', 'Tomate'],
+               en: ['Carrots', 'Cucumber', 'Green beans', 'Lettuce', 'Tomato'] },
     correct: 2, yearsCost: 2,
+    hint: { de: 'Es geht um eine Hülsenfrucht — das Gift heißt Phasin und wird beim Kochen zerstört.',
+            en: 'It is a legume — the toxin is called phasin and is destroyed by cooking.' },
     explanation: { de: 'Rohe grüne Bohnen enthalten das Gift Phasin, das beim Kochen zerstört wird. Schon 5–6 rohe Bohnen können bei Kindern zu Vergiftungserscheinungen führen.',
                    en: 'Raw green beans contain the toxin phasin, which is destroyed by cooking. Just 5–6 raw beans can cause poisoning symptoms in children.' }
   },
@@ -2024,6 +2319,8 @@ const quizE_questions = [
     q: { de: 'Avocadokerne sind essbar und sehr gesund.',
          en: 'Avocado pits are edible and very healthy.' },
     correct: false, yearsCost: 1,
+    hint: { de: 'Der Kern enthält Stoffe wie Persin und Gerbstoffe.',
+            en: 'The pit contains substances like persin and tannins.' },
     explanation: { de: 'Falsch! Avocadokerne enthalten Persin und Gerbstoffe, die in größeren Mengen schädlich sein können. Den Kern lieber nicht essen.',
                    en: 'False! Avocado pits contain persin and tannins, which can be harmful in larger amounts. Better not to eat the pit.' }
   },
@@ -2032,7 +2329,9 @@ const quizE_questions = [
     q: { de: 'Wie viel Zucker (in Gramm) empfiehlt die WHO maximal pro Tag für ein Kind?',
          en: 'How much sugar (in grams) does the WHO recommend at most per day for a child?' },
     min: 0, max: 100, step: 5,
-    correctValue: 25, tolerance: 8, emoji: '🍬', yearsCost: 2,
+    correctValue: 25, tolerance: 5, emoji: '🍬', yearsCost: 2,
+    hint: { de: 'Etwa 6 Teelöffel — also eine Menge, die du leicht in einer einzigen Limo schaffst.',
+            en: 'About 6 teaspoons — an amount you easily reach with a single soft drink.' },
     explanation: { de: 'Die WHO empfiehlt maximal 25 g (ca. 6 TL) freien Zucker pro Tag. Viel mehr Zucker erhöht Risiko für Karies, Übergewicht, Diabetes und verkürzt die Lebenserwartung.',
                    en: 'The WHO recommends at most 25 g (about 6 tsp) of free sugar per day. Much more sugar raises the risk of cavities, obesity, diabetes and shortens life expectancy.' }
   },
@@ -2041,7 +2340,9 @@ const quizE_questions = [
     q: { de: 'Wie viele Gläser Wasser (à 0,2 L) sollte ein Kind pro Tag trinken?',
          en: 'How many glasses of water (0.2 L each) should a child drink per day?' },
     min: 0, max: 15, step: 1,
-    correctValue: 7, tolerance: 2, emoji: '💧', yearsCost: 1,
+    correctValue: 7, tolerance: 1, emoji: '💧', yearsCost: 1,
+    hint: { de: 'Ungefähr 1,3–1,5 Liter — wie viele 0,2-Liter-Gläser passen rein?',
+            en: 'Roughly 1.3–1.5 litres — how many 0.2-litre glasses fit in?' },
     explanation: { de: 'Etwa 1,3–1,5 Liter Wasser pro Tag, das sind ca. 6–8 Gläser. Zu wenig Wasser belastet Nieren und Konzentration.',
                    en: 'About 1.3–1.5 litres of water per day — roughly 6–8 glasses. Too little water strains the kidneys and concentration.' }
   },
@@ -2050,6 +2351,8 @@ const quizE_questions = [
     q: { de: 'Wer raucht, lebt im Durchschnitt etwa 10 Jahre kürzer als Nichtraucher.',
          en: 'Smokers live on average about 10 years less than non-smokers.' },
     correct: true, yearsCost: 10,
+    hint: { de: 'Rauchen ist der größte einzelne Risikofaktor für vorzeitigen Tod.',
+            en: 'Smoking is the single largest risk factor for premature death.' },
     explanation: { de: 'Wahr! Studien zeigen einen Verlust von 7–10 Jahren Lebenszeit. Rauchen ist der wichtigste einzelne Lebensstilfaktor für vorzeitigen Tod.',
                    en: 'True! Studies show a loss of 7–10 years of life. Smoking is the single most important lifestyle factor for premature death.' }
   },
@@ -2058,10 +2361,12 @@ const quizE_questions = [
     q: { de: 'Welches Lebensmittel verlängert eher das Leben (in Maßen genossen)?',
          en: 'Which food is more likely to lengthen life (when enjoyed in moderation)?' },
     options: {
-      de: ['Fertiggerichte mit viel Zucker', 'Nüsse, Gemüse, Vollkornprodukte', 'Süßgetränke', 'Wurstwaren'],
-      en: ['Ready meals with lots of sugar', 'Nuts, vegetables, wholegrain products', 'Sugary drinks', 'Processed sausages']
+      de: ['Fertiggerichte mit viel Zucker', 'Nüsse, Gemüse, Vollkornprodukte', 'Süßgetränke', 'Wurstwaren', 'Energy-Drinks'],
+      en: ['Ready meals with lots of sugar', 'Nuts, vegetables, wholegrains', 'Sugary drinks', 'Processed sausages', 'Energy drinks']
     },
     correct: 1, yearsCost: 2,
+    hint: { de: 'Mediterrane Kost — frisches Gemüse, Hülsenfrüchte, Olivenöl, Nüsse.',
+            en: 'Mediterranean style — fresh vegetables, pulses, olive oil, nuts.' },
     explanation: { de: 'Mediterrane Kost (viel Gemüse, Obst, Nüsse, Vollkorn, Olivenöl, wenig Fleisch) kann die Lebenserwartung um mehrere Jahre erhöhen.',
                    en: 'A Mediterranean-style diet (lots of vegetables, fruit, nuts, wholegrains, olive oil, little meat) can raise life expectancy by several years.' }
   },
@@ -2070,7 +2375,9 @@ const quizE_questions = [
     q: { de: 'Wie viele Portionen Obst und Gemüse pro Tag sind empfohlen?',
          en: 'How many portions of fruit and vegetables per day are recommended?' },
     min: 0, max: 10, step: 1,
-    correctValue: 5, tolerance: 1, emoji: '🥗', yearsCost: 3,
+    correctValue: 5, tolerance: 0, emoji: '🥗', yearsCost: 3,
+    hint: { de: 'Eine bekannte Faustregel — auf Englisch heißt sie „five a day".',
+            en: 'A famous rule — in English it\'s called "five a day".' },
     explanation: { de: 'Die DGE empfiehlt „5 am Tag" — 3 Portionen Gemüse und 2 Portionen Obst. Wer das einhält, kann seine Lebenserwartung um bis zu 3 Jahre verlängern.',
                    en: 'The German Nutrition Society recommends "5 a day" — 3 portions of vegetables and 2 of fruit. Following this can extend life expectancy by up to 3 years.' }
   },
@@ -2079,6 +2386,8 @@ const quizE_questions = [
     q: { de: 'Frühstücken kann gesund sein, weil das Gehirn morgens viel Energie braucht.',
          en: 'Having breakfast can be healthy because the brain needs a lot of energy in the morning.' },
     correct: true, yearsCost: 1,
+    hint: { de: 'Nach 8–10 Stunden Schlaf sind die Glukose-Speicher leer.',
+            en: 'After 8–10 hours of sleep, glucose stores are low.' },
     explanation: { de: 'Wahr! Ein gesundes Frühstück mit Vollkorn und Obst stabilisiert den Blutzucker und verbessert Konzentration und Lernleistung.',
                    en: 'True! A healthy breakfast with wholegrains and fruit stabilises blood sugar and improves concentration and learning.' }
   },
@@ -2086,8 +2395,11 @@ const quizE_questions = [
     type: 'mc',
     q: { de: 'Welches dieser Lebensmittel enthält besonders viel verstecktes Fett?',
          en: 'Which of these foods contains particularly high amounts of hidden fat?' },
-    options: { de: ['Apfel', 'Pommes Frites', 'Salat', 'Möhre'], en: ['Apple', 'French fries', 'Salad', 'Carrot'] },
+    options: { de: ['Apfel', 'Pommes Frites', 'Salat ohne Dressing', 'Möhre', 'Gurke'],
+               en: ['Apple', 'French fries', 'Salad without dressing', 'Carrot', 'Cucumber'] },
     correct: 1, yearsCost: 2,
+    hint: { de: 'Es wird im Öl frittiert und saugt das Öl regelrecht auf.',
+            en: 'It is deep-fried and soaks up the oil.' },
     explanation: { de: 'Pommes werden frittiert und nehmen viel Öl auf — 100 g haben über 300 kcal und 15 g Fett. Häufiges Frittiertes erhöht Herzkreislaufrisiken.',
                    en: 'French fries are deep-fried and soak up a lot of oil — 100 g contain over 300 kcal and 15 g of fat. Frequent fried foods raise cardiovascular risk.' }
   },
@@ -2096,6 +2408,8 @@ const quizE_questions = [
     q: { de: 'Viel rotes Fleisch (Rind, Schwein) und Wurst essen ist gesund und verlängert das Leben.',
          en: 'Eating lots of red meat (beef, pork) and sausage is healthy and lengthens life.' },
     correct: false, yearsCost: 2,
+    hint: { de: 'Verarbeitetes rotes Fleisch ist von der WHO als „wahrscheinlich krebserregend" eingestuft.',
+            en: 'Processed red meat is classified by the WHO as "probably carcinogenic".' },
     explanation: { de: 'Falsch! Wer >120 g verarbeitetes/rotes Fleisch pro Tag isst, verliert laut Studien bis zu 2,4 Jahre Lebenserwartung (höheres Risiko für Darmkrebs, Herzkrankheiten).',
                    en: 'False! Eating more than 120 g of red/processed meat per day is linked to up to 2.4 years of lost life expectancy (higher risk of bowel cancer and heart disease).' }
   },
@@ -2104,10 +2418,12 @@ const quizE_questions = [
     q: { de: 'Welche Tomatensorte sollte man NICHT roh essen?',
          en: 'Which kind of tomato should you NOT eat raw?' },
     options: {
-      de: ['Cocktailtomaten', 'Rispentomaten', 'Grüne unreife Tomaten', 'Fleischtomaten'],
-      en: ['Cocktail tomatoes', 'Vine tomatoes', 'Green unripe tomatoes', 'Beefsteak tomatoes']
+      de: ['Cocktailtomaten', 'Rispentomaten', 'Grüne unreife Tomaten', 'Fleischtomaten', 'Datteltomaten'],
+      en: ['Cocktail tomatoes', 'Vine tomatoes', 'Green unripe tomatoes', 'Beefsteak tomatoes', 'Date tomatoes']
     },
     correct: 2, yearsCost: 1,
+    hint: { de: 'Unreife Nachtschattengewächse enthalten Solanin.',
+            en: 'Unripe nightshades contain solanine.' },
     explanation: { de: 'Grüne, unreife Tomaten enthalten Solanin, das giftig sein kann. Erst rote, vollreife Tomaten sind unbedenklich.',
                    en: 'Green, unripe tomatoes contain solanine, which can be toxic. Only fully ripe red tomatoes are safe to eat.' }
   },
@@ -2116,7 +2432,9 @@ const quizE_questions = [
     q: { de: 'Wie viele Minuten Bewegung pro Tag sollten Kinder mindestens haben?',
          en: 'How many minutes of physical activity per day should children get at minimum?' },
     min: 0, max: 180, step: 10,
-    correctValue: 60, tolerance: 15, emoji: '🏃', yearsCost: 2,
+    correctValue: 60, tolerance: 10, emoji: '🏃', yearsCost: 2,
+    hint: { de: 'Es ist eine runde Zahl — etwa eine Schulstunde.',
+            en: 'It is a round number — about one school lesson.' },
     explanation: { de: 'Die WHO empfiehlt 60 Minuten moderate bis intensive Bewegung pro Tag für Kinder. Bewegungsmangel kann das Leben um mehrere Jahre verkürzen.',
                    en: 'The WHO recommends 60 minutes of moderate to vigorous activity per day for children. Lack of movement can shorten life by several years.' }
   }
@@ -2217,91 +2535,106 @@ const quizF_questions = [
   }
 ];
 
-// ---------- QUIZ G — Ocean ----------
+// ---------- QUIZ G — Schwimmen, Schweben & Sinken ----------
 const quizG_questions = [
   {
     type: 'mc',
-    question: { de: 'Wie viel der Erdoberfläche ist von Ozeanen bedeckt?',
-                en: 'How much of Earth\'s surface is covered by oceans?' },
-    options: { de: ['Etwa 50 %', 'Etwa 71 %', 'Etwa 90 %'],
-               en: ['About 50%', 'About 71%', 'About 90%'] },
-    correct: 1, difficulty: 12,
-    hint: { de: 'Es ist mehr als die Hälfte — aber nicht fast die ganze Erde.',
-            en: 'It\'s more than half — but not nearly all.' },
-    explanation: { de: 'Ozeane bedecken rund 71 % der Erdoberfläche und enthalten etwa 97 % des Wassers unseres Planeten.',
-                   en: 'Oceans cover roughly 71% of Earth\'s surface and hold about 97% of the planet\'s water.' }
+    question: { de: 'Warum schwimmt ein riesiges Stahlschiff, obwohl Stahl viel schwerer ist als Wasser?',
+                en: 'Why does a huge steel ship float, even though steel is much heavier than water?' },
+    options: { de: ['Weil Stahl im Wasser leichter wird',
+                     'Weil das Schiff sehr viel Wasser verdrängt — die Auftriebskraft ist so groß wie das Gewicht des Schiffs',
+                     'Weil Magnete im Rumpf das Schiff hochziehen'],
+               en: ['Because steel gets lighter in water',
+                    'Because the ship displaces a lot of water — the buoyant force equals the ship\'s weight',
+                    'Because magnets in the hull pull the ship up'] },
+    correct: 1, difficulty: 14,
+    hint: { de: 'Denk an das Volumen, das das Schiff aus dem Wasser herausdrückt.',
+            en: 'Think about the volume of water the ship pushes aside.' },
+    explanation: { de: 'Nach Archimedes wirkt auf jeden Körper im Wasser eine Auftriebskraft, die so groß ist wie das Gewicht des verdrängten Wassers. Ein Schiff verdrängt sehr viel Wasser — deshalb schwimmt es.',
+                   en: 'By Archimedes\' principle, every body in water feels a buoyant force equal to the weight of the displaced water. A ship displaces a lot of water — so it floats.' }
   },
   {
     type: 'tf',
-    question: { de: 'Der Pazifische Ozean ist der größte Ozean der Erde.',
-                en: 'The Pacific Ocean is the largest ocean on Earth.' },
-    correct: true, difficulty: 10,
-    hint: { de: 'Denk an den Ozean zwischen Asien und Amerika.',
-            en: 'Think of the one between Asia and the Americas.' },
-    explanation: { de: 'Wahr. Der Pazifik ist der größte und tiefste Ozean — größer als alle Landflächen der Erde zusammen.',
-                   en: 'True. The Pacific is the largest and deepest ocean, covering more area than all land combined.' }
+    question: { de: 'Ein Körper schwebt im Wasser, wenn seine Dichte genau so groß ist wie die Dichte des Wassers.',
+                en: 'An object suspends (hovers) in water when its density is exactly equal to the water\'s density.' },
+    correct: true, difficulty: 15,
+    hint: { de: 'Schweben bedeutet: weder hoch noch runter — Gewichtskraft = Auftriebskraft.',
+            en: 'Suspending means: neither rising nor sinking — weight = buoyancy.' },
+    explanation: { de: 'Wahr. Ist die Dichte gleich, gleichen sich Gewichtskraft und Auftriebskraft genau aus — der Körper schwebt frei im Wasser.',
+                   en: 'True. When the densities match, weight and buoyancy balance exactly — the object hovers freely in the water.' }
   },
   {
     type: 'mc',
-    question: { de: 'Was ist der tiefste bekannte Punkt des Ozeans?',
-                en: 'What is the deepest known point in the ocean?' },
-    options: { de: ['Puerto-Rico-Graben', 'Marianengraben', 'Java-Graben'],
-               en: ['Puerto Rico Trench', 'Mariana Trench', 'Java Trench'] },
-    correct: 1, difficulty: 15,
-    hint: { de: 'Er liegt im westlichen Pazifik und ist fast 11 km tief.',
-            en: 'It is in the western Pacific and reaches almost 11 km deep.' },
-    explanation: { de: 'Der Marianengraben erreicht am Challenger-Tief etwa 10.984 m — tiefer als der Mount Everest hoch ist.',
-                   en: 'The Mariana Trench reaches about 10,984 m at the Challenger Deep — deeper than Mt. Everest is tall.' }
+    question: { de: 'Wie regelt ein Fisch, ob er steigt, sinkt oder schwebt?',
+                en: 'How does a fish control whether it rises, sinks or hovers?' },
+    options: { de: ['Mit seinen Flossen alleine',
+                     'Über die Schwimmblase — sie wird mit Gas gefüllt oder geleert, dadurch ändert sich seine Dichte',
+                     'Indem er Salz aus dem Wasser aufnimmt'],
+               en: ['With its fins alone',
+                    'Via the swim bladder — it fills or empties with gas, changing the fish\'s density',
+                    'By absorbing salt from the water'] },
+    correct: 1, difficulty: 13,
+    hint: { de: 'Es geht um ein gasgefülltes Organ im Bauch des Fisches.',
+            en: 'It\'s a gas-filled organ inside the fish\'s belly.' },
+    explanation: { de: 'Die Schwimmblase ändert das Volumen des Fisches, ohne das Gewicht stark zu verändern. So passt der Fisch seine Dichte an und kann auf jeder Tiefe schweben.',
+                   en: 'The swim bladder changes the fish\'s volume without changing its weight much. By adjusting its density, the fish can hover at any depth.' }
+  },
+  {
+    type: 'mc',
+    question: { de: 'Was passiert mit einem Holzklotz und einem gleich großen Eisenstück, wenn man sie ins Wasser legt?',
+                en: 'What happens to a block of wood and an iron block of the same size when both are placed in water?' },
+    options: { de: ['Beide sinken zu Boden',
+                     'Beide schwimmen oben',
+                     'Holz schwimmt, Eisen sinkt — weil Eisen eine größere Dichte hat als Wasser, Holz nicht'],
+               en: ['Both sink to the bottom',
+                    'Both float on top',
+                    'Wood floats, iron sinks — because iron has higher density than water, wood does not'] },
+    correct: 2, difficulty: 10,
+    hint: { de: 'Entscheidend ist nicht das Gewicht allein, sondern die Dichte (Gewicht pro Volumen).',
+            en: 'It\'s not the weight alone that matters, but the density (weight per volume).' },
+    explanation: { de: 'Holz hat eine kleinere Dichte als Wasser (~0,5–0,8 g/cm³) und schwimmt. Eisen hat eine viel größere Dichte (~7,8 g/cm³) und sinkt.',
+                   en: 'Wood has a lower density than water (~0.5–0.8 g/cm³) and floats. Iron has a much higher density (~7.8 g/cm³) and sinks.' }
   },
   {
     type: 'tf',
-    question: { de: 'Der meiste Sauerstoff, den wir atmen, stammt aus Regenwaldbäumen.',
-                en: 'Most of the oxygen we breathe comes from trees in the rainforest.' },
-    correct: false, difficulty: 13,
-    hint: { de: 'Denk klein — was im Meer produziert Sauerstoff?',
-            en: 'Think tiny — what produces oxygen in the sea?' },
-    explanation: { de: 'Falsch. Meeresphytoplankton (winzige Meerespflanzen) produziert rund 50–80 % des Sauerstoffs auf der Erde — mehr als alle Wälder zusammen.',
-                   en: 'False. Marine phytoplankton (tiny ocean plants) produce around 50–80% of Earth\'s oxygen — more than all forests combined.' }
+    question: { de: 'Ein U-Boot kann steigen und sinken, indem es Wasser in seine Ballasttanks pumpt oder herausdrückt.',
+                en: 'A submarine can rise and sink by pumping water into or out of its ballast tanks.' },
+    correct: true, difficulty: 12,
+    hint: { de: 'Mehr Wasser im U-Boot = schwerer.', en: 'More water inside = heavier.' },
+    explanation: { de: 'Wahr. Beim Sinken füllt das U-Boot seine Tanks mit Wasser (höhere Dichte → es sinkt). Zum Auftauchen wird das Wasser mit Druckluft hinausgepresst (niedrigere Dichte → es steigt). Bei gleicher Dichte wie das Umgebungswasser schwebt es.',
+                   en: 'True. To dive, a submarine fills its tanks with water (higher density → it sinks). To surface, it pushes the water out with compressed air (lower density → it rises). When its density matches the surrounding water, it hovers.' }
   },
   {
     type: 'mc',
-    question: { de: 'Warum ist das Meer salzig?',
-                en: 'Why is the ocean salty?' },
-    options: {
-      de: ['Wegen der Fische, die darin leben',
-           'Flüsse tragen gelöste Mineralien ins Meer',
-           'Weil die Sonne das Wasser erwärmt'],
-      en: ['Because of fish living in it',
-           'Because rivers carry dissolved minerals into the sea',
-           'Because the sun heats the water']
-    },
-    correct: 1, difficulty: 10,
-    hint: { de: 'Es kommt vom Land — durch fließendes Wasser.',
-            en: 'It comes from the land via running water.' },
-    explanation: { de: 'Flüsse spülen gelöste Salze und Mineralien aus Gestein und Boden ins Meer, wo sie sich über Millionen Jahre ansammeln.',
-                   en: 'Rivers wash dissolved salts and minerals from rocks and soil into the oceans, where they accumulate over millions of years.' }
-  },
-  {
-    type: 'tf',
-    question: { de: 'Haie gibt es länger auf der Erde als Bäume.',
-                en: 'Sharks have existed on Earth longer than trees.' },
-    correct: true, difficulty: 14,
-    hint: { de: 'Haie sind über 400 Millionen Jahre alt.',
-            en: 'Sharks are over 400 million years old.' },
-    explanation: { de: 'Wahr. Haie erschienen vor etwa 450 Millionen Jahren — Bäume erst vor rund 350 Millionen Jahren.',
-                   en: 'True. Sharks appeared about 450 million years ago — trees came about 350 million years ago.' }
+    question: { de: 'Warum schwimmt Eis auf Wasser, obwohl es derselbe Stoff (H₂O) ist?',
+                en: 'Why does ice float on water, even though it is the same substance (H₂O)?' },
+    options: { de: ['Weil Eis kälter und deshalb leichter ist',
+                     'Weil Eis eine kleinere Dichte hat als flüssiges Wasser — es nimmt mehr Volumen ein',
+                     'Weil im Eis Luftblasen drin sind'],
+               en: ['Because ice is colder and therefore lighter',
+                    'Because ice has lower density than liquid water — it takes up more volume',
+                    'Because ice contains air bubbles'] },
+    correct: 1, difficulty: 13,
+    hint: { de: 'Wasser dehnt sich beim Gefrieren aus — Eis nimmt etwa 9 % mehr Platz ein.',
+            en: 'Water expands when it freezes — ice takes about 9% more space.' },
+    explanation: { de: 'Wassermoleküle ordnen sich beim Gefrieren in einer offenen Gitterstruktur an. Das Eis wird dadurch weniger dicht (~0,92 g/cm³) als flüssiges Wasser (1,0 g/cm³) — und schwimmt.',
+                   en: 'When water freezes, the molecules arrange in an open lattice. The ice becomes less dense (~0.92 g/cm³) than liquid water (1.0 g/cm³) — and floats.' }
   },
   {
     type: 'mc',
-    question: { de: 'Welches dieser Tiere ist das größte auf der Erde?',
-                en: 'Which of these is the largest animal on Earth?' },
-    options: { de: ['Weißer Hai', 'Blauwal', 'Riesenkalmar'],
-               en: ['Great white shark', 'Blue whale', 'Giant squid'] },
-    correct: 1, difficulty: 8,
-    hint: { de: 'Es ist ein Säugetier, das im Meer lebt.',
-            en: 'It\'s a mammal that lives in the ocean.' },
-    explanation: { de: 'Der Blauwal wird bis zu 30 m lang und 180 Tonnen schwer — das größte Tier, das je auf der Erde gelebt hat.',
-                   en: 'The blue whale grows up to 30 m long and weighs up to 180 tonnes — the largest animal ever to live on Earth.' }
+    question: { de: 'In welchem Wasser kann man besser schwimmen — Süßwasser oder Salzwasser?',
+                en: 'In which water can you float more easily — fresh water or salt water?' },
+    options: { de: ['Süßwasser, weil es klarer ist',
+                     'Salzwasser, weil es eine größere Dichte hat — der Auftrieb ist größer',
+                     'Es macht keinen Unterschied'],
+               en: ['Fresh water, because it is clearer',
+                    'Salt water, because it has higher density — buoyancy is greater',
+                    'It makes no difference'] },
+    correct: 1, difficulty: 11,
+    hint: { de: 'Im Toten Meer kann man fast wie auf einem Schaumstoffbrett liegen!',
+            en: 'In the Dead Sea you can almost lie on the surface like on a foam mat!' },
+    explanation: { de: 'Salz erhöht die Dichte des Wassers. Dadurch verdrängt der Körper mehr Gewicht und der Auftrieb ist größer. Im Toten Meer (ca. 28 % Salz!) treibt man fast von selbst.',
+                   en: 'Salt raises the density of the water. The body then displaces more weight and the buoyancy is greater. In the Dead Sea (about 28% salt!) you almost float by yourself.' }
   }
 ];
 
@@ -2834,6 +3167,41 @@ function L(field) {
   return String(field);
 }
 
+/* Big celebratory confetti rain - shared across multiple quizzes */
+function launchBigConfetti(opts) {
+  opts = opts || {};
+  const count = opts.count || 120;
+  const duration = opts.duration || 4500;
+  const colors = ['#fbbf24','#f97316','#ef4444','#a855f7','#3b82f6','#22c55e','#ec4899','#06b6d4','#facc15'];
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'big-confetti-piece';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.background = colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration = (2.5 + Math.random()*2.5) + 's';
+    p.style.animationDelay = (Math.random() * 1.5) + 's';
+    p.style.transform = `rotate(${Math.random()*360}deg)`;
+    // Some pieces wider/taller for variety
+    if (Math.random() > 0.7) { p.style.width = '10px'; p.style.height = '22px'; }
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), duration + 1500);
+  }
+}
+
+/* Brief wrong-answer effect for Quiz H */
+function flashWrong(targetEl) {
+  if (!targetEl) return;
+  targetEl.classList.remove('wrong-flash','shake-wrong');
+  // force reflow so animations can replay
+  void targetEl.offsetWidth;
+  targetEl.classList.add('wrong-flash','shake-wrong');
+  const x = document.createElement('div');
+  x.className = 'x-pop';
+  x.textContent = '✗';
+  document.body.appendChild(x);
+  setTimeout(() => x.remove(), 900);
+}
+
 /* ========================================================
    QUIZ A — Bird Flight (Anika & Lina)
    ======================================================== */
@@ -2987,13 +3355,28 @@ function initQuizA() {
 /* ========================================================
    QUIZ B — Food & Drink (Emil & Oscar)
    ======================================================== */
+const QUIZB_EMOJI_POOL = ['🍎','🥕','🍞','🥛','🍇','🥦','🍌','🍓','🍅','🥑','🌽','🍆','🥒','🍒','🍉','🍍','🥝','🥥','🍯','🥚','🧀','🥨','🍳','🥗','🌶️','🍋','🍑','🥭','🍔','🍕','🍟','🌭','🥪','🍙','🍣','🍤','🍰','🍪','🍫','🍩','🥮','🍷','🥤','☕','🍵','🥞','🧇'];
+
 function initQuizB() {
   const root = document.getElementById('quiz-b');
-  root.innerHTML = `
+  // Stacked food-emoji background
+  let bgHTML = '<div class="food-bg-stack">';
+  for (let i = 0; i < 30; i++) {
+    const e = QUIZB_EMOJI_POOL[Math.floor(Math.random() * QUIZB_EMOJI_POOL.length)];
+    const top = Math.random() * 100;
+    const left = Math.random() * 100;
+    const rot = (Math.random() * 60 - 30).toFixed(1);
+    const scale = (0.7 + Math.random() * 0.9).toFixed(2);
+    bgHTML += `<span style="top:${top}%; left:${left}%; transform: rotate(${rot}deg) scale(${scale});">${e}</span>`;
+  }
+  bgHTML += '</div>';
+
+  root.innerHTML = bgHTML + `
     <div class="table-card">
       <h2>${tt('qb.header')}</h2>
       <p style="text-align:center; color:#92400e; font-size:0.9rem;">${tt('qb.sub')}</p>
-      <div class="food-decorations"><span>🍎</span><span>🥕</span><span>🍞</span><span>🥛</span></div>
+      <div class="food-decorations" id="qb-deco"></div>
+      <div class="qb-per-q" id="qb-per-q"></div>
       <div id="qb-content"></div>
     </div>
     <div class="question-counter" id="qb-counter"></div>
@@ -3003,12 +3386,41 @@ function initQuizB() {
   let attempts = 0;
   let score = 0;
 
+  // Pick per-question emojis (different each question)
+  function refreshPerQEmojis() {
+    const deco = document.getElementById('qb-deco');
+    const scatter = document.getElementById('qb-per-q');
+    if (!deco || !scatter) return;
+    // 4 emojis in the top deco row
+    const picks = [];
+    while (picks.length < 4) {
+      const e = QUIZB_EMOJI_POOL[Math.floor(Math.random()*QUIZB_EMOJI_POOL.length)];
+      if (!picks.includes(e)) picks.push(e);
+    }
+    deco.innerHTML = picks.map(e => `<span>${e}</span>`).join('');
+    // 5 floating scattered emojis around the question area
+    let scatterHTML = '';
+    const positions = [
+      { top: '0px',   left: '-30px' },
+      { top: '40px',  left: 'calc(100% - 8px)' },
+      { top: '120px', left: '-26px' },
+      { top: '180px', left: 'calc(100% - 6px)' },
+      { top: '260px', left: '-20px' }
+    ];
+    positions.forEach((pos, i) => {
+      const e = QUIZB_EMOJI_POOL[Math.floor(Math.random()*QUIZB_EMOJI_POOL.length)];
+      scatterHTML += `<span style="top:${pos.top}; left:${pos.left}; animation-delay:${i*0.4}s;">${e}</span>`;
+    });
+    scatter.innerHTML = scatterHTML;
+  }
+
   function render() {
     attempts = 0;
     document.getElementById('qb-counter').textContent =
       tt('q_short', {n: current+1, total: quizB_questions.length});
     const c = document.getElementById('qb-content');
     if (current >= quizB_questions.length) { renderEnd(); return; }
+    refreshPerQEmojis();
     const q = quizB_questions[current];
     let html = `<div class="question">${L(q.q)}</div>`;
     if (q.type === 'mc') {
@@ -3019,11 +3431,11 @@ function initQuizB() {
       html += `</div>`;
     } else if (q.type === 'estimate') {
       const unit = L(q.unit);
-      html += `<input type="number" step="any" class="estimate-input" id="qb-estimate" placeholder="${tt('your_guess', {unit: unit})}">`;
-      html += `<button class="nav-btn" id="qb-submit-est">${tt('check_answer')}</button>`;
+      html += `<div style="text-align:center;"><input type="number" step="any" class="estimate-input" id="qb-estimate" placeholder="${tt('your_guess', {unit: unit})}"></div>`;
+      html += `<div style="text-align:center;"><button class="nav-btn" id="qb-submit-est">${tt('check_answer')}</button></div>`;
     }
     html += `<div class="feedback" id="qb-feedback"></div>`;
-    html += `<button class="nav-btn" id="qb-next-btn" style="display:none;">${tt('next_btn')}</button>`;
+    html += `<div style="text-align:center;"><button class="nav-btn" id="qb-next-btn" style="display:none;">${tt('next_btn')}</button></div>`;
     c.innerHTML = html;
 
     document.getElementById('qb-next-btn').addEventListener('click', () => { current++; render(); });
@@ -3129,10 +3541,16 @@ function initQuizB() {
 function initQuizC() {
   const root = document.getElementById('quiz-c');
   root.innerHTML = `
-    <div class="emojis-top">🚁 💨 ✈️</div>
+    <div class="emojis-top">✈️ 💨 ✈️</div>
     <div class="header">
       <h1>${tt('qc.header')}</h1>
       <div class="subtitle">${tt('qc.subtitle')}</div>
+    </div>
+    <!-- Side score bar -->
+    <div class="side-score-rail" id="qc-side">
+      <div class="label">${tt('points')}</div>
+      <div class="track"><div class="fill" id="qc-side-fill" style="height:0%;"></div></div>
+      <div class="val" id="qc-side-val">0</div>
     </div>
     <div class="content-card">
       <div class="score-bar" id="qc-score-bar"></div>
@@ -3143,10 +3561,16 @@ function initQuizC() {
   let current = 0;
   let score = 0;
   let attempts = 0;
+  let wrongCount = 0;
+  const maxScore = quizC_questions.length * 2;
 
   function updateScoreBar() {
     document.getElementById('qc-score-bar').textContent =
       `${tt('q_of', {n: current+1, total: quizC_questions.length})} · ${tt('points')}: ${score}`;
+    const fill = document.getElementById('qc-side-fill');
+    const val  = document.getElementById('qc-side-val');
+    if (fill) fill.style.height = Math.max(0, Math.min(100, (score / maxScore) * 100)) + '%';
+    if (val)  val.textContent = score;
   }
 
   function render() {
@@ -3156,6 +3580,10 @@ function initQuizC() {
     if (current >= quizC_questions.length) { renderEnd(); return; }
     const q = quizC_questions[current];
     let html = `<div class="question">${current+1}. ${L(q.q)}</div>`;
+    // Show the hint card immediately (per request)
+    if (q.hint) {
+      html += `<div class="tip-card"><strong>💡 ${tt('tip_label')}</strong> ${L(q.hint)}</div>`;
+    }
     if (q.type === 'mc') {
       html += `<div class="options" id="qc-options">`;
       L(q.options).forEach((opt, idx) => {
@@ -3169,7 +3597,13 @@ function initQuizC() {
       </div>`;
     }
     html += `<div class="feedback" id="qc-feedback"></div>`;
-    html += `<button class="nav-btn" id="qc-next-btn" style="display:none;">${tt('next_btn')}</button>`;
+    // Source displayed at the end of each question card (per request)
+    if (q.source) {
+      html += `<div class="source-line-card" style="margin-top:14px; padding-top:10px; border-top:1px dashed #cbd5e1; font-size:0.82rem; color:#6b7280;">
+        <strong>${tt('source_for_q')}</strong> <a href="${q.source.url}" target="_blank" style="color:#1e293b;">${q.source.label}</a>
+      </div>`;
+    }
+    html += `<div style="text-align:center;"><button class="nav-btn" id="qc-next-btn" style="display:none;">${tt('next_btn')}</button></div>`;
     c.innerHTML = html;
 
     c.querySelectorAll('.option-btn').forEach(btn => btn.addEventListener('click', () => handleAnswer(btn)));
@@ -3197,7 +3631,7 @@ function initQuizC() {
       attempts++;
       if (attempts === 1 && q.type === 'mc') {
         fb.className = 'feedback show';
-        fb.innerHTML = `<strong style="color:#dc2626;">${tt('wrong_label')}</strong> <strong>${tt('tip_label')}</strong> ${L(q.hint)}`;
+        fb.innerHTML = `<strong style="color:#dc2626;">${tt('wrong_label')}</strong> ${L(q.hint)}`;
       } else {
         document.querySelectorAll('#qc-options .option-btn').forEach(b => {
           b.disabled = true;
@@ -3205,6 +3639,7 @@ function initQuizC() {
           else if (q.type === 'tf' && b.dataset.idx === String(q.correct)) b.classList.add('correct');
         });
         score -= 1;
+        wrongCount++;
         fb.className = 'feedback show';
         fb.innerHTML = `<strong style="color:#dc2626;">${tt('wrong_label')}</strong> ${L(q.explanation)}<div class="funfact">${L(q.funfact)}</div><em>−1 ${tt('point_singular')}</em>`;
         document.getElementById('qc-next-btn').style.display = 'inline-block';
@@ -3215,10 +3650,18 @@ function initQuizC() {
 
   function renderEnd() {
     const c = document.getElementById('qc-content');
-    const max = quizC_questions.length * 2;
+    // Trophy tiers based on wrong-answer count
+    let trophyEmoji, trophyLabel, trophyColor;
+    if (wrongCount === 0)      { trophyEmoji = '🥇'; trophyLabel = tt('trophy_gold');   trophyColor = '#fbbf24'; }
+    else if (wrongCount <= 3)  { trophyEmoji = '🥈'; trophyLabel = tt('trophy_silver'); trophyColor = '#9ca3af'; }
+    else if (wrongCount <= 5)  { trophyEmoji = '🥉'; trophyLabel = tt('trophy_bronze'); trophyColor = '#b45309'; }
+    else                       { trophyEmoji = '💭'; trophyLabel = tt('trophy_none');   trophyColor = '#475569'; }
+
     c.innerHTML = `
-      <h3 style="text-align:center; color:#1e293b;">${tt('qc.finished')}</h3>
-      <p style="text-align:center; font-size:1.2rem;">${tt('you_scored', {score: score, max: max})}</p>
+      <h3 style="text-align:center; color:#1e293b;">${tt('final_result')} 🚁</h3>
+      <p style="text-align:center; font-size:1.2rem; margin:8px 0;">${tt('you_scored', {score: score, max: maxScore})}</p>
+      <div class="trophy-display">${trophyEmoji}</div>
+      <p style="text-align:center; font-size:1.25rem; font-weight:800; color:${trophyColor}; margin:6px 0 18px;">${trophyLabel}</p>
       <div class="sources">
         <strong>${tt('sources_label')}</strong><br>
         • drohnen-vergleich.de — <a href="https://www.drohnen-vergleich.de/wie-funktioniert-eine-drohne/" target="_blank">drohnen-vergleich.de</a><br>
@@ -3229,6 +3672,7 @@ function initQuizC() {
       </div>
       <div style="text-align:center;"><button class="nav-btn" onclick="initQuizC()">${tt('restart_btn')}</button></div>
     `;
+    if (wrongCount <= 5) launchBigConfetti();
   }
 
   render();
@@ -3267,6 +3711,8 @@ function initQuizD() {
     const q = quizD_questions[current];
     document.getElementById('qd-content').innerHTML = `
       <div class="statement-card">${L(q.stmt)}</div>
+      <button class="tip-toggle" id="qd-tip-btn">${tt('show_tip')}</button>
+      <div class="tip-card" id="qd-tip" style="display:none;">${L(q.hint)}</div>
       <div class="button-row">
         <button class="true-btn" data-val="true">${tt('qd.true_btn')}</button>
         <button class="false-btn" data-val="false">${tt('qd.false_btn')}</button>
@@ -3274,6 +3720,12 @@ function initQuizD() {
       <div class="explanation" id="qd-expl" style="display:none;"></div>
       <button class="next-btn" id="qd-next" style="display:none;">${tt('next_btn')}</button>
     `;
+    document.getElementById('qd-tip-btn').addEventListener('click', () => {
+      document.getElementById('qd-tip').style.display = 'block';
+      const b = document.getElementById('qd-tip-btn');
+      b.disabled = true;
+      b.textContent = tt('tip_used');
+    });
     document.querySelectorAll('#qd-content .true-btn, #qd-content .false-btn').forEach(btn => {
       btn.addEventListener('click', () => handleAnswer(btn));
     });
@@ -3357,6 +3809,10 @@ function initQuizE() {
     if (current >= quizE_questions.length) { renderEnd(); return; }
     const q = quizE_questions[current];
     let html = `<div class="question">${current+1}. ${L(q.q)}</div>`;
+    if (q.hint) {
+      html += `<div style="text-align:center;"><button class="tip-toggle" id="qe-tip-btn">${tt('show_tip')}</button></div>`;
+      html += `<div class="tip-card" id="qe-tip" style="display:none;">${L(q.hint)}</div>`;
+    }
     if (q.type === 'mc') {
       html += `<div class="options" id="qe-options">`;
       L(q.options).forEach((opt, idx) => {
@@ -3384,6 +3840,14 @@ function initQuizE() {
     html += `<button class="nav-btn" id="qe-next-btn" style="display:none;">${tt('next_btn')}</button>`;
     c.innerHTML = html;
 
+    if (q.hint) {
+      document.getElementById('qe-tip-btn').addEventListener('click', () => {
+        document.getElementById('qe-tip').style.display = 'block';
+        const b = document.getElementById('qe-tip-btn');
+        b.disabled = true;
+        b.textContent = tt('tip_used');
+      });
+    }
     if (q.type === 'mc' || q.type === 'tf') {
       c.querySelectorAll('.option-btn').forEach(btn => btn.addEventListener('click', () => handleAnswer(btn)));
     } else if (q.type === 'slider') {
@@ -3472,10 +3936,10 @@ function initQuizE() {
       <h3 style="text-align:center; color:#78350f;">${tt('qe.result')}</h3>
       <p style="text-align:center; margin:10px 0;">${tt('qe.correct_count', {n: correctCount, total: quizE_questions.length})}</p>
       <p style="text-align:center; margin:10px 0;">${snailFate}</p>
-      <div style="text-align:center; margin:20px 0;">
-        <div style="font-size:0.95rem; margin-bottom:8px;">${tt('qe.reveal_prompt')}</div>
-        <button id="qe-reveal-btn" class="final-life" style="cursor:pointer;">${tt('qe.reveal_initial')}</button>
-        <div id="qe-life-tip" style="margin-top:12px; font-style:italic; color:#475569;"></div>
+      <div style="text-align:center; margin:24px 0;">
+        <div style="font-size:1rem; margin-bottom:14px; font-weight:600;">${tt('qe.reveal_prompt')}</div>
+        <button id="qe-reveal-btn" class="cool-reveal-btn">${tt('qe.reveal_initial')}</button>
+        <div id="qe-life-tip" style="margin-top:18px; font-style:italic; color:#475569; font-size:1rem;"></div>
       </div>
       <div class="sources">
         <strong>${tt('sources_label')}</strong><br>
@@ -3489,18 +3953,24 @@ function initQuizE() {
       <div style="text-align:center;"><button class="nav-btn" onclick="initQuizE()">${tt('restart_btn')}</button></div>
     `;
 
+    // Big confetti rain at the end of the quiz (per request)
+    launchBigConfetti({ count: 140 });
+
     document.getElementById('qe-reveal-btn').addEventListener('click', () => {
       const btn = document.getElementById('qe-reveal-btn');
+      btn.disabled = true;
       btn.textContent = lifeYears + tt('qe.years_suffix');
       setTimeout(() => {
         if (lifeYears >= 80) {
           btn.classList.add('green');
           document.getElementById('qe-life-tip').textContent = tt('qe.life_good');
+          // extra confetti for healthy life!
+          launchBigConfetti({ count: 80 });
         } else {
           btn.classList.add('red');
           document.getElementById('qe-life-tip').textContent = tt('qe.life_tip');
         }
-      }, 3000);
+      }, 2500);
     });
   }
 
@@ -3512,15 +3982,44 @@ function initQuizE() {
    ======================================================== */
 function initQuizF() {
   const root = document.getElementById('quiz-f');
-  let cloudsHTML = '';
+  // Inline quadcopter drone SVG — 4 rotors, body, camera
+  const droneSVG = `
+    <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" aria-label="drone">
+      <!-- arms -->
+      <line x1="40" y1="20" x2="10" y2="8"  stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+      <line x1="40" y1="20" x2="70" y2="8"  stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+      <line x1="40" y1="20" x2="10" y2="32" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+      <line x1="40" y1="20" x2="70" y2="32" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+      <!-- rotors (spinning blur ellipses) -->
+      <ellipse cx="10" cy="8"  rx="9" ry="2" fill="#94a3b8" opacity="0.85"/>
+      <ellipse cx="70" cy="8"  rx="9" ry="2" fill="#94a3b8" opacity="0.85"/>
+      <ellipse cx="10" cy="32" rx="9" ry="2" fill="#94a3b8" opacity="0.85"/>
+      <ellipse cx="70" cy="32" rx="9" ry="2" fill="#94a3b8" opacity="0.85"/>
+      <!-- body -->
+      <rect x="32" y="14" width="16" height="12" rx="3" fill="#1e40af"/>
+      <!-- camera bump -->
+      <circle cx="40" cy="28" r="3" fill="#0f172a"/>
+      <circle cx="40" cy="28" r="1.4" fill="#fbbf24"/>
+      <!-- LEDs -->
+      <circle cx="14" cy="8" r="1.2" fill="#ef4444"/>
+      <circle cx="66" cy="8" r="1.2" fill="#22c55e"/>
+    </svg>`;
+  // Small drone icon for the title (same SVG, just smaller)
+  const droneIconSmall = `<span class="drone-icon" style="display:inline-block; width:54px; height:28px; vertical-align:middle;">${droneSVG}</span>`;
+
+  // Multiple drones flying left-to-right at varied heights + a few clouds
+  let bgHTML = '';
   for (let i = 0; i < 4; i++) {
-    cloudsHTML += `<span class="cloud-anim" style="left:${15 + i*22}%; top:${50 + i*8}%; animation-delay:${i*4}s;">☁️</span>`;
+    bgHTML += `<span class="cloud-anim" style="left:0; top:${20 + i*18}%; animation-delay:${i*4.5}s; animation-duration:${22 + i*3}s;">☁️</span>`;
   }
+  for (let i = 0; i < 3; i++) {
+    bgHTML += `<div class="drone-fly-lr" style="top:${15 + i*22}%; animation-duration:${10 + i*3}s; animation-delay:${i*3}s;">${droneSVG}</div>`;
+  }
+
   root.innerHTML = `
-    ${cloudsHTML}
-    <div class="sinking-drone">🚁</div>
+    ${bgHTML}
     <div class="header">
-      <h1>${tt('qf.title')}</h1>
+      <h1>${droneIconSmall}${tt('qf.title')}</h1>
       <p>${tt('qf.sub')}</p>
     </div>
     <div class="layout">
@@ -3716,10 +4215,10 @@ function initQuizG() {
       <div class="smiley">${percentage >= 70 ? '🎉😊🎉' : percentage >= 40 ? '🙂' : '😢'}</div>
       <div class="sources">
         <strong>${tt('sources_label')}</strong><br>
-        • National Geographic — <a href="https://www.nationalgeographic.com/environment/article/oceans" target="_blank">nationalgeographic.com</a><br>
-        • NOAA — <a href="https://oceanservice.noaa.gov/facts/" target="_blank">oceanservice.noaa.gov</a><br>
-        • Britannica — <a href="https://www.britannica.com/science/ocean" target="_blank">britannica.com</a><br>
-        • NASA Earth Observatory — <a href="https://earthobservatory.nasa.gov/" target="_blank">earthobservatory.nasa.gov</a>
+        • Leifi Physik: Auftrieb — <a href="https://www.leifiphysik.de/mechanik/druck-und-auftrieb" target="_blank">leifiphysik.de</a><br>
+        • Planet Schule: Schwimmen, Schweben, Sinken — <a href="https://www.planet-schule.de" target="_blank">planet-schule.de</a><br>
+        • simplyscience.ch: Archimedisches Prinzip — <a href="https://www.simplyscience.ch" target="_blank">simplyscience.ch</a><br>
+        • Welt der Physik: Dichte & Auftrieb — <a href="https://www.weltderphysik.de" target="_blank">weltderphysik.de</a>
       </div>
       <div style="text-align:center;"><button class="nav-btn" onclick="initQuizG()">${tt('restart_btn')}</button></div>
     `;
