@@ -1,1 +1,665 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profilkurs Chemie/NaWi – Auswertung Präsentationstag</title>
+<style>
+  :root{
+    --paper:#f6f1e4;
+    --paper-deep:#efe7d3;
+    --ink:#2b2620;
+    --ink-soft:#5a5246;
+    --line:#d8cdb3;
+    --accent:#b1543a;
+    --accent-deep:#8d3f2a;
+    --leaf:#566b4f;
+    --leaf-deep:#3e4f39;
+    --gold:#c08a2e;
+    --card:#fffaf0;
+    --shadow: 0 1px 0 rgba(43,38,32,0.04), 0 8px 24px -8px rgba(43,38,32,0.18);
+  }
 
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Iowan Old Style','Palatino Linotype', Georgia, 'Source Serif Pro', serif;
+    scroll-behavior:smooth;
+  }
+
+  body{
+    background-image:
+      radial-gradient(ellipse at 10% 0%, rgba(177,84,58,0.06), transparent 55%),
+      radial-gradient(ellipse at 90% 10%, rgba(86,107,79,0.07), transparent 50%);
+  }
+
+  .label-face{
+    font-family:'Courier New', ui-monospace, monospace;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- Header / Hero ---------- */
+  header.hero{
+    position:relative;
+    padding:4.2rem 1.5rem 3.4rem;
+    text-align:center;
+    border-bottom:3px double var(--line);
+    overflow:hidden;
+  }
+
+  .hero-eyebrow{
+    font-size:0.72rem;
+    color:var(--accent-deep);
+    margin-bottom:1rem;
+  }
+
+  .hero h1{
+    font-family:'Iowan Old Style', Georgia, serif;
+    font-weight:600;
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.1;
+    margin:0 0 0.6rem;
+    color:var(--ink);
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--accent-deep);
+  }
+
+  .hero p.sub{
+    max-width:640px;
+    margin:0.8rem auto 0;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    line-height:1.6;
+  }
+
+  .hero-meta{
+    display:flex;
+    justify-content:center;
+    gap:2.4rem;
+    flex-wrap:wrap;
+    margin-top:2.2rem;
+  }
+
+  .hero-meta .stat{
+    text-align:center;
+  }
+
+  .hero-meta .stat .num{
+    font-size:2rem;
+    font-weight:600;
+    color:var(--accent-deep);
+    display:block;
+    line-height:1;
+  }
+
+  .hero-meta .stat .lbl{
+    font-size:0.68rem;
+    color:var(--ink-soft);
+    margin-top:0.35rem;
+  }
+
+  .specimen-row{
+    position:absolute;
+    top:1.4rem;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:1.3rem;
+    opacity:0.55;
+    letter-spacing:0.6rem;
+  }
+
+  /* ---------- Intro note ---------- */
+  .intro-note{
+    max-width:760px;
+    margin:2.6rem auto 0;
+    padding:1.4rem 1.7rem;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--leaf);
+    box-shadow:var(--shadow);
+    font-size:0.96rem;
+    line-height:1.65;
+    color:var(--ink-soft);
+  }
+  .intro-note strong{color:var(--ink);}
+
+  /* ---------- Legend ---------- */
+  .legend-wrap{
+    max-width:920px;
+    margin:2.6rem auto 0;
+    padding:0 1.5rem;
+  }
+  .legend-title{
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-bottom:0.8rem;
+  }
+  .legend{
+    display:flex;
+    justify-content:center;
+    gap:0.6rem;
+    flex-wrap:wrap;
+  }
+  .legend .chip{
+    display:flex;
+    align-items:center;
+    gap:0.45rem;
+    font-size:0.78rem;
+    padding:0.35rem 0.7rem;
+    border:1px solid var(--line);
+    border-radius:30px;
+    background:var(--card);
+    color:var(--ink-soft);
+  }
+  .legend .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+
+  /* ---------- Nav / index ---------- */
+  nav.toc{
+    max-width:1040px;
+    margin:3rem auto 0;
+    padding:0 1.5rem;
+  }
+  nav.toc .toc-title{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-bottom:1rem;
+  }
+  .toc-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:0.6rem;
+  }
+  .toc-grid a{
+    display:flex;
+    flex-direction:column;
+    gap:0.2rem;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:0.7rem 0.85rem;
+    transition:transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .toc-grid a:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--shadow);
+    border-color:var(--accent);
+  }
+  .toc-grid .toc-icon{font-size:1.2rem;}
+  .toc-grid .toc-name{font-size:0.85rem; font-weight:600;}
+  .toc-grid .toc-sub{font-size:0.7rem; color:var(--ink-soft);}
+
+  /* ---------- Main grid of cards ---------- */
+  main{
+    max-width:1040px;
+    margin:0 auto;
+    padding:3.4rem 1.5rem 2rem;
+  }
+
+  .section-heading{
+    text-align:center;
+    margin-bottom:2.4rem;
+  }
+  .section-heading .kicker{
+    font-size:0.7rem;
+    color:var(--accent-deep);
+    margin-bottom:0.5rem;
+  }
+  .section-heading h2{
+    font-size:1.7rem;
+    margin:0;
+    font-weight:600;
+  }
+
+  .team-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    margin-bottom:1.4rem;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    scroll-margin-top:1.5rem;
+  }
+
+  .team-head{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    padding:1.2rem 1.4rem;
+    cursor:pointer;
+    user-select:none;
+    background:linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0));
+    transition:background 0.15s ease;
+  }
+  .team-head:hover{ background:rgba(177,84,58,0.05); }
+
+  .team-icon{
+    font-size:1.9rem;
+    width:54px;height:54px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  .team-titles{ flex:1; min-width:0; }
+  .team-titles .t-eyebrow{
+    font-size:0.66rem;
+    color:var(--ink-soft);
+    margin-bottom:0.15rem;
+  }
+  .team-titles h3{
+    margin:0;
+    font-size:1.18rem;
+    font-weight:600;
+    line-height:1.3;
+  }
+  .team-titles .t-members{
+    font-size:0.84rem;
+    color:var(--ink-soft);
+    margin-top:0.15rem;
+  }
+
+  .team-score{
+    text-align:center;
+    flex-shrink:0;
+    padding-left:0.5rem;
+  }
+  .team-score .score-num{
+    font-size:1.6rem;
+    font-weight:700;
+    color:var(--accent-deep);
+    line-height:1;
+  }
+  .team-score .score-lbl{
+    font-size:0.62rem;
+    color:var(--ink-soft);
+    margin-top:0.15rem;
+  }
+
+  .chevron{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    transition:transform 0.25s ease;
+    flex-shrink:0;
+    margin-left:0.4rem;
+  }
+  .team-card.open .chevron{ transform:rotate(180deg); }
+
+  .team-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.35s ease;
+  }
+  .team-card.open .team-body{
+    max-height:4000px;
+  }
+
+  .team-body-inner{
+    padding:0 1.4rem 1.6rem;
+    border-top:1px solid var(--line);
+    padding-top:1.3rem;
+  }
+
+  /* bar chart for criteria */
+  .crit-chart{
+    display:flex;
+    flex-direction:column;
+    gap:0.55rem;
+    margin-bottom:1.5rem;
+  }
+  .crit-row{
+    display:grid;
+    grid-template-columns:170px 1fr 42px;
+    align-items:center;
+    gap:0.6rem;
+    font-size:0.78rem;
+  }
+  .crit-row .crit-label{ color:var(--ink-soft); }
+  .crit-bar-track{
+    height:9px;
+    background:var(--paper-deep);
+    border-radius:6px;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .crit-bar-fill{
+    height:100%;
+    border-radius:6px;
+    background:linear-gradient(90deg, var(--leaf), var(--leaf-deep));
+  }
+  .crit-row .crit-val{
+    text-align:right;
+    font-weight:600;
+    color:var(--ink);
+  }
+
+  /* feedback boxes: praise / tips */
+  .feedback-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+    margin-bottom:1.6rem;
+  }
+  @media(min-width:680px){
+    .feedback-grid{ grid-template-columns:1fr 1fr; }
+  }
+  .feedback-box{
+    border-radius:6px;
+    padding:1rem 1.1rem;
+    font-size:0.88rem;
+    line-height:1.55;
+  }
+  .feedback-box.praise{
+    background:rgba(86,107,79,0.08);
+    border:1px solid rgba(86,107,79,0.3);
+  }
+  .feedback-box.tips{
+    background:rgba(192,138,46,0.09);
+    border:1px solid rgba(192,138,46,0.35);
+  }
+  .feedback-box .fb-title{
+    font-size:0.7rem;
+    font-weight:700;
+    margin-bottom:0.5rem;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .feedback-box.praise .fb-title{ color:var(--leaf-deep); }
+  .feedback-box.tips .fb-title{ color:var(--gold); }
+
+  /* evaluation log */
+  .log-title{
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    margin-bottom:0.7rem;
+  }
+  .log-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.82rem;
+  }
+  .log-table th{
+    text-align:left;
+    font-size:0.66rem;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+    padding:0.4rem 0.5rem;
+    font-weight:600;
+  }
+  .log-table td{
+    padding:0.55rem 0.5rem;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  .log-table tr:last-child td{ border-bottom:none; }
+  .log-evaluator{
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .note-pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:1.7rem;height:1.7rem;
+    border-radius:50%;
+    font-weight:700;
+    font-size:0.82rem;
+    color:#fff;
+  }
+  .log-comment{
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  .crit-mini{
+    display:flex;
+    gap:3px;
+  }
+  .crit-mini .mini-dot{
+    width:9px;height:9px;
+    border-radius:50%;
+    display:inline-block;
+  }
+
+  /* footer */
+  footer{
+    text-align:center;
+    padding:3rem 1.5rem 4rem;
+    color:var(--ink-soft);
+    font-size:0.82rem;
+    border-top:1px solid var(--line);
+    margin-top:2rem;
+  }
+  footer .sig{
+    margin-top:0.6rem;
+    font-size:0.72rem;
+  }
+
+  .back-to-top{
+    display:inline-block;
+    margin-top:1.2rem;
+    font-size:0.74rem;
+    color:var(--accent-deep);
+    text-decoration:none;
+    border-bottom:1px dotted var(--accent-deep);
+  }
+
+  @media (max-width:600px){
+    .crit-row{ grid-template-columns:110px 1fr 36px; font-size:0.72rem; }
+    .team-titles h3{ font-size:1.05rem; }
+    .log-table{ font-size:0.74rem; }
+    .specimen-row{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="specimen-row">🌊 🍎 🐦 🚁 🐌 🏃 🐦‍⬛ 🛰️ 🍽️</div>
+  <div class="hero-eyebrow label-face">Profilkurs Chemie / NaWi · Präsentationstag</div>
+  <h1>Auswertung der <em>Peer-Feedbacks</em><br>zu den Quiz-Projekten</h1>
+  <p class="sub">Acht Schülerteams haben eigene interaktive Lernquizze entwickelt – und sich gegenseitig dazu Rückmeldung gegeben. Hier seht ihr, was bei euren Mitschülerinnen und Mitschülern besonders gut angekommen ist, und ein paar Ideen, wo sich noch ein Feinschliff lohnt.</p>
+  <div class="hero-meta" id="heroStats"></div>
+</header>
+
+<div class="intro-note">
+  <strong>Zur Einordnung:</strong> Jedes Team hat sein Quiz von den anderen sieben Teams bewerten lassen. Bewertet wurden fünf Kriterien (inhaltliche Vollständigkeit, Verständlichkeit, Gestaltung &amp; Design, Interaktivität, Funktionalität) sowie eine Gesamtnote von 1 (sehr gut) bis 6. Kommentare wurden behutsam von Tipp- und Flüchtigkeitsfehlern bereinigt; unpassende oder zu salopp formulierte Stellen wurden sprachlich geglättet, ohne den Inhalt der Rückmeldung zu verändern.
+</div>
+
+<div class="legend-wrap">
+  <div class="legend-title label-face">Bewertungsskala der Kriterien</div>
+  <div class="legend" id="legend"></div>
+</div>
+
+<nav class="toc">
+  <div class="toc-title label-face">Direkt zum Team springen</div>
+  <div class="toc-grid" id="tocGrid"></div>
+</nav>
+
+<main>
+  <div class="section-heading">
+    <div class="kicker label-face">Team für Team</div>
+    <h2>Eure Quiz-Projekte im Detail</h2>
+  </div>
+  <div id="cardsContainer"></div>
+</main>
+
+<footer>
+  Erstellt aus den Peer-Feedback-Daten des Präsentationstags · 17.06.2026<br>
+  <span class="sig">Jede Rückmeldung zählt – danke für die ehrliche und faire Bewertung untereinander.</span>
+  <br>
+  <a class="back-to-top" href="#top">↑ Nach oben</a>
+</footer>
+
+<a id="top"></a>
+
+<script id="data-blob" type="application/json">
+{"criteria_labels": ["Inhaltliche Vollständigkeit", "Verständlichkeit", "Gestaltung & Design", "Interaktivität", "Funktionalität"], "teams": {"schwimmen_schweben_sinken": {"title": "Schwimmen, Schweben, Sinken", "members": "Jolina, Ella & Emma", "subject": "Physik", "icon": "🌊", "tips": "Beim Kriterium „Gestaltung & Design“ gab es im Schnitt die meiste Streuung – hier lohnt sich ein Blick auf einheitliche Farbgebung und Abstände. Mehrere Mitschüler*innen lobten ausdrücklich, wie leicht die Aufgaben zu lösen waren – diese klare Verständlichkeit ist eine echte Stärke, die ihr für künftige Projekte beibehalten solltet.", "praise": "Ein rundum solides Quiz mit hoher inhaltlicher Vollständigkeit und durchgehend guter Funktionalität – genau die Basis, auf der sich gestalterisch noch weiter ausbauen lässt.", "n": 9, "avg_note": 3.67, "crit_avgs": [3.67, 3.56, 2.89, 3.67, 4], "entries": [{"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "teilweise", "vollständig", "vollständig"], "note": 4, "comment": ""}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "teilweise", "vollständig", "vollständig"], "note": 4, "comment": ""}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "teilweise", "vollständig", "vollständig"], "note": 4, "comment": ""}, {"evaluator": "Benjamin & Jonathan", "criteria": ["vollständig", "überwiegend", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": ""}, {"evaluator": "Emil & Oscar", "criteria": ["vollständig", "überwiegend", "vollständig", "überwiegend", "vollständig"], "note": 3, "comment": ""}, {"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "überwiegend", "vollständig", "vollständig", "vollständig"], "note": 3, "comment": "Bewertung"}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["teilweise", "überwiegend", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": "Die Aufgaben waren einfach zu lösen, deswegen mochte ich das Quiz."}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["überwiegend", "vollständig", "teilweise", "teilweise", "vollständig"], "note": 3, "comment": "Die 100% die wir da bekommen haben."}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Wir haben keins"}]}, "ernaehrung_lebenszeit": {"title": "Ernährung & Lebenszeit", "members": "Enna, Marek & Mattis", "subject": "Biologie/Ernährung", "icon": "🐌", "tips": "Die Funktionalität wurde minimal schwächer bewertet als die anderen Kriterien (ein Team berichtete von Schwierigkeiten) – ein kurzer Test auf verschiedenen Geräten vor der Präsentation kann solche Ausreißer vermeiden.", "praise": "Das mit Abstand beliebteste Projekt der Auswertung: Die Schnecken-Idee zur Visualisierung der Lebenszeit kam bei nahezu allen Gruppen als Highlight an und zeigt, wie viel ein kreatives, einprägsames Gestaltungselement bewirken kann. Inhaltlich vollständig, klar verständlich und mit einer Idee, die im Kopf bleibt – starke Arbeit!", "n": 9, "avg_note": 4.44, "crit_avgs": [3.89, 3.78, 3.67, 3.67, 3.44], "entries": [{"evaluator": "Enna, Marek & Mattis", "criteria": ["vollständig", "vollständig", "überwiegend", "überwiegend", "vollständig"], "note": 5, "comment": ""}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "überwiegend", "überwiegend", "kaum bis gar nicht"], "note": 4, "comment": "Die Schnecke, die entweder zum Salat (richtig) oder zum Burger (falsch) gewandert ist, war das absolute Highlight!"}, {"evaluator": "Emil & Oscar", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": "Die Lebenszeit am Ende des Quiz und die Schneckenleiste"}, {"evaluator": "Benjamin & Jonathan", "criteria": ["überwiegend", "überwiegend", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Die 🐌"}, {"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Schneckenbalken"}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["vollständig", "überwiegend", "vollständig", "vollständig", "überwiegend"], "note": 5, "comment": "Die Schnecke war süß und das man erfahren hat wie lange man leben wird war cool"}, {"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "überwiegend"], "note": 4, "comment": "die ungefähre Lebenszeit"}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Die Berechnung der 67 Jahre hat Spaß gemacht."}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "vollständig", "überwiegend", "vollständig"], "note": 5, "comment": "Wir haben keins"}]}, "essen_trinken": {"title": "Essen & Trinken", "members": "Emil & Oscar", "subject": "Biologie/Ernährung", "icon": "🍽️", "tips": "Bei „Interaktivität“ und „Funktionalität“ gab es einzelne niedrigere Bewertungen (teilweise/kaum bis gar nicht) – es lohnt sich, vor der nächsten Präsentation noch einmal alle Klickpfade und Übergänge durchzutesten. Eine Gruppe wünschte sich zudem mehr Transparenz bei der Notenvergabe – das könnt ihr aufgreifen, indem ihr die Bewertungskriterien am Anfang kurz erklärt.", "praise": "Die Vielfalt der Fragen und die liebevoll gestalteten Emojis kamen bei vielen sehr gut an – ein Projekt mit klarem Wiedererkennungswert.", "n": 8, "avg_note": 3.5, "crit_avgs": [3.62, 3.62, 3.12, 3, 3.25], "entries": [{"evaluator": "Emil & Oscar", "criteria": ["vollständig", "vollständig", "überwiegend", "überwiegend", "vollständig"], "note": 3, "comment": "Die Vielfältigkeit der Fragen zum Thema Essen und Trinken"}, {"evaluator": "Benjamin & Jonathan", "criteria": ["überwiegend", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Das Aussehen."}, {"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "teilweise", "überwiegend", "kaum bis gar nicht"], "note": 3, "comment": "Wir haben eine gute Note bekommen."}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "überwiegend", "teilweise", "kaum bis gar nicht", "kaum bis gar nicht"], "note": 3, "comment": "Die Smileys waren gut."}, {"evaluator": "Anthea & Pauline", "criteria": ["überwiegend", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Emoji"}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["vollständig", "überwiegend", "überwiegend", "teilweise", "vollständig"], "note": 4, "comment": "Emojis motivieren"}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["überwiegend", "überwiegend", "überwiegend", "überwiegend", "vollständig"], "note": 2, "comment": "Eine sehr gute Note zu bekommen, war cool."}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Wir haben keins"}]}, "vogelflug": {"title": "Vogelflug", "members": "Anika & Lina", "subject": "Biologie/Physik", "icon": "🐦", "tips": "Eine einzelne Bewertung fiel mit „kaum bis gar nicht“ in allen Kriterien deutlich aus dem Rahmen der übrigen, durchweg positiven Rückmeldungen – das deutet eher auf ein technisches Problem bei diesem einen Durchlauf hin als auf die Qualität des Quiz selbst. Ein kurzer Check, ob das Quiz auf allen Geräten zuverlässig lädt, schadet trotzdem nicht.", "praise": "Der gestaltete Hintergrund mit Vögeln und Wolken wurde von sehr vielen als Highlight genannt – ein schönes Beispiel dafür, wie Atmosphäre ein Lernquiz aufwertet. Auch inhaltlich kam das Thema gut an.", "n": 8, "avg_note": 3.5, "crit_avgs": [3.38, 3.38, 3.12, 3.5, 3.25], "entries": [{"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "teilweise"], "note": 4, "comment": "Der Hintergrund"}, {"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "überwiegend", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": "Hintergrund"}, {"evaluator": "Emil & Oscar", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "vollständig"], "note": 3, "comment": "Den Vogelflug fand ich interessant"}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": "Das Quiz war interessant und lehrreich. Die Emojis und der Pokal am Ende waren gut."}, {"evaluator": "Benjamin & Jonathan", "criteria": ["vollständig", "vollständig", "vollständig", "überwiegend", "vollständig"], "note": 4, "comment": "Die Vögel im Hintergrund"}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Wir haben kein Highlight"}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["kaum bis gar nicht", "kaum bis gar nicht", "kaum bis gar nicht", "kaum bis gar nicht", "kaum bis gar nicht"], "note": 1, "comment": "Die Vögel, die im Hintergrund fliegen."}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["teilweise", "überwiegend", "vollständig", "vollständig", "überwiegend"], "note": 4, "comment": "Die Vögel und Wolken waren sehr schön"}]}, "drohnen_benjamin_jonathan": {"title": "Drohnen", "members": "Benjamin & Jonathan", "subject": "Physik/Technik", "icon": "🚁", "tips": "Die „Gestaltung & Design“ liegt minimal unter den anderen Kriterien – einzelne Rückmeldungen erwähnten kleinere Holprigkeiten beim Tipp-System. Da aber gleichzeitig genau dieses Tipp-System von einer anderen Gruppe explizit gelobt wurde, könnte es helfen, die Formulierung der Hinweise noch einmal gemeinsam zu prüfen.", "praise": "Der sichtbare Fortschrittsbalken und die Punkteanzeige wurden immer wieder als motivierendes Element hervorgehoben. Besonders schön: Mitschüler*innen berichteten, durch euer Quiz tatsächlich etwas Neues gelernt zu haben (z. B. über Lithium) – das ist der Kern guter Wissensvermittlung!", "n": 8, "avg_note": 4, "crit_avgs": [3.88, 3.75, 3.38, 3.88, 3.62], "entries": [{"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": "Punktebalken"}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "vollständig", "überwiegend", "teilweise"], "note": 4, "comment": "Ich habe herausgefunden, was Lithium ist."}, {"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": "Die Punkteanzahl und der Fortschritt."}, {"evaluator": "Emil & Oscar", "criteria": ["vollständig", "überwiegend", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Der sichtbare Fortschritt war toll."}, {"evaluator": "Benjamin & Jonathan", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Alles"}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "vollständig"], "note": 4, "comment": "Der Hintergrund (auch mit den Emojis etc.) war schön, und das Quiz war interessant und lehrreich. Der Tipp hat einem nicht die Antwort vorgesagt, war aber auch nicht verwirrend, sondern hat einem ein bisschen auf die Sprünge geholfen."}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["überwiegend", "vollständig", "vollständig", "vollständig", "überwiegend"], "note": 4, "comment": "Die Drohnen waren sehr schön"}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["vollständig", "überwiegend", "teilweise", "vollständig", "vollständig"], "note": 3, "comment": "Coole Fragen."}]}, "kolibri_quiz": {"title": "Kolibri-Quiz", "members": "Mathilda, Helene & Stefania", "subject": "Biologie", "icon": "🐦‍⬛", "tips": "„Gestaltung & Design“ und teilweise „Interaktivität“ wurden etwas zurückhaltender bewertet als die übrigen Kriterien. Da der Hintergrund von vielen ausdrücklich gelobt wurde, könnte die Diskrepanz eher an Übergängen oder Klickbereichen liegen – ein gemeinsamer Testlauf mit Zeitdruck (wie im echten Quiz) kann solche Stellen aufdecken.", "praise": "Der liebevoll gestaltete Hintergrund und der motivierende Einstieg („los geht's“) kamen bei fast allen sehr gut an. Das Thema Kolibri-Herzschlag hat mehrere Mitschüler*innen sichtlich begeistert – ein schönes Beispiel für spannend vermitteltes Fachwissen.", "n": 8, "avg_note": 3.75, "crit_avgs": [3.62, 3.62, 3, 3.62, 3.75], "entries": [{"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Thema"}, {"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "teilweise"], "note": 4, "comment": "der Hintergrund"}, {"evaluator": "Arun & Leo", "criteria": ["überwiegend", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Dass Kolibris einen sehr schnellen Herzschlag haben."}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["vollständig", "überwiegend", "überwiegend", "vollständig", "vollständig"], "note": 5, "comment": "Cooler Hintergrund"}, {"evaluator": "Emil & Oscar", "criteria": ["vollständig", "überwiegend", "überwiegend", "vollständig", "vollständig"], "note": 2, "comment": "Am Anfang war das „Los geht's“ cool."}, {"evaluator": "Benjamin & Jonathan", "criteria": ["überwiegend", "vollständig", "überwiegend", "überwiegend", "vollständig"], "note": 4, "comment": "Der Hintergrund"}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "teilweise", "überwiegend", "vollständig"], "note": 4, "comment": "Das Quiz war cool, und auch der Hintergrund hat uns gefallen. Am Anfang war das Quiz mit dem „Los geht's“ ebenfalls cool."}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["überwiegend", "überwiegend", "teilweise", "überwiegend", "vollständig"], "note": 2, "comment": "Wir finden die Idee mit dem Kolibri gut"}]}, "drohne_pauline_anthea": {"title": "Drohnen-Quiz", "members": "Pauline & Anthea", "subject": "Physik/Technik", "icon": "🛰️", "tips": "„Interaktivität“ und „Gestaltung & Design“ wurden im Schnitt etwas niedriger bewertet als Inhalt und Funktionalität. Ein, zwei Gruppen erwähnten den Farbverlauf positiv, andere fanden die Interaktion etwas weniger eingebunden – hier könnte ein zusätzliches interaktives Element (z. B. eine Mini-Animation) den Eindruck weiter abrunden.", "praise": "Die Idee mit dem Thermometer/der Punkteskala und dem Pokal am Ende wurde von vielen als Highlight genannt. Die Mischung aus Information und kleinen Belohnungsmomenten ist euch gut gelungen.", "n": 8, "avg_note": 4, "crit_avgs": [3.75, 3.88, 3.25, 3.25, 4], "entries": [{"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Thermometer"}, {"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "vollständig", "überwiegend", "vollständig"], "note": 5, "comment": "Das man an der Seite seine Punktzahl sehen konnte"}, {"evaluator": "Emil & Oscar", "criteria": ["vollständig", "vollständig", "überwiegend", "überwiegend", "vollständig"], "note": 3, "comment": "Eine Abwechslung mit Drohnen – kreativ!"}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Wir haben keins"}, {"evaluator": "Benjamin & Jonathan", "criteria": ["vollständig", "vollständig", "vollständig", "überwiegend", "vollständig"], "note": 4, "comment": "Am Ende der Pokal"}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "teilweise", "überwiegend", "vollständig"], "note": 3, "comment": "Das Thema war interessant und der Farbverlauf als Hintergrund war schön."}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["überwiegend", "vollständig", "überwiegend", "überwiegend", "vollständig"], "note": 4, "comment": "Die Punkteskala"}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["überwiegend", "überwiegend", "teilweise", "überwiegend", "vollständig"], "note": 3, "comment": "Die Drohnenfragen sind gut"}]}, "ernaehrungsquiz_leo_arun": {"title": "Ernährungsquiz", "members": "Leo & Arun", "subject": "Biologie/Ernährung", "icon": "🍎", "tips": "„Gestaltung & Design“ fällt mit Abstand am niedrigsten aus (mehrfach „kaum bis gar nicht“ bzw. „teilweise“) – das ist der klarste Ansatzpunkt für die nächste Überarbeitung: ein einheitliches Farbschema, größere Abstände und vielleicht ein passendes Hintergrundbild würden hier viel bewirken. Die Inhalte selbst kamen dagegen gut an, das ist eine gute Basis zum Weiterbauen.", "praise": "Das Punktesystem mit Plus und Minus wurde als motivierendes und faires Feature hervorgehoben, und mehrere Mitschüler*innen empfanden die Fragen als lehrreich und gut gestellt.", "n": 7, "avg_note": 3.29, "crit_avgs": [3.86, 3.57, 2.14, 3.29, 4], "entries": [{"evaluator": "Emil & Oscar", "criteria": ["vollständig", "vollständig", "überwiegend", "teilweise", "vollständig"], "note": 2, "comment": "Die Punkte mit plus und minus waren toll"}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "überwiegend", "kaum bis gar nicht", "teilweise", "vollständig"], "note": 3, "comment": "Fragen waren lehrreich"}, {"evaluator": "Benjamin & Jonathan", "criteria": ["überwiegend", "vollständig", "teilweise", "überwiegend", "vollständig"], "note": 3, "comment": "Die Fragen"}, {"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "teilweise", "kaum bis gar nicht", "vollständig", "vollständig"], "note": 3, "comment": "Belohnung"}, {"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "kaum bis gar nicht", "vollständig", "vollständig"], "note": 3, "comment": "Tolles Quiz"}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "überwiegend", "vollständig", "vollständig"], "note": 5, "comment": "Wir haben keins"}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Die Fragen waren gut"}]}, "sport_ernaehrung": {"title": "Sport & Ernährung", "members": "Carl T., Carl K. & Kai", "subject": "Biologie/Sport", "icon": "🏃", "tips": "„Interaktivität“ wurde im Schnitt etwas niedriger bewertet als die übrigen Kriterien – ein, zwei Gruppen wünschten sich an dieser Stelle vermutlich mehr Klick- oder Auswahlmöglichkeiten während des Quiz. Ein kleiner Tipp: Bei Begeisterung im Kommentarfeld lohnt es sich, die Formulierung noch einmal sachlich zu halten, damit die Rückmeldung für alle gut lesbar bleibt.", "praise": "Die gelungene Verbindung von Sport und Ernährung wurde mehrfach explizit gelobt – inhaltlich ein rundes, gut durchdachtes Konzept mit ansprechendem Hintergrund und stimmigen Emojis.", "n": 8, "avg_note": 3.75, "crit_avgs": [4, 3.88, 3.25, 3, 3.88], "entries": [{"evaluator": "Anthea & Pauline", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Hintergrund"}, {"evaluator": "Emil & Oscar", "criteria": ["vollständig", "überwiegend", "vollständig", "teilweise", "vollständig"], "note": 3, "comment": "Die Verbindung mit Sport war toll"}, {"evaluator": "Anika & Lina", "criteria": ["vollständig", "vollständig", "teilweise", "teilweise", "vollständig"], "note": 3, "comment": "Es ist schön, dass Sport mit eingebaut wurde."}, {"evaluator": "Benjamin & Jonathan", "criteria": ["vollständig", "vollständig", "überwiegend", "überwiegend", "vollständig"], "note": 4, "comment": "Die Emojis"}, {"evaluator": "Carl T., Carl K. & Kai", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 5, "comment": "Alles richtig stark gemacht!"}, {"evaluator": "Mathilda, Helene & Stefania", "criteria": ["vollständig", "vollständig", "vollständig", "kaum bis gar nicht", "vollständig"], "note": 3, "comment": "Der Hintergrund war schön"}, {"evaluator": "Jolina, Ella & Emma", "criteria": ["vollständig", "vollständig", "kaum bis gar nicht", "vollständig", "überwiegend"], "note": 3, "comment": "Hintergrund"}, {"evaluator": "Arun & Leo", "criteria": ["vollständig", "vollständig", "vollständig", "vollständig", "vollständig"], "note": 4, "comment": "Wir haben keins"}]}}}
+
+</script>
+
+<script>
+(function(){
+  const raw = document.getElementById('data-blob').textContent;
+  const data = JSON.parse(raw);
+  const criteriaLabels = data.criteria_labels;
+  const teams = data.teams;
+  const teamKeys = Object.keys(teams);
+
+  const valColor = {
+    "vollständig": "#566b4f",
+    "überwiegend": "#8a9b56",
+    "teilweise": "#c08a2e",
+    "kaum bis gar nicht": "#b1543a"
+  };
+  const valScore = {
+    "vollständig": 4, "überwiegend": 3, "teilweise": 2, "kaum bis gar nicht": 1
+  };
+
+  function noteColor(note){
+    if(note <= 1.5) return "#3e4f39";
+    if(note <= 2.5) return "#566b4f";
+    if(note <= 3.5) return "#c08a2e";
+    if(note <= 4.5) return "#b1543a";
+    return "#8d3f2a";
+  }
+
+  // ---- Hero stats ----
+  let totalEvals = 0;
+  let allNotes = [];
+  teamKeys.forEach(k=>{
+    totalEvals += teams[k].n;
+    teams[k].entries.forEach(e=>allNotes.push(e.note));
+  });
+  const overallAvg = (allNotes.reduce((a,b)=>a+b,0)/allNotes.length).toFixed(2);
+
+  const heroStats = document.getElementById('heroStats');
+  heroStats.innerHTML = `
+    <div class="stat"><span class="num">${teamKeys.length}</span><span class="lbl label-face">Quiz-Projekte</span></div>
+    <div class="stat"><span class="num">${totalEvals}</span><span class="lbl label-face">Peer-Bewertungen</span></div>
+    <div class="stat"><span class="num">${overallAvg}</span><span class="lbl label-face">Ø Gesamtnote</span></div>
+  `;
+
+  // ---- Legend ----
+  const legend = document.getElementById('legend');
+  legend.innerHTML = Object.keys(valColor).map(k=>`
+    <span class="chip"><span class="dot" style="background:${valColor[k]}"></span>${k}</span>
+  `).join('');
+
+  // ---- TOC ----
+  const tocGrid = document.getElementById('tocGrid');
+  tocGrid.innerHTML = teamKeys.map(k=>{
+    const t = teams[k];
+    return `<a href="#card-${k}">
+      <span class="toc-icon">${t.icon}</span>
+      <span class="toc-name">${t.title}</span>
+      <span class="toc-sub">${t.members}</span>
+    </a>`;
+  }).join('');
+
+  // ---- Cards ----
+  const container = document.getElementById('cardsContainer');
+
+  function critRows(critAvgs){
+    return critAvgs.map((val, i)=>{
+      const pct = (val/4*100).toFixed(0);
+      return `
+        <div class="crit-row">
+          <span class="crit-label">${criteriaLabels[i]}</span>
+          <span class="crit-bar-track"><span class="crit-bar-fill" style="width:${pct}%"></span></span>
+          <span class="crit-val">${val.toFixed(2)}</span>
+        </div>`;
+    }).join('');
+  }
+
+  function logRows(entries){
+    return entries.map(e=>{
+      const nc = noteColor(e.note);
+      const dots = e.criteria.map(c=>`<span class="mini-dot" title="${c}" style="background:${valColor[c]}"></span>`).join('');
+      const comment = e.comment ? e.comment : '<span style="opacity:0.45">– kein Kommentar –</span>';
+      return `
+        <tr>
+          <td class="log-evaluator">${e.evaluator}</td>
+          <td><span class="note-pill" style="background:${nc}">${e.note}</span></td>
+          <td><div class="crit-mini">${dots}</div></td>
+          <td class="log-comment">${comment}</td>
+        </tr>`;
+    }).join('');
+  }
+
+  container.innerHTML = teamKeys.map(k=>{
+    const t = teams[k];
+    const nc = noteColor(t.avg_note);
+    return `
+    <div class="team-card" id="card-${k}">
+      <div class="team-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="team-icon">${t.icon}</div>
+        <div class="team-titles">
+          <div class="t-eyebrow label-face">${t.subject} · ${t.n} Bewertungen</div>
+          <h3>${t.title}</h3>
+          <div class="t-members">Entwickelt von ${t.members}</div>
+        </div>
+        <div class="team-score">
+          <div class="score-num" style="color:${nc}">${t.avg_note.toFixed(2)}</div>
+          <div class="score-lbl label-face">Ø Note</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="team-body">
+        <div class="team-body-inner">
+          <div class="crit-chart">
+            ${critRows(t.crit_avgs)}
+          </div>
+          <div class="feedback-grid">
+            <div class="feedback-box praise">
+              <div class="fb-title">★ Stärken &amp; Anerkennung</div>
+              ${t.praise}
+            </div>
+            <div class="feedback-box tips">
+              <div class="fb-title">✎ Tipp für die Weiterarbeit</div>
+              ${t.tips}
+            </div>
+          </div>
+          <div class="log-title label-face">Wer hat wen wie bewertet</div>
+          <table class="log-table">
+            <thead>
+              <tr>
+                <th>Bewertendes Team</th>
+                <th>Note</th>
+                <th>Kriterien</th>
+                <th>Kommentar</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${logRows(t.entries)}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // open first card by default for orientation
+  // (left closed intentionally so the page reads cleanly on load)
+})();
+
+</script>
+
+</body>
+</html>
