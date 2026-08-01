@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Generator: Naturwissenschaften · Klasse 5 (10 J.) — Kursplan 2026/27
+Generator: Naturwissenschaften · Klasse 5 und 6 — Kursplan 2026/27
 Erzeugt index.html (Kursübersicht) + Lernpfad-Startseiten + nutzt geteilte Assets.
 Einzige Quelle der Wahrheit für Inhalte, Kalender und Freischalt-Daten.
 """
@@ -126,7 +126,7 @@ UNITS = [
                     "Berechne den Durchschnitt der Fußlängen deines gesamten Nawikurses: Ø = Summe der Messwerte ÷ Anzahl der Messwerte."],
              tools=[],
              fast="Finde für deine gemessenen Größen jeweils ein Tier mit einer besonders großen Abweichung — wer im Kurs findet den größten Unterschied zu einem Wal, einem Kolibri oder einer Giraffe?",
-             tags=["Experimentieren", "Messen & Größen", "neu · Steckbrief"],
+             tags=["Experimentieren", "Messen & Größen"],
              vorwissen=[
                dict(cap="Bild 1 · Sechs Messstationen", svg=SVG_STECKBRIEF, quiz=[
                  dict(q="Benenne das abgebildete Messinstrument (Teil 1).",
@@ -174,7 +174,7 @@ UNITS = [
                     "Programmiert in Scratch: Beim Berühren einer Stelle soll eine Sprechblase oder Tonaufnahme den passenden Messwert nennen — genau wie du dich in LP00 selbst „vorgestellt“ hast."],
              tools=["makey", "scratch"],
              fast="Baut eine vierte, versteckte Kontaktstelle ein, die eine Vergleichsfrage zu eurem eigenen Steckbrief aus LP00 stellt (z. B. „Wie oft passt dein Fuß in die Fußlänge eines Elefanten?“).",
-             tags=["Physical Computing", "Team & Präsentation", "neu · Makey Makey"],
+             tags=["Physical Computing", "Team & Präsentation"],
              vorwissen=[
                dict(cap="Bild 1 · Tiere mit besonderen Maßen", svg=SVG_TIERPOSTER, quiz=[
                  dict(q="Teil 1 kann über 30 m lang und rund 150 Tonnen schwer werden. Welches Tier ist das?",
@@ -280,81 +280,18 @@ UNITS = [
              ],
              solution=["Wasserdampf löst die ätherischen Öle aus der Nelke; beim Abkühlen kondensieren Wasser und Öl gemeinsam, trennen sich aber, weil sie sich nicht mischen.",
                        "Ätherisches Nelkenöl hat eine geringere Dichte als Wasser und schwimmt deshalb sichtbar oben auf."]),
-        dict(no=7, sjw=7, kind="lernpfad", title="Bananen-Tattoos — Dichte im Alltag",
-             goal="Du überträgst dein Dichte-Wissen auf ein alltägliches Phänomen: Warum wird eine mit einem Zahnstocher „geritzte“ Banane an genau dieser Stelle braun?",
-             tasks=["Ritze mit einem stumpfen Gegenstand ein einfaches Muster oder Wort in eine unreife Bananenschale.",
-                    "Beobachte über die nächsten Stunden, wie sich die geritzte Stelle im Vergleich zur restlichen Schale verändert.",
-                    "Erkläre, dass an der beschädigten Stelle mehr Luft (Sauerstoff) an das Fruchtfleisch gelangt und dort schneller ein Bräunungsprozess abläuft."],
-             tools=[], fast="Vergleiche die Bräunungsgeschwindigkeit bei einer angeritzten und einer nicht angeritzten Stelle mit der Stoppuhr aus LP00 über mehrere Tage.",
-             tags=["Alltagsphänomen", "Experimentieren"],
-             solution=["Das Ritzen verletzt Zellen der Schale; austretende Enzyme reagieren mit Sauerstoff aus der Luft (enzymatische Bräunung) — dasselbe Prinzip wie bei einem angeschnittenen Apfel.",
-                       "Nach 12–24 Stunden ist das „Tattoo“ deutlich braun sichtbar, während die unversehrte Schale noch grün-gelb bleibt."]),
-        dict(no=8, sjw=8, kind="lernpfad", title="Dichte an Fallbeispielen — Vertiefung",
-             goal="Du wendest die Dichte-Formel auf verschiedene Fallbeispiele aus dem Alltag an und trainierst den sicheren Umgang mit Einheiten.",
-             tasks=["Bearbeite in Gruppen je ein Fallbeispiel (Eisberg im Meer, Heißluftballon, Rettungsring, U-Boot) und stellt es kurz vor.",
-                    "Rechnet für euer Fallbeispiel mit passenden Beispielwerten die ungefähre Dichte aus und vergleicht sie mit Wasser bzw. Luft.",
-                    "Sammelt an der Tafel alle Fallbeispiele und ordnet sie nach dem Prinzip, das jeweils zum Schwimmen/Steigen führt."],
-             tools=[], fast="Erkläre, warum nur etwa ein Neuntel eines Eisbergs aus dem Wasser ragt — rechne mit den Dichten von Eis (0,92 g/cm³) und Meerwasser (1,03 g/cm³).",
-             tags=["Üben & Vertiefen", "Dichte"],
-             solution=["Eisberg: ρ(Eis)/ρ(Meerwasser) ≈ 0,92/1,03 ≈ 0,89 — rund 89 % des Eisbergs liegen unter Wasser, nur ca. 11 % ragen heraus.",
-                       "Gemeinsames Prinzip aller Fallbeispiele: Ein Körper steigt/schwimmt, wenn seine mittlere Dichte kleiner ist als die des umgebenden Mediums."]),
-        dict(no=9, sjw=9, kind="lernpfad", title="Weihnachtsbound",
-             goal="Du löst in kleinen Teams eine weihnachtliche Rallye aus Rätseln und Experimenten rund um Schwimmen, Sinken und Dichte.",
-             tasks=["Löst als Team nacheinander mehrere Stationen mit kurzen Experimenten oder Rätseln zum bisherigen Reihen-Wissen.",
-                    "Nutzt Hinweise aus richtig gelösten Stationen, um die nächste Station zu finden (Escape-Game-Prinzip).",
-                    "Haltet am Ende fest, welche Station euch am meisten überrascht hat und warum."],
-             tools=[], fast="Erfindet selbst eine zusätzliche Rätsel-Station zum Thema Dichte für den nächsten Jahrgang.",
-             tags=["Team & Präsentation", "Wiederholung"],
-             solution=["Die Bound-Stationen greifen alle bisherigen Themen der Reihe auf: Steckbrief-Größen, Orangen-Dichte, Schiffe/U-Boote, Ölextraktion.",
-                       "Am Ende sollte jedes Team alle Stationen gelöst und ihre Lösungswörter zu einem gemeinsamen Weihnachts-Codewort zusammengesetzt haben."]),
-        dict(no=10, sjw=10, kind="lernpfad", title="Wiederholung & Quiz-Werkstatt: Schwimmen und Sinken",
-             goal="Du fasst die wichtigsten Begriffe und Zusammenhänge der Reihe zusammen und bereitest dich gezielt auf den Kurztest vor.",
-             tasks=["Erstellt in Partnerarbeit eine Mindmap mit allen wichtigen Begriffen der Reihe (Dichte, Auftrieb, Volumen, Masse, Wasserverdrängung …).",
-                    "Formuliert gegenseitig mindestens drei eigene Quizfragen zu bisherigen Lernpfaden und lasst sie von einem anderen Team beantworten.",
-                    "Klärt in der großen Runde alle noch offenen Fragen aus der gesamten Reihe."],
-             tools=[], fast="Baue aus deinen Mindmap-Begriffen eine kleine Bilderrätsel-Kette (jeder Begriff führt zum nächsten).",
-             tags=["Wiederholung"],
-             solution=["Zentrale Begriffe: Dichte (ρ=m/V), Auftrieb, Volumen (auch per Wasserverdrängung), Masse vs. Gewicht, Hohlkörper-Prinzip.",
-                       "Wer alle Begriffe sicher erklären kann, ist gut auf den Kurztest vorbereitet."]),
-        dict(no=11, sjw=11, kind="lernpfad", title="Kurztest: Schwimmen und Sinken",
-             goal="Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Begriffe und Rechnungen der Reihe „Schwimmen und Sinken“ beherrschst.",
-             tasks=["Bearbeite den Kurztest in Einzelarbeit (ca. 30 Minuten): Begriffe erklären, Dichte berechnen, Alltagsbeispiele einordnen.",
-                    "Kontrolliere am Ende deine Rechnungen noch einmal auf Einheiten und Kommastellen.",
-                    "Schätze am Ende selbst ein, wie sicher du dich bei den einzelnen Aufgabenteilen gefühlt hast."],
-             tools=[], fast="Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.",
-             tags=["Lernkontrolle"],
-             solution=["Der Test wird von der Lehrkraft korrigiert und in der folgenden Stunde besprochen.",
-                       "Nutze deine Selbsteinschätzung, um gezielt die Themen zu wiederholen, bei denen du unsicher warst."]),
-        dict(no=12, sjw=12, kind="projekt", title="Präsentationsprojekt: Experimente vorbereiten",
-             goal="Du planst mit deiner Gruppe ein eigenes Experiment zum Thema Schwimmen und Sinken, das ihr dem Kurs vorstellen wollt.",
-             tasks=["Wählt in der Gruppe ein Experiment aus der Reihe (oder eine eigene Idee) aus, das ihr vertiefen möchtet.",
-                    "Plant Materialliste, Versuchsaufbau und die genaue Erklärung, die ihr präsentieren wollt.",
-                    "Übt den Versuchsaufbau mindestens einmal vollständig durch, bevor ihr präsentiert."],
-             tools=[], fast="Überlegt euch eine Verständnisfrage, die ihr dem Kurs nach eurer Präsentation stellen wollt.",
-             tags=["Team & Präsentation", "Projekt"],
-             solution=["Eine gute Vorbereitung enthält: klare Forschungsfrage, vollständige Materialliste, geübten Ablauf, verständliche Erklärung der Dichte-Zusammenhänge.",
-                       "Zeitpuffer für Pannen einplanen — ein Experiment sollte notfalls auch ohne perfektes Ergebnis erklärt werden können."]),
-        dict(no=13, sjw=13, kind="projekt", title="Präsentationsprojekt: Präsentationstag",
-             goal="Du präsentierst dein Experiment zum Thema Schwimmen und Sinken vor dem Kurs und gibst deinen Mitschüler:innen faires Feedback.",
-             tasks=["Führt euer Experiment vor dem Kurs vor und erklärt die dahinterliegende Dichte-Erklärung verständlich.",
-                    "Beantwortet Verständnisfragen aus dem Kurs.",
-                    "Gebt mindestens einer anderen Gruppe konkretes, freundliches Feedback."],
-             tools=[], fast="Vergleicht euer Experiment mit einem Experiment einer anderen Gruppe: Was ist die gemeinsame Dichte-Idee dahinter?",
-             tags=["Team & Präsentation", "Projekt"],
-             solution=["Am Ende der Reihe sollten alle Gruppen den Zusammenhang von Dichte, Auftrieb und Volumen an einem eigenen Beispiel erklären können.",
-                       "Die Präsentationen bilden den Abschluss der Reihe „Schwimmen und Sinken“ vor den Weihnachtsferien."]),
       ]),
  # =================== 01 LEBENSMITTEL ===================
  dict(num="01", title="Lebensmittel",
       key="#ff8a3d", key2="#d96a1f", tint="rgba(255,138,61,0.10)",
       lps=[
-        dict(no=14, sjw=14, kind="lernpfad", title="Nahrungsmittelrallye",
+        dict(no=7, sjw=7, kind="lernpfad", title="Nahrungsmittelrallye",
              goal="Du lernst die drei Hauptnährstoffe (Fette, Proteine, Kohlenhydrate) und die Mikronährstoffe (Vitamine, Mineralstoffe) kennen und ordnest sie echten Lebensmitteln zu.",
              tasks=["Ordne an Stationen verschiedene Lebensmittel den Hauptnährstoffen zu, die in ihnen überwiegen.",
                     "Unterscheide Makronährstoffe (Fette, Proteine, Kohlenhydrate) von Mikronährstoffen (z. B. Vitamin C, Kalium, Calcium).",
                     "Vergleiche drei Erfrischungsgetränke und bewerte sie nach gesundheitlichen Gesichtspunkten (Zucker, Säure, Zusatzstoffe)."],
              tools=[], fast="Erstelle eine Woche-Speiseplan-Idee, die alle drei Hauptnährstoffe ausgewogen berücksichtigt.",
-             tags=["Ernährung", "neu · Nährstoffe"],
+             tags=["Ernährung"],
              quiz=[
                dict(q="Welcher Begriff gehört NICHT zu den Makronährstoffen (Hauptnährstoffen)?", done="Richtig — Ballaststoffe zählen nicht zu den klassischen Makronährstoffen.",
                     opts=[("Ballaststoffe", True, None), ("Fette", False, "Fette sind einer der drei Hauptnährstoffe."), ("Eiweiße/Proteine", False, "Proteine sind einer der drei Hauptnährstoffe."), ("Kohlenhydrate/Zucker", False, "Kohlenhydrate sind einer der drei Hauptnährstoffe.")]),
@@ -377,7 +314,7 @@ UNITS = [
              solution=["Makronährstoffe: Fette, Proteine, Kohlenhydrate — liefern Energie (Kalorien).",
                        "Mikronährstoffe: Vitamine, Mineralstoffe — liefern kaum Energie, sind aber lebensnotwendig.",
                        "Fett liefert ca. 9 kcal/g, Kohlenhydrate und Proteine je ca. 4 kcal/g."]),
-        dict(no=15, sjw=15, kind="lernpfad", title="Interessantes zu Fetten",
+        dict(no=8, sjw=8, kind="lernpfad", title="Interessantes zu Fetten",
              goal="Du unterscheidest gesunde von weniger gesunden Fetten und lernst eine chemische Nachweisprobe für Fette kennen.",
              tasks=["Ordne Fette und Öle korrekt als Makronährstoff ein und nenne Beispiele aus dem Alltag.",
                     "Führe die Fettfleckprobe an verschiedenen Lebensmittelproben durch und notiere, welche Proben Fett enthalten.",
@@ -400,7 +337,7 @@ UNITS = [
              ],
              solution=["Fettfleckprobe: Ein durchscheinender, bleibender Fleck auf Papier zeigt Fett an.",
                        "Ungesättigte Fettsäuren (z. B. in Nüssen, Fisch, Pflanzenölen) gelten als besonders gesundheitsförderlich, u. a. für Herz und Gehirn."]),
-        dict(no=16, sjw=16, kind="lernpfad", title="Energiehaushalt",
+        dict(no=9, sjw=9, kind="lernpfad", title="Energiehaushalt",
              goal="Du berechnest, wie viel Energie in einer Walnuss steckt, und vergleichst sie mit der Energie, die du beim Sport verbrauchst.",
              tasks=["Verbrenne (unter Aufsicht) eine Walnusshälfte und erhitze damit eine bekannte Menge Wasser.",
                     "Berechne aus der Temperaturerhöhung des Wassers, wie viel Energie in der Walnusshälfte steckt.",
@@ -421,7 +358,7 @@ UNITS = [
              ],
              solution=["Eine Walnusshälfte (ca. 2,9 g) liefert genug Energie, um 200 g Wasser von 20 °C fast bis zum Sieden (≈100 °C) zu erwärmen.",
                        "Dieselbe Energiemenge entspricht ungefähr mehreren Dutzend Kniebeugen oder einigen hundert Metern Joggen — Nahrungsenergie und Bewegungsenergie sind direkt vergleichbar."]),
-        dict(no=17, sjw=17, kind="lernpfad", title="Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers",
+        dict(no=10, sjw=10, kind="lernpfad", title="Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers",
              goal="Du stellst veganes Baiser aus Kichererbsenwasser (Aquafaba) her und erklärst, was beim Schlagen und Erhitzen mit den Proteinen passiert.",
              tasks=["Schlage Aquafaba (Kichererbsenwasser) so lange, bis ein stabiler Eischnee-ähnlicher Schaum entsteht.",
                     "Beobachte und beschreibe, wie sich Aussehen und Konsistenz beim Schlagen verändern.",
@@ -444,7 +381,7 @@ UNITS = [
              ],
              solution=["Aquafaba enthält gelöste Proteine, die sich beim Schlagen (mechanische Energie) an Luftbläschen anlagern und beim Backen (thermische Energie) endgültig ihre Struktur verändern.",
                        "Denaturierung ist nicht umkehrbar — daraus lässt sich kein flüssiges Aquafaba mehr zurückgewinnen, genauso wenig wie ein gekochtes Ei wieder roh wird."]),
-        dict(no=18, sjw=18, kind="lernpfad", title="Kohlenhydrate",
+        dict(no=11, sjw=11, kind="lernpfad", title="Kohlenhydrate",
              goal="Du weist mit der Jodprobe Stärke in Lebensmitteln nach und lernst, welche Kohlenhydrate wann sinnvoll sind.",
              tasks=["Führe die Jodprobe (Lugol'sche Probe) an verschiedenen Lebensmitteln durch (z. B. Kartoffel, Brot, Traubenzucker).",
                     "Notiere, bei welchen Proben sich eine tiefblaue Färbung zeigt und schließe daraus auf den Stärkegehalt.",
@@ -463,72 +400,18 @@ UNITS = [
              ],
              solution=["Jodprobe: Iod-Kaliumiodid-Lösung färbt sich bei Stärke tiefblau-schwarz, bei reiner Zellulose (z. B. Baumwolle) bleibt die Färbung aus.",
                        "„Kohlenhydrat“ = Kohle + Hydrat: Konzentrierte Schwefelsäure entzieht dem Zucker Wasser und hinterlässt sichtbaren schwarzen Kohlenstoff."]),
-        dict(no=19, sjw=19, kind="lernpfad", title="Geschmackssinn & Erfrischungsgetränke im Test",
-             goal="Du testest verblindet verschiedene Erfrischungsgetränke, ordnest sie nach Beliebtheit und bewertest sie zusätzlich nach Gesundheitswert.",
-             tasks=["Verkoste im Blindtest drei bis vier Erfrischungsgetränke und bringt sie als Team in eine Geschmacksreihenfolge.",
-                    "Vergleicht eure Geschmacksreihenfolge mit den Zutatenlisten (Zucker-, Säure-, Zusatzstoffgehalt).",
-                    "Stellt begründete Vermutungen auf, wie viele unterschiedliche Geschmacksfaktoren (z. B. süß, sauer, Kohlensäure) euer Ranking beeinflusst haben."],
-             tools=[], fast="Entwerft ein eigenes, möglichst gesundes Erfrischungsgetränk-Rezept und begründet eure Zutatenwahl.",
-             tags=["Experimentieren", "Sinne"],
-             solution=["Geschmack entsteht aus dem Zusammenspiel mehrerer Faktoren: Süße, Säure, Kohlensäure-Prickeln, Temperatur und Geruch.",
-                       "Ein hoher Zucker- oder Säuregehalt sorgt oft für hohe Beliebtheit, ist aber gesundheitlich nicht automatisch die beste Wahl."]),
-        dict(no=20, sjw=20, kind="lernpfad", title="Nährstoffe-Werkstatt: Ballaststoffe, Vitamine & Co.",
-             goal="Du vertiefst dein Wissen über Mikronährstoffe und Ballaststoffe und erklärst, warum sie trotz kaum vorhandener Kalorien wichtig sind.",
-             tasks=["Recherchiert an Stationen zu je einem Mikronährstoff (z. B. Vitamin C, Calcium, Eisen) dessen Funktion im Körper.",
-                    "Ordnet Lebensmittel den jeweiligen Mikronährstoffen zu, in denen sie besonders reichlich vorkommen.",
-                    "Erklärt, warum Ballaststoffe trotz kaum verwertbarer Energie wichtig für die Verdauung sind."],
-             tools=[], fast="Entwerft ein Kurs-Plakat, das alle recherchierten Mikronährstoffe mit Symbol und Lebensmittel-Beispiel zeigt.",
-             tags=["Ernährung", "Üben & Vertiefen"],
-             solution=["Vitamine und Mineralstoffe steuern viele Körperfunktionen (z. B. Immunsystem, Knochenaufbau, Sauerstofftransport), liefern aber selbst kaum Energie.",
-                       "Ballaststoffe regen die Verdauung an und sorgen für ein lang anhaltendes Sättigungsgefühl, obwohl sie kaum verdaut werden."]),
-        dict(no=21, sjw=21, kind="lernpfad", title="Wiederholung & Quiz-Werkstatt: Lebensmittel",
-             goal="Du fasst die wichtigsten Begriffe und Zusammenhänge der Reihe „Lebensmittel“ zusammen und bereitest dich auf den Kurztest vor.",
-             tasks=["Erstellt eine gemeinsame Übersicht aller Nährstoffgruppen mit je zwei Beispiel-Lebensmitteln.",
-                    "Formuliert gegenseitig eigene Quizfragen zu Fetten, Proteinen, Kohlenhydraten und Mikronährstoffen.",
-                    "Klärt in der großen Runde alle noch offenen Fragen aus der gesamten Reihe."],
-             tools=[], fast="Baue ein kleines Ratespiel: Beschreibe ein Lebensmittel nur über seine Nährstoffe, die anderen raten, welches es ist.",
-             tags=["Wiederholung"],
-             solution=["Zentrale Begriffe: Makronährstoffe (Fette, Proteine, Kohlenhydrate) vs. Mikronährstoffe (Vitamine, Mineralstoffe), Denaturierung, Jodprobe, Fettfleckprobe.",
-                       "Wer alle Nachweisverfahren und Nährstoffgruppen sicher erklären kann, ist gut auf den Kurztest vorbereitet."]),
-        dict(no=22, sjw=22, kind="lernpfad", title="Kurztest: Lebensmittel",
-             goal="Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Begriffe und Nachweisverfahren der Reihe „Lebensmittel“ beherrschst.",
-             tasks=["Bearbeite den Kurztest in Einzelarbeit (ca. 30 Minuten): Nährstoffe zuordnen, Nachweisverfahren erklären, Alltagsbeispiele einordnen.",
-                    "Kontrolliere am Ende deine Antworten noch einmal auf Vollständigkeit.",
-                    "Schätze am Ende selbst ein, wie sicher du dich bei den einzelnen Aufgabenteilen gefühlt hast."],
-             tools=[], fast="Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.",
-             tags=["Lernkontrolle"],
-             solution=["Der Test wird von der Lehrkraft korrigiert und in der folgenden Stunde besprochen.",
-                       "Nutze deine Selbsteinschätzung, um gezielt die Themen zu wiederholen, bei denen du unsicher warst."]),
-        dict(no=23, sjw=23, kind="projekt", title="Präsentationsprojekt: Experimente vorbereiten",
-             goal="Du planst mit deiner Gruppe ein eigenes Experiment zum Thema Lebensmittel, das ihr dem Kurs vorstellen wollt.",
-             tasks=["Wählt in der Gruppe ein Experiment aus der Reihe (oder eine eigene Idee) aus, das ihr vertiefen möchtet.",
-                    "Plant Materialliste, Versuchsaufbau und die genaue Erklärung, die ihr präsentieren wollt.",
-                    "Übt den Versuchsaufbau mindestens einmal vollständig durch, bevor ihr präsentiert."],
-             tools=[], fast="Überlegt euch eine Verständnisfrage, die ihr dem Kurs nach eurer Präsentation stellen wollt.",
-             tags=["Team & Präsentation", "Projekt"],
-             solution=["Eine gute Vorbereitung enthält: klare Forschungsfrage, vollständige Materialliste, geübten Ablauf, verständliche Erklärung der Nährstoff-Zusammenhänge.",
-                       "Zeitpuffer für Pannen einplanen — ein Experiment sollte notfalls auch ohne perfektes Ergebnis erklärt werden können."]),
-        dict(no=24, sjw=24, kind="projekt", title="Präsentationsprojekt: Präsentationstag",
-             goal="Du präsentierst dein Experiment zum Thema Lebensmittel vor dem Kurs und gibst deinen Mitschüler:innen faires Feedback.",
-             tasks=["Führt euer Experiment vor dem Kurs vor und erklärt die dahinterliegende Nährstoff-Erklärung verständlich.",
-                    "Beantwortet Verständnisfragen aus dem Kurs.",
-                    "Gebt mindestens einer anderen Gruppe konkretes, freundliches Feedback."],
-             tools=[], fast="Vergleicht euer Experiment mit einem Experiment einer anderen Gruppe: Welche Nährstoff-Idee steckt jeweils dahinter?",
-             tags=["Team & Präsentation", "Projekt"],
-             solution=["Am Ende der Reihe sollten alle Gruppen Nährstoffe, Nachweisverfahren und Denaturierung an einem eigenen Beispiel erklären können.",
-                       "Die Präsentationen bilden den Abschluss der Reihe „Lebensmittel“."]),
       ]),
  # =================== 02 FLIEGEN ===================
  dict(num="02", title="Fliegen",
       key="#8a5cf0", key2="#6a3fcf", tint="rgba(138,92,240,0.10)",
       lps=[
-        dict(no=25, sjw=25, kind="lernpfad", title="Schwimmende Steine und fliegende Teebeutel",
+        dict(no=12, sjw=12, kind="lernpfad", title="Schwimmende Steine und fliegende Teebeutel",
              goal="Du entdeckst mit zwei verblüffenden Experimenten (schwimmender Bimsstein, fliegender Teebeutel), dass Auftrieb ein Prinzip ist, das sowohl im Wasser als auch in der Luft gilt.",
              tasks=["Teste, ob ein Bimsstein in Wasser schwimmt oder sinkt, und erkläre es mit seiner extrem geringen Dichte (viele Luftbläschen).",
                     "Baue eine Teebeutel-Rakete: Entleere einen Teebeutel, stelle ihn aufrecht hin und zünde ihn oben mittig an.",
                     "Verallgemeinere: Ein Körper erfährt Auftrieb, wenn seine Dichte geringer ist als die seines umgebenden Stoffs."],
              tools=[], fast="Erkläre, warum der Teebeutel höher und schneller fliegt, wenn er genau in der Mitte angezündet wird, statt am Rand.",
-             tags=["Experimentieren", "Auftrieb", "neu · Fliegen"],
+             tags=["Experimentieren", "Auftrieb"],
              quiz=[
                dict(q="Verallgemeinere: Ein Körper erfährt einen Auftrieb, wenn seine Dichte … ist als sein umgebender Stoff.", done="Richtig — geringer.",
                     opts=[("geringer", True, None), ("höher", False, "Eine höhere Dichte als das Umgebende führt zum Sinken, nicht zum Auftrieb.")]),
@@ -545,7 +428,7 @@ UNITS = [
              ],
              solution=["Bimsstein: extrem viele eingeschlossene Luftbläschen senken seine Dichte unter die von Wasser — er schwimmt, obwohl er aus „Stein“ besteht.",
                        "Teebeutel-Rakete: heiße Luft im Inneren ist weniger dicht als die kalte Umgebungsluft (statischer Auftrieb); mittig angezündet entsteht zusätzlich ein Rückstoß-Effekt, der ihn höher fliegen lässt."]),
-        dict(no=26, sjw=26, kind="lernpfad", title="Flugprinzipien",
+        dict(no=13, sjw=13, kind="lernpfad", title="Flugprinzipien",
              goal="Du lernst mit dem Bernoulli-Prinzip den zweiten großen Auftriebs-Mechanismus kennen: schnell strömende Luft erzeugt Unterdruck.",
              tasks=["Baue den klassischen Papierstreifen- oder Tischtennisball-Versuch zum Bernoulli-Effekt auf und beobachte den Effekt.",
                     "Erkläre am Modell eines Flügels, wo die Luft schneller strömt und wo dadurch Unter- bzw. Überdruck entsteht.",
@@ -553,7 +436,7 @@ UNITS = [
              tools=[], fast="Finde heraus, ob die Flügel- bzw. Ballfläche einen Einfluss auf die Stärke des Bernoulli-Effekts hat, und begründe mit einem eigenen Mini-Versuch.",
              tags=["Experimentieren", "Bernoulli-Prinzip"],
              quiz=[
-               dict(q="Nenne das Auftriebsprinzip der Teebeutelrakete aus LP25.", done="Richtig — das Rückstoßprinzip.",
+               dict(q="Nenne das Auftriebsprinzip der Teebeutelrakete aus LP12.", done="Richtig — das Rückstoßprinzip.",
                     opts=[("Rückstoßprinzip (Newton'sches Prinzip: Actio = Reactio)", True, None),
                           ("Statischer Auftrieb (Archimedisches Prinzip)", False, "Das beschreibt eher den Bimsstein, nicht das mittige Anzünden."),
                           ("Dynamischer Auftrieb (Bernoulli-Prinzip)", False, "Das mittige Anzünden wirkt wie ein Antrieb, nicht wie eine Tragfläche."),
@@ -572,7 +455,7 @@ UNITS = [
              solution=["Bernoulli-Prinzip: Strömt Luft schneller, sinkt der Druck an dieser Stelle (schnelle Strömung = Unterdruck).",
                        "An einer Tragfläche strömt die Luft oben (gewölbte Seite) schneller als unten — der Druckunterschied drückt den Flügel nach oben.",
                        "Daniel Bernoulli (1700–1782): Schweizer Mathematiker und Physiker, formulierte das nach ihm benannte Strömungsprinzip."]),
-        dict(no=27, sjw=27, kind="lernpfad", title="Flugexperimente",
+        dict(no=14, sjw=14, kind="lernpfad", title="Flugexperimente",
              goal="Du baust und testest eigene Flugobjekte (Papierflieger, Fallschirm, Rotor) und wertest ihre Flugleistung systematisch aus.",
              tasks=["Baue mindestens zwei unterschiedliche Papierflieger-Modelle und miss ihre Flugweite über je drei Würfe.",
                     "Baue einen Mini-Fallschirm aus Papier/Folie und Faden und miss seine Fallzeit aus konstanter Höhe.",
@@ -595,103 +478,6 @@ UNITS = [
              ],
              solution=["Papierflieger nutzen überwiegend den Bernoulli-Effekt (Tragflächenform), Fallschirme überwiegend den Luftwiderstand einer großen Fläche.",
                        "Ein faires Experiment verändert immer nur eine Eigenschaft gleichzeitig (z. B. nur die Flügelfläche) und misst mehrfach, um zufällige Schwankungen auszugleichen."]),
-        dict(no=28, sjw=28, kind="lernpfad", title="Bernoulli-Auftrieb im Flugzeug — Vertiefung",
-             goal="Du überträgst das Bernoulli-Prinzip konkret auf ein startendes und landendes Flugzeug und erklärst die Funktion von Landeklappen.",
-             tasks=["Skizziere den Querschnitt einer Tragfläche und markiere Luftströmung, Unterdruck- und Überdruckbereich.",
-                    "Erkläre mithilfe eines Modells, warum ein Flugzeug beim Start eine hohe Geschwindigkeit erreichen muss, bevor es abheben kann.",
-                    "Recherchiere, wofür Landeklappen an Tragflächen dienen und wie sie den Auftrieb bei niedrigerer Geschwindigkeit erhöhen."],
-             tools=[], fast="Erkläre, warum ein beladenes Flugzeug eine längere Startbahn braucht als ein leichtes.",
-             tags=["Üben & Vertiefen", "Bernoulli-Prinzip"],
-             solution=["Erst ab einer bestimmten Mindestgeschwindigkeit ist der Geschwindigkeits- und damit Druckunterschied zwischen Ober- und Unterseite der Tragfläche groß genug, um das gesamte Flugzeuggewicht zu tragen.",
-                       "Landeklappen vergrößern und wölben die Tragfläche zusätzlich — das erzeugt mehr Auftrieb auch bei der geringeren Geschwindigkeit während Start und Landung."]),
-        dict(no=29, sjw=29, kind="lernpfad", title="Vogelflug, Ahornsamen & Co. — Flugprinzipien in der Natur",
-             goal="Du entdeckst, dass die Natur alle drei Flugprinzipien (Bernoulli, Rückstoß, Luftwiderstand) auf ganz unterschiedliche Weise nutzt.",
-             tasks=["Baue eine Ahornsamenschraube aus Papier nach und beobachte ihren Sinkflug im Vergleich zu einem einfachen Papierschnipsel.",
-                    "Ordne Löwenzahnsamen, Schmetterlingsflug und Tornados jeweils dem passenden physikalischen Prinzip zu.",
-                    "Vergleiche die Flugstrategie eines gleitenden Vogels mit der eines Kolibris (aus LP01) — wo überwiegt Segeln, wo aktives Flügelschlagen?"],
-             tools=[], fast="Baue selbst eine funktionierende Ahornsamenschraube und optimiere Flügelform und -länge auf möglichst langsamen Fall.",
-             tags=["Natur & Vorbild", "Bernoulli-Prinzip"],
-             quiz=[
-               dict(q="Warum fallen Ahornsamenschrauben langsamer als gewöhnliche Pflanzensamen?", done="Richtig — durch ihre Rotation erzeugen sie unterschiedliche Luftgeschwindigkeiten wie an einer Tragfläche.",
-                    opts=[("Sie erzeugen durch Rotation unterschiedliche Luftgeschwindigkeiten (Auto-Rotation).", True, None),
-                          ("Sie nutzen den Rückstoß ihrer Rotation.", False, "Es wird keine Masse ausgestoßen — das ist kein Rückstoßprinzip."),
-                          ("Sie werden von Magneten in der Luft gehalten.", False, "Magnetismus spielt beim Pflanzenflug keine Rolle.")]),
-               dict(q="Welches physikalische Prinzip ist bei der Windverbreitung von Löwenzahnsamen NICHT beteiligt?", done="Richtig — das Rückstoßprinzip kommt hier nicht vor.",
-                    opts=[("Rückstoßprinzip", True, None), ("Bernoulli-Prinzip", False, "Die feine Schirmchen-Struktur erzeugt tatsächlich auch aerodynamischen Auftrieb."), ("Luftwiderstand", False, "Der große, leichte Schirm bremst den Fall durch Luftwiderstand."), ("Auftrieb durch Luftströmung", False, "Aufwinde können den Samen zusätzlich tragen.")]),
-               dict(q="Welche Kombination von Faktoren sorgt für den effizienten Flug von Schmetterlingen?", done="Richtig — Bernoulli-Prinzip UND komplexe Luftwirbel.",
-                    opts=[("Bernoulli-Prinzip UND komplexe Luftwirbel", True, None),
-                          ("statischer Auftrieb UND komplexe Luftwirbel", False, "Schmetterlinge sind dichter als Luft — statischer Auftrieb reicht nicht aus."),
-                          ("Rückstoßprinzip durch Flügelschlag UND Bernoulli-Prinzip", False, "Der Flügelschlag erzeugt keinen klassischen Rückstoß wie ein Raketentriebwerk.")]),
-               dict(q="Ein Tornado zeigt das Bernoulli-Prinzip in extremer Form. Wie sind die Druckverhältnisse im Zentrum?", done="Richtig — im Zentrum ist der Druck deutlich niedriger als außen.",
-                    opts=[("Im Zentrum ist der Druck niedriger als außen.", True, None), ("Im Zentrum ist der Druck höher als außen.", False, "Genau umgekehrt — die extrem schnelle Rotation erzeugt einen starken Unterdruck im Kern."), ("Der Druck ist überall gleich.", False, "Gerade der starke Druckunterschied macht einen Tornado so gefährlich.")]),
-             ],
-             solution=["Ahornsamen: Rotation erzeugt Bernoulli-Auftrieb wie ein Mini-Hubschrauber-Rotor.",
-                       "Löwenzahn: Luftwiderstand und etwas aerodynamischer Auftrieb, aber kein Rückstoß.",
-                       "Schmetterling: Kombination aus Bernoulli-Effekt und gezielt erzeugten Luftwirbeln an den Flügelrändern.",
-                       "Tornado: extrem schnelle Rotation erzeugt nach Bernoulli einen sehr starken Unterdruck im Zentrum."]),
-        dict(no=30, sjw=30, kind="lernpfad", title="Fluggeräte selbst bauen — Werkstatt",
-             goal="Du konstruierst ein eigenes Fluggerät (Rotor, Drachen oder Flieger-Modell deiner Wahl) und optimierst es in mehreren Testrunden.",
-             tasks=["Wähle ein Fluggerät-Modell (Papprotor, Mini-Drachen, Flugobjekt eigener Idee) und baue einen ersten Prototyp.",
-                    "Teste deinen Prototyp mehrfach, miss Flugzeit oder Flugweite und notiere Verbesserungsideen.",
-                    "Baue eine verbesserte zweite Version und vergleiche die Messwerte mit der ersten Version."],
-             tools=[], fast="Baue eine dritte Version, die bewusst ein völlig anderes physikalisches Prinzip nutzt als deine ersten beiden, und vergleiche alle drei.",
-             tags=["Werkstatt", "Experimentieren"],
-             solution=["Systematisches Konstruieren bedeutet: bauen, testen, messen, gezielt eine Sache verändern, erneut testen.",
-                       "Jede Verbesserung sollte auf einer konkreten physikalischen Überlegung beruhen (z. B. mehr Fläche für mehr Auftrieb, weniger Gewicht für längere Flugzeit)."]),
-        dict(no=31, sjw=31, kind="lernpfad", title="Ausblick: Weltall",
-             goal="Du erfährst, warum im Weltall die bisherigen Flugprinzipien (Bernoulli, Luftwiderstand) nicht mehr funktionieren und wie Raketen trotzdem fliegen.",
-             tasks=["Erkläre, warum ein Flugzeugflügel im Weltall keinen Auftrieb erzeugen könnte (keine Luft vorhanden).",
-                    "Beschreibe, wie eine Rakete allein durch das Rückstoßprinzip auch im Vakuum vorwärtskommt.",
-                    "Vergleiche kurz die Teebeutel-Rakete aus LP25 mit einer echten Rakete: Was ist gleich, was ist anders?"],
-             tools=[], fast="Recherchiere, mit welcher Geschwindigkeit eine Rakete die Erde verlassen muss (Fluchtgeschwindigkeit), um nicht wieder zurückzufallen.",
-             tags=["Ausblick", "Rückstoßprinzip"],
-             solution=["Ohne Luft gibt es weder Bernoulli-Auftrieb noch Luftwiderstand — im Weltraum funktioniert nur das Rückstoßprinzip (Ausstoß von Gasen nach hinten treibt die Rakete nach vorn).",
-                       "Die Teebeutel-Rakete nutzt denselben Grundgedanken (Ausstoßen heißer Gase), allerdings zusätzlich unterstützt durch die im Vakuum nicht vorhandene, hier aber wirksame heiße Luft."]),
-        dict(no=32, sjw=32, kind="lernpfad", title="Vibe-Coding: eigene Flug-Idee programmieren",
-             goal="Du beschreibst einer KI in eigenen Worten eine kleine Flug-Simulation oder Flug-Animation und lässt sie gemeinsam mit dir Schritt für Schritt entstehen (Vibe-Coding).",
-             tasks=["Formuliere eine klare Idee für eine kleine interaktive Seite zum Thema Fliegen (z. B. Papierflieger-Simulator, Ballon-Steig-Animation).",
-                    "Beschreibe deine Idee in präzisen, kleinen Schritten und lass jeden Schritt einzeln umsetzen, bevor du weitermachst.",
-                    "Teste deine Seite nach jedem Schritt sofort im Browser und beschreibe, was noch nicht passt."],
-             tools=["jsfiddle"], fast="Baue eine kleine Interaktion ein (z. B. ein Knopf „Pusten“, der ein Objekt auf dem Bildschirm nach oben steigen lässt).",
-             tags=["Programmieren", "neu · Vibe-Coding"],
-             solution=["Vibe-Coding bedeutet: präzise, kleine Anweisungen formulieren, jeden Schritt sofort testen und bei Bedarf präziser nachfragen — genau wie Profilkurs-Schüler:innen es später in Klasse 9 im Detail lernen.",
-                       "Auch ohne klassische Programmierkenntnisse lässt sich so eine kleine funktionierende Idee umsetzen."]),
-        dict(no=33, sjw=33, kind="lernpfad", title="Wiederholung & Quiz-Werkstatt: Fliegen",
-             goal="Du fasst die wichtigsten Begriffe und Zusammenhänge der Reihe „Fliegen“ zusammen und bereitest dich auf den Kurztest vor.",
-             tasks=["Erstellt eine gemeinsame Übersicht der drei Flugprinzipien (statischer Auftrieb, Bernoulli-Prinzip, Rückstoßprinzip) mit je einem Beispiel.",
-                    "Formuliert gegenseitig eigene Quizfragen zu Teebeutel-Rakete, Tragfläche und Naturbeispielen.",
-                    "Klärt in der großen Runde alle noch offenen Fragen aus der gesamten Reihe."],
-             tools=[], fast="Ordne jedem Lernpfad der Reihe „Fliegen“ das jeweils passende Hauptprinzip zu und begründe kurz.",
-             tags=["Wiederholung"],
-             solution=["Drei Flugprinzipien: statischer Auftrieb (Dichteunterschied, z. B. Heißluftballon), dynamischer/Bernoulli-Auftrieb (Tragfläche, Vogelflug), Rückstoßprinzip (Rakete, Teebeutel mittig gezündet).",
-                       "Wer alle drei Prinzipien an einem eigenen Beispiel erklären kann, ist gut auf den Kurztest vorbereitet."]),
-        dict(no=34, sjw=34, kind="lernpfad", title="Kurztest: Fliegen",
-             goal="Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Flugprinzipien der Reihe „Fliegen“ beherrschst.",
-             tasks=["Bearbeite den Kurztest in Einzelarbeit (ca. 30 Minuten): Flugprinzipien zuordnen, Beispiele erklären, Alltagsphänomene einordnen.",
-                    "Kontrolliere am Ende deine Antworten noch einmal auf Vollständigkeit.",
-                    "Schätze am Ende selbst ein, wie sicher du dich bei den einzelnen Aufgabenteilen gefühlt hast."],
-             tools=[], fast="Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.",
-             tags=["Lernkontrolle"],
-             solution=["Der Test wird von der Lehrkraft korrigiert und in der folgenden Stunde besprochen.",
-                       "Nutze deine Selbsteinschätzung, um gezielt die Themen zu wiederholen, bei denen du unsicher warst."]),
-        dict(no=35, sjw=35, kind="projekt", title="Präsentationsprojekt: Experimente vorbereiten",
-             goal="Du planst mit deiner Gruppe ein eigenes Experiment zum Thema Fliegen, das ihr dem Kurs vorstellen wollt.",
-             tasks=["Wählt in der Gruppe ein Experiment aus der Reihe (oder eine eigene Idee) aus, das ihr vertiefen möchtet.",
-                    "Plant Materialliste, Versuchsaufbau und die genaue Erklärung, die ihr präsentieren wollt.",
-                    "Übt den Versuchsaufbau mindestens einmal vollständig durch, bevor ihr präsentiert."],
-             tools=[], fast="Überlegt euch eine Verständnisfrage, die ihr dem Kurs nach eurer Präsentation stellen wollt.",
-             tags=["Team & Präsentation", "Projekt"],
-             solution=["Eine gute Vorbereitung enthält: klare Forschungsfrage, vollständige Materialliste, geübten Ablauf, verständliche Erklärung des genutzten Flugprinzips.",
-                       "Zeitpuffer für Pannen einplanen — ein Experiment sollte notfalls auch ohne perfektes Ergebnis erklärt werden können."]),
-        dict(no=36, sjw=36, kind="projekt", title="Präsentationsprojekt: Präsentationstag",
-             goal="Du präsentierst dein Experiment zum Thema Fliegen vor dem Kurs, blickst auf das ganze Schuljahr zurück und gibst deinen Mitschüler:innen faires Feedback.",
-             tasks=["Führt euer Experiment vor dem Kurs vor und erklärt das dahinterliegende Flugprinzip verständlich.",
-                    "Beantwortet Verständnisfragen aus dem Kurs.",
-                    "Blickt gemeinsam zurück: Welches der drei großen Themen (Schwimmen und Sinken, Lebensmittel, Fliegen) hat euch am meisten überrascht?"],
-             tools=[], fast="Schreibe dir selbst eine kurze Notiz: Was hast du in diesem Schuljahr über das Forschen selbst gelernt — nicht nur über die Inhalte?",
-             tags=["Team & Präsentation", "Projekt"],
-             solution=["Am Ende des Schuljahres sollten alle drei großen Prinzipien sicher erklärt werden können: Dichte/Auftrieb, Nährstoffe/Denaturierung, Flugprinzipien.",
-                       "Die Präsentationen bilden den krönenden Abschluss des ersten Naturwissenschaften-Schuljahres."]),
       ]),
 ]
 
@@ -792,7 +578,7 @@ def build_index():
     <div class="fkey fk5">🧪</div>
   </div>
   <div class="wrap">
-    <span class="hero-eyebrow"><span class="blink"></span> Naturwissenschaften · Klasse 5</span>
+    <span class="hero-eyebrow"><span class="blink"></span> Naturwissenschaften · Klasse 5 und 6</span>
     <h1 class="hero-title">Entdecke die <span class="pop">Natur</span> — <span class="pop2">forschen</span>, <span class="pop3">staunen</span>, verstehen</h1>
     <p class="hero-lead">
       Ein Schuljahr, drei große Fragen: Warum <b>schwimmen</b> manche Dinge und andere <b>sinken</b>? Was steckt wirklich in unseren <b>Lebensmitteln</b>? Und wie schafft es etwas, zu <b>fliegen</b>? Du experimentierst, misst, staunst — und baust am Ende jeder Reihe dein eigenes Präsentationsprojekt. Diese Seite ist deine <b>Forschungs-Landkarte</b> für das ganze Jahr.
@@ -828,39 +614,35 @@ def build_index():
     <div class="legend">
       <span class="lg-title">// was bedeuten die Kürzel?</span>
       <span class="lg-item"><span class="lp-badge lernpfad" style="background:#2e9e5b">Lernpfad</span> reguläre Stunde</span>
-      <span class="lg-item"><span class="lp-badge projekt" style="background:#2f8fe0">Projekt</span> Präsentationsprojekt</span>
       <span class="lg-item">🔒 Lösung gesperrt · 🔓 freigeschaltet</span>
-      <span class="lg-item"><span class="tag neu">neu</span> neue Methode in diesem Kurs</span>
     </div>
   </div>
 </section>
 '''
     lp_by_unit = [len(u["lps"]) for u in UNITS]
-    selector = '''
+    unit_span = []
+    for u in UNITS:
+        d1, d2 = CAL[u["lps"][0]["sjw"]][0], CAL[u["lps"][-1]["sjw"]][1]
+        unit_span.append("%s – %s" % (dm(d1), de(d2)))
+    tiles = ""
+    for i, u in enumerate(UNITS):
+        tiles += (
+            '      <button class="sem-tile t%d%s" data-sem="u%d">\n'
+            '        <div class="st-id">REIHE %s</div>\n'
+            '        <div class="st-title">%s</div>\n'
+            '        <div class="st-meta"><span>%d Sitzungen</span><span>%s</span></div>\n'
+            '      </button>\n'
+        ) % (i + 1, " active" if i == 0 else "", i, u["num"], esc(u["title"]), lp_by_unit[i], unit_span[i])
+    selector = ('''
 <section class="selector">
   <div class="wrap">
     <h2>Wähle deine Reihe</h2>
-    <p class="sub">// drei große Fragen · ein Schuljahr · {tot} Lernpfade</p>
+    <p class="sub">// drei große Fragen · {tot} feste Lernpfade</p>
     <div class="sem-grid">
-      <button class="sem-tile t1 active" data-sem="u0">
-        <div class="st-id">REIHE 00</div>
-        <div class="st-title">Schwimmen und Sinken</div>
-        <div class="st-meta"><span>{n0} Sitzungen</span><span>Aug – Dez 2026</span></div>
-      </button>
-      <button class="sem-tile t2" data-sem="u1">
-        <div class="st-id">REIHE 01</div>
-        <div class="st-title">Lebensmittel</div>
-        <div class="st-meta"><span>{n1} Sitzungen</span><span>Jan – Mär 2027</span></div>
-      </button>
-      <button class="sem-tile t3" data-sem="u2">
-        <div class="st-id">REIHE 02</div>
-        <div class="st-title">Fliegen</div>
-        <div class="st-meta"><span>{n2} Sitzungen</span><span>Apr – Jul 2027</span></div>
-      </button>
-    </div>
+''' + tiles + '''    </div>
   </div>
 </section>
-'''.replace("{tot}", str(TOTAL_LP)).replace("{n0}", str(lp_by_unit[0])).replace("{n1}", str(lp_by_unit[1])).replace("{n2}", str(lp_by_unit[2]))
+''').replace("{tot}", str(TOTAL_LP))
 
     sections = ""
     for i, u in enumerate(UNITS):
@@ -875,11 +657,26 @@ def build_index():
             (" active" if i == 0 else ""), i, u["num"], esc(u["title"]),
             len(lps), de(d1), de(d2), render_unit(u))
 
+    classroom = '''
+<section class="section classroom">
+  <div class="wrap">
+    <h2 style="text-align:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:0.4rem;">Material im Google Classroom</h2>
+    <p class="sub" style="text-align:center;">// Aufgaben, Dateien &amp; Ankündigungen zu deinem Kurs</p>
+    <div class="classroom-grid">
+      <a class="classroom-tile" href="https://classroom.google.com/u/0/c/NzEwNzcyMTk1NTQ2" target="_blank" rel="noopener">
+        <span class="ct-id">NATURWISSENSCHAFTEN</span>
+        <span class="ct-title">Zum Google Classroom <span class="ex">↗</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+'''
+
     footer = '''
 <footer>
   <div class="foot-inner">
     <div>
-      <b class="h">NATURWISSENSCHAFTEN · KLASSE 5</b><br>
+      <b class="h">NATURWISSENSCHAFTEN · KLASSE 5 UND 6</b><br>
       Schuljahr 2026/27 · Berlin · 75 Minuten pro Woche
     </div>
     <div>
@@ -888,7 +685,7 @@ def build_index():
     </div>
     <div>
       Aufbau:<br>
-      {tot} Lernpfade · 3 Reihen · Übersicht + Übungs-Archiv<br>
+      {tot} feste Lernpfade · 3 Reihen · Übersicht + Übungs-Archiv<br>
       Lösungen mit zeitlicher Freischaltung
     </div>
   </div>
@@ -898,10 +695,11 @@ def build_index():
     html_doc = (
         '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="UTF-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-        '<title>Naturwissenschaften · Klasse 5 — Kursübersicht 2026/27</title>\n'
+        '<title>Naturwissenschaften · Klasse 5 und 6 — Kursübersicht 2026/27</title>\n'
         + FONTS + '\n<style>\n' + THEME_CSS + '\n</style>\n</head>\n<body>\n'
         + hero + why + guide + selector
         + sections
+        + classroom
         + footer
         + '\n<script>\n' + THEME_JS + '\n</script>\n</body>\n</html>\n'
     )
@@ -1006,7 +804,7 @@ def build_lp_page(u, lp):
     doc = (
         '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="UTF-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-        '<title>LP %02d · %s — Naturwissenschaften Klasse 5</title>\n' % (lp["no"], esc(lp["title"]))
+        '<title>LP %02d · %s — Naturwissenschaften Klasse 5 und 6</title>\n' % (lp["no"], esc(lp["title"]))
         + FONTS + '\n<style>\n' + THEME_CSS + '\n</style>\n</head>\n'
         '<body style="%s">\n' % style
         + '<div class="lp-page">\n'

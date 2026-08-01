@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP 32 · Vibe-Coding: eigene Flug-Idee programmieren — Naturwissenschaften Klasse 5</title>
+<title>LP 13 · Flugprinzipien — Naturwissenschaften Klasse 5 und 6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -300,18 +314,18 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <div class="lp-page">
   <a class="back" href="../../index.html#u2-content">← Zurück zur Kursübersicht</a>
   <div class="badges">
-    <span class="b-sjw">SJW 32</span><span class="b-unit">Reihe 02 · Fliegen</span>
+    <span class="b-sjw">SJW 13</span><span class="b-unit">Reihe 02 · Fliegen</span>
   </div>
   <div class="lp-hero">
-    <div class="hero-row"><div class="keycap">32</div><h1>Vibe-Coding: eigene Flug-Idee programmieren</h1></div>
-    <p class="goal"><b>Das lernst du:</b> Du beschreibst einer KI in eigenen Worten eine kleine Flug-Simulation oder Flug-Animation und lässt sie gemeinsam mit dir Schritt für Schritt entstehen (Vibe-Coding).</p>
-    <p class="rlp"><span class="tag">Programmieren</span><span class="tag neu">neu · Vibe-Coding</span></p>
+    <div class="hero-row"><div class="keycap">13</div><h1>Flugprinzipien</h1></div>
+    <p class="goal"><b>Das lernst du:</b> Du lernst mit dem Bernoulli-Prinzip den zweiten großen Auftriebs-Mechanismus kennen: schnell strömende Luft erzeugt Unterdruck.</p>
+    <p class="rlp"><span class="tag">Experimentieren</span><span class="tag">Bernoulli-Prinzip</span></p>
   </div>
-  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Formuliere eine klare Idee für eine kleine interaktive Seite zum Thema Fliegen (z. B. Papierflieger-Simulator, Ballon-Steig-Animation).</li><li>Beschreibe deine Idee in präzisen, kleinen Schritten und lass jeden Schritt einzeln umsetzen, bevor du weitermachst.</li><li>Teste deine Seite nach jedem Schritt sofort im Browser und beschreibe, was noch nicht passt.</li></ul></section>
-  <section class="lp-sec"><h2><span class="dot"></span>Werkzeuge</h2><div class="tool-list"><a class="tool" href="https://jsfiddle.net/" target="_blank" rel="noopener">jsfiddle.net <span class="ex">↗</span></a></div></section>
-  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Baue eine kleine Interaktion ein (z. B. ein Knopf „Pusten“, der ein Objekt auf dem Bildschirm nach oben steigen lässt).</div></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Baue den klassischen Papierstreifen- oder Tischtennisball-Versuch zum Bernoulli-Effekt auf und beobachte den Effekt.</li><li>Erkläre am Modell eines Flügels, wo die Luft schneller strömt und wo dadurch Unter- bzw. Überdruck entsteht.</li><li>Recherchiere kurz, wer Daniel Bernoulli war und wofür er bekannt ist.</li></ul></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Wissens-Check</h2><div class="qz-wrap" data-qz><div class="qz-progress"><span class="qz-count">0 / 6 richtig</span><span class="qz-bar"><span class="qz-fill"></span></span></div><div class="qz-item"><div class="qz-text"><span class="qn">1.</span>Nenne das Auftriebsprinzip der Teebeutelrakete aus LP12.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Rückstoßprinzip (Newton'sches Prinzip: Actio = Reactio)</button><button class="qz-opt" data-hint="Das beschreibt eher den Bimsstein, nicht das mittige Anzünden.">Statischer Auftrieb (Archimedisches Prinzip)</button><button class="qz-opt" data-hint="Das mittige Anzünden wirkt wie ein Antrieb, nicht wie eine Tragfläche.">Dynamischer Auftrieb (Bernoulli-Prinzip)</button><button class="qz-opt" data-hint="Damit hat ein brennender Teebeutel nichts zu tun.">Elektromagnetische Levitation</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — das Rückstoßprinzip.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">2.</span>Wo strömt die Luft an einer Tragfläche typischerweise am schnellsten?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">über der gewölbten Oberseite</button><button class="qz-opt" data-hint="Dort strömt die Luft langsamer, das erzeugt den Überdruck.">unter der flachen Unterseite</button><button class="qz-opt" data-hint="Genau der Geschwindigkeitsunterschied erzeugt den Auftrieb.">an beiden Seiten gleich schnell</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — über der gewölbten Oberseite.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">3.</span>Wo entsteht an der Tragfläche der Unterdruck?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">an der Oberseite, wo die Luft schneller strömt</button><button class="qz-opt" data-hint="Langsamere Strömung erzeugt Überdruck, nicht Unterdruck.">an der Unterseite, wo die Luft langsamer strömt</button><button class="qz-opt" data-hint="Genau der Unterdruck erzeugt den Auftrieb nach oben.">gar kein Unterdruck vorhanden</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — dort, wo die Luft am schnellsten strömt (Oberseite).</div></div><div class="qz-item"><div class="qz-text"><span class="qn">4.</span>Hat die Fläche des Flügels (bzw. Balls) Auswirkung auf den Bernoulli-Effekt?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Ja, die Fläche hat Auswirkung auf den Bernoulli-Effekt.</button><button class="qz-opt" data-hint="Eine größere Fläche bedeutet mehr Angriffsfläche für den Druckunterschied.">Nein, die Fläche hat keinen Einfluss.</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — ja, eine größere Fläche verstärkt die Auftriebswirkung.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">5.</span>Was war Daniel Bernoulli?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Mathematiker und Physiker</button><button class="qz-opt" data-hint="Er war kein Ökonom.">Ökonom und Astronom</button><button class="qz-opt" data-hint="Er war kein Biologe.">Biologe und Astronom</button><button class="qz-opt" data-hint="Astronomie war nicht sein Hauptfeld.">nur Astronom</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Mathematiker und Physiker.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">6.</span>Welches Flugprinzip nutzt ein Vogel hauptsächlich beim Gleitflug (ohne Flügelschlag)?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Bernoulli-Prinzip</button><button class="qz-opt" data-hint="Ohne Flügelschlag entsteht kein Rückstoß.">Rückstoßprinzip</button><button class="qz-opt" data-hint="Der Vogel ist dichter als Luft — er braucht dynamischen, nicht statischen Auftrieb.">statischer Auftrieb</button><button class="qz-opt" data-hint="Damit hat Vogelflug nichts zu tun.">elektromagnetische Levitation</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — das Bernoulli-Prinzip, wie bei einer Flugzeug-Tragfläche.</div></div><div class="qz-solved">✔ Stark — Wissens-Check komplett gelöst!</div></div></section>
+  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Finde heraus, ob die Flügel- bzw. Ballfläche einen Einfluss auf die Stärke des Bernoulli-Effekts hat, und begründe mit einem eigenen Mini-Versuch.</div></section>
   <section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an <b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>
-  <section class="sol" id="loesung" data-unlock="2027-05-28"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Vibe-Coding bedeutet: präzise, kleine Anweisungen formulieren, jeden Schritt sofort testen und bei Bedarf präziser nachfragen — genau wie Profilkurs-Schüler:innen es später in Klasse 9 im Detail lernen.</li><li>Auch ohne klassische Programmierkenntnisse lässt sich so eine kleine funktionierende Idee umsetzen.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
+  <section class="sol" id="loesung" data-unlock="2026-12-11"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Bernoulli-Prinzip: Strömt Luft schneller, sinkt der Druck an dieser Stelle (schnelle Strömung = Unterdruck).</li><li>An einer Tragfläche strömt die Luft oben (gewölbte Seite) schneller als unten — der Druckunterschied drückt den Flügel nach oben.</li><li>Daniel Bernoulli (1700–1782): Schweizer Mathematiker und Physiker, formulierte das nach ihm benannte Strömungsprinzip.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
   <a class="back" href="../../index.html#u2-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
 </div>
 <script>

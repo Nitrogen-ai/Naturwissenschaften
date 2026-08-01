@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP 36 · Präsentationsprojekt: Präsentationstag — Naturwissenschaften Klasse 5</title>
+<title>LP 08 · Interessantes zu Fetten — Naturwissenschaften Klasse 5 und 6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -296,22 +310,23 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 
 </style>
 </head>
-<body style="--key:#8a5cf0;--edge:#6a3fcf;--tint:rgba(138,92,240,0.10);--ktext:#fff;">
+<body style="--key:#ff8a3d;--edge:#d96a1f;--tint:rgba(255,138,61,0.10);--ktext:#fff;">
 <div class="lp-page">
-  <a class="back" href="../../index.html#u2-content">← Zurück zur Kursübersicht</a>
+  <a class="back" href="../../index.html#u1-content">← Zurück zur Kursübersicht</a>
   <div class="badges">
-    <span class="b-sjw">SJW 36</span><span class="b-unit">Reihe 02 · Fliegen</span>
+    <span class="b-sjw">SJW 8</span><span class="b-unit">Reihe 01 · Lebensmittel</span>
   </div>
   <div class="lp-hero">
-    <div class="hero-row"><div class="keycap">36</div><h1>Präsentationsprojekt: Präsentationstag</h1></div>
-    <p class="goal"><b>Das lernst du:</b> Du präsentierst dein Experiment zum Thema Fliegen vor dem Kurs, blickst auf das ganze Schuljahr zurück und gibst deinen Mitschüler:innen faires Feedback.</p>
-    <p class="rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Projekt</span></p>
+    <div class="hero-row"><div class="keycap">08</div><h1>Interessantes zu Fetten</h1></div>
+    <p class="goal"><b>Das lernst du:</b> Du unterscheidest gesunde von weniger gesunden Fetten und lernst eine chemische Nachweisprobe für Fette kennen.</p>
+    <p class="rlp"><span class="tag">Ernährung</span><span class="tag">Nachweisverfahren</span></p>
   </div>
-  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Führt euer Experiment vor dem Kurs vor und erklärt das dahinterliegende Flugprinzip verständlich.</li><li>Beantwortet Verständnisfragen aus dem Kurs.</li><li>Blickt gemeinsam zurück: Welches der drei großen Themen (Schwimmen und Sinken, Lebensmittel, Fliegen) hat euch am meisten überrascht?</li></ul></section>
-  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Schreibe dir selbst eine kurze Notiz: Was hast du in diesem Schuljahr über das Forschen selbst gelernt — nicht nur über die Inhalte?</div></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Ordne Fette und Öle korrekt als Makronährstoff ein und nenne Beispiele aus dem Alltag.</li><li>Führe die Fettfleckprobe an verschiedenen Lebensmittelproben durch und notiere, welche Proben Fett enthalten.</li><li>Vergleiche einen fetthaltigen Snack (z. B. Kartoffelchips, Linsenchips, Nüsse) nach Gesundheitswert.</li></ul></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Wissens-Check</h2><div class="qz-wrap" data-qz><div class="qz-progress"><span class="qz-count">0 / 5 richtig</span><span class="qz-bar"><span class="qz-fill"></span></span></div><div class="qz-item"><div class="qz-text"><span class="qn">1.</span>Ordne Fette und Öle dem passenden Begriff zu.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Makronährstoff</button><button class="qz-opt" data-hint="Ballaststoffe sind unverdauliche Pflanzenfasern.">Ballaststoff</button><button class="qz-opt" data-hint="Proteine sind ein eigener Makronährstoff.">Proteine</button><button class="qz-opt" data-hint="Mikronährstoffe liefern kaum Energie — Fett dagegen sehr viel.">Mikronährstoff</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Fette und Öle sind Makronährstoffe.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">2.</span>Benenne die Nachweisprobe für Lipide (Fette, Öle).</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Fettfleckprobe</button><button class="qz-opt" data-hint="Das ist kein anerkannter Fachbegriff.">Öltröpfchenprobe</button><button class="qz-opt" data-hint="Reinigung ist kein Nachweisverfahren.">Fettreinigungsprobe</button><button class="qz-opt" data-hint="Schmelzen zeigt keinen sicheren Fettnachweis.">Fettschmelzprobe</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — die Fettfleckprobe.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">3.</span>Wähle den gesündesten, fetthaltigen Snack aus.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Nüsse</button><button class="qz-opt" data-hint="Chips enthalten meist viel gesättigtes Fett und Salz.">Kartoffelchips</button><button class="qz-opt" data-hint="Auch verarbeitete Chips sind meist stark gesalzen und frittiert.">Linsenchips</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — ungesalzene Nüsse liefern wertvolle ungesättigte Fettsäuren.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">4.</span>Welche Schutzschicht der Nervenzellen profitiert besonders von gesunden Fetten (Omega-3)?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Myelin</button><button class="qz-opt" data-hint="Dendriten empfangen Signale, sie sind keine Fettschicht.">Dendriten</button><button class="qz-opt" data-hint="Das Soma ist der Zellkörper, keine Fettschicht.">Soma</button><button class="qz-opt" data-hint="Der Zellkern steuert die Zelle, ist aber keine Fettschicht.">Zellkern</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — das Myelin, die isolierende Schutzschicht der Nervenbahnen.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">5.</span>Warum braucht der Körper trotzdem Fette in der Ernährung?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Sie liefern Energie, polstern Organe und transportieren fettlösliche Vitamine (A, D, E, K).</button><button class="qz-opt" data-hint="Fette sind lebensnotwendig — auf sie ganz zu verzichten wäre ungesund.">Sie werden im Körper überhaupt nicht benötigt.</button><button class="qz-opt" data-hint="Fette erfüllen wichtige Körperfunktionen, nicht nur Geschmack.">Sie dienen nur dem Geschmack, haben aber keine Funktion.</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Fette liefern Energie, schützen Organe und transportieren fettlösliche Vitamine.</div></div><div class="qz-solved">✔ Stark — Wissens-Check komplett gelöst!</div></div></section>
+  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Recherchiere, warum Omega-3-Fettsäuren besonders für das Gehirn wichtig sind (Stichwort: Myelin-Schutzschicht der Nervenzellen).</div></section>
   <section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an <b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>
-  <section class="sol" id="loesung" data-unlock="2027-06-25"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Am Ende des Schuljahres sollten alle drei großen Prinzipien sicher erklärt werden können: Dichte/Auftrieb, Nährstoffe/Denaturierung, Flugprinzipien.</li><li>Die Präsentationen bilden den krönenden Abschluss des ersten Naturwissenschaften-Schuljahres.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
-  <a class="back" href="../../index.html#u2-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
+  <section class="sol" id="loesung" data-unlock="2026-11-06"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Fettfleckprobe: Ein durchscheinender, bleibender Fleck auf Papier zeigt Fett an.</li><li>Ungesättigte Fettsäuren (z. B. in Nüssen, Fisch, Pflanzenölen) gelten als besonders gesundheitsförderlich, u. a. für Herz und Gehirn.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
+  <a class="back" href="../../index.html#u1-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
 </div>
 <script>
 /* ============================================================

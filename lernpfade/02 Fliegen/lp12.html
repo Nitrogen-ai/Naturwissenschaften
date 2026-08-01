@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP 34 · Kurztest: Fliegen — Naturwissenschaften Klasse 5</title>
+<title>LP 12 · Schwimmende Steine und fliegende Teebeutel — Naturwissenschaften Klasse 5 und 6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -300,17 +314,18 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <div class="lp-page">
   <a class="back" href="../../index.html#u2-content">← Zurück zur Kursübersicht</a>
   <div class="badges">
-    <span class="b-sjw">SJW 34</span><span class="b-unit">Reihe 02 · Fliegen</span>
+    <span class="b-sjw">SJW 12</span><span class="b-unit">Reihe 02 · Fliegen</span>
   </div>
   <div class="lp-hero">
-    <div class="hero-row"><div class="keycap">34</div><h1>Kurztest: Fliegen</h1></div>
-    <p class="goal"><b>Das lernst du:</b> Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Flugprinzipien der Reihe „Fliegen“ beherrschst.</p>
-    <p class="rlp"><span class="tag">Lernkontrolle</span></p>
+    <div class="hero-row"><div class="keycap">12</div><h1>Schwimmende Steine und fliegende Teebeutel</h1></div>
+    <p class="goal"><b>Das lernst du:</b> Du entdeckst mit zwei verblüffenden Experimenten (schwimmender Bimsstein, fliegender Teebeutel), dass Auftrieb ein Prinzip ist, das sowohl im Wasser als auch in der Luft gilt.</p>
+    <p class="rlp"><span class="tag">Experimentieren</span><span class="tag">Auftrieb</span></p>
   </div>
-  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Bearbeite den Kurztest in Einzelarbeit (ca. 30 Minuten): Flugprinzipien zuordnen, Beispiele erklären, Alltagsphänomene einordnen.</li><li>Kontrolliere am Ende deine Antworten noch einmal auf Vollständigkeit.</li><li>Schätze am Ende selbst ein, wie sicher du dich bei den einzelnen Aufgabenteilen gefühlt hast.</li></ul></section>
-  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.</div></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Teste, ob ein Bimsstein in Wasser schwimmt oder sinkt, und erkläre es mit seiner extrem geringen Dichte (viele Luftbläschen).</li><li>Baue eine Teebeutel-Rakete: Entleere einen Teebeutel, stelle ihn aufrecht hin und zünde ihn oben mittig an.</li><li>Verallgemeinere: Ein Körper erfährt Auftrieb, wenn seine Dichte geringer ist als die seines umgebenden Stoffs.</li></ul></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Wissens-Check</h2><div class="qz-wrap" data-qz><div class="qz-progress"><span class="qz-count">0 / 5 richtig</span><span class="qz-bar"><span class="qz-fill"></span></span></div><div class="qz-item"><div class="qz-text"><span class="qn">1.</span>Verallgemeinere: Ein Körper erfährt einen Auftrieb, wenn seine Dichte … ist als sein umgebender Stoff.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">geringer</button><button class="qz-opt" data-hint="Eine höhere Dichte als das Umgebende führt zum Sinken, nicht zum Auftrieb.">höher</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — geringer.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">2.</span>Ordne die Dichte des Salzwassers im Vergleich zur Dichte eines Bimssteins zu.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">ρ (Salzwasser) &gt; ρ (Bimsstein)</button><button class="qz-opt" data-hint="Bimsstein schwimmt gerade deshalb, weil er die geringere Dichte hat.">ρ (Salzwasser) &lt; ρ (Bimsstein)</button><button class="qz-opt" data-hint="Bei gleicher Dichte würde der Stein weder schwimmen noch sinken, sondern schweben.">ρ (Salzwasser) = ρ (Bimsstein)</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Bimsstein ist wegen seiner Luftbläschen leichter als Salzwasser.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">3.</span>Der fliegende Teebeutel nutzt dasselbe Flugprinzip wie …</div><div class="qz-opts"><button class="qz-opt" data-correct="true">ein Heißluftballon</button><button class="qz-opt" data-hint="Flugzeuge nutzen den Bernoulli-Effekt an den Tragflächen, nicht heiße Luft.">ein Flugzeug</button><button class="qz-opt" data-hint="Helikopter erzeugen Auftrieb durch rotierende Rotorblätter.">ein Helikopter</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — der Heißluftballon.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">4.</span>Ordne die Dichte der heißen Luft im Teebeutel (1) im Vergleich zur kalten, umgebenden Luft (2) zu.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">ρ (2) &gt; ρ (1)</button><button class="qz-opt" data-hint="Warme Luft dehnt sich aus und wird dadurch leichter — nicht schwerer.">ρ (1) &gt; ρ (2)</button><button class="qz-opt" data-hint="Bei gleicher Dichte gäbe es keinen Auftrieb.">ρ (1) = ρ (2)</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — die kalte Umgebungsluft ist dichter, deshalb steigt die heiße Luft auf.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">5.</span>Warum fliegt der Teebeutel höher und schneller, wenn er mittig angezündet wird?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Er funktioniert dann wie ein Raketenantrieb (Rückstoßprinzip).</button><button class="qz-opt" data-hint="Nicht die Hitzemenge, sondern die Rückstoß-Wirkung des mittigen Abbrennens ist entscheidend.">Es ist einfach mehr Hitze vorhanden.</button><button class="qz-opt" data-hint="Es steckt ein konkretes physikalisches Prinzip dahinter, kein Zufall.">Er brennt dadurch nur schneller ab, ohne physikalischen Grund.</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — er brennt von innen nach oben durch und wirkt dabei wie ein Raketenantrieb.</div></div><div class="qz-solved">✔ Stark — Wissens-Check komplett gelöst!</div></div></section>
+  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Erkläre, warum der Teebeutel höher und schneller fliegt, wenn er genau in der Mitte angezündet wird, statt am Rand.</div></section>
   <section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an <b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>
-  <section class="sol" id="loesung" data-unlock="2027-06-11"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Der Test wird von der Lehrkraft korrigiert und in der folgenden Stunde besprochen.</li><li>Nutze deine Selbsteinschätzung, um gezielt die Themen zu wiederholen, bei denen du unsicher warst.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
+  <section class="sol" id="loesung" data-unlock="2026-12-04"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Bimsstein: extrem viele eingeschlossene Luftbläschen senken seine Dichte unter die von Wasser — er schwimmt, obwohl er aus „Stein“ besteht.</li><li>Teebeutel-Rakete: heiße Luft im Inneren ist weniger dicht als die kalte Umgebungsluft (statischer Auftrieb); mittig angezündet entsteht zusätzlich ein Rückstoß-Effekt, der ihn höher fliegen lässt.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
   <a class="back" href="../../index.html#u2-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
 </div>
 <script>

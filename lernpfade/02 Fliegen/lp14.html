@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP 07 · Bananen-Tattoos — Dichte im Alltag — Naturwissenschaften Klasse 5</title>
+<title>LP 14 · Flugexperimente — Naturwissenschaften Klasse 5 und 6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -296,22 +310,23 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 
 </style>
 </head>
-<body style="--key:#2f8fe0;--edge:#1f6fb8;--tint:rgba(47,143,224,0.10);--ktext:#fff;">
+<body style="--key:#8a5cf0;--edge:#6a3fcf;--tint:rgba(138,92,240,0.10);--ktext:#fff;">
 <div class="lp-page">
-  <a class="back" href="../../index.html#u0-content">← Zurück zur Kursübersicht</a>
+  <a class="back" href="../../index.html#u2-content">← Zurück zur Kursübersicht</a>
   <div class="badges">
-    <span class="b-sjw">SJW 7</span><span class="b-unit">Reihe 00 · Schwimmen und Sinken</span>
+    <span class="b-sjw">SJW 14</span><span class="b-unit">Reihe 02 · Fliegen</span>
   </div>
   <div class="lp-hero">
-    <div class="hero-row"><div class="keycap">07</div><h1>Bananen-Tattoos — Dichte im Alltag</h1></div>
-    <p class="goal"><b>Das lernst du:</b> Du überträgst dein Dichte-Wissen auf ein alltägliches Phänomen: Warum wird eine mit einem Zahnstocher „geritzte“ Banane an genau dieser Stelle braun?</p>
-    <p class="rlp"><span class="tag">Alltagsphänomen</span><span class="tag">Experimentieren</span></p>
+    <div class="hero-row"><div class="keycap">14</div><h1>Flugexperimente</h1></div>
+    <p class="goal"><b>Das lernst du:</b> Du baust und testest eigene Flugobjekte (Papierflieger, Fallschirm, Rotor) und wertest ihre Flugleistung systematisch aus.</p>
+    <p class="rlp"><span class="tag">Experimentieren</span><span class="tag">Werkstatt</span></p>
   </div>
-  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Ritze mit einem stumpfen Gegenstand ein einfaches Muster oder Wort in eine unreife Bananenschale.</li><li>Beobachte über die nächsten Stunden, wie sich die geritzte Stelle im Vergleich zur restlichen Schale verändert.</li><li>Erkläre, dass an der beschädigten Stelle mehr Luft (Sauerstoff) an das Fruchtfleisch gelangt und dort schneller ein Bräunungsprozess abläuft.</li></ul></section>
-  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Vergleiche die Bräunungsgeschwindigkeit bei einer angeritzten und einer nicht angeritzten Stelle mit der Stoppuhr aus LP00 über mehrere Tage.</div></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Baue mindestens zwei unterschiedliche Papierflieger-Modelle und miss ihre Flugweite über je drei Würfe.</li><li>Baue einen Mini-Fallschirm aus Papier/Folie und Faden und miss seine Fallzeit aus konstanter Höhe.</li><li>Stelle eine begründete Vermutung auf, welches physikalische Prinzip (Bernoulli oder Luftwiderstand/Rückstoß) bei welchem deiner Modelle überwiegt.</li></ul></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Wissens-Check</h2><div class="qz-wrap" data-qz><div class="qz-progress"><span class="qz-count">0 / 4 richtig</span><span class="qz-bar"><span class="qz-fill"></span></span></div><div class="qz-item"><div class="qz-text"><span class="qn">1.</span>Warum ist es wichtig, bei einem Flugversuch mehrfach zu werfen und den Mittelwert zu bilden?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Weil einzelne Würfe zufällig streuen und der Mittelwert genauer ist.</button><button class="qz-opt" data-hint="Genau das Gegenteil ist der Fall — einzelne Würfe schwanken.">Weil ein einzelner Wurf immer exakt das wahre Ergebnis zeigt.</button><button class="qz-opt" data-hint="Mehrfaches Werfen verändert nicht die Flugweite selbst, nur die Messgenauigkeit.">Weil mehr Würfe den Flieger automatisch weiter fliegen lassen.</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — einzelne Würfe streuen zufällig, der Mittelwert ist verlässlicher.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">2.</span>Was verlangsamt vor allem den Fall eines Papier-Fallschirms?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">der Luftwiderstand der großen Fläche</button><button class="qz-opt" data-hint="Ein Fallschirm hat keine typische Flügelform mit unterschiedlicher Strömungsgeschwindigkeit.">der Bernoulli-Effekt</button><button class="qz-opt" data-hint="Der Fallschirm stößt nichts aus, wie es bei einer Rakete der Fall wäre.">das Rückstoßprinzip</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — der Luftwiderstand der großen, gespannten Fläche.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">3.</span>Welche Veränderung verlängert typischerweise die Flugweite eines Papierfliegers?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">ein gut austariertes Nasengewicht</button><button class="qz-opt" data-hint="Ein schweres Heck lässt den Flieger meist nach hinten kippen.">ein möglichst schweres Heck</button><button class="qz-opt" data-hint="Zu kleine Flächen liefern zu wenig Auftrieb.">möglichst kleine Flügelflächen</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — ein passend austariertes, nicht zu leichtes Nasengewicht.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">4.</span>Was ist eine Forschungsfrage, die zu einem Flugexperiment passt?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Wie verändert sich die Flugweite, wenn ich die Flügelfläche vergrößere?</button><button class="qz-opt" data-hint="Das ist keine messbare, naturwissenschaftliche Frage.">Welcher Papierflieger sieht am schönsten aus?</button><button class="qz-opt" data-hint="Das hat nichts mit dem Experiment zu tun.">Fliegt heute die Sonne?</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — eine klare, überprüfbare Frage zu genau einer veränderten Eigenschaft.</div></div><div class="qz-solved">✔ Stark — Wissens-Check komplett gelöst!</div></div></section>
+  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Verändere gezielt nur ein Merkmal deines besten Papierfliegers (z. B. Flügelfläche oder Nasengewicht) und miss, ob sich die Flugweite verbessert.</div></section>
   <section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an <b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>
-  <section class="sol" id="loesung" data-unlock="2026-10-16"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Das Ritzen verletzt Zellen der Schale; austretende Enzyme reagieren mit Sauerstoff aus der Luft (enzymatische Bräunung) — dasselbe Prinzip wie bei einem angeschnittenen Apfel.</li><li>Nach 12–24 Stunden ist das „Tattoo“ deutlich braun sichtbar, während die unversehrte Schale noch grün-gelb bleibt.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
-  <a class="back" href="../../index.html#u0-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
+  <section class="sol" id="loesung" data-unlock="2026-12-18"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Papierflieger nutzen überwiegend den Bernoulli-Effekt (Tragflächenform), Fallschirme überwiegend den Luftwiderstand einer großen Fläche.</li><li>Ein faires Experiment verändert immer nur eine Eigenschaft gleichzeitig (z. B. nur die Flügelfläche) und misst mehrfach, um zufällige Schwankungen auszugleichen.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
+  <a class="back" href="../../index.html#u2-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
 </div>
 <script>
 /* ============================================================

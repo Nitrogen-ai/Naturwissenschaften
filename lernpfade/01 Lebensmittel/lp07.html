@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP 22 · Kurztest: Lebensmittel — Naturwissenschaften Klasse 5</title>
+<title>LP 07 · Nahrungsmittelrallye — Naturwissenschaften Klasse 5 und 6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -300,17 +314,18 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <div class="lp-page">
   <a class="back" href="../../index.html#u1-content">← Zurück zur Kursübersicht</a>
   <div class="badges">
-    <span class="b-sjw">SJW 22</span><span class="b-unit">Reihe 01 · Lebensmittel</span>
+    <span class="b-sjw">SJW 7</span><span class="b-unit">Reihe 01 · Lebensmittel</span>
   </div>
   <div class="lp-hero">
-    <div class="hero-row"><div class="keycap">22</div><h1>Kurztest: Lebensmittel</h1></div>
-    <p class="goal"><b>Das lernst du:</b> Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Begriffe und Nachweisverfahren der Reihe „Lebensmittel“ beherrschst.</p>
-    <p class="rlp"><span class="tag">Lernkontrolle</span></p>
+    <div class="hero-row"><div class="keycap">07</div><h1>Nahrungsmittelrallye</h1></div>
+    <p class="goal"><b>Das lernst du:</b> Du lernst die drei Hauptnährstoffe (Fette, Proteine, Kohlenhydrate) und die Mikronährstoffe (Vitamine, Mineralstoffe) kennen und ordnest sie echten Lebensmitteln zu.</p>
+    <p class="rlp"><span class="tag">Ernährung</span></p>
   </div>
-  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Bearbeite den Kurztest in Einzelarbeit (ca. 30 Minuten): Nährstoffe zuordnen, Nachweisverfahren erklären, Alltagsbeispiele einordnen.</li><li>Kontrolliere am Ende deine Antworten noch einmal auf Vollständigkeit.</li><li>Schätze am Ende selbst ein, wie sicher du dich bei den einzelnen Aufgabenteilen gefühlt hast.</li></ul></section>
-  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.</div></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Ordne an Stationen verschiedene Lebensmittel den Hauptnährstoffen zu, die in ihnen überwiegen.</li><li>Unterscheide Makronährstoffe (Fette, Proteine, Kohlenhydrate) von Mikronährstoffen (z. B. Vitamin C, Kalium, Calcium).</li><li>Vergleiche drei Erfrischungsgetränke und bewerte sie nach gesundheitlichen Gesichtspunkten (Zucker, Säure, Zusatzstoffe).</li></ul></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Wissens-Check</h2><div class="qz-wrap" data-qz><div class="qz-progress"><span class="qz-count">0 / 7 richtig</span><span class="qz-bar"><span class="qz-fill"></span></span></div><div class="qz-item"><div class="qz-text"><span class="qn">1.</span>Welcher Begriff gehört NICHT zu den Makronährstoffen (Hauptnährstoffen)?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Ballaststoffe</button><button class="qz-opt" data-hint="Fette sind einer der drei Hauptnährstoffe.">Fette</button><button class="qz-opt" data-hint="Proteine sind einer der drei Hauptnährstoffe.">Eiweiße/Proteine</button><button class="qz-opt" data-hint="Kohlenhydrate sind einer der drei Hauptnährstoffe.">Kohlenhydrate/Zucker</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Ballaststoffe zählen nicht zu den klassischen Makronährstoffen.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">2.</span>Welcher Begriff gehört NICHT zu den Spurennährstoffen (Mikronährstoffen)?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Proteine</button><button class="qz-opt" data-hint="Vitamin C ist ein klassischer Mikronährstoff.">Vitamin C</button><button class="qz-opt" data-hint="Kalium ist ein Mineralstoff (Mikronährstoff).">Kalium</button><button class="qz-opt" data-hint="Calcium ist ein Mineralstoff (Mikronährstoff).">Calcium</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Proteine sind ein Makronährstoff.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">3.</span>Nenne den am meisten enthaltenen Nährstoff in Kürbiskernöl.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Fette</button><button class="qz-opt" data-hint="Öle bestehen überwiegend aus Fett, nicht aus Eiweiß.">Proteine</button><button class="qz-opt" data-hint="Öle enthalten praktisch keine Kohlenhydrate.">Kohlenhydrate</button><button class="qz-opt" data-hint="Ballaststoffe stecken in Pflanzenfasern, nicht in Öl.">Ballaststoffe</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Fette.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">4.</span>Haferflocken und Linsen — welcher Nährstoff ist darin NICHT besonders stark vertreten?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Fette</button><button class="qz-opt" data-hint="Beide sind reich an Kohlenhydraten.">Kohlenhydrate</button><button class="qz-opt" data-hint="Beide sind sehr ballaststoffreich.">Ballaststoffe</button><button class="qz-opt" data-hint="Beide liefern auch nennenswert Eiweiß.">Proteine</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Fette sind hier eher gering vertreten.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">5.</span>In Öl eingelegter Thunfisch — welcher Nährstoff ist darin NICHT besonders stark vertreten?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Kohlenhydrate</button><button class="qz-opt" data-hint="Durch das Öl ist reichlich Fett enthalten.">Fette</button><button class="qz-opt" data-hint="Fisch liefert viel Eiweiß.">Proteine</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Kohlenhydrate stecken kaum in Fisch und Öl.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">6.</span>Welche Aussage über Nährstoffe und Kalorien ist richtig?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Kohlenhydrate und Proteine liefern pro Gramm etwa gleich viele Kalorien.</button><button class="qz-opt" data-hint="Pflanzenöle bestehen fast nur aus Fett.">Proteine sind hauptsächlich in Pflanzenölen enthalten.</button><button class="qz-opt" data-hint="Fett liefert mit ca. 9 kcal/g mehr als doppelt so viel wie Kohlenhydrate.">Fette liefern genauso viele Kalorien pro Gramm wie Kohlenhydrate.</button><button class="qz-opt" data-hint="Ballaststoffe liefern kaum verwertbare Kalorien.">Ballaststoffe enthalten viele Kalorien.</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — beide liefern etwa 4 kcal pro Gramm.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">7.</span>Was ist ein gesundheitlich bedenklicher Aspekt vieler Erfrischungsgetränke?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">säurehaltige Inhaltsstoffe (z. B. Zitronensäure)</button><button class="qz-opt" data-hint="Die Kohlensäure-Bläschen selbst sind kaum bedenklich.">aufsteigendes Kohlenstoffdioxidgas</button><button class="qz-opt" data-hint="Ein hoher Wasseranteil ist eher positiv zu bewerten.">hoher Wasseranteil</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — säurehaltige Inhaltsstoffe greifen den Zahnschmelz an.</div></div><div class="qz-solved">✔ Stark — Wissens-Check komplett gelöst!</div></div></section>
+  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Erstelle eine Woche-Speiseplan-Idee, die alle drei Hauptnährstoffe ausgewogen berücksichtigt.</div></section>
   <section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an <b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>
-  <section class="sol" id="loesung" data-unlock="2027-03-05"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Der Test wird von der Lehrkraft korrigiert und in der folgenden Stunde besprochen.</li><li>Nutze deine Selbsteinschätzung, um gezielt die Themen zu wiederholen, bei denen du unsicher warst.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
+  <section class="sol" id="loesung" data-unlock="2026-10-16"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Makronährstoffe: Fette, Proteine, Kohlenhydrate — liefern Energie (Kalorien).</li><li>Mikronährstoffe: Vitamine, Mineralstoffe — liefern kaum Energie, sind aber lebensnotwendig.</li><li>Fett liefert ca. 9 kcal/g, Kohlenhydrate und Proteine je ca. 4 kcal/g.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
   <a class="back" href="../../index.html#u1-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
 </div>
 <script>

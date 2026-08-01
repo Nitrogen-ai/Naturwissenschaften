@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP 33 · Wiederholung &amp; Quiz-Werkstatt: Fliegen — Naturwissenschaften Klasse 5</title>
+<title>LP 11 · Kohlenhydrate — Naturwissenschaften Klasse 5 und 6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -296,22 +310,23 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 
 </style>
 </head>
-<body style="--key:#8a5cf0;--edge:#6a3fcf;--tint:rgba(138,92,240,0.10);--ktext:#fff;">
+<body style="--key:#ff8a3d;--edge:#d96a1f;--tint:rgba(255,138,61,0.10);--ktext:#fff;">
 <div class="lp-page">
-  <a class="back" href="../../index.html#u2-content">← Zurück zur Kursübersicht</a>
+  <a class="back" href="../../index.html#u1-content">← Zurück zur Kursübersicht</a>
   <div class="badges">
-    <span class="b-sjw">SJW 33</span><span class="b-unit">Reihe 02 · Fliegen</span>
+    <span class="b-sjw">SJW 11</span><span class="b-unit">Reihe 01 · Lebensmittel</span>
   </div>
   <div class="lp-hero">
-    <div class="hero-row"><div class="keycap">33</div><h1>Wiederholung &amp; Quiz-Werkstatt: Fliegen</h1></div>
-    <p class="goal"><b>Das lernst du:</b> Du fasst die wichtigsten Begriffe und Zusammenhänge der Reihe „Fliegen“ zusammen und bereitest dich auf den Kurztest vor.</p>
-    <p class="rlp"><span class="tag">Wiederholung</span></p>
+    <div class="hero-row"><div class="keycap">11</div><h1>Kohlenhydrate</h1></div>
+    <p class="goal"><b>Das lernst du:</b> Du weist mit der Jodprobe Stärke in Lebensmitteln nach und lernst, welche Kohlenhydrate wann sinnvoll sind.</p>
+    <p class="rlp"><span class="tag">Experimentieren</span><span class="tag">Nachweisverfahren</span></p>
   </div>
-  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Erstellt eine gemeinsame Übersicht der drei Flugprinzipien (statischer Auftrieb, Bernoulli-Prinzip, Rückstoßprinzip) mit je einem Beispiel.</li><li>Formuliert gegenseitig eigene Quizfragen zu Teebeutel-Rakete, Tragfläche und Naturbeispielen.</li><li>Klärt in der großen Runde alle noch offenen Fragen aus der gesamten Reihe.</li></ul></section>
-  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Ordne jedem Lernpfad der Reihe „Fliegen“ das jeweils passende Hauptprinzip zu und begründe kurz.</div></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Führe die Jodprobe (Lugol'sche Probe) an verschiedenen Lebensmitteln durch (z. B. Kartoffel, Brot, Traubenzucker).</li><li>Notiere, bei welchen Proben sich eine tiefblaue Färbung zeigt und schließe daraus auf den Stärkegehalt.</li><li>Ordne zu, welche Kohlenhydratquelle direkt vor einem Wettkampf am besten geeignet ist und warum.</li></ul></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Wissens-Check</h2><div class="qz-wrap" data-qz><div class="qz-progress"><span class="qz-count">0 / 4 richtig</span><span class="qz-bar"><span class="qz-fill"></span></span></div><div class="qz-item"><div class="qz-text"><span class="qn">1.</span>Nenne eine geeignete Kohlenhydratquelle direkt vor einem Wettkampf.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Traubenzucker</button><button class="qz-opt" data-hint="Reis ist eine gute Energiequelle, aber zu langsam verdaulich für kurz vor dem Start.">Reis</button><button class="qz-opt" data-hint="Vollkornbrot wirkt eher langfristig, nicht kurzfristig vor dem Start.">Vollkornbrot</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Traubenzucker liefert am schnellsten verfügbare Energie.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">2.</span>Beschreibe das Erkennungsmerkmal bei positivem Verlauf der Jodprobe (Lugol'sche Probe).</div><div class="qz-opts"><button class="qz-opt" data-correct="true">tiefblaue Färbung bei Anwesenheit von Stärke</button><button class="qz-opt" data-hint="Bräunlich ist die Ausgangsfarbe der Jodlösung, nicht das positive Ergebnis.">bräunliche Färbung bei Anwesenheit von Stärke</button><button class="qz-opt" data-hint="Die Jodprobe zeigt spezifisch Stärke an, nicht alle Kohlenhydrate.">tiefblaue Färbung bei Anwesenheit von Kohlenhydraten allgemein</button><button class="qz-opt" data-hint="Das ist weder die richtige Farbe noch der richtige Stoff.">bräunliche Färbung bei Anwesenheit von Kohlenhydraten allgemein</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — eine tiefblaue Färbung zeigt Stärke an.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">3.</span>Bei welchem Naturprodukt verläuft die Jodprobe negativ?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Baumwolle (Zellstoff)</button><button class="qz-opt" data-hint="Kartoffeln sind reich an Stärke und reagieren positiv.">Kartoffel</button><button class="qz-opt" data-hint="Getreide enthält ebenfalls Stärke und reagiert positiv.">Getreide</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Baumwolle (Zellstoff) enthält Zellulose statt Stärke.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">4.</span>Welcher sichtbare Bestandteil bleibt zurück, wenn Haushaltszucker mit konzentrierter Schwefelsäure reagiert?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Kohle</button><button class="qz-opt" data-hint="Haushaltszucker (Saccharose) enthält keine Stärke.">Stärke</button><button class="qz-opt" data-hint="Das Wasser entweicht als Dampf, sichtbar bleibt der schwarze Kohlenstoff.">Hydrat („Wasser“)</button><button class="qz-opt" data-hint="Der Zucker wird bei der Reaktion gerade zersetzt.">Zucker</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Kohle (Kohlenstoff), das „Kohle“ in „Kohlenhydrat“.</div></div><div class="qz-solved">✔ Stark — Wissens-Check komplett gelöst!</div></div></section>
+  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Erhitze etwas Haushaltszucker vorsichtig mit konzentrierter Schwefelsäure (nur als Lehrkraft-Demonstration!) und erkläre, warum dabei ein schwarzer Kohlenstoff-Rückstand entsteht.</div></section>
   <section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an <b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>
-  <section class="sol" id="loesung" data-unlock="2027-06-04"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Drei Flugprinzipien: statischer Auftrieb (Dichteunterschied, z. B. Heißluftballon), dynamischer/Bernoulli-Auftrieb (Tragfläche, Vogelflug), Rückstoßprinzip (Rakete, Teebeutel mittig gezündet).</li><li>Wer alle drei Prinzipien an einem eigenen Beispiel erklären kann, ist gut auf den Kurztest vorbereitet.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
-  <a class="back" href="../../index.html#u2-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
+  <section class="sol" id="loesung" data-unlock="2026-11-27"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Jodprobe: Iod-Kaliumiodid-Lösung färbt sich bei Stärke tiefblau-schwarz, bei reiner Zellulose (z. B. Baumwolle) bleibt die Färbung aus.</li><li>„Kohlenhydrat“ = Kohle + Hydrat: Konzentrierte Schwefelsäure entzieht dem Zucker Wasser und hinterlässt sichtbaren schwarzen Kohlenstoff.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
+  <a class="back" href="../../index.html#u1-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
 </div>
 <script>
 /* ============================================================

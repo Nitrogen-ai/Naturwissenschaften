@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Naturwissenschaften · Klasse 5 — Kursübersicht 2026/27</title>
+<title>Naturwissenschaften · Klasse 5 und 6 — Kursübersicht 2026/27</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -307,7 +321,7 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <div class="fkey fk5">🧪</div>
   </div>
   <div class="wrap">
-    <span class="hero-eyebrow"><span class="blink"></span> Naturwissenschaften · Klasse 5</span>
+    <span class="hero-eyebrow"><span class="blink"></span> Naturwissenschaften · Klasse 5 und 6</span>
     <h1 class="hero-title">Entdecke die <span class="pop">Natur</span> — <span class="pop2">forschen</span>, <span class="pop3">staunen</span>, verstehen</h1>
     <p class="hero-lead">
       Ein Schuljahr, drei große Fragen: Warum <b>schwimmen</b> manche Dinge und andere <b>sinken</b>? Was steckt wirklich in unseren <b>Lebensmitteln</b>? Und wie schafft es etwas, zu <b>fliegen</b>? Du experimentierst, misst, staunst — und baust am Ende jeder Reihe dein eigenes Präsentationsprojekt. Diese Seite ist deine <b>Forschungs-Landkarte</b> für das ganze Jahr.
@@ -341,9 +355,7 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <div class="legend">
       <span class="lg-title">// was bedeuten die Kürzel?</span>
       <span class="lg-item"><span class="lp-badge lernpfad" style="background:#2e9e5b">Lernpfad</span> reguläre Stunde</span>
-      <span class="lg-item"><span class="lp-badge projekt" style="background:#2f8fe0">Projekt</span> Präsentationsprojekt</span>
       <span class="lg-item">🔒 Lösung gesperrt · 🔓 freigeschaltet</span>
-      <span class="lg-item"><span class="tag neu">neu</span> neue Methode in diesem Kurs</span>
     </div>
   </div>
 </section>
@@ -351,22 +363,22 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <section class="selector">
   <div class="wrap">
     <h2>Wähle deine Reihe</h2>
-    <p class="sub">// drei große Fragen · ein Schuljahr · 37 Lernpfade</p>
+    <p class="sub">// drei große Fragen · 15 feste Lernpfade</p>
     <div class="sem-grid">
       <button class="sem-tile t1 active" data-sem="u0">
         <div class="st-id">REIHE 00</div>
         <div class="st-title">Schwimmen und Sinken</div>
-        <div class="st-meta"><span>14 Sitzungen</span><span>Aug – Dez 2026</span></div>
+        <div class="st-meta"><span>7 Sitzungen</span><span>24.08. – 09.10.2026</span></div>
       </button>
       <button class="sem-tile t2" data-sem="u1">
         <div class="st-id">REIHE 01</div>
         <div class="st-title">Lebensmittel</div>
-        <div class="st-meta"><span>11 Sitzungen</span><span>Jan – Mär 2027</span></div>
+        <div class="st-meta"><span>5 Sitzungen</span><span>12.10. – 27.11.2026</span></div>
       </button>
       <button class="sem-tile t3" data-sem="u2">
         <div class="st-id">REIHE 02</div>
         <div class="st-title">Fliegen</div>
-        <div class="st-meta"><span>12 Sitzungen</span><span>Apr – Jul 2027</span></div>
+        <div class="st-meta"><span>3 Sitzungen</span><span>30.11. – 18.12.2026</span></div>
       </button>
     </div>
   </div>
@@ -374,10 +386,10 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <section class="sem-content active" id="u0-content">
   <div class="sem-head">
     <div class="sem-badge">00</div>
-    <div><h2>Schwimmen und Sinken</h2><p class="period">14 Lernpfade · 24.08.2026 – 11.12.2026</p></div>
+    <div><h2>Schwimmen und Sinken</h2><p class="period">7 Lernpfade · 24.08.2026 – 09.10.2026</p></div>
   </div>
 <article class="unit" style="--key:#2f8fe0;--edge:#1f6fb8;--tint:rgba(47,143,224,0.10);--ktext:#fff;">
-  <div class="unit-bar"><span class="unit-chip">00</span><h3>Schwimmen und Sinken</h3><span class="unit-weeks">14 Lernpfade<br>SJW 0–13</span></div>
+  <div class="unit-bar"><span class="unit-chip">00</span><h3>Schwimmen und Sinken</h3><span class="unit-weeks">7 Lernpfade<br>SJW 0–6</span></div>
   <div class="unit-body">
 <article class="lp" data-unlock="2026-08-28">
   <div class="lp-key"><div class="lp-week">SJW 0</div><div class="lp-no">00</div><div class="lp-date">24.08.</div></div>
@@ -385,7 +397,7 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp00.html">Dein Naturwissenschaftlicher Steckbrief <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du lernst sechs wichtige physikalische Größen kennen (Länge, Gewicht, Puls, Fußlänge, Temperatur, Halsumfang) und misst sie an dir selbst mit dem passenden Messgerät.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Finde für deine gemessenen Größen jeweils ein Tier mit einer besonders großen Abweichung — wer im Kurs findet den größten Unterschied zu einem Wal, einem Kolibri oder einer Giraffe?</span></div>
-    <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Messen &amp; Größen</span><span class="tag neu">neu · Steckbrief</span></p>
+    <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Messen &amp; Größen</span></p>
   </div>
 </article>
 <article class="lp" data-unlock="2026-09-04">
@@ -394,7 +406,7 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp01.html">Interaktiver naturwissenschaftlicher Steckbrief <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du baust zu zweit ein Makey-Makey-Poster über ein Tier mit einer besonderen Körpermaß-Rekordleistung und programmierst es in Scratch so, dass es beim Anfassen davon erzählt.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Baut eine vierte, versteckte Kontaktstelle ein, die eine Vergleichsfrage zu eurem eigenen Steckbrief aus LP00 stellt (z. B. „Wie oft passt dein Fuß in die Fußlänge eines Elefanten?“).</span></div>
-    <p class="lp-rlp"><span class="tag">Physical Computing</span><span class="tag">Team &amp; Präsentation</span><span class="tag neu">neu · Makey Makey</span></p>
+    <p class="lp-rlp"><span class="tag">Physical Computing</span><span class="tag">Team &amp; Präsentation</span></p>
   </div>
 </article>
 <article class="lp" data-unlock="2026-09-11">
@@ -442,69 +454,6 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Trennverfahren</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-10-16">
-  <div class="lp-key"><div class="lp-week">SJW 7</div><div class="lp-no">07</div><div class="lp-date">12.10.</div></div>
-  <div class="lp-info" data-selfcheck="lp07">
-    <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp07.html">Bananen-Tattoos — Dichte im Alltag <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du überträgst dein Dichte-Wissen auf ein alltägliches Phänomen: Warum wird eine mit einem Zahnstocher „geritzte“ Banane an genau dieser Stelle braun?</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Vergleiche die Bräunungsgeschwindigkeit bei einer angeritzten und einer nicht angeritzten Stelle mit der Stoppuhr aus LP00 über mehrere Tage.</span></div>
-    <p class="lp-rlp"><span class="tag">Alltagsphänomen</span><span class="tag">Experimentieren</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2026-11-06">
-  <div class="lp-key"><div class="lp-week">SJW 8</div><div class="lp-no">08</div><div class="lp-date">02.11.</div></div>
-  <div class="lp-info" data-selfcheck="lp08">
-    <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp08.html">Dichte an Fallbeispielen — Vertiefung <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du wendest die Dichte-Formel auf verschiedene Fallbeispiele aus dem Alltag an und trainierst den sicheren Umgang mit Einheiten.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Erkläre, warum nur etwa ein Neuntel eines Eisbergs aus dem Wasser ragt — rechne mit den Dichten von Eis (0,92 g/cm³) und Meerwasser (1,03 g/cm³).</span></div>
-    <p class="lp-rlp"><span class="tag">Üben &amp; Vertiefen</span><span class="tag">Dichte</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2026-11-13">
-  <div class="lp-key"><div class="lp-week">SJW 9</div><div class="lp-no">09</div><div class="lp-date">09.11.</div></div>
-  <div class="lp-info" data-selfcheck="lp09">
-    <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp09.html">Weihnachtsbound <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du löst in kleinen Teams eine weihnachtliche Rallye aus Rätseln und Experimenten rund um Schwimmen, Sinken und Dichte.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Erfindet selbst eine zusätzliche Rätsel-Station zum Thema Dichte für den nächsten Jahrgang.</span></div>
-    <p class="lp-rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Wiederholung</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2026-11-20">
-  <div class="lp-key"><div class="lp-week">SJW 10</div><div class="lp-no">10</div><div class="lp-date">16.11.</div></div>
-  <div class="lp-info" data-selfcheck="lp10">
-    <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp10.html">Wiederholung &amp; Quiz-Werkstatt: Schwimmen und Sinken <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du fasst die wichtigsten Begriffe und Zusammenhänge der Reihe zusammen und bereitest dich gezielt auf den Kurztest vor.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Baue aus deinen Mindmap-Begriffen eine kleine Bilderrätsel-Kette (jeder Begriff führt zum nächsten).</span></div>
-    <p class="lp-rlp"><span class="tag">Wiederholung</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2026-11-27">
-  <div class="lp-key"><div class="lp-week">SJW 11</div><div class="lp-no">11</div><div class="lp-date">23.11.</div></div>
-  <div class="lp-info" data-selfcheck="lp11">
-    <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp11.html">Kurztest: Schwimmen und Sinken <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Begriffe und Rechnungen der Reihe „Schwimmen und Sinken“ beherrschst.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.</span></div>
-    <p class="lp-rlp"><span class="tag">Lernkontrolle</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2026-12-04">
-  <div class="lp-key"><div class="lp-week">SJW 12</div><div class="lp-no">12</div><div class="lp-date">30.11.</div></div>
-  <div class="lp-info" data-selfcheck="lp12">
-    <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp12.html">Präsentationsprojekt: Experimente vorbereiten <span class="lp-badge projekt">Projekt</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du planst mit deiner Gruppe ein eigenes Experiment zum Thema Schwimmen und Sinken, das ihr dem Kurs vorstellen wollt.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Überlegt euch eine Verständnisfrage, die ihr dem Kurs nach eurer Präsentation stellen wollt.</span></div>
-    <p class="lp-rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Projekt</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2026-12-11">
-  <div class="lp-key"><div class="lp-week">SJW 13</div><div class="lp-no">13</div><div class="lp-date">07.12.</div></div>
-  <div class="lp-info" data-selfcheck="lp13">
-    <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp13.html">Präsentationsprojekt: Präsentationstag <span class="lp-badge projekt">Projekt</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du präsentierst dein Experiment zum Thema Schwimmen und Sinken vor dem Kurs und gibst deinen Mitschüler:innen faires Feedback.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Vergleicht euer Experiment mit einem Experiment einer anderen Gruppe: Was ist die gemeinsame Dichte-Idee dahinter?</span></div>
-    <p class="lp-rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Projekt</span></p>
-  </div>
-</article>
   </div>
 </article>
 
@@ -512,108 +461,54 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <section class="sem-content" id="u1-content">
   <div class="sem-head">
     <div class="sem-badge">01</div>
-    <div><h2>Lebensmittel</h2><p class="period">11 Lernpfade · 14.12.2026 – 19.03.2027</p></div>
+    <div><h2>Lebensmittel</h2><p class="period">5 Lernpfade · 12.10.2026 – 27.11.2026</p></div>
   </div>
 <article class="unit" style="--key:#ff8a3d;--edge:#d96a1f;--tint:rgba(255,138,61,0.10);--ktext:#fff;">
-  <div class="unit-bar"><span class="unit-chip">01</span><h3>Lebensmittel</h3><span class="unit-weeks">11 Lernpfade<br>SJW 14–24</span></div>
+  <div class="unit-bar"><span class="unit-chip">01</span><h3>Lebensmittel</h3><span class="unit-weeks">5 Lernpfade<br>SJW 7–11</span></div>
   <div class="unit-body">
-<article class="lp" data-unlock="2026-12-18">
-  <div class="lp-key"><div class="lp-week">SJW 14</div><div class="lp-no">14</div><div class="lp-date">14.12.</div></div>
-  <div class="lp-info" data-selfcheck="lp14">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp14.html">Nahrungsmittelrallye <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-10-16">
+  <div class="lp-key"><div class="lp-week">SJW 7</div><div class="lp-no">07</div><div class="lp-date">12.10.</div></div>
+  <div class="lp-info" data-selfcheck="lp07">
+    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp07.html">Nahrungsmittelrallye <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du lernst die drei Hauptnährstoffe (Fette, Proteine, Kohlenhydrate) und die Mikronährstoffe (Vitamine, Mineralstoffe) kennen und ordnest sie echten Lebensmitteln zu.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Erstelle eine Woche-Speiseplan-Idee, die alle drei Hauptnährstoffe ausgewogen berücksichtigt.</span></div>
-    <p class="lp-rlp"><span class="tag">Ernährung</span><span class="tag neu">neu · Nährstoffe</span></p>
+    <p class="lp-rlp"><span class="tag">Ernährung</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2027-01-08">
-  <div class="lp-key"><div class="lp-week">SJW 15</div><div class="lp-no">15</div><div class="lp-date">04.01.</div></div>
-  <div class="lp-info" data-selfcheck="lp15">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp15.html">Interessantes zu Fetten <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-11-06">
+  <div class="lp-key"><div class="lp-week">SJW 8</div><div class="lp-no">08</div><div class="lp-date">02.11.</div></div>
+  <div class="lp-info" data-selfcheck="lp08">
+    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp08.html">Interessantes zu Fetten <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du unterscheidest gesunde von weniger gesunden Fetten und lernst eine chemische Nachweisprobe für Fette kennen.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Recherchiere, warum Omega-3-Fettsäuren besonders für das Gehirn wichtig sind (Stichwort: Myelin-Schutzschicht der Nervenzellen).</span></div>
     <p class="lp-rlp"><span class="tag">Ernährung</span><span class="tag">Nachweisverfahren</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2027-01-15">
-  <div class="lp-key"><div class="lp-week">SJW 16</div><div class="lp-no">16</div><div class="lp-date">11.01.</div></div>
-  <div class="lp-info" data-selfcheck="lp16">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp16.html">Energiehaushalt <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-11-13">
+  <div class="lp-key"><div class="lp-week">SJW 9</div><div class="lp-no">09</div><div class="lp-date">09.11.</div></div>
+  <div class="lp-info" data-selfcheck="lp09">
+    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp09.html">Energiehaushalt <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du berechnest, wie viel Energie in einer Walnuss steckt, und vergleichst sie mit der Energie, die du beim Sport verbrauchst.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Rechne deinen Energiewert einer ganzen Chipstüte hoch und schätze, wie lange du dafür joggen müsstest.</span></div>
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Energie</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2027-01-22">
-  <div class="lp-key"><div class="lp-week">SJW 17</div><div class="lp-no">17</div><div class="lp-date">18.01.</div></div>
-  <div class="lp-info" data-selfcheck="lp17">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp17.html">Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-11-20">
+  <div class="lp-key"><div class="lp-week">SJW 10</div><div class="lp-no">10</div><div class="lp-date">16.11.</div></div>
+  <div class="lp-info" data-selfcheck="lp10">
+    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp10.html">Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du stellst veganes Baiser aus Kichererbsenwasser (Aquafaba) her und erklärst, was beim Schlagen und Erhitzen mit den Proteinen passiert.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Untersuche in der Gruppe ein weiteres Denaturierungsphänomen (z. B. Eiweiß beim Kochen, Milch mit Zitronensaft) und stelle es kurz vor.</span></div>
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Proteine</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2027-01-29">
-  <div class="lp-key"><div class="lp-week">SJW 18</div><div class="lp-no">18</div><div class="lp-date">25.01.</div></div>
-  <div class="lp-info" data-selfcheck="lp18">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp18.html">Kohlenhydrate <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-11-27">
+  <div class="lp-key"><div class="lp-week">SJW 11</div><div class="lp-no">11</div><div class="lp-date">23.11.</div></div>
+  <div class="lp-info" data-selfcheck="lp11">
+    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp11.html">Kohlenhydrate <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du weist mit der Jodprobe Stärke in Lebensmitteln nach und lernst, welche Kohlenhydrate wann sinnvoll sind.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Erhitze etwas Haushaltszucker vorsichtig mit konzentrierter Schwefelsäure (nur als Lehrkraft-Demonstration!) und erkläre, warum dabei ein schwarzer Kohlenstoff-Rückstand entsteht.</span></div>
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Nachweisverfahren</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-02-12">
-  <div class="lp-key"><div class="lp-week">SJW 19</div><div class="lp-no">19</div><div class="lp-date">08.02.</div></div>
-  <div class="lp-info" data-selfcheck="lp19">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp19.html">Geschmackssinn &amp; Erfrischungsgetränke im Test <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du testest verblindet verschiedene Erfrischungsgetränke, ordnest sie nach Beliebtheit und bewertest sie zusätzlich nach Gesundheitswert.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Entwerft ein eigenes, möglichst gesundes Erfrischungsgetränk-Rezept und begründet eure Zutatenwahl.</span></div>
-    <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Sinne</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-02-19">
-  <div class="lp-key"><div class="lp-week">SJW 20</div><div class="lp-no">20</div><div class="lp-date">15.02.</div></div>
-  <div class="lp-info" data-selfcheck="lp20">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp20.html">Nährstoffe-Werkstatt: Ballaststoffe, Vitamine &amp; Co. <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du vertiefst dein Wissen über Mikronährstoffe und Ballaststoffe und erklärst, warum sie trotz kaum vorhandener Kalorien wichtig sind.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Entwerft ein Kurs-Plakat, das alle recherchierten Mikronährstoffe mit Symbol und Lebensmittel-Beispiel zeigt.</span></div>
-    <p class="lp-rlp"><span class="tag">Ernährung</span><span class="tag">Üben &amp; Vertiefen</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-02-26">
-  <div class="lp-key"><div class="lp-week">SJW 21</div><div class="lp-no">21</div><div class="lp-date">22.02.</div></div>
-  <div class="lp-info" data-selfcheck="lp21">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp21.html">Wiederholung &amp; Quiz-Werkstatt: Lebensmittel <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du fasst die wichtigsten Begriffe und Zusammenhänge der Reihe „Lebensmittel“ zusammen und bereitest dich auf den Kurztest vor.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Baue ein kleines Ratespiel: Beschreibe ein Lebensmittel nur über seine Nährstoffe, die anderen raten, welches es ist.</span></div>
-    <p class="lp-rlp"><span class="tag">Wiederholung</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-03-05">
-  <div class="lp-key"><div class="lp-week">SJW 22</div><div class="lp-no">22</div><div class="lp-date">01.03.</div></div>
-  <div class="lp-info" data-selfcheck="lp22">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp22.html">Kurztest: Lebensmittel <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Begriffe und Nachweisverfahren der Reihe „Lebensmittel“ beherrschst.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.</span></div>
-    <p class="lp-rlp"><span class="tag">Lernkontrolle</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-03-12">
-  <div class="lp-key"><div class="lp-week">SJW 23</div><div class="lp-no">23</div><div class="lp-date">08.03.</div></div>
-  <div class="lp-info" data-selfcheck="lp23">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp23.html">Präsentationsprojekt: Experimente vorbereiten <span class="lp-badge projekt">Projekt</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du planst mit deiner Gruppe ein eigenes Experiment zum Thema Lebensmittel, das ihr dem Kurs vorstellen wollt.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Überlegt euch eine Verständnisfrage, die ihr dem Kurs nach eurer Präsentation stellen wollt.</span></div>
-    <p class="lp-rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Projekt</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-03-19">
-  <div class="lp-key"><div class="lp-week">SJW 24</div><div class="lp-no">24</div><div class="lp-date">15.03.</div></div>
-  <div class="lp-info" data-selfcheck="lp24">
-    <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp24.html">Präsentationsprojekt: Präsentationstag <span class="lp-badge projekt">Projekt</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du präsentierst dein Experiment zum Thema Lebensmittel vor dem Kurs und gibst deinen Mitschüler:innen faires Feedback.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Vergleicht euer Experiment mit einem Experiment einer anderen Gruppe: Welche Nährstoff-Idee steckt jeweils dahinter?</span></div>
-    <p class="lp-rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Projekt</span></p>
   </div>
 </article>
   </div>
@@ -623,117 +518,36 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <section class="sem-content" id="u2-content">
   <div class="sem-head">
     <div class="sem-badge">02</div>
-    <div><h2>Fliegen</h2><p class="period">12 Lernpfade · 05.04.2027 – 25.06.2027</p></div>
+    <div><h2>Fliegen</h2><p class="period">3 Lernpfade · 30.11.2026 – 18.12.2026</p></div>
   </div>
 <article class="unit" style="--key:#8a5cf0;--edge:#6a3fcf;--tint:rgba(138,92,240,0.10);--ktext:#fff;">
-  <div class="unit-bar"><span class="unit-chip">02</span><h3>Fliegen</h3><span class="unit-weeks">12 Lernpfade<br>SJW 25–36</span></div>
+  <div class="unit-bar"><span class="unit-chip">02</span><h3>Fliegen</h3><span class="unit-weeks">3 Lernpfade<br>SJW 12–14</span></div>
   <div class="unit-body">
-<article class="lp" data-unlock="2027-04-09">
-  <div class="lp-key"><div class="lp-week">SJW 25</div><div class="lp-no">25</div><div class="lp-date">05.04.</div></div>
-  <div class="lp-info" data-selfcheck="lp25">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp25.html">Schwimmende Steine und fliegende Teebeutel <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-12-04">
+  <div class="lp-key"><div class="lp-week">SJW 12</div><div class="lp-no">12</div><div class="lp-date">30.11.</div></div>
+  <div class="lp-info" data-selfcheck="lp12">
+    <a class="lp-name" href="lernpfade/02%20Fliegen/lp12.html">Schwimmende Steine und fliegende Teebeutel <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du entdeckst mit zwei verblüffenden Experimenten (schwimmender Bimsstein, fliegender Teebeutel), dass Auftrieb ein Prinzip ist, das sowohl im Wasser als auch in der Luft gilt.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Erkläre, warum der Teebeutel höher und schneller fliegt, wenn er genau in der Mitte angezündet wird, statt am Rand.</span></div>
-    <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Auftrieb</span><span class="tag neu">neu · Fliegen</span></p>
+    <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Auftrieb</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2027-04-16">
-  <div class="lp-key"><div class="lp-week">SJW 26</div><div class="lp-no">26</div><div class="lp-date">12.04.</div></div>
-  <div class="lp-info" data-selfcheck="lp26">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp26.html">Flugprinzipien <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-12-11">
+  <div class="lp-key"><div class="lp-week">SJW 13</div><div class="lp-no">13</div><div class="lp-date">07.12.</div></div>
+  <div class="lp-info" data-selfcheck="lp13">
+    <a class="lp-name" href="lernpfade/02%20Fliegen/lp13.html">Flugprinzipien <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du lernst mit dem Bernoulli-Prinzip den zweiten großen Auftriebs-Mechanismus kennen: schnell strömende Luft erzeugt Unterdruck.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Finde heraus, ob die Flügel- bzw. Ballfläche einen Einfluss auf die Stärke des Bernoulli-Effekts hat, und begründe mit einem eigenen Mini-Versuch.</span></div>
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Bernoulli-Prinzip</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2027-04-23">
-  <div class="lp-key"><div class="lp-week">SJW 27</div><div class="lp-no">27</div><div class="lp-date">19.04.</div></div>
-  <div class="lp-info" data-selfcheck="lp27">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp27.html">Flugexperimente <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
+<article class="lp" data-unlock="2026-12-18">
+  <div class="lp-key"><div class="lp-week">SJW 14</div><div class="lp-no">14</div><div class="lp-date">14.12.</div></div>
+  <div class="lp-info" data-selfcheck="lp14">
+    <a class="lp-name" href="lernpfade/02%20Fliegen/lp14.html">Flugexperimente <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du baust und testest eigene Flugobjekte (Papierflieger, Fallschirm, Rotor) und wertest ihre Flugleistung systematisch aus.</p>
     <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Verändere gezielt nur ein Merkmal deines besten Papierfliegers (z. B. Flügelfläche oder Nasengewicht) und miss, ob sich die Flugweite verbessert.</span></div>
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Werkstatt</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-04-30">
-  <div class="lp-key"><div class="lp-week">SJW 28</div><div class="lp-no">28</div><div class="lp-date">26.04.</div></div>
-  <div class="lp-info" data-selfcheck="lp28">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp28.html">Bernoulli-Auftrieb im Flugzeug — Vertiefung <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du überträgst das Bernoulli-Prinzip konkret auf ein startendes und landendes Flugzeug und erklärst die Funktion von Landeklappen.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Erkläre, warum ein beladenes Flugzeug eine längere Startbahn braucht als ein leichtes.</span></div>
-    <p class="lp-rlp"><span class="tag">Üben &amp; Vertiefen</span><span class="tag">Bernoulli-Prinzip</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-05-07">
-  <div class="lp-key"><div class="lp-week">SJW 29</div><div class="lp-no">29</div><div class="lp-date">03.05.</div></div>
-  <div class="lp-info" data-selfcheck="lp29">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp29.html">Vogelflug, Ahornsamen &amp; Co. — Flugprinzipien in der Natur <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du entdeckst, dass die Natur alle drei Flugprinzipien (Bernoulli, Rückstoß, Luftwiderstand) auf ganz unterschiedliche Weise nutzt.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Baue selbst eine funktionierende Ahornsamenschraube und optimiere Flügelform und -länge auf möglichst langsamen Fall.</span></div>
-    <p class="lp-rlp"><span class="tag">Natur &amp; Vorbild</span><span class="tag">Bernoulli-Prinzip</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-05-14">
-  <div class="lp-key"><div class="lp-week">SJW 30</div><div class="lp-no">30</div><div class="lp-date">10.05.</div></div>
-  <div class="lp-info" data-selfcheck="lp30">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp30.html">Fluggeräte selbst bauen — Werkstatt <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du konstruierst ein eigenes Fluggerät (Rotor, Drachen oder Flieger-Modell deiner Wahl) und optimierst es in mehreren Testrunden.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Baue eine dritte Version, die bewusst ein völlig anderes physikalisches Prinzip nutzt als deine ersten beiden, und vergleiche alle drei.</span></div>
-    <p class="lp-rlp"><span class="tag">Werkstatt</span><span class="tag">Experimentieren</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-05-21">
-  <div class="lp-key"><div class="lp-week">SJW 31</div><div class="lp-no">31</div><div class="lp-date">17.05.</div></div>
-  <div class="lp-info" data-selfcheck="lp31">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp31.html">Ausblick: Weltall <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du erfährst, warum im Weltall die bisherigen Flugprinzipien (Bernoulli, Luftwiderstand) nicht mehr funktionieren und wie Raketen trotzdem fliegen.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Recherchiere, mit welcher Geschwindigkeit eine Rakete die Erde verlassen muss (Fluchtgeschwindigkeit), um nicht wieder zurückzufallen.</span></div>
-    <p class="lp-rlp"><span class="tag">Ausblick</span><span class="tag">Rückstoßprinzip</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-05-28">
-  <div class="lp-key"><div class="lp-week">SJW 32</div><div class="lp-no">32</div><div class="lp-date">24.05.</div></div>
-  <div class="lp-info" data-selfcheck="lp32">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp32.html">Vibe-Coding: eigene Flug-Idee programmieren <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du beschreibst einer KI in eigenen Worten eine kleine Flug-Simulation oder Flug-Animation und lässt sie gemeinsam mit dir Schritt für Schritt entstehen (Vibe-Coding).</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Baue eine kleine Interaktion ein (z. B. ein Knopf „Pusten“, der ein Objekt auf dem Bildschirm nach oben steigen lässt).</span></div>
-    <p class="lp-rlp"><span class="tag">Programmieren</span><span class="tag neu">neu · Vibe-Coding</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-06-04">
-  <div class="lp-key"><div class="lp-week">SJW 33</div><div class="lp-no">33</div><div class="lp-date">31.05.</div></div>
-  <div class="lp-info" data-selfcheck="lp33">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp33.html">Wiederholung &amp; Quiz-Werkstatt: Fliegen <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du fasst die wichtigsten Begriffe und Zusammenhänge der Reihe „Fliegen“ zusammen und bereitest dich auf den Kurztest vor.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Ordne jedem Lernpfad der Reihe „Fliegen“ das jeweils passende Hauptprinzip zu und begründe kurz.</span></div>
-    <p class="lp-rlp"><span class="tag">Wiederholung</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-06-11">
-  <div class="lp-key"><div class="lp-week">SJW 34</div><div class="lp-no">34</div><div class="lp-date">07.06.</div></div>
-  <div class="lp-info" data-selfcheck="lp34">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp34.html">Kurztest: Fliegen <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Flugprinzipien der Reihe „Fliegen“ beherrschst.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.</span></div>
-    <p class="lp-rlp"><span class="tag">Lernkontrolle</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-06-18">
-  <div class="lp-key"><div class="lp-week">SJW 35</div><div class="lp-no">35</div><div class="lp-date">14.06.</div></div>
-  <div class="lp-info" data-selfcheck="lp35">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp35.html">Präsentationsprojekt: Experimente vorbereiten <span class="lp-badge projekt">Projekt</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du planst mit deiner Gruppe ein eigenes Experiment zum Thema Fliegen, das ihr dem Kurs vorstellen wollt.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Überlegt euch eine Verständnisfrage, die ihr dem Kurs nach eurer Präsentation stellen wollt.</span></div>
-    <p class="lp-rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Projekt</span></p>
-  </div>
-</article>
-<article class="lp" data-unlock="2027-06-25">
-  <div class="lp-key"><div class="lp-week">SJW 36</div><div class="lp-no">36</div><div class="lp-date">21.06.</div></div>
-  <div class="lp-info" data-selfcheck="lp36">
-    <a class="lp-name" href="lernpfade/02%20Fliegen/lp36.html">Präsentationsprojekt: Präsentationstag <span class="lp-badge projekt">Projekt</span> <span class="arrow">→</span></a>
-    <p class="lp-goal"><b>Das lernst du:</b> Du präsentierst dein Experiment zum Thema Fliegen vor dem Kurs, blickst auf das ganze Schuljahr zurück und gibst deinen Mitschüler:innen faires Feedback.</p>
-    <div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span><span>Schreibe dir selbst eine kurze Notiz: Was hast du in diesem Schuljahr über das Forschen selbst gelernt — nicht nur über die Inhalte?</span></div>
-    <p class="lp-rlp"><span class="tag">Team &amp; Präsentation</span><span class="tag">Projekt</span></p>
   </div>
 </article>
   </div>
@@ -741,10 +555,23 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 
 </section>
 
+<section class="section classroom">
+  <div class="wrap">
+    <h2 style="text-align:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:0.4rem;">Material im Google Classroom</h2>
+    <p class="sub" style="text-align:center;">// Aufgaben, Dateien &amp; Ankündigungen zu deinem Kurs</p>
+    <div class="classroom-grid">
+      <a class="classroom-tile" href="https://classroom.google.com/u/0/c/NzEwNzcyMTk1NTQ2" target="_blank" rel="noopener">
+        <span class="ct-id">NATURWISSENSCHAFTEN</span>
+        <span class="ct-title">Zum Google Classroom <span class="ex">↗</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="foot-inner">
     <div>
-      <b class="h">NATURWISSENSCHAFTEN · KLASSE 5</b><br>
+      <b class="h">NATURWISSENSCHAFTEN · KLASSE 5 UND 6</b><br>
       Schuljahr 2026/27 · Berlin · 75 Minuten pro Woche
     </div>
     <div>
@@ -753,7 +580,7 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     </div>
     <div>
       Aufbau:<br>
-      37 Lernpfade · 3 Reihen · Übersicht + Übungs-Archiv<br>
+      15 feste Lernpfade · 3 Reihen · Übersicht + Übungs-Archiv<br>
       Lösungen mit zeitlicher Freischaltung
     </div>
   </div>

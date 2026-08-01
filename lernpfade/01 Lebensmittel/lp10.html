@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP 11 · Kurztest: Schwimmen und Sinken — Naturwissenschaften Klasse 5</title>
+<title>LP 10 · Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers — Naturwissenschaften Klasse 5 und 6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -284,6 +284,20 @@ h1.hero-title .pop3 {
 .fig svg { width: 100%; height: auto; display: block; border-radius: 8px; }
 .fig-cap { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--primary-edge); margin-top: 0.6rem; text-align: center; }
 
+/* ============ CLASSROOM ============ */
+.classroom { padding: 3rem 6vw 4rem; }
+.classroom-grid { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
+.classroom-tile {
+  display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: #fff;
+  cursor: pointer; border: none; border-radius: 18px; padding: 1.6rem 1.8rem; min-width: 260px;
+  background: var(--primary); box-shadow: 0 6px 0 var(--primary-edge);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.classroom-tile:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--primary-edge); }
+.ct-id { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; opacity: 0.85; }
+.ct-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; }
+.ct-title .ex { opacity: 0.7; font-family: inherit; font-weight: 600; }
+
 /* ============ FOOTER ============ */
 footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 .foot-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.9; }
@@ -296,22 +310,23 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 
 </style>
 </head>
-<body style="--key:#2f8fe0;--edge:#1f6fb8;--tint:rgba(47,143,224,0.10);--ktext:#fff;">
+<body style="--key:#ff8a3d;--edge:#d96a1f;--tint:rgba(255,138,61,0.10);--ktext:#fff;">
 <div class="lp-page">
-  <a class="back" href="../../index.html#u0-content">← Zurück zur Kursübersicht</a>
+  <a class="back" href="../../index.html#u1-content">← Zurück zur Kursübersicht</a>
   <div class="badges">
-    <span class="b-sjw">SJW 11</span><span class="b-unit">Reihe 00 · Schwimmen und Sinken</span>
+    <span class="b-sjw">SJW 10</span><span class="b-unit">Reihe 01 · Lebensmittel</span>
   </div>
   <div class="lp-hero">
-    <div class="hero-row"><div class="keycap">11</div><h1>Kurztest: Schwimmen und Sinken</h1></div>
-    <p class="goal"><b>Das lernst du:</b> Du zeigst in einem kurzen schriftlichen Test, wie sicher du die Begriffe und Rechnungen der Reihe „Schwimmen und Sinken“ beherrschst.</p>
-    <p class="rlp"><span class="tag">Lernkontrolle</span></p>
+    <div class="hero-row"><div class="keycap">10</div><h1>Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers</h1></div>
+    <p class="goal"><b>Das lernst du:</b> Du stellst veganes Baiser aus Kichererbsenwasser (Aquafaba) her und erklärst, was beim Schlagen und Erhitzen mit den Proteinen passiert.</p>
+    <p class="rlp"><span class="tag">Experimentieren</span><span class="tag">Proteine</span></p>
   </div>
-  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Bearbeite den Kurztest in Einzelarbeit (ca. 30 Minuten): Begriffe erklären, Dichte berechnen, Alltagsbeispiele einordnen.</li><li>Kontrolliere am Ende deine Rechnungen noch einmal auf Einheiten und Kommastellen.</li><li>Schätze am Ende selbst ein, wie sicher du dich bei den einzelnen Aufgabenteilen gefühlt hast.</li></ul></section>
-  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Formuliere zu deiner unsichersten Testaufgabe eine eigene Zusatzfrage, die du in der nächsten Stunde stellen möchtest.</div></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list"><li>Schlage Aquafaba (Kichererbsenwasser) so lange, bis ein stabiler Eischnee-ähnlicher Schaum entsteht.</li><li>Beobachte und beschreibe, wie sich Aussehen und Konsistenz beim Schlagen verändern.</li><li>Erkläre den Vorgang mit dem Fachbegriff Denaturierung: Proteine verändern durch mechanische und thermische Energie dauerhaft ihre Struktur.</li></ul></section>
+  <section class="lp-sec"><h2><span class="dot"></span>Wissens-Check</h2><div class="qz-wrap" data-qz><div class="qz-progress"><span class="qz-count">0 / 5 richtig</span><span class="qz-bar"><span class="qz-fill"></span></span></div><div class="qz-item"><div class="qz-text"><span class="qn">1.</span>Nenne das geeignetste Bohnenwasser (Aquafaba) zur Herstellung von Baisers.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Kichererbsenwasser</button><button class="qz-opt" data-hint="Funktioniert schlechter als Kichererbsenwasser.">Wasser der weißen Bohnen</button><button class="qz-opt" data-hint="Färbt zudem den Schaum dunkel ein.">Wasser der schwarzen Bohnen</button><button class="qz-opt" data-hint="Auch hier ist die Schaumstabilität geringer.">Kidneybohnenwasser</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Kichererbsenwasser ist die klassische Aquafaba-Zutat.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">2.</span>Welche Energieform bewirkt hauptsächlich das Aufschlagen des Bohnenwassers zu Schaum?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">mechanische Energie (Bewegungsenergie)</button><button class="qz-opt" data-hint="Der Handrührer nutzt zwar Strom, wirkt aber mechanisch auf das Bohnenwasser.">elektrische Energie</button><button class="qz-opt" data-hint="Das Aufschlagen selbst erzeugt kaum Wärme.">thermische Energie (Wärmeenergie)</button><button class="qz-opt" data-hint="Beim reinen Aufschlagen findet keine chemische Reaktion statt.">chemische Energie</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — mechanische Energie durchs Schlagen.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">3.</span>Benenne den Vorgang beim Schlagen und Erhitzen der gelösten Proteine.</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Denaturierung</button><button class="qz-opt" data-hint="Das ist kein Fachbegriff.">Naturierung</button><button class="qz-opt" data-hint="Proteine schmelzen nicht wie Fett oder Eis.">Schmelzen</button><button class="qz-opt" data-hint="Erhärten beschreibt nur das äußere Ergebnis, nicht den Fachbegriff.">Erhärten</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Denaturierung.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">4.</span>Was passiert bei der Denaturierung mit der Struktur eines Proteins?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Die räumliche Struktur verändert sich dauerhaft und ist nicht umkehrbar.</button><button class="qz-opt" data-hint="Proteine bestehen aus Aminosäuren, nicht aus Zucker.">Das Protein wird vollständig zu Zucker.</button><button class="qz-opt" data-hint="Das Protein bleibt vorhanden, nur seine Form verändert sich.">Das Protein verschwindet spurlos.</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — die räumliche Struktur verändert sich dauerhaft, das Protein lässt sich nicht zurückverwandeln.</div></div><div class="qz-item"><div class="qz-text"><span class="qn">5.</span>Welches Alltagsbeispiel zeigt ebenfalls eine Denaturierung von Proteinen?</div><div class="qz-opts"><button class="qz-opt" data-correct="true">Eiweiß wird beim Kochen fest und undurchsichtig.</button><button class="qz-opt" data-hint="Karamellisieren betrifft Zucker, keine Proteine.">Zucker karamellisiert beim Erhitzen.</button><button class="qz-opt" data-hint="Schmelzen von Eis ist ein reiner Zustandswechsel des Wassers, keine Denaturierung.">Eis schmilzt in der Sonne.</button></div><div class="qz-hint"></div><div class="qz-done">Richtig — Eiweiß wird beim Kochen fest und weiß.</div></div><div class="qz-solved">✔ Stark — Wissens-Check komplett gelöst!</div></div></section>
+  <section class="lp-sec"><div class="fast-box"><span class="fb-t">⚡ Schnellläufer:in</span>Untersuche in der Gruppe ein weiteres Denaturierungsphänomen (z. B. Eiweiß beim Kochen, Milch mit Zitronensaft) und stelle es kurz vor.</div></section>
   <section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an <b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>
-  <section class="sol" id="loesung" data-unlock="2026-11-27"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Der Test wird von der Lehrkraft korrigiert und in der folgenden Stunde besprochen.</li><li>Nutze deine Selbsteinschätzung, um gezielt die Themen zu wiederholen, bei denen du unsicher warst.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
-  <a class="back" href="../../index.html#u0-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
+  <section class="sol" id="loesung" data-unlock="2026-11-20"><h2>Musterlösung <span class="sol-status">…</span></h2><p class="sol-countdown"></p><div class="sol-body" hidden><ul class="sol-list"><li>Aquafaba enthält gelöste Proteine, die sich beim Schlagen (mechanische Energie) an Luftbläschen anlagern und beim Backen (thermische Energie) endgültig ihre Struktur verändern.</li><li>Denaturierung ist nicht umkehrbar — daraus lässt sich kein flüssiges Aquafaba mehr zurückgewinnen, genauso wenig wie ein gekochtes Ei wieder roh wird.</li></ul></div><p class="sol-hint">Die Lösung wird automatisch zum angegebenen Datum sichtbar — die Seite prüft das bei jedem Laden.</p></section>
+  <a class="back" href="../../index.html#u1-content" style="margin-top:1.6rem">← zurück zur Kursübersicht</a>
 </div>
 <script>
 /* ============================================================
