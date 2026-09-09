@@ -175,6 +175,7 @@ UNITS = [
              tools=[],
              fast="Zusatzaufgabe vom Arbeitsblatt: Ein Gepard läuft 120 km/h. Rechne die Geschwindigkeit in m/s (Meter pro Sekunde) um. Dabei musst du zwei Einheiten gleichzeitig wechseln, km in m und h in s.",
              tags=["Größen & Einheiten", "Kopfrechnen"],
+             companion=dict(file="lp01-groessen.html", label="interaktiven Umrechnungs-Anleitung zu allen acht Tieren"),
              vorwissen=[
                dict(cap="Bild 1 · Tiere mit besonderen Maßen", svg=SVG_TIERPOSTER, quiz=[
                  dict(q="Teil 1 kann über 30 m lang und rund 150 Tonnen schwer werden. Welches Tier ist das?",
@@ -561,6 +562,10 @@ def lp_filename(no):
     parts = lp_dir_parts(no) + ["%s.html" % slug(no)]
     return "/".join(quote(p, safe="") for p in parts)
 
+def companion_url(no, filename):
+    parts = lp_dir_parts(no) + [filename]
+    return "/".join(quote(p, safe="") for p in parts)
+
 def kind_badge(kind):
     return {"lernpfad":"Lernpfad","projekt":"Projekt"}.get(kind,"Lernpfad")
 
@@ -596,6 +601,11 @@ def render_lp_tile(lp):
     mon, fri = CAL[lp["sjw"]]
     fast = ('<div class="lp-fast"><span class="fast-badge">⚡ Schnellläufer:in</span>'
             '<span>%s</span></div>' % lp["fast"]) if lp.get("fast") else ""
+    goal = lp["goal"]
+    if lp.get("companion"):
+        c = lp["companion"]
+        goal += (' Übe vorher Schritt für Schritt an der <a href="%s">%s</a>.'
+                 % (companion_url(lp["no"], c["file"]), esc(c["label"])))
     return ('<article class="lp" data-unlock="%s">\n'
             '  <div class="lp-key"><div class="lp-week">SJW %d</div>'
             '<div class="lp-no">%02d</div><div class="lp-date">%s</div></div>\n'
@@ -608,7 +618,7 @@ def render_lp_tile(lp):
             '</article>\n') % (
         unlock_iso(lp["sjw"]), lp["sjw"], lp["no"], dm(mon), slug(lp["no"]),
         lp_filename(lp["no"]), esc(lp["title"]), lp["kind"], kind_badge(lp["kind"]),
-        lp["goal"], fast, render_tags(lp.get("tags", [])))
+        goal, fast, render_tags(lp.get("tags", [])))
 
 def render_unit(u):
     weeks = [lp["sjw"] for lp in u["lps"]]
@@ -877,6 +887,11 @@ def build_lp_page(u, lp):
     backup = ('<section class="lp-sec"><div class="backup-box"><span class="bb-t">💾 Ergebnissicherung</span>'
               'Sichere deine Ergebnisse am Stundenende gut lesbar in deinem Forschungsheft oder digital an '
               '<b>zwei Orten</b>. Achte selbstständig auf Backups.</div></section>')
+    goal = lp["goal"]
+    if lp.get("companion"):
+        c = lp["companion"]
+        goal += (' Übe vorher Schritt für Schritt an der <a href="%s" style="color:var(--primary-edge);font-weight:700;">%s</a>.'
+                 % (esc(c["file"]), esc(c["label"])))
     sol = "".join("<li>%s</li>" % s for s in lp["solution"])
     solution = ('<section class="sol" id="loesung" data-unlock="%s">'
                 '<h2>Musterlösung <span class="sol-status">…</span></h2>'
@@ -899,7 +914,7 @@ def build_lp_page(u, lp):
         + '  </div>\n'
         + '  <div class="lp-hero">\n'
         + '    <div class="hero-row"><div class="keycap">%02d</div><h1>%s</h1></div>\n' % (lp["no"], esc(lp["title"]))
-        + '    <p class="goal"><b>Das lernst du:</b> %s</p>\n' % lp["goal"]
+        + '    <p class="goal"><b>Das lernst du:</b> %s</p>\n' % goal
         + '    <p class="rlp">%s</p>\n' % render_tags(lp.get("tags", []))
         + '  </div>\n'
         + ('  %s\n' % render_vorwissen(lp) if lp.get("vorwissen") else '')
