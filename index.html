@@ -275,6 +275,10 @@ h1.hero-title .pop3 {
 .qz-done.show { display: block; }
 .qz-solved { margin-top: 1rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: rgba(46,158,91,0.08); font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 0.92rem; color: var(--primary-edge); display: none; align-items: center; gap: 0.5rem; }
 .qz-solved.show { display: flex; }
+.qz-item-row { display: flex; gap: 0.9rem; align-items: flex-start; }
+.qz-icon-fig { flex-shrink: 0; width: 72px; height: 62px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 0.3rem; }
+.qz-icon-fig svg { width: 100%; height: 100%; display: block; }
+.qz-item-row .qz-text { margin-bottom: 0; }
 
 /* ============ Vorwissen (SVG-Figuren + Bild-Quiz) ============ */
 .vw-intro { margin-bottom: 1rem; }
@@ -368,17 +372,17 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
       <button class="sem-tile t1 active" data-sem="u0">
         <div class="st-id">REIHE 00</div>
         <div class="st-title">Schwimmen und Sinken</div>
-        <div class="st-meta"><span>7 Sitzungen</span><span>24.08. – 09.10.2026</span></div>
+        <div class="st-meta"><span>7 Sitzungen</span><span>24.08. – 16.10.2026</span></div>
       </button>
       <button class="sem-tile t2" data-sem="u1">
         <div class="st-id">REIHE 01</div>
         <div class="st-title">Lebensmittel</div>
-        <div class="st-meta"><span>5 Sitzungen</span><span>12.10. – 27.11.2026</span></div>
+        <div class="st-meta"><span>5 Sitzungen</span><span>02.11. – 04.12.2026</span></div>
       </button>
       <button class="sem-tile t3" data-sem="u2">
         <div class="st-id">REIHE 02</div>
         <div class="st-title">Fliegen</div>
-        <div class="st-meta"><span>3 Sitzungen</span><span>30.11. – 18.12.2026</span></div>
+        <div class="st-meta"><span>3 Sitzungen</span><span>07.12. – 08.01.2027</span></div>
       </button>
     </div>
   </div>
@@ -386,7 +390,7 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <section class="sem-content active" id="u0-content">
   <div class="sem-head">
     <div class="sem-badge">00</div>
-    <div><h2>Schwimmen und Sinken</h2><p class="period">7 Lernpfade · 24.08.2026 – 09.10.2026</p></div>
+    <div><h2>Schwimmen und Sinken</h2><p class="period">7 Lernpfade · 24.08.2026 – 16.10.2026</p></div>
   </div>
 <article class="unit" style="--key:#2f8fe0;--edge:#1f6fb8;--tint:rgba(47,143,224,0.10);--ktext:#fff;">
   <div class="unit-bar"><span class="unit-chip">00</span><h3>Schwimmen und Sinken</h3><span class="unit-weeks">7 Lernpfade<br>SJW 0–6</span></div>
@@ -400,8 +404,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Messen &amp; Größen</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-09-04">
-  <div class="lp-key"><div class="lp-week">SJW 1</div><div class="lp-no">01</div><div class="lp-date">31.08.</div></div>
+<article class="lp" data-unlock="2026-09-11">
+  <div class="lp-key"><div class="lp-week">SJW 1</div><div class="lp-no">01</div><div class="lp-date">07.09.</div></div>
   <div class="lp-info" data-selfcheck="lp01">
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp01.html">Naturwissenschaftliche Größen im Tierreich <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du rechnest Messwerte aus dem Tierreich (Gewicht, Länge, Zeit) mit dem Einheitenleiter-Algorithmus sicher in andere Einheiten um. Übe vorher Schritt für Schritt an der <a href="lernpfade/00%20Schwimmen%20und%20Sinken/lp01-groessen.html">interaktiven Umrechnungs-Anleitung zu allen acht Tieren</a>.</p>
@@ -409,8 +413,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Größen &amp; Einheiten</span><span class="tag">Kopfrechnen</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-09-11">
-  <div class="lp-key"><div class="lp-week">SJW 2</div><div class="lp-no">02</div><div class="lp-date">07.09.</div></div>
+<article class="lp" data-unlock="2026-09-18">
+  <div class="lp-key"><div class="lp-week">SJW 2</div><div class="lp-no">02</div><div class="lp-date">14.09.</div></div>
   <div class="lp-info" data-selfcheck="lp02">
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp02.html">Die schwimmende Orange <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du schätzt und berechnest Radius, Umfang und Volumen einer Orange und erklärst, warum sie mit Schale schwimmt, aber ohne Schale sinkt.</p>
@@ -418,8 +422,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Dichte</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-09-18">
-  <div class="lp-key"><div class="lp-week">SJW 3</div><div class="lp-no">03</div><div class="lp-date">14.09.</div></div>
+<article class="lp" data-unlock="2026-09-25">
+  <div class="lp-key"><div class="lp-week">SJW 3</div><div class="lp-no">03</div><div class="lp-date">21.09.</div></div>
   <div class="lp-info" data-selfcheck="lp03">
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp03.html">Übungen und Dichtebestimmung mit digitalen, interaktiven Übungen <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du festigst die Formel Dichte = Masse ÷ Volumen (ρ = m/V) an digitalen Übungsaufgaben und lernst, Dichten verschiedener Stoffe miteinander zu vergleichen.</p>
@@ -427,8 +431,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Üben &amp; Vertiefen</span><span class="tag">Dichte</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-09-25">
-  <div class="lp-key"><div class="lp-week">SJW 4</div><div class="lp-no">04</div><div class="lp-date">21.09.</div></div>
+<article class="lp" data-unlock="2026-10-02">
+  <div class="lp-key"><div class="lp-week">SJW 4</div><div class="lp-no">04</div><div class="lp-date">28.09.</div></div>
   <div class="lp-info" data-selfcheck="lp04">
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp04.html">Dichtebestimmung mit Orangen <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du bestimmst experimentell die Dichte einer Orange mit und ohne Schale und vergleichst sie rechnerisch mit der Dichte von Wasser.</p>
@@ -436,8 +440,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Dichte</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-10-02">
-  <div class="lp-key"><div class="lp-week">SJW 5</div><div class="lp-no">05</div><div class="lp-date">28.09.</div></div>
+<article class="lp" data-unlock="2026-10-09">
+  <div class="lp-key"><div class="lp-week">SJW 5</div><div class="lp-no">05</div><div class="lp-date">05.10.</div></div>
   <div class="lp-info" data-selfcheck="lp05">
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp05.html">Schwimmen und Sinken bei Schiffen und Unterseebooten <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du überträgst das Dichte-Prinzip auf große Gewässer: Warum trägt das Tote Meer besonders gut, und wie tauchen U-Boote gezielt auf und ab?</p>
@@ -445,8 +449,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Dichte</span><span class="tag">Alltagsbezug</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-10-09">
-  <div class="lp-key"><div class="lp-week">SJW 6</div><div class="lp-no">06</div><div class="lp-date">05.10.</div></div>
+<article class="lp" data-unlock="2026-10-16">
+  <div class="lp-key"><div class="lp-week">SJW 6</div><div class="lp-no">06</div><div class="lp-date">12.10.</div></div>
   <div class="lp-info" data-selfcheck="lp06">
     <a class="lp-name" href="lernpfade/00%20Schwimmen%20und%20Sinken/lp06.html">Ölextraktion <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du gewinnst ätherisches Öl aus Gewürznelken durch Wasserdampfdestillation und erklärst, warum es auf dem Destillat schwimmt.</p>
@@ -461,13 +465,13 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <section class="sem-content" id="u1-content">
   <div class="sem-head">
     <div class="sem-badge">01</div>
-    <div><h2>Lebensmittel</h2><p class="period">5 Lernpfade · 12.10.2026 – 27.11.2026</p></div>
+    <div><h2>Lebensmittel</h2><p class="period">5 Lernpfade · 02.11.2026 – 04.12.2026</p></div>
   </div>
 <article class="unit" style="--key:#ff8a3d;--edge:#d96a1f;--tint:rgba(255,138,61,0.10);--ktext:#fff;">
   <div class="unit-bar"><span class="unit-chip">01</span><h3>Lebensmittel</h3><span class="unit-weeks">5 Lernpfade<br>SJW 7–11</span></div>
   <div class="unit-body">
-<article class="lp" data-unlock="2026-10-16">
-  <div class="lp-key"><div class="lp-week">SJW 7</div><div class="lp-no">07</div><div class="lp-date">12.10.</div></div>
+<article class="lp" data-unlock="2026-11-06">
+  <div class="lp-key"><div class="lp-week">SJW 7</div><div class="lp-no">07</div><div class="lp-date">02.11.</div></div>
   <div class="lp-info" data-selfcheck="lp07">
     <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp07.html">Nahrungsmittelrallye <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du lernst die drei Hauptnährstoffe (Fette, Proteine, Kohlenhydrate) und die Mikronährstoffe (Vitamine, Mineralstoffe) kennen und ordnest sie echten Lebensmitteln zu.</p>
@@ -475,8 +479,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Ernährung</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-11-06">
-  <div class="lp-key"><div class="lp-week">SJW 8</div><div class="lp-no">08</div><div class="lp-date">02.11.</div></div>
+<article class="lp" data-unlock="2026-11-13">
+  <div class="lp-key"><div class="lp-week">SJW 8</div><div class="lp-no">08</div><div class="lp-date">09.11.</div></div>
   <div class="lp-info" data-selfcheck="lp08">
     <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp08.html">Interessantes zu Fetten <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du unterscheidest gesunde von weniger gesunden Fetten und lernst eine chemische Nachweisprobe für Fette kennen.</p>
@@ -484,8 +488,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Ernährung</span><span class="tag">Nachweisverfahren</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-11-13">
-  <div class="lp-key"><div class="lp-week">SJW 9</div><div class="lp-no">09</div><div class="lp-date">09.11.</div></div>
+<article class="lp" data-unlock="2026-11-20">
+  <div class="lp-key"><div class="lp-week">SJW 9</div><div class="lp-no">09</div><div class="lp-date">16.11.</div></div>
   <div class="lp-info" data-selfcheck="lp09">
     <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp09.html">Energiehaushalt <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du berechnest, wie viel Energie in einer Walnuss steckt, und vergleichst sie mit der Energie, die du beim Sport verbrauchst.</p>
@@ -493,8 +497,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Energie</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-11-20">
-  <div class="lp-key"><div class="lp-week">SJW 10</div><div class="lp-no">10</div><div class="lp-date">16.11.</div></div>
+<article class="lp" data-unlock="2026-11-27">
+  <div class="lp-key"><div class="lp-week">SJW 10</div><div class="lp-no">10</div><div class="lp-date">23.11.</div></div>
   <div class="lp-info" data-selfcheck="lp10">
     <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp10.html">Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du stellst veganes Baiser aus Kichererbsenwasser (Aquafaba) her und erklärst, was beim Schlagen und Erhitzen mit den Proteinen passiert.</p>
@@ -502,8 +506,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Proteine</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-11-27">
-  <div class="lp-key"><div class="lp-week">SJW 11</div><div class="lp-no">11</div><div class="lp-date">23.11.</div></div>
+<article class="lp" data-unlock="2026-12-04">
+  <div class="lp-key"><div class="lp-week">SJW 11</div><div class="lp-no">11</div><div class="lp-date">30.11.</div></div>
   <div class="lp-info" data-selfcheck="lp11">
     <a class="lp-name" href="lernpfade/01%20Lebensmittel/lp11.html">Kohlenhydrate <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du weist mit der Jodprobe Stärke in Lebensmitteln nach und lernst, welche Kohlenhydrate wann sinnvoll sind.</p>
@@ -518,13 +522,13 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
 <section class="sem-content" id="u2-content">
   <div class="sem-head">
     <div class="sem-badge">02</div>
-    <div><h2>Fliegen</h2><p class="period">3 Lernpfade · 30.11.2026 – 18.12.2026</p></div>
+    <div><h2>Fliegen</h2><p class="period">3 Lernpfade · 07.12.2026 – 08.01.2027</p></div>
   </div>
 <article class="unit" style="--key:#8a5cf0;--edge:#6a3fcf;--tint:rgba(138,92,240,0.10);--ktext:#fff;">
   <div class="unit-bar"><span class="unit-chip">02</span><h3>Fliegen</h3><span class="unit-weeks">3 Lernpfade<br>SJW 12–14</span></div>
   <div class="unit-body">
-<article class="lp" data-unlock="2026-12-04">
-  <div class="lp-key"><div class="lp-week">SJW 12</div><div class="lp-no">12</div><div class="lp-date">30.11.</div></div>
+<article class="lp" data-unlock="2026-12-11">
+  <div class="lp-key"><div class="lp-week">SJW 12</div><div class="lp-no">12</div><div class="lp-date">07.12.</div></div>
   <div class="lp-info" data-selfcheck="lp12">
     <a class="lp-name" href="lernpfade/02%20Fliegen/lp12.html">Schwimmende Steine und fliegende Teebeutel <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du entdeckst mit zwei verblüffenden Experimenten (schwimmender Bimsstein, fliegender Teebeutel), dass Auftrieb ein Prinzip ist, das sowohl im Wasser als auch in der Luft gilt.</p>
@@ -532,8 +536,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Auftrieb</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-12-11">
-  <div class="lp-key"><div class="lp-week">SJW 13</div><div class="lp-no">13</div><div class="lp-date">07.12.</div></div>
+<article class="lp" data-unlock="2026-12-18">
+  <div class="lp-key"><div class="lp-week">SJW 13</div><div class="lp-no">13</div><div class="lp-date">14.12.</div></div>
   <div class="lp-info" data-selfcheck="lp13">
     <a class="lp-name" href="lernpfade/02%20Fliegen/lp13.html">Flugprinzipien <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du lernst mit dem Bernoulli-Prinzip den zweiten großen Auftriebs-Mechanismus kennen: schnell strömende Luft erzeugt Unterdruck.</p>
@@ -541,8 +545,8 @@ footer { background: var(--ink); color: #d6ece0; padding: 3rem 6vw 2.4rem; }
     <p class="lp-rlp"><span class="tag">Experimentieren</span><span class="tag">Bernoulli-Prinzip</span></p>
   </div>
 </article>
-<article class="lp" data-unlock="2026-12-18">
-  <div class="lp-key"><div class="lp-week">SJW 14</div><div class="lp-no">14</div><div class="lp-date">14.12.</div></div>
+<article class="lp" data-unlock="2027-01-08">
+  <div class="lp-key"><div class="lp-week">SJW 14</div><div class="lp-no">14</div><div class="lp-date">04.01.</div></div>
   <div class="lp-info" data-selfcheck="lp14">
     <a class="lp-name" href="lernpfade/02%20Fliegen/lp14.html">Flugexperimente <span class="lp-badge lernpfad">Lernpfad</span> <span class="arrow">→</span></a>
     <p class="lp-goal"><b>Das lernst du:</b> Du baust und testest eigene Flugobjekte (Papierflieger, Fallschirm, Rotor) und wertest ihre Flugleistung systematisch aus.</p>

@@ -15,7 +15,8 @@ os.makedirs(LP_DIR, exist_ok=True)
 
 # ---------------------------------------------------------------- Kalender (identisch zu Profilkurs)
 START = date(2026, 8, 24)
-SKIP = {date(2026,10,19), date(2026,10,26), date(2026,12,21), date(2026,12,28),
+SKIP = {date(2026,8,31),  # LP01 fiel aus, fand erst 07.09. statt -> alles ab SJW1 um 1 Woche verschoben
+        date(2026,10,19), date(2026,10,26), date(2026,12,21), date(2026,12,28),
         date(2027,2,1), date(2027,3,22), date(2027,3,29)}
 CAL = {}          # sjw -> (montag, freitag)
 mon, sjw = START, 0
@@ -111,6 +112,77 @@ ICON_KAMEL = ('<path d="M-45,20 Q -45,-18 -25,-14 Q -20,-26 -8,-14 Q 5,-22 10,-6
               '<circle cx="-38" cy="-16" r="2" fill="#163a2b"/>') % S
 
 SVG_TIERPOSTER = icon_grid([ICON_BLAUWAL, ICON_KOLIBRI, ICON_GIRAFFE, ICON_KAMEL], cols=2)
+
+# ---------------------------------------------------------------- Mini-Icons fuer Plickers-Nachholaufgaben (LP02)
+ICON_ORANGE_FRUCHT = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<circle cx="60" cy="58" r="34" fill="#ff8a3d" fill-opacity="0.85" stroke="#163a2b" stroke-width="5"/>'
+    '<path d="M58,24 Q66,12 80,14" stroke="#2e9e5b" stroke-width="5" stroke-linecap="round" fill="none"/>'
+    '<ellipse cx="57" cy="22" rx="5" ry="8" fill="#7a4a1e" transform="rotate(-20 57 22)"/>'
+    '</svg>')
+ICON_KOERPER_REIHE = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<g transform="translate(8,8)"><path d="M2,34 L2,14 L16,4 L40,4 L40,24 L26,34 Z" fill="#ff8a3d" fill-opacity="0.4" stroke="#163a2b" stroke-width="4" stroke-linejoin="round"/>'
+    '<path d="M2,14 L26,14 L40,4 M26,14 L26,34" fill="none" stroke="#163a2b" stroke-width="4" stroke-linejoin="round"/></g>'
+    '<g transform="translate(66,6)"><ellipse cx="20" cy="8" rx="18" ry="7" fill="#8a5cf0" fill-opacity="0.35" stroke="#163a2b" stroke-width="4"/>'
+    '<path d="M2,8 L2,32 A18,7 0 0 0 38,32 L38,8" fill="#8a5cf0" fill-opacity="0.2" stroke="#163a2b" stroke-width="4"/></g>'
+    '<g transform="translate(8,56)"><ellipse cx="20" cy="36" rx="18" ry="6" fill="#2f8fe0" fill-opacity="0.3" stroke="#163a2b" stroke-width="4"/>'
+    '<path d="M20,4 L4,36 M20,4 L36,36" fill="none" stroke="#163a2b" stroke-width="4" stroke-linecap="round"/></g>'
+    '<g transform="translate(66,56)"><circle cx="20" cy="20" r="18" fill="#ffc233" fill-opacity="0.4" stroke="#163a2b" stroke-width="4"/>'
+    '<ellipse cx="20" cy="20" rx="18" ry="6" fill="none" stroke="#163a2b" stroke-width="2" stroke-opacity="0.5"/></g>'
+    '</svg>')
+ICON_KUGEL_RADIUS = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<circle cx="60" cy="52" r="36" fill="none" stroke="#163a2b" stroke-width="4"/>'
+    '<circle cx="60" cy="52" r="2.6" fill="#ff6f59"/>'
+    '<line x1="60" y1="52" x2="94" y2="52" stroke="#2f8fe0" stroke-width="4" stroke-linecap="round"/>'
+    '<text x="74" y="46" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#2f8fe0">r</text>'
+    '<text x="52" y="40" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#ff6f59">M</text>'
+    '</svg>')
+ICON_KUGEL_UMFANG = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<circle cx="60" cy="52" r="36" fill="#2f8fe0" fill-opacity="0.15" stroke="#163a2b" stroke-width="3"/>'
+    '<ellipse cx="60" cy="52" rx="36" ry="12" fill="none" stroke="#ff6f59" stroke-width="4"/>'
+    '<circle cx="60" cy="52" r="2.6" fill="#163a2b"/>'
+    '</svg>')
+ICON_KUGEL_VOLUMEN = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<circle cx="38" cy="52" r="28" fill="#ffc233" fill-opacity="0.4" stroke="#163a2b" stroke-width="4"/>'
+    '<line x1="38" y1="52" x2="60" y2="52" stroke="#2f8fe0" stroke-width="3" stroke-linecap="round"/>'
+    '<text x="72" y="42" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#163a2b">V=</text>'
+    '<text x="70" y="60" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#163a2b">4/3πr³</text>'
+    '</svg>')
+ICON_BOOT_WESTE_SCHALE = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<g transform="translate(2,30)"><path d="M0,20 L34,20 L28,32 L6,32 Z" fill="#a9d6bd" fill-opacity="0.5" stroke="#163a2b" stroke-width="3.5" stroke-linejoin="round"/>'
+    '<line x1="17" y1="20" x2="17" y2="2" stroke="#163a2b" stroke-width="3" stroke-linecap="round"/>'
+    '<path d="M17,4 L28,14 L17,14 Z" fill="#ff8a3d" fill-opacity="0.6" stroke="#163a2b" stroke-width="2"/></g>'
+    '<g transform="translate(44,26)"><path d="M6,0 L26,0 L30,10 L26,38 L6,38 L2,10 Z" fill="#ffc233" fill-opacity="0.5" stroke="#163a2b" stroke-width="3.5" stroke-linejoin="round"/>'
+    '<circle cx="16" cy="14" r="2.4" fill="#163a2b"/><circle cx="16" cy="24" r="2.4" fill="#163a2b"/></g>'
+    '<g transform="translate(88,42)"><circle cx="16" cy="16" r="16" fill="#ff8a3d" fill-opacity="0.35" stroke="#163a2b" stroke-width="3.5"/>'
+    '<circle cx="16" cy="16" r="10" fill="#fff7e2" stroke="#163a2b" stroke-width="2"/>'
+    '<line x1="16" y1="6" x2="16" y2="26" stroke="#163a2b" stroke-width="1.5"/><line x1="6" y1="16" x2="26" y2="16" stroke="#163a2b" stroke-width="1.5"/></g>'
+    '</svg>')
+ICON_TOTES_MEER = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<path d="M4,60 Q20,52 36,60 T68,60 T100,60 T116,60" fill="none" stroke="#2f8fe0" stroke-width="4" stroke-linecap="round"/>'
+    '<path d="M4,72 Q20,64 36,72 T68,72 T100,72 T116,72" fill="none" stroke="#2f8fe0" stroke-width="4" stroke-linecap="round" stroke-opacity="0.5"/>'
+    '<g transform="translate(60,50)"><ellipse cx="0" cy="0" rx="20" ry="7" fill="#ffe6b0" fill-opacity="0.7" stroke="#163a2b" stroke-width="2.5"/>'
+    '<circle cx="16" cy="-2" r="5" fill="#ffe6b0" stroke="#163a2b" stroke-width="2.5"/></g>'
+    '</svg>')
+ICON_NORDSEE_OSTSEE = (
+    '<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">'
+    '<g transform="translate(6,10)"><rect x="0" y="0" width="46" height="80" rx="6" fill="none" stroke="#163a2b" stroke-width="3"/>'
+    '<rect x="3" y="30" width="40" height="47" fill="#2f8fe0" fill-opacity="0.25"/>'
+    '<circle cx="23" cy="26" r="10" fill="#ff8a3d" stroke="#163a2b" stroke-width="2.5"/>'
+    '<circle cx="12" cy="50" r="1.6" fill="#163a2b"/><circle cx="30" cy="60" r="1.6" fill="#163a2b"/><circle cx="18" cy="68" r="1.6" fill="#163a2b"/><circle cx="34" cy="45" r="1.6" fill="#163a2b"/>'
+    '<text x="23" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#163a2b">A</text></g>'
+    '<g transform="translate(68,10)"><rect x="0" y="0" width="46" height="80" rx="6" fill="none" stroke="#163a2b" stroke-width="3"/>'
+    '<rect x="3" y="30" width="40" height="47" fill="#2f8fe0" fill-opacity="0.25"/>'
+    '<circle cx="23" cy="40" r="10" fill="#ff8a3d" stroke="#163a2b" stroke-width="2.5"/>'
+    '<circle cx="16" cy="62" r="1.6" fill="#163a2b"/><circle cx="30" cy="70" r="1.6" fill="#163a2b"/>'
+    '<text x="23" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#163a2b">B</text></g>'
+    '</svg>')
 
 # ---------------------------------------------------------------- Kursinhalt
 # Jedes LP: no, sjw, title, goal, tasks[], tools[keys], fast, tags[], solution[], kind, quiz(optional), vorwissen(optional)
@@ -272,6 +344,59 @@ UNITS = [
                dict(q="Beschreibe die Gemeinsamkeit von Boot, Schwimmweste und Orangenschale.", done="Richtig — Lufteinlagerung verringert die Dichte.",
                     opts=[("Lufteinlagerung verringert die Dichte des schwimmenden Körpers.", True, None),
                           ("Lufteinlagerung vergrößert die Dichte des schwimmenden Körpers.", False, "Luft ist sehr leicht — sie senkt die Dichte, statt sie zu erhöhen.")]),
+             ],
+             catchup=[
+               dict(q="Schätze das durchschnittliche Gewicht einer Orange.",
+                    done="Richtig, eine Orange wiegt im Schnitt 200 g bis 500 g.",
+                    icon=ICON_ORANGE_FRUCHT,
+                    opts=[("1500 g - 2000 g", False, "Das wäre schwerer als eine kleine Melone."),
+                          ("200 g - 500 g", True, None),
+                          ("100 mg - 200 mg", False, "Das wäre leichter als ein Reiskorn."),
+                          ("10 g - 50 g", False, "Das wäre leichter als eine Erdbeere.")]),
+               dict(q="Nenne den am besten passenden mathematischen Körper für eine Orangenform.",
+                    done="Richtig, die Kugel passt am besten.",
+                    icon=ICON_KOERPER_REIHE,
+                    opts=[("Prisma", False, "Ein Prisma hat gerade Kanten und ebene Flächen."),
+                          ("Kugel", True, None),
+                          ("Pyramide", False, "Eine Pyramide läuft spitz zu."),
+                          ("Würfel", False, "Ein Würfel hat sechs flache, eckige Seiten.")]),
+               dict(q="Schätze den Radius r (1) einer Orange.",
+                    done="Richtig, der Radius liegt bei etwa 4,5 cm.",
+                    icon=ICON_KUGEL_RADIUS,
+                    opts=[("450 mm", False, "450 mm sind 45 cm, das wäre viel zu groß."),
+                          ("8,5 cm", False, "Das wäre eher der Durchmesser einer sehr großen Orange."),
+                          ("4,5 cm", True, None),
+                          ("0,5 cm", False, "Das wäre kleiner als eine Erbse.")]),
+               dict(q="Schätze den Umfang (1) einer Orange.",
+                    done="Richtig, der Umfang liegt bei etwa 28 cm.",
+                    icon=ICON_KUGEL_UMFANG,
+                    opts=[("2800 cm", False, "2800 cm wären 28 m, viel zu groß."),
+                          ("2,8 cm", False, "Das wäre kleiner als der Radius allein."),
+                          ("2,8 m", False, "Das wäre viel zu groß für eine Orange."),
+                          ("28 cm", True, None)]),
+               dict(q="Schätze das Volumen (1) (=Inhalt) einer Orange.",
+                    done="Richtig, das Volumen liegt bei etwa 382 ml.",
+                    icon=ICON_KUGEL_VOLUMEN,
+                    opts=[("382 ml", True, None),
+                          ("3,82 l", False, "Das wäre so viel wie mehrere Liter Milch, viel zu groß."),
+                          ("38,2 ml", False, "Das wäre nur ein paar Löffel, viel zu wenig."),
+                          ("38,2 l", False, "Das wäre ein ganzer Eimer, viel zu groß.")]),
+               dict(q="Beschreibe die Gemeinsamkeit eines Boots, einer Schwimmweste und einer Orangenschale.",
+                    done="Richtig, eingelagerte Luft verringert die Dichte des schwimmenden Körpers.",
+                    icon=ICON_BOOT_WESTE_SCHALE,
+                    opts=[("Lufteinlagerung verringert die Dichte des schwimmenden Körpers.", True, None),
+                          ("Lufteinlagerung vergrößert die Dichte des schwimmenden Körpers.", False, "Luft ist sehr leicht, sie senkt die Dichte, statt sie zu erhöhen.")]),
+               dict(q="Ordne die Dichte (ρ „rho“) des Wassers im abgebildeten Toten Meer (1) im Vergleich zur Dichte des Wassers in einem Süßwassersee zu.",
+                    done="Richtig, das Tote Meer ist durch den hohen Salzgehalt deutlich dichter.",
+                    icon=ICON_TOTES_MEER,
+                    opts=[("ρ (Totes Meer) &lt; ρ (Süßwasser)", False, "Der hohe Salzgehalt macht das Wasser dichter, nicht leichter."),
+                          ("ρ (Totes Meer) &gt; ρ (Süßwasser)", True, None),
+                          ("ρ (Totes Meer) = ρ (Süßwasser)", False, "Der Salzgehalt im Toten Meer ist etwa zehnmal höher als im Ozean, die Dichten sind also nicht gleich.")]),
+               dict(q="Würde eine Orange in der Nordsee (A) oder in der Ostsee (B) tiefer in das Wasser eintauchen?",
+                    done="Richtig, in der Ostsee, wegen des geringeren Salzgehalts.",
+                    icon=ICON_NORDSEE_OSTSEE,
+                    opts=[("In der Ostsee (B), geringerer Salzgehalt bedeutet geringere Dichte und weniger Auftrieb.", True, None),
+                          ("In der Nordsee (A), geringerer Salzgehalt bedeutet geringere Dichte und weniger Auftrieb.", False, "Die Nordsee hat den höheren, nicht den geringeren Salzgehalt.")]),
              ],
              solution=["Orange: r ≈ 4,5 cm, Umfang ≈ 28 cm (2πr), Volumen ≈ 382 ml ((4/3)πr³).",
                        "Mit Schale schwimmt die Orange (viele kleine Lufttaschen in der Schale senken die Dichte unter die von Wasser), ohne Schale sinkt sie meist (Dichte des reinen Fruchtfleischs liegt nahe oder über der von Wasser)."]),
@@ -811,13 +936,17 @@ def render_catchup(lp):
         for text, correct, hint in q["opts"]:
             attr = ' data-correct="true"' if correct else (' data-hint="%s"' % esc(hint) if hint else "")
             opts += '<button class="qz-opt"%s>%s</button>' % (attr, text)
+        text_block = '<div class="qz-text"><span class="qn">%d.</span>%s</div>' % (i, q["q"])
+        if q.get("icon"):
+            text_block = ('<div class="qz-item-row"><div class="qz-icon-fig">%s</div>%s</div>'
+                          % (q["icon"], text_block))
         items += (
             '<div class="qz-item">'
-            '<div class="qz-text"><span class="qn">%d.</span>%s</div>'
+            '%s'
             '<div class="qz-opts">%s</div>'
             '<div class="qz-hint"></div><div class="qz-done">%s</div>'
             '</div>'
-        ) % (i, q["q"], opts, q.get("done", "Richtig!"))
+        ) % (text_block, opts, q.get("done", "Richtig!"))
     return (
         '<section class="lp-sec"><h2><span class="dot"></span>Plickers-Aufgaben zum Nachholen</h2>'
         '<p class="vw-intro">Diese Aufgaben habt ihr im Unterricht mit Plickers beantwortet. Wer gefehlt hat oder noch einmal üben möchte, kann sie hier in Ruhe nachholen.</p>'
