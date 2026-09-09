@@ -167,14 +167,14 @@ UNITS = [
              ],
              solution=["Sechs Messgeräte → sechs physikalische Größen: Zollstock (Länge, m), Waage (Masse, kg), Stoppuhr (Puls/Zeit, bpm), Maßband (Länge, cm), Fieberthermometer (Temperatur, °C), flexibles Maßband (Umfang, cm).",
                        "Durchschnitt = Summe aller Messwerte ÷ Anzahl der Messwerte — Beispiel: Ø = (19 cm + 21 cm + 20 cm) ÷ 3 = 20 cm."]),
-        dict(no=1, sjw=1, kind="lernpfad", title="Interaktiver naturwissenschaftlicher Steckbrief",
-             goal="Du baust zu zweit ein Makey-Makey-Poster über ein Tier mit einer besonderen Körpermaß-Rekordleistung und programmierst es in Scratch so, dass es beim Anfassen davon erzählt.",
-             tasks=["Wählt zu zweit ein Tier mit einem besonderen Maß (z. B. Blauwal-Gewicht, Kolibri-Puls, Giraffen-Halsumfang, Kamel-Körpertemperatur) und recherchiert den genauen Rekordwert.",
-                    "Gestaltet ein Poster mit Bild und mindestens drei leitfähigen Stellen (z. B. aus Alufolie), die ihr später mit Makey Makey verbindet.",
-                    "Programmiert in Scratch: Beim Berühren einer Stelle soll eine Sprechblase oder Tonaufnahme den passenden Messwert nennen — genau wie du dich in LP00 selbst „vorgestellt“ hast."],
-             tools=["makey", "scratch"],
-             fast="Baut eine vierte, versteckte Kontaktstelle ein, die eine Vergleichsfrage zu eurem eigenen Steckbrief aus LP00 stellt (z. B. „Wie oft passt dein Fuß in die Fußlänge eines Elefanten?“).",
-             tags=["Physical Computing", "Team & Präsentation"],
+        dict(no=1, sjw=1, kind="lernpfad", title="Naturwissenschaftliche Größen im Tierreich",
+             goal="Du rechnest Messwerte aus dem Tierreich (Gewicht, Länge, Zeit) mit dem Einheitenleiter-Algorithmus sicher in andere Einheiten um.",
+             tasks=["Wende den Algorithmus „Einheitenleiter“ an: Einheit erkennen, dann Schritt für Schritt zur Ziel-Einheit gehen. Von größer zu kleiner wird mal Faktor gerechnet, von kleiner zu größer geteilt durch Faktor. Komma-Trick: ×1000 verschiebt das Komma 3 Stellen nach rechts, ÷1000 verschiebt es 3 Stellen nach links.",
+                    "Rechne auf deinem Arbeitsblatt die Messwerte von sieben Tieren und einer Pflanze um: Elefanten-Gewicht (kg in g und mg), Katzen-Gewicht (kg in g und mg), Giraffen-Höhe (m in cm und km), Bambus-Wachstum (cm in m und mm), Schildkröten-Gewicht (g in kg und mg) sowie Faultier-Schlafzeit (h in min) und Kolibri-Gewicht (g in mg).",
+                    "Kontrolliert eure Ergebnisse gemeinsam am Tisch, bevor ihr die Musterlösung unten aufdeckt."],
+             tools=[],
+             fast="Zusatzaufgabe vom Arbeitsblatt: Ein Gepard läuft 120 km/h. Rechne die Geschwindigkeit in m/s (Meter pro Sekunde) um. Dabei musst du zwei Einheiten gleichzeitig wechseln, km in m und h in s.",
+             tags=["Größen & Einheiten", "Kopfrechnen"],
              vorwissen=[
                dict(cap="Bild 1 · Tiere mit besonderen Maßen", svg=SVG_TIERPOSTER, quiz=[
                  dict(q="Teil 1 kann über 30 m lang und rund 150 Tonnen schwer werden. Welches Tier ist das?",
@@ -195,8 +195,64 @@ UNITS = [
                             ("Pinguin", False, "Auch Pinguine halten eine sehr konstante Temperatur."), ("Löwe", False, "Löwen schwanken nicht so stark in der Temperatur.")]),
                ]),
              ],
-             solution=["Blauwal: bis ~150 t und ~30 m — schwerstes Tier der Erde.", "Kolibri: bis ~1200 Herzschläge/Minute — schnellster Puls im Tierreich.",
-                       "Giraffe: Hals bis ~2 m lang — trotzdem nur 7 Halswirbel, genau wie beim Menschen.", "Kamel: Körpertemperatur schwankt 34–41 °C — spart dadurch Schweiß und Wasser."]),
+             catchup=[
+               dict(q="Ein Elefant wiegt 3.200.000 g. Wie viel sind das in kg?",
+                    done="Richtig, 3.200.000 g sind 3.200 kg.",
+                    opts=[("320 kg", False, "Das wäre nur geteilt durch 10.000, teile stattdessen durch 1.000."),
+                          ("200.000 kg", False, "Das passt nicht zum Ausgangswert, prüfe die Kommastellen noch einmal."),
+                          ("3.200 kg", True, None),
+                          ("2000 kg", False, "Rechne noch einmal nach: 3.200.000 g ÷ 1.000 = 3.200 kg.")]),
+               dict(q="Eine Hauskatze wiegt 4.000 g. Wie viel sind das in kg?",
+                    done="Richtig, 4.000 g sind 4 kg.",
+                    opts=[("0,4 kg", False, "Das wäre geteilt durch 10.000, teile stattdessen durch 1.000."),
+                          ("40 kg", False, "Von g zu kg wird geteilt, nicht multipliziert."),
+                          ("4 kg", True, None),
+                          ("400 kg", False, "Prüfe die Rechenrichtung noch einmal, g in kg heißt geteilt durch 1.000.")]),
+               dict(q="Die Giraffe ist 550 cm groß. Wie viel sind das in m?",
+                    done="Richtig, 550 cm sind 5,5 m.",
+                    opts=[("5,5 m", True, None),
+                          ("55 m", False, "Das Komma ist nur eine Stelle gewandert, cm in m sind aber 2 Stellen, also geteilt durch 100."),
+                          ("0,55 m", False, "Das Komma ist eine Stelle zu weit gewandert."),
+                          ("500 m", False, "Das passt nicht, cm in m heißt geteilt durch 100.")]),
+               dict(q="Der Bambus ist an einem Tag 350 mm gewachsen. Wie viel sind das in cm?",
+                    done="Richtig, 350 mm sind 35 cm.",
+                    opts=[("500 cm", False, "Das passt nicht zum Ausgangswert, rechne noch einmal nach."),
+                          ("35 cm", True, None),
+                          ("350 cm", False, "Das ist der Wert in mm selbst, mm in cm heißt geteilt durch 10."),
+                          ("3,5 cm", False, "Das Komma ist eine Stelle zu weit gewandert.")]),
+               dict(q="Die Schildkröte wiegt 250.000 mg. Wie viel sind das in g?",
+                    done="Richtig, 250.000 mg sind 250 g.",
+                    opts=[("25 g", False, "Das wäre geteilt durch 10.000, teile stattdessen durch 1.000."),
+                          ("500 g", False, "Das passt nicht zum Ausgangswert, rechne noch einmal nach."),
+                          ("250 g", True, None),
+                          ("2.500 g", False, "Das wäre nur geteilt durch 100, mg in g heißt geteilt durch 1.000.")]),
+               dict(q="Das Faultier schläft am Tag 900 Minuten. Wie viele Stunden sind das?",
+                    done="Richtig, 900 Minuten sind 15 Stunden.",
+                    opts=[("1,5 h", False, "Das Komma ist eine Stelle zu weit gewandert."),
+                          ("90 h", False, "Min in h heißt geteilt durch 60, nicht durch 10."),
+                          ("9 h", False, "Das passt nicht zum Ausgangswert, rechne 900 min ÷ 60 noch einmal nach."),
+                          ("15 h", True, None)]),
+               dict(q="Der Kolibri wiegt 5.000 mg. Wie viel sind das in g?",
+                    done="Richtig, 5.000 mg sind 5 g.",
+                    opts=[("0,5 g", False, "Das wäre geteilt durch 10.000, teile stattdessen durch 1.000."),
+                          ("50 g", False, "Prüfe die Rechenrichtung noch einmal, mg in g heißt geteilt durch 1.000."),
+                          ("5 g", True, None),
+                          ("500 g", False, "Das passt nicht, mg in g heißt geteilt durch 1.000, nicht durch 10.")]),
+               dict(q="Ein Gepard läuft 33,3 m/s. Wie schnell ist das ungefähr in km/h?",
+                    done="Richtig, 33,3 m/s sind etwa 120 km/h.",
+                    opts=[("33,3 km/h", False, "Das ist nur der Zahlenwert ohne Umrechnung, m/s und km/h sind unterschiedliche Einheiten."),
+                          ("12 km/h", False, "Das ist zu langsam, ein Gepard ist deutlich schneller als ein Fahrrad."),
+                          ("333 km/h", False, "Das ist zu schnell, kein Landtier läuft annähernd so schnell."),
+                          ("120 km/h", True, None)]),
+             ],
+             solution=["a) Elefant: 3.200 kg × 1.000 = 3.200.000 g, 3.200.000 g × 1.000 = 3.200.000.000 mg.",
+                       "b) Hauskatze: 4 kg × 1.000 = 4.000 g, 4.000 g × 1.000 = 4.000.000 mg.",
+                       "c) Giraffe: 5,5 m × 100 = 550 cm, 5,5 m × 0,001 = 0,0055 km.",
+                       "d) Bambus: 35 cm × 0,01 = 0,35 m, 35 cm × 10 = 350 mm.",
+                       "e) Schildkröte: 250 g × 0,001 = 0,25 kg, 250 g × 1.000 = 250.000 mg.",
+                       "f) Faultier: 15 h × 60 = 900 min.",
+                       "g) Kolibri: 5 g × 1.000 = 5.000 mg.",
+                       "h) Gepard (Zusatzaufgabe): 120 km/h = 120.000 m ÷ 3.600 s ≈ 33,3 m/s."]),
         dict(no=2, sjw=2, kind="lernpfad", title="Die schwimmende Orange",
              goal="Du schätzt und berechnest Radius, Umfang und Volumen einer Orange und erklärst, warum sie mit Schale schwimmt, aber ohne Schale sinkt.",
              tasks=["Schätze Gewicht, Radius, Umfang und Volumen einer Orange und vergleiche mit dem Messwert.",
@@ -734,6 +790,35 @@ def render_quiz(lp):
         '</div></section>'
     ) % (len(quiz), items)
 
+# ---------------------------------------------------------------- Plickers-Aufgaben zum Nachholen
+def render_catchup(lp):
+    catchup = lp.get("catchup")
+    if not catchup:
+        return ""
+    items = ""
+    for i, q in enumerate(catchup, 1):
+        opts = ""
+        for text, correct, hint in q["opts"]:
+            attr = ' data-correct="true"' if correct else (' data-hint="%s"' % esc(hint) if hint else "")
+            opts += '<button class="qz-opt"%s>%s</button>' % (attr, text)
+        items += (
+            '<div class="qz-item">'
+            '<div class="qz-text"><span class="qn">%d.</span>%s</div>'
+            '<div class="qz-opts">%s</div>'
+            '<div class="qz-hint"></div><div class="qz-done">%s</div>'
+            '</div>'
+        ) % (i, q["q"], opts, q.get("done", "Richtig!"))
+    return (
+        '<section class="lp-sec"><h2><span class="dot"></span>Plickers-Aufgaben zum Nachholen</h2>'
+        '<p class="vw-intro">Diese Aufgaben habt ihr im Unterricht mit Plickers beantwortet. Wer gefehlt hat oder noch einmal üben möchte, kann sie hier in Ruhe nachholen.</p>'
+        '<div class="qz-wrap" data-qz>'
+        '<div class="qz-progress"><span class="qz-count">0 / %d richtig</span>'
+        '<span class="qz-bar"><span class="qz-fill"></span></span></div>'
+        '%s'
+        '<div class="qz-solved">✔ Stark, alle Plickers-Aufgaben nachgeholt!</div>'
+        '</div></section>'
+    ) % (len(catchup), items)
+
 # ---------------------------------------------------------------- Vorwissen (SVG-Figuren + Bild-Quiz)
 def render_vorwissen(lp):
     vw = lp.get("vorwissen")
@@ -820,6 +905,7 @@ def build_lp_page(u, lp):
         + ('  %s\n' % render_vorwissen(lp) if lp.get("vorwissen") else '')
         + '  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list">%s</ul></section>\n' % tasks
         + ('  %s\n' % render_quiz(lp) if lp.get("quiz") else '')
+        + ('  %s\n' % render_catchup(lp) if lp.get("catchup") else '')
         + ('  %s\n' % tools if tools else '')
         + ('  %s\n' % fast if fast else '')
         + '  %s\n' % backup
