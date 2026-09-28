@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="1300" viewBox="0 0 1260 1300" font-family="Arial, Helvetica, sans-serif">
+<title>Dichteberechnung der 3D-Druck-Körper (Teil 2)</title>
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#2b2f36"/></marker>
+<linearGradient id="qFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ea3e8"/><stop offset="1" stop-color="#4a86d6"/></linearGradient>
+<linearGradient id="qTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cbf5"/><stop offset="1" stop-color="#8db8ef"/></linearGradient>
+<linearGradient id="qSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3f76c2"/><stop offset="1" stop-color="#325f9e"/></linearGradient>
+<linearGradient id="zBody" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5cb36a"/><stop offset="0.35" stop-color="#9bdc9f"/><stop offset="1" stop-color="#4c9a58"/></linearGradient>
+<linearGradient id="zTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3ecc4"/><stop offset="1" stop-color="#a5dea8"/></linearGradient>
+<radialGradient id="hDome" cx="0.38" cy="0.3" r="0.8"><stop offset="0" stop-color="#a7b0f5"/><stop offset="0.6" stop-color="#6a73de"/><stop offset="1" stop-color="#4c53b8"/></radialGradient>
+<linearGradient id="scale" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9ecf1"/><stop offset="1" stop-color="#c5cbd4"/></linearGradient>
+<linearGradient id="pFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7c089"/><stop offset="1" stop-color="#ee9a4e"/></linearGradient>
+<linearGradient id="pSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d98236"/><stop offset="1" stop-color="#bd6c28"/></linearGradient>
+<linearGradient id="kBody" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9606a"/><stop offset="0.35" stop-color="#f3a4aa"/><stop offset="1" stop-color="#c24d58"/></linearGradient>
+<linearGradient id="rFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd8cf"/><stop offset="1" stop-color="#5cbdb1"/></linearGradient>
+<linearGradient id="rSide" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fb0a4"/><stop offset="1" stop-color="#3a8f85"/></linearGradient>
+</defs>
+<rect width="1260" height="1300" fill="#fafaf8"/>
+<text x="35.0" y="62.0" font-size="40" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>Dichtebestimmung der 3D-gedruckten Körper (Teil 2)</tspan></text>
+<text x="35.0" y="118.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan>Die Masse wird mit der Waage bestimmt, dann gilt:  </tspan><tspan font-style="italic">ρ</tspan><tspan> = </tspan></text>
+<text x="684.5" y="105.8" font-size="20.28" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">m</tspan></text>
+<text x="686.2" y="128.3" font-size="20.28" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">V</tspan></text>
+<line x1="681.3" y1="110.2" x2="704.7" y2="110.2" stroke="#1d232b" stroke-width="1.4"/>
+<text x="707.8" y="118.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan>  in  </tspan></text>
+<text x="765.2" y="105.8" font-size="20.28" fill="#1d232b" xml:space="preserve"><tspan>g</tspan></text>
+<text x="760.2" y="128.3" font-size="20.28" fill="#1d232b" xml:space="preserve"><tspan>ml</tspan></text>
+<line x1="756.9" y1="110.2" x2="784.8" y2="110.2" stroke="#1d232b" stroke-width="1.4"/>
+<line x1="0" y1="150" x2="1260" y2="150" stroke="#d3d9e1" stroke-width="2"/>
+<g transform="translate(0,150)"><text x="35.0" y="52.0" font-size="36" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>4) Quadratische Pyramide</tspan></text>
+<polygon points="281.0,250.0 330.6,222.1 250.0,109.0" fill="url(#pSide)" stroke="#b0621f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="169.4,250.0 281.0,250.0 250.0,109.0" fill="url(#pFront)" stroke="#b0621f" stroke-width="1.4" stroke-linejoin="round"/>
+<polyline points="169.4,250.0 219.0,222.1 330.6,222.1" fill="none" stroke="#7a3f10" stroke-width="1.6" stroke-dasharray="8 6"/>
+<line x1="219.0" y1="222.1" x2="250.0" y2="109.0" stroke="#7a3f10" stroke-width="1.6" stroke-dasharray="8 6"/>
+<rect x="100" y="250" width="300" height="14" rx="4" fill="#aeb6c1" stroke="#7d8793" stroke-width="1.2"/>
+<rect x="210" y="264" width="80" height="8" fill="#8d96a2"/>
+<rect x="85" y="272" width="330" height="62" rx="12" fill="url(#scale)" stroke="#8d96a2" stroke-width="1.5"/>
+<rect x="188" y="284" width="124" height="38" rx="5" fill="#1f2a33"/>
+<text x="282" y="312" font-size="24" font-weight="bold" fill="#7ef0a0" text-anchor="end" font-family="Menlo, Consolas, monospace">9,7</text>
+<text x="290" y="312" font-size="20" fill="#7ef0a0" font-family="Menlo, Consolas, monospace">g</text>
+<text x="470.0" y="120.0" font-size="25" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>Gegeben:</tspan></text>
+<text x="470.0" y="162.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">m</tspan><tspan> = 9,7 g</tspan></text>
+<text x="470.0" y="200.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">V</tspan><tspan> ≈ 26,67 cm³</tspan></text>
+<text x="526.0" y="236.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan>≈ 26,67 ml</tspan></text>
+<rect x="720" y="70" width="300" height="240" rx="10" fill="#fef7f0" stroke="#f2c596" stroke-width="2"/><path d="M721,152 V80 a9,9 0 0 1 9,-9 H1010 a9,9 0 0 1 9,9 V152 Z" fill="#fde6cf"/><line x1="721" y1="152" x2="1019" y2="152" stroke="#f2c596" stroke-width="1.5"/>
+<text x="742.0" y="125.0" font-size="36" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> = </tspan></text>
+<text x="809.3" y="108.1" font-size="28.080000000000002" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">m</tspan></text>
+<text x="812.4" y="139.3" font-size="28.080000000000002" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">V</tspan></text>
+<line x1="804.8" y1="114.2" x2="838.8" y2="114.2" stroke="#1d232b" stroke-width="2.0"/>
+<text x="742.0" y="205.0" font-size="30" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> = </tspan></text>
+<text x="815.9" y="190.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>9,7 g</tspan></text>
+<text x="797.0" y="216.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>26,67 ml</tspan></text>
+<line x1="793.3" y1="196.0" x2="890.5" y2="196.0" stroke="#1d232b" stroke-width="1.6"/>
+<text x="742.0" y="280.0" font-size="30" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> ≈ 0,36 </tspan></text>
+<text x="868.6" y="265.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>g</tspan></text>
+<text x="862.8" y="291.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>ml</tspan></text>
+<line x1="859.0" y1="271.0" x2="891.2" y2="271.0" stroke="#1d232b" stroke-width="1.6"/>
+<text x="1055.0" y="120.0" font-size="25" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>Dichte:</tspan></text>
+<rect x="1048" y="140" width="190" height="62" rx="31" fill="#fde6cf" stroke="#f2c596" stroke-width="2"/>
+<text x="1068.0" y="182.0" font-size="28" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> ≈ 0,36 </tspan></text>
+<text x="1186.2" y="171.7" font-size="17.16" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>g</tspan></text>
+<text x="1181.5" y="190.7" font-size="17.16" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>ml</tspan></text>
+<line x1="1178.7" y1="175.4" x2="1204.3" y2="175.4" stroke="#1d232b" stroke-width="1.4"/></g>
+<line x1="0" y1="500" x2="1260" y2="500" stroke="#d3d9e1" stroke-width="2"/>
+<g transform="translate(0,500)"><text x="35.0" y="52.0" font-size="36" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>5) Kegel</tspan></text>
+<path d="M203.5,236.4 L250.0,93.8 L296.5,236.4 A46.5,13.6 0 0 1 203.5,236.4 Z" fill="url(#kBody)" stroke="#a83e48" stroke-width="1.4" stroke-linejoin="round"/>
+<path d="M203.5,236.4 A46.5,13.6 0 0 1 296.5,236.4" fill="none" stroke="#6e1f27" stroke-width="1.6" stroke-dasharray="8 6"/>
+<rect x="100" y="250" width="300" height="14" rx="4" fill="#aeb6c1" stroke="#7d8793" stroke-width="1.2"/>
+<rect x="210" y="264" width="80" height="8" fill="#8d96a2"/>
+<rect x="85" y="272" width="330" height="62" rx="12" fill="url(#scale)" stroke="#8d96a2" stroke-width="1.5"/>
+<rect x="188" y="284" width="124" height="38" rx="5" fill="#1f2a33"/>
+<text x="282" y="312" font-size="24" font-weight="bold" fill="#7ef0a0" text-anchor="end" font-family="Menlo, Consolas, monospace">9,8</text>
+<text x="290" y="312" font-size="20" fill="#7ef0a0" font-family="Menlo, Consolas, monospace">g</text>
+<text x="470.0" y="120.0" font-size="25" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>Gegeben:</tspan></text>
+<text x="470.0" y="162.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">m</tspan><tspan> = 9,8 g</tspan></text>
+<text x="470.0" y="200.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">V</tspan><tspan> ≈ 27,23 cm³</tspan></text>
+<text x="526.0" y="236.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan>≈ 27,23 ml</tspan></text>
+<rect x="720" y="70" width="300" height="240" rx="10" fill="#fef4f5" stroke="#eeb0b6" stroke-width="2"/><path d="M721,152 V80 a9,9 0 0 1 9,-9 H1010 a9,9 0 0 1 9,9 V152 Z" fill="#fadadd"/><line x1="721" y1="152" x2="1019" y2="152" stroke="#eeb0b6" stroke-width="1.5"/>
+<text x="742.0" y="125.0" font-size="36" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> = </tspan></text>
+<text x="809.3" y="108.1" font-size="28.080000000000002" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">m</tspan></text>
+<text x="812.4" y="139.3" font-size="28.080000000000002" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">V</tspan></text>
+<line x1="804.8" y1="114.2" x2="838.8" y2="114.2" stroke="#1d232b" stroke-width="2.0"/>
+<text x="742.0" y="205.0" font-size="30" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> = </tspan></text>
+<text x="815.9" y="190.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>9,8 g</tspan></text>
+<text x="797.0" y="216.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>27,23 ml</tspan></text>
+<line x1="793.3" y1="196.0" x2="890.5" y2="196.0" stroke="#1d232b" stroke-width="1.6"/>
+<text x="742.0" y="280.0" font-size="30" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> ≈ 0,36 </tspan></text>
+<text x="868.6" y="265.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>g</tspan></text>
+<text x="862.8" y="291.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>ml</tspan></text>
+<line x1="859.0" y1="271.0" x2="891.2" y2="271.0" stroke="#1d232b" stroke-width="1.6"/>
+<text x="1055.0" y="120.0" font-size="25" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>Dichte:</tspan></text>
+<rect x="1048" y="140" width="190" height="62" rx="31" fill="#fadadd" stroke="#eeb0b6" stroke-width="2"/>
+<text x="1068.0" y="182.0" font-size="28" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> ≈ 0,36 </tspan></text>
+<text x="1186.2" y="171.7" font-size="17.16" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>g</tspan></text>
+<text x="1181.5" y="190.7" font-size="17.16" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>ml</tspan></text>
+<line x1="1178.7" y1="175.4" x2="1204.3" y2="175.4" stroke="#1d232b" stroke-width="1.4"/></g>
+<line x1="0" y1="850" x2="1260" y2="850" stroke="#d3d9e1" stroke-width="2"/>
+<g transform="translate(0,850)"><text x="35.0" y="52.0" font-size="36" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>6) Dreieckiges Prisma</tspan></text>
+<polygon points="178.0,178.0 221.2,250.0 365.2,170.8 322.0,98.8" fill="url(#rSide)" stroke="#2e7d74" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="134.8,250.0 221.2,250.0 178.0,178.0" fill="url(#rFront)" stroke="#2e7d74" stroke-width="1.4" stroke-linejoin="round"/>
+<polyline points="134.8,250.0 278.8,170.8 365.2,170.8" fill="none" stroke="#1d5750" stroke-width="1.6" stroke-dasharray="8 6"/>
+<line x1="278.8" y1="170.8" x2="322.0" y2="98.8" stroke="#1d5750" stroke-width="1.6" stroke-dasharray="8 6"/>
+<rect x="100" y="250" width="300" height="14" rx="4" fill="#aeb6c1" stroke="#7d8793" stroke-width="1.2"/>
+<rect x="210" y="264" width="80" height="8" fill="#8d96a2"/>
+<rect x="85" y="272" width="330" height="62" rx="12" fill="url(#scale)" stroke="#8d96a2" stroke-width="1.5"/>
+<rect x="188" y="284" width="124" height="38" rx="5" fill="#1f2a33"/>
+<text x="282" y="312" font-size="24" font-weight="bold" fill="#7ef0a0" text-anchor="end" font-family="Menlo, Consolas, monospace">10,7</text>
+<text x="290" y="312" font-size="20" fill="#7ef0a0" font-family="Menlo, Consolas, monospace">g</text>
+<text x="470.0" y="120.0" font-size="25" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>Gegeben:</tspan></text>
+<text x="470.0" y="162.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">m</tspan><tspan> = 10,7 g</tspan></text>
+<text x="470.0" y="200.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">V</tspan><tspan> = 26,25 cm³</tspan></text>
+<text x="526.0" y="236.0" font-size="26" fill="#1d232b" xml:space="preserve"><tspan>= 26,25 ml</tspan></text>
+<rect x="720" y="70" width="300" height="240" rx="10" fill="#f2faf9" stroke="#a3d9d1" stroke-width="2"/><path d="M721,152 V80 a9,9 0 0 1 9,-9 H1010 a9,9 0 0 1 9,9 V152 Z" fill="#d4efeb"/><line x1="721" y1="152" x2="1019" y2="152" stroke="#a3d9d1" stroke-width="1.5"/>
+<text x="742.0" y="125.0" font-size="36" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> = </tspan></text>
+<text x="809.3" y="108.1" font-size="28.080000000000002" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">m</tspan></text>
+<text x="812.4" y="139.3" font-size="28.080000000000002" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">V</tspan></text>
+<line x1="804.8" y1="114.2" x2="838.8" y2="114.2" stroke="#1d232b" stroke-width="2.0"/>
+<text x="742.0" y="205.0" font-size="30" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> = </tspan></text>
+<text x="809.4" y="190.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>10,7 g</tspan></text>
+<text x="797.0" y="216.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>26,25 ml</tspan></text>
+<line x1="793.3" y1="196.0" x2="890.5" y2="196.0" stroke="#1d232b" stroke-width="1.6"/>
+<text x="742.0" y="280.0" font-size="30" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> ≈ 0,41 </tspan></text>
+<text x="868.6" y="265.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>g</tspan></text>
+<text x="862.8" y="291.9" font-size="23.400000000000002" fill="#1d232b" xml:space="preserve"><tspan>ml</tspan></text>
+<line x1="859.0" y1="271.0" x2="891.2" y2="271.0" stroke="#1d232b" stroke-width="1.6"/>
+<text x="1055.0" y="120.0" font-size="25" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>Dichte:</tspan></text>
+<rect x="1048" y="140" width="190" height="62" rx="31" fill="#d4efeb" stroke="#a3d9d1" stroke-width="2"/>
+<text x="1068.0" y="182.0" font-size="28" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan font-style="italic">ρ</tspan><tspan> ≈ 0,41 </tspan></text>
+<text x="1186.2" y="171.7" font-size="17.16" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>g</tspan></text>
+<text x="1181.5" y="190.7" font-size="17.16" font-weight="bold" fill="#1d232b" xml:space="preserve"><tspan>ml</tspan></text>
+<line x1="1178.7" y1="175.4" x2="1204.3" y2="175.4" stroke="#1d232b" stroke-width="1.4"/></g>
+<line x1="0" y1="1200" x2="1260" y2="1200" stroke="#d3d9e1" stroke-width="2"/>
+<text x="35.0" y="1240.0" font-size="21" fill="#5a636e" xml:space="preserve"><tspan>Beispielmassen für PLA-Druck (massives PLA: ρ ≈ 1,24 g/cm³) mit ca. 15 % Infill, 2 Wandlinien und 0,8 mm Boden/Deckel.</tspan></text>
+<text x="35.0" y="1270.0" font-size="21" fill="#5a636e" xml:space="preserve"><tspan>Weil die Körper innen größtenteils hohl sind, liegt ihre Dichte deutlich unter der von massivem PLA.</tspan></text>
+</svg>

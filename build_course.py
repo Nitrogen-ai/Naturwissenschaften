@@ -184,6 +184,223 @@ ICON_NORDSEE_OSTSEE = (
     '<text x="23" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#163a2b">B</text></g>'
     '</svg>')
 
+# ---------------------------------------------------------------- LP03/LP04: Aräometer, Plickers-Karten
+def word_card(lines, bold=False, grey=False, size=17):
+    """Plickers-Begriffskarte als Vektor: zentrierter Text auf heller Karte."""
+    n = len(lines)
+    y0 = 48 - (n - 1) * size * 0.62 + size * 0.35
+    txt = "".join('<text x="75" y="%.1f" text-anchor="middle" font-family="Nunito,sans-serif" '
+                  'font-size="%d" font-weight="%d" fill="#163a2b">%s</text>'
+                  % (y0 + i * size * 1.25, size, 800 if bold else 600, l) for i, l in enumerate(lines))
+    return ('<svg viewBox="0 0 150 96" xmlns="http://www.w3.org/2000/svg">'
+            '<rect x="3" y="3" width="144" height="90" rx="10" fill="%s" stroke="#163a2b" stroke-opacity="0.18" stroke-width="2"/>%s</svg>'
+            % ("#ececec" if grey else "#ffffff", txt))
+
+def araeometer(x, y, s=1.0, labels=False):
+    """Aräometer (Senkspindel): Stiel mit Skala, Luftkammer, Bleigewicht. (x,y) = Spitze oben."""
+    def P(px, py):
+        return "%.1f,%.1f" % (x + px * s, y + py * s)
+    ticks = "".join('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#163a2b" stroke-width="%.1f"/>'
+                    % (x - 5 * s, y + (14 + i * 9) * s, x + (1 if i % 2 else 3) * s, y + (14 + i * 9) * s, 1.6 * s)
+                    for i in range(11))
+    pts = [(-7, 4), (-7, 120), (-7, 130), (-22, 135), (-22, 155), (-22, 175), (-12, 182), (-12, 194),
+           (-12, 222), (-12, 230), (12, 230), (12, 222), (12, 194), (12, 182), (22, 175), (22, 155),
+           (22, 135), (7, 130), (7, 120), (7, 4)]
+    q = [P(*pt) for pt in pts]
+    d = ("M%s L%s C%s %s %s C%s %s %s L%s C%s %s %s L%s C%s %s %s C%s %s %s L%s Z" % tuple(q))
+    body = ('<path d="%s" fill="#e8f4fb" stroke="#163a2b" stroke-width="%.1f" stroke-linejoin="round"/>'
+            % (d, 3 * s))
+    top = '<path d="M%s A%.1f,%.1f 0 0 1 %s" fill="#e8f4fb" stroke="#163a2b" stroke-width="%.1f"/>' % (
+        P(-7, 4.5), 7 * s, 7 * s, P(7, 4.5), 3 * s)
+    lead = "".join('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="#8f99a3" stroke="#163a2b" stroke-width="%.1f"/>'
+                   % (x + dx * s, y + dy * s, 3.2 * s, 0.8 * s)
+                   for dx, dy in [(-6, 212), (0, 211), (6, 212), (-7, 219), (-1, 219), (5, 219), (-3, 225), (3, 225)])
+    out = body + top + ticks + lead
+    if labels:
+        lab = [(40, "Skala"), (165, "Luft für Auftrieb"), (218, "Gewicht (Bleikugeln)")]
+        for ly, t in lab:
+            out += ('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#2f8fe0" stroke-width="2"/>'
+                    '<text x="%.1f" y="%.1f" font-family="Nunito,sans-serif" font-size="15" font-weight="700" fill="#163a2b">%s</text>'
+                    % (x + 14 * s, y + ly * s, x + 40 * s, y + ly * s, x + 44 * s, y + ly * s + 5, t))
+    return out
+
+SVG_ARAEOMETER = ('<svg viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img" '
+                  'aria-label="Aräometer mit Skala, Luftkammer und Bleigewicht">%s</svg>' % araeometer(40, 8, 1.0, True))
+
+def _tab(cols, widths, x0, y, h, head=False, fs=9):
+    out, x = "", x0
+    for c, w in zip(cols, widths):
+        out += '<rect x="%d" y="%d" width="%d" height="%d" fill="%s" stroke="#163a2b" stroke-width="1.2"/>' % (
+            x, y, w, h, "#ececec" if head else "#fff")
+        lines = c if isinstance(c, list) else [c]
+        for i, l in enumerate(lines):
+            ty = y + h / 2 + fs * 0.35 + (i - (len(lines) - 1) / 2) * fs * 1.2
+            out += ('<text x="%.1f" y="%.1f" text-anchor="middle" font-family="Nunito,sans-serif" font-size="%d" '
+                    'font-weight="%d" fill="#163a2b">%s</text>' % (x + w / 2, ty, fs, 800 if head else 600, l))
+        x += w
+    return out
+
+_W5 = [44, 26, 92, 50, 78]
+ICON_GROESSEN_KOPF = (
+    '<svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">'
+    '<rect x="5" y="4" width="290" height="40" fill="#111"/>'
+    '<text x="12" y="16" font-family="Nunito,sans-serif" font-size="9.5" font-weight="800" fill="#fff">Ordne die Begriffe (Symbol der Einheit, Einheiten,</text>'
+    '<text x="12" y="28" font-family="Nunito,sans-serif" font-size="9.5" font-weight="800" fill="#fff">mögliche Messinstrumente, Symbol der Größe und</text>'
+    '<text x="12" y="40" font-family="Nunito,sans-serif" font-size="9.5" font-weight="800" fill="#fff">Größe) diesem Beispiel zu.</text>'
+    '<text x="5" y="57" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#2f6fa8">Übersicht zu naturwissenschaftlichen Größen</text>'
+    '<rect x="5" y="62" width="290" height="30" fill="#111"/>'
+    + "".join('<circle cx="%.1f" cy="77" r="10" fill="%s"/><text x="%.1f" y="81" text-anchor="middle" '
+              'font-family="Fredoka,sans-serif" font-size="12" font-weight="700" fill="#fff">%d</text>'
+              % (5 + sum(_W5[:i]) + _W5[i] / 2, col, 5 + sum(_W5[:i]) + _W5[i] / 2, i + 1)
+              for i, col in enumerate(["#2f8fe0", "#ff8a3d", "#8a5cf0", "#2e9e5b", "#ff6f59"]))
+    + _tab(["Länge", "l", ["Meter, Millimeter,", "Kilometer, Zentimeter"], ["m, mm,", "km, cm"], ["Maßband, Zoll-", "stock, Lineal"]],
+           _W5, 5, 92, 44, fs=8.5)
+    + '</svg>')
+
+ICON_DICHTE_ZEILE = (
+    '<svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">'
+    '<rect x="5" y="4" width="200" height="40" fill="#111"/>'
+    '<text x="11" y="17" font-family="Nunito,sans-serif" font-size="9.5" font-weight="800" fill="#fff">Schlage experimentelle Bestimmungs-</text>'
+    '<text x="11" y="28" font-family="Nunito,sans-serif" font-size="9.5" font-weight="800" fill="#fff">möglichkeiten für die Dichte von</text>'
+    '<text x="11" y="39" font-family="Nunito,sans-serif" font-size="9.5" font-weight="800" fill="#fff">Festkörpern vor.</text>'
+    + _tab(["Dichte", ["ρ", "(Rho)"], ["Gramm pro Milliliter,", "Gramm pro Kubik-", "zentimeter"], ["g/ml,", "g/cm³"], "?"],
+           [40, 30, 78, 36, 26], 5, 54, 72, fs=8.5)
+    + araeometer(262, 6, 0.55)
+    + '</svg>')
+
+def fr(num, den):
+    """Bruch als HTML (Zähler über Nenner)."""
+    return '<span class="fr"><span>%s</span><span>%s</span></span>' % (num, den)
+
+def step_card(title, img, alt, given, mass, steps):
+    """Körper-Karte mit stufenweise aufklappbaren Hilfen: jede Hilfe steckt in der vorherigen."""
+    inner = ""
+    for i in range(len(steps) - 1, -1, -1):
+        summary, body = steps[i]
+        inner = ('<details class="step"><summary>%s</summary><div class="step-body">%s%s</div></details>'
+                 % (summary, body, inner))
+    return ('<article class="bc"><h3>%s</h3>'
+            '<div class="bc-top"><img src="lp04-img/%s" alt="%s" loading="lazy">'
+            '<div class="bc-given"><b>Gegeben (Tinkercad):</b><br>%s<br><b>Gewogene Masse:</b><br><i>m</i> = %s</div></div>'
+            '%s</article>') % (title, img, alt, given, mass, inner)
+
+def density_steps(formula, insert, volume, m, v_ml, rho, extra_tip=""):
+    """Fünf Standard-Hilfen: Formel → Einsetzen → Volumen → Dichte → Ergebnis."""
+    return [
+        ("Hilfe 1 · Welche Volumenformel passt?",
+         '<p class="m">%s</p>%s' % (formula, extra_tip)),
+        ("Hilfe 2 · Maße einsetzen",
+         '<p class="m">%s</p>' % insert),
+        ("Hilfe 3 · Volumen ausrechnen",
+         '<p class="m">%s</p><p class="tip">1 cm³ = 1 ml. Das Volumen ist höchstens 30 ml, so wie in Tinkercad gefordert. ✓</p>' % volume),
+        ("Hilfe 4 · Dichte berechnen: ρ = m / V",
+         '<p class="m"><i>ρ</i> = %s = %s</p>' % (fr("<i>m</i>", "<i>V</i>"), fr("%s g" % m, "%s ml" % v_ml))),
+        ("Ergebnis",
+         '<p class="m res"><i>ρ</i> ≈ %s %s</p><p class="tip">Die Dichte ist kleiner als die von Wasser (1 g/ml). '
+         'Der Körper ist innen größtenteils hohl (ca. 15 %% Füllung) und schwimmt deshalb.</p>' % (rho, fr("g", "ml"))),
+    ]
+
+SEC_LP04_STEPS = (
+    '<section class="lp-sec"><h2><span class="dot"></span>Dichtebestimmungen Schritt für Schritt</h2>'
+    '<p class="vw-intro">Die Körper wurden in Tinkercad modelliert (Volumen höchstens 30 ml), im 3D-Drucker aus PLA gedruckt und gewogen. '
+    'Berechne für jeden Körper zuerst das <b>Volumen</b> und danach die <b>Dichte</b>. Kommst du nicht weiter, klappe die nächste Hilfe auf, '
+    'aber immer nur so viele, wie du wirklich brauchst. Hast du deinen eigenen Körper gewogen, rechne mit deiner Masse, sonst mit der Beispielmasse.</p>'
+    '<h3 class="bc-group">Abb. 1 · Quader, Zylinder, Halbkugel</h3><div class="bc-list">'
+    + step_card("1) Quader", "quader.svg", "Quader mit a = 2 cm, a = 2 cm, h = 1,5 cm",
+                "<i>a</i> = 2 cm, <i>h</i> = 1,5 cm", "2,7 g",
+                density_steps("<i>V</i> = <i>a</i> · <i>a</i> · <i>h</i>",
+                              "<i>V</i> = 2 cm · 2 cm · 1,5 cm",
+                              "<i>V</i> = 6 cm³ = 6 ml",
+                              "2,7", "6", "0,45",
+                              '<p class="tip">Grundfläche (Quadrat <i>a</i> · <i>a</i>) mal Höhe <i>h</i>.</p>'))
+    + step_card("2) Zylinder", "zylinder.svg", "Zylinder mit d = 2 cm, h = 4 cm",
+                "<i>d</i> = 2 cm, <i>h</i> = 4 cm", "4,8 g",
+                density_steps("<i>V</i> = π · (%s)² · <i>h</i>" % fr("<i>d</i>", "2"),
+                              "<i>V</i> = π · (%s)² · 4 cm = π · (1 cm)² · 4 cm" % fr("2 cm", "2"),
+                              "<i>V</i> = π · 4 cm³ ≈ 12,57 cm³ = 12,57 ml",
+                              "4,8", "12,57", "0,38",
+                              '<p class="tip">Die Grundfläche ist ein Kreis: π · <i>r</i>², und der Radius ist der halbe Durchmesser: <i>r</i> = <i>d</i> / 2.</p>'))
+    + step_card("3) Halbkugel", "halbkugel.svg", "Halbkugel mit d = 4 cm",
+                "<i>d</i> = 4 cm", "6,1 g",
+                density_steps("<i>V</i> = %s · π · <i>d</i>³" % fr("1", "12"),
+                              "<i>V</i> = %s · π · (4 cm)³ = %s · π · 64 cm³" % (fr("1", "12"), fr("1", "12")),
+                              "<i>V</i> = %s · π cm³ ≈ 16,76 cm³ = 16,76 ml" % fr("64", "12"),
+                              "6,1", "16,76", "0,36",
+                              '<p class="tip">Eine ganze Kugel hat <i>V</i> = %s · π · <i>d</i>³, die Halbkugel die Hälfte davon.</p>' % fr("1", "6")))
+    + '</div><h3 class="bc-group">Abb. 2 · Pyramide, Kegel, Prisma</h3><div class="bc-list">'
+    + step_card("4) Quadratische Pyramide", "pyramide.svg", "Quadratische Pyramide mit a = 4 cm, h = 5 cm",
+                "<i>a</i> = 4 cm, <i>h</i> = 5 cm", "9,7 g",
+                density_steps("<i>V</i> = %s · <i>a</i>² · <i>h</i>" % fr("1", "3"),
+                              "<i>V</i> = %s · (4 cm)² · 5 cm = %s · 16 cm² · 5 cm" % (fr("1", "3"), fr("1", "3")),
+                              "<i>V</i> = %s cm³ ≈ 26,67 cm³ = 26,67 ml" % fr("80", "3"),
+                              "9,7", "26,67", "0,36",
+                              '<p class="tip">Spitze Körper wie Pyramide und Kegel haben genau ein Drittel des Volumens einer Säule mit gleicher Grundfläche und Höhe.</p>'))
+    + step_card("5) Kegel", "kegel.svg", "Kegel mit d = 4 cm, h = 6,5 cm",
+                "<i>d</i> = 4 cm, <i>h</i> = 6,5 cm", "9,8 g",
+                density_steps("<i>V</i> = %s · π · (%s)² · <i>h</i>" % (fr("1", "3"), fr("<i>d</i>", "2")),
+                              "<i>V</i> = %s · π · (%s)² · 6,5 cm = %s · π · (2 cm)² · 6,5 cm" % (fr("1", "3"), fr("4 cm", "2"), fr("1", "3")),
+                              "<i>V</i> = %s · π cm³ ≈ 27,23 cm³ = 27,23 ml" % fr("26", "3"),
+                              "9,8", "27,23", "0,36",
+                              '<p class="tip">Wie beim Zylinder, aber mal %s, weil der Kegel spitz zuläuft.</p>' % fr("1", "3")))
+    + step_card("6) Dreieckiges Prisma", "prisma.svg", "Dreieckiges Prisma mit g = 3 cm, h_g = 2,5 cm, h_p = 7 cm",
+                "<i>g</i> = 3 cm, <i>h</i><sub>g</sub> = 2,5 cm, <i>h</i><sub>p</sub> = 7 cm", "10,7 g",
+                density_steps("<i>V</i> = %s · <i>g</i> · <i>h</i><sub>g</sub> · <i>h</i><sub>p</sub>" % fr("1", "2"),
+                              "<i>V</i> = %s · 3 cm · 2,5 cm · 7 cm = %s · 7,5 cm² · 7 cm" % (fr("1", "2"), fr("1", "2")),
+                              "<i>V</i> = 26,25 cm³ = 26,25 ml",
+                              "10,7", "26,25", "0,41",
+                              '<p class="tip">Dreiecksfläche (%s · <i>g</i> · <i>h</i><sub>g</sub>) mal Länge des Prismas <i>h</i><sub>p</sub>.</p>' % fr("1", "2")))
+    + '</div></section>')
+
+SEC_LP03_INFO = (
+    '<section class="lp-sec"><h2><span class="dot"></span>Info: Das Aräometer</h2>'
+    '<div class="info-row"><div class="fig ar-fig">%s</div><div class="info-text">'
+    '<p>Das <b>Aräometer</b>, auch Senkwaage, Senkspindel, Dichtespindel oder Hydrometer genannt, ist ein Messgerät zur Bestimmung '
+    'der <b>Dichte</b> (oder des spezifischen Gewichts) von Flüssigkeiten.</p>'
+    '<p>Es schwimmt senkrecht: Unten sorgt ein Gewicht für einen stabilen Stand, darüber gibt eine Luftkammer Auftrieb. '
+    'Wie tief es eintaucht, liest man an der Skala ab.</p>'
+    '<p><b>Forschungsfrage:</b> Würde eine Orange in der Nordsee oder in der Ostsee tiefer eintauchen? '
+    'Heute wird deine Orange selbst zum Aräometer.</p></div></div></section>'
+) % SVG_ARAEOMETER
+
+CSS_LP03 = """
+.info-row { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 1.1rem; align-items: start; }
+.ar-fig { margin: 0; padding: 0.5rem; }
+.info-text p { margin: 0 0 0.7rem; }
+@media (max-width: 600px) { .info-row { grid-template-columns: 1fr; } .ar-fig { max-width: 240px; } }
+"""
+
+CSS_LP04 = """
+.qz-icon-fig.wide { width: 150px; height: 96px; padding: 0; background: none; border: none; }
+.qz-icon-fig.xl { width: 340px; height: 160px; padding: 0.2rem; background: #fff; }
+@media (max-width: 600px) {
+  .qz-item-row { flex-direction: column; }
+  .qz-icon-fig.xl { width: 100%; max-width: 340px; height: auto; }
+  .qz-icon-fig.xl svg { height: auto; }
+}
+.bc-group { font-family: 'Fredoka', sans-serif; font-size: 1.05rem; color: var(--ink-soft); margin: 1.2rem 0 0.7rem; }
+.bc-list { display: grid; gap: 1rem; }
+.bc { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 1rem 1.1rem; }
+.bc h3 { font-family: 'Fredoka', sans-serif; font-size: 1.15rem; margin: 0 0 0.6rem; color: var(--ink); }
+.bc-top { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1rem; align-items: center; }
+.bc-top img { width: 100%; height: auto; display: block; border-radius: 10px; }
+.bc-given { font-size: 0.95rem; line-height: 1.7; }
+@media (max-width: 600px) { .bc-top { grid-template-columns: 1fr; } }
+details.step { margin-top: 0.7rem; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg-2); }
+details.step > summary { cursor: pointer; list-style: none; padding: 0.55rem 0.8rem; font-family: 'Fredoka', sans-serif; font-weight: 600; color: var(--primary-edge); display: flex; align-items: center; gap: 0.5rem; }
+details.step > summary::-webkit-details-marker { display: none; }
+details.step > summary::before { content: "▸"; display: inline-block; transition: transform 0.15s ease; }
+details.step[open] > summary::before { transform: rotate(90deg); }
+.step-body { padding: 0 0.8rem 0.7rem; }
+.step-body > details.step { margin-left: -0.8rem; margin-right: -0.8rem; margin-bottom: -0.7rem; border-left: none; border-right: none; border-bottom: none; border-radius: 0 0 12px 12px; }
+.step-body .m { font-size: 1.08rem; margin: 0.2rem 0 0.4rem; line-height: 2.4; }
+.step-body .tip { font-size: 0.86rem; color: var(--ink-soft); margin: 0 0 0.5rem; }
+.step-body .res { font-weight: 800; color: var(--primary-edge); }
+.fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: 0.86em; line-height: 1.15; margin: 0 0.12em; }
+.fr > span:first-child { border-bottom: 1.5px solid currentColor; padding: 0 0.2em; }
+.fr > span:last-child { padding: 0 0.2em; }
+.sol-fig { display: block; width: 100%; height: auto; margin: 0.6rem 0; border-radius: 10px; border: 1px solid var(--line); }
+"""
+
 # ---------------------------------------------------------------- Kursinhalt
 # Jedes LP: no, sjw, title, goal, tasks[], tools[keys], fast, tags[], solution[], kind, quiz(optional), vorwissen(optional)
 UNITS = [
@@ -400,24 +617,116 @@ UNITS = [
              ],
              solution=["Orange: r ≈ 4,5 cm, Umfang ≈ 28 cm (2πr), Volumen ≈ 382 ml ((4/3)πr³).",
                        "Mit Schale schwimmt die Orange (viele kleine Lufttaschen in der Schale senken die Dichte unter die von Wasser), ohne Schale sinkt sie meist (Dichte des reinen Fruchtfleischs liegt nahe oder über der von Wasser)."]),
-        dict(no=3, sjw=3, kind="lernpfad", title="Übungen und Dichtebestimmung mit digitalen, interaktiven Übungen",
-             goal="Du festigst die Formel Dichte = Masse ÷ Volumen (ρ = m/V) an digitalen Übungsaufgaben und lernst, Dichten verschiedener Stoffe miteinander zu vergleichen.",
-             tasks=["Wiederhole die Formel ρ = m/V und rechne drei einfache Beispiele im Kopf oder schriftlich durch.",
-                    "Bearbeite digitale Übungsaufgaben zur Dichtebestimmung in Partnerarbeit (Zeit pro Aufgabe stoppen, Ergebnisse vergleichen).",
-                    "Ordne mindestens fünf Alltagsstoffe (Kork, Eisen, Holz, Öl, Stein) nach steigender Dichte."],
-             tools=[], fast="Finde einen Alltagsstoff, dessen Dichte ganz nah an der von Wasser (1 g/cm³) liegt, und begründe, warum er trotzdem manchmal schwimmt und manchmal sinkt.",
-             tags=["Üben & Vertiefen", "Dichte"],
-             solution=["ρ = m/V — Masse in g oder kg, Volumen in cm³ oder l, Dichte in g/cm³ oder kg/l.",
-                       "Ein Stoff schwimmt in Wasser, wenn seine Dichte kleiner als 1 g/cm³ ist, und sinkt, wenn sie größer ist."]),
-        dict(no=4, sjw=4, kind="lernpfad", title="Dichtebestimmung mit Orangen",
-             goal="Du bestimmst experimentell die Dichte einer Orange mit und ohne Schale und vergleichst sie rechnerisch mit der Dichte von Wasser.",
-             tasks=["Wiege die Orange mit und ohne Schale (Masse) und bestimme ihr Volumen per Wasserverdrängung (Eintauchen in einen Messbecher).",
-                    "Berechne beide Dichten mit ρ = m/V und vergleiche sie mit der Dichte von Wasser (1 g/cm³).",
-                    "Erkläre mithilfe deiner Rechnung, warum deine Beobachtung aus LP02 (schwimmt mit, sinkt ohne Schale) genau dazu passt."],
-             tools=[], fast="Wiederhole den Versuch mit einer zweiten Obstsorte deiner Wahl und vergleiche die Ergebnisse mit der Orange.",
+        dict(no=3, sjw=3, kind="lernpfad", title="Das Orangen-Aräometer",
+             goal="Du entwickelst aus einer Orange ein Aräometer (Senkwaage) und untersuchst im Versuch, ob sie in der Nordsee oder in der Ostsee tiefer eintauchen würde.",
+             tasks=["Lies die Info zum Aräometer und notiere die Forschungsfrage: Würde eine Orange in der Nordsee oder in der Ostsee tiefer eintauchen?",
+                    "Stelle eine Hypothese (begründete Vermutung) auf: In welchem Gewässer taucht die Orange tiefer ein, und warum?",
+                    "Materialien: Orange, Salz, großes Gefäß für ein Wasserbad. Stelle zuerst ein Wasserbad mit wenig Salz her und miss die Eintauchtiefe der Orange, danach ein Wasserbad mit viel Salz.",
+                    "Beobachtung: Notiere beide Eintauchtiefen in cm.",
+                    "Auswertung: Vervollständige den Lückentext mit den Wörtern <i>unterschiedlichen Salzgehaltes, geringere Dichte, Wasserprobe mit dem geringeren Salzgehalt, tiefer, Aräometer, Dichten, geringeren Auftriebs, bestätigt/widerlegt</i>.",
+                    "Ergänze in der Übersicht zu naturwissenschaftlichen Größen die Zeilen für Volumen und Dichte (Symbol, Einheiten, Messinstrument)."],
+             tools=[], fast="Baue aus einem Trinkhalm und etwas Knete ein eigenes Aräometer. Markiere, wie tief es in Leitungswasser und in Salzwasser eintaucht, und vergleiche mit deiner Orange.",
              tags=["Experimentieren", "Dichte"],
-             solution=["Volumenmessung per Wasserverdrängung: Der Wasserstand steigt genau um das Volumen des eingetauchten Körpers.",
-                       "Dichte mit Schale meist unter 1 g/cm³ (schwimmt), Dichte ohne Schale meist ab 1 g/cm³ (sinkt) — passt zur Beobachtung aus LP02."]),
+             pre_sections=[SEC_LP03_INFO],
+             extra_css=CSS_LP03,
+             quiz=[
+               dict(q="Die Hypothese konnte … werden.", done="Richtig, die Hypothese wurde bestätigt.",
+                    opts=[("widerlegt", False, "Die Orange ist im weniger salzigen Wasser tatsächlich tiefer eingetaucht, so wie vermutet."),
+                          ("bestätigt", True, None)]),
+               dict(q="Die Orange taucht in der Wasserprobe mit dem … Salzgehalt tiefer ein.", done="Richtig, beim geringeren Salzgehalt taucht sie tiefer ein.",
+                    opts=[("geringeren", True, None),
+                          ("höheren", False, "Mehr gelöstes Salz macht das Wasser dichter, die Orange wird stärker nach oben gedrückt.")]),
+               dict(q="Grund: Diese Wasserprobe hat eine … Dichte und erzeugt daher einen … Auftrieb.", done="Richtig, geringere Dichte bedeutet geringeren Auftrieb.",
+                    opts=[("höhere … größeren", False, "Das gilt für das salzigere Wasser, in dem die Orange höher schwimmt."),
+                          ("geringere … größeren", False, "Eine geringere Dichte führt zu einem geringeren, nicht zu einem größeren Auftrieb."),
+                          ("geringere … geringeren", True, None)]),
+               dict(q="Die Orange eignet sich also als …, wenn die genauen Dichten der Wasserproben unterschiedlichen Salzgehaltes bekannt sind.",
+                    done="Richtig, als Aräometer (Senkwaage).",
+                    opts=[("Waage", False, "Mit der Waage bestimmt man die Masse, nicht die Dichte einer Flüssigkeit."),
+                          ("Aräometer", True, None),
+                          ("Thermometer", False, "Das Thermometer misst die Temperatur."),
+                          ("Messbecher", False, "Mit dem Messbecher liest man ein Volumen ab.")]),
+               dict(q="Welches Symbol und welche Einheit gehören zur Größe Dichte?", done="Richtig, ρ (Rho) in g/ml oder g/cm³.",
+                    opts=[("ρ (Rho), in g/ml oder g/cm³", True, None),
+                          ("V, in l, ml oder cm³", False, "Das sind Symbol und Einheiten des Volumens."),
+                          ("m, in kg, g oder mg", False, "Das sind Symbol und Einheiten der Masse."),
+                          ("D, in kg", False, "Die Dichte hat das griechische Symbol ρ und eine zusammengesetzte Einheit.")]),
+               dict(q="Wie lässt sich das Volumen (Raum) einer Flüssigkeit bestimmen?", done="Richtig, durch Ablesen an einer Skala, z. B. am Messbecher.",
+                    opts=[("Mit der Waage", False, "Die Waage bestimmt die Masse."),
+                          ("Mit dem Thermometer", False, "Das Thermometer misst die Temperatur."),
+                          ("Mit der Uhr", False, "Mit der Uhr misst man die Zeit."),
+                          ("Durch Ablesen an einer Skala", True, None)]),
+             ],
+             solution=["Hypothese: Die Orange würde tiefer in dem Gewässer eintauchen, das weniger gelöstes Salz enthält (Ostsee), da es eine niedrigere Dichte hat und die Orange durch den geringeren Auftrieb tiefer eintaucht.",
+                       "Durchführung: Zuerst wird ein Wasserbad mit geringem Salzgehalt hergestellt und die Eintauchtiefe gemessen, anschließend ein Wasserbad mit höherem Salzgehalt, ebenfalls mit Messung der Eintauchtiefe.",
+                       "Auswertung: Die Hypothese konnte <b>bestätigt</b> werden, da die <b>Wasserprobe mit dem geringeren Salzgehalt</b> aufgrund der <b>geringeren Dichte</b> und des daher <b>geringeren Auftriebs</b> die Orange <b>tiefer</b> eintauchen lässt. Die Orange eignet sich also als <b>Aräometer</b>, wenn die genauen <b>Dichten</b> der Wasserproben <b>unterschiedlichen Salzgehaltes</b> bekannt sind.",
+                       "Übersicht, Volumen (Raum): Symbol V · Liter, Milliliter, Kubikzentimeter (l, ml, cm³) · Ablesen des Volumens an einer Skala.",
+                       "Übersicht, Dichte: Symbol ρ (Rho) · Gramm pro Milliliter, Gramm pro Kubikzentimeter (g/ml, g/cm³) · Aräometer."]),
+        dict(no=4, sjw=4, kind="lernpfad", title="Dichtebestimmungen",
+             goal="Du bestimmst die Dichte von 3D-gedruckten Festkörpern: Volumen mit der passenden Formel berechnen, Masse wiegen und die Dichte mit ρ = m / V ausrechnen.",
+             tasks=["Forschungsfrage: Wie lässt sich die Dichte von Festkörpern bestimmen? Stelle eine Hypothese auf und ergänze die Formel ρ = m / V (in g/ml).",
+                    "Materialien: Waage, verschiedene Festkörper (Würfel, Quader, Zylinder, ggf. Pyramide, Kegel, Prisma).",
+                    "Durchführung: Die Festkörper werden in Tinkercad modelliert (Volumen höchstens 30 ml), anschließend im 3D-Drucker gedruckt und gewogen.",
+                    "Beobachtung: Berechne für jeden Körper zuerst das Volumen und dann die Dichte. Die aufklappbaren Hilfen unten führen dich Schritt für Schritt.",
+                    "Auswertung: Konnte die Hypothese bestätigt werden? Begründe."],
+             tools=[], fast="Vergleiche deine Dichten mit der Dichte von massivem PLA (1,24 g/cm³) und von Wasser (1 g/ml). Erkläre, warum die gedruckten Körper schwimmen, obwohl massives PLA sinken würde.",
+             tags=["Üben & Vertiefen", "Dichte"],
+             extra_css=CSS_LP04,
+             sections=[SEC_LP04_STEPS],
+             catchup_top=True,
+             catchup_title="Einstieg: Plickers-Aufgaben",
+             catchup_intro="Mit diesen Aufgaben seid ihr in die Stunde gestartet. Sie wiederholen die Übersicht zu naturwissenschaftlichen Größen. Wer gefehlt hat oder noch einmal üben möchte, kann sie hier nachholen.",
+             catchup=[
+               dict(q="Ordne korrekt zu: Welche Begriffe gehören zu den Spalten (1) bis (5)?",
+                    done="Richtig, Größe, Symbol der Größe, Einheiten, Symbol der Einheit, mögliche Messinstrumente.",
+                    icon=ICON_GROESSEN_KOPF, icon_cls="xl",
+                    opts=[("Symbol der Größe (1), Größe (2), Symbol der Einheiten (3), Einheiten (4), mögliche Messinstrumente (5)", False, "„Länge“ in Spalte 1 ist die Größe selbst, ihr Symbol „l“ steht in Spalte 2."),
+                          ("Größe (1), Symbol der Größe (2), Einheiten (3), Symbol der Einheit (4), mögliche Messinstrumente (5)", True, None),
+                          ("Größe (1), Symbol der Größe (2), Symbol der Einheiten (3), Einheiten (4), mögliche Messinstrumente (5)", False, "In Spalte 3 stehen ausgeschriebene Wörter (Meter, Millimeter …), das sind die Einheiten. Ihre Symbole stehen in Spalte 4."),
+                          ("Symbol der Größe (1), Größe (2), Einheiten (3), Symbol der Einheit (4), mögliche Messinstrumente (5)", False, "„Länge“ ist die Größe, das Symbol „l“ steht erst in Spalte 2.")]),
+               dict(q="Nenne das Symbol der Größe.",
+                    done="Richtig, das Symbol der Größe Masse ist m.",
+                    icon=word_card(["Kilogramm, Gramm,", "Milligramm, Tonnen"], size=14), icon_cls="wide",
+                    opts=[("Waage", False, "Die Waage ist das Messinstrument."),
+                          ("m", True, None),
+                          ("kg, g, mg, t", False, "Das sind die Symbole der Einheiten, nicht das Symbol der Größe."),
+                          ("Masse", False, "Masse ist die Größe selbst, gesucht ist ihr Symbol.")]),
+               dict(q="Nenne das Symbol der Einheit.",
+                    done="Richtig, bpm steht für „beats per minute“, also Herzschläge pro Minute.",
+                    icon=word_card(["Frequenz"], bold=True, grey=True, size=22), icon_cls="wide",
+                    opts=[("f", False, "f ist das Symbol der Größe Frequenz."),
+                          ("Herzschläge pro Minute", False, "Das ist die ausgeschriebene Einheit, gesucht ist ihr Symbol."),
+                          ("bpm", True, None),
+                          ("Uhr und Fühlen", False, "Das ist die Messmethode.")]),
+               dict(q="Nenne die physikalische Größe.",
+                    done="Richtig, mit dem Thermometer misst man die Temperatur.",
+                    icon=word_card(["Thermometer"], size=20), icon_cls="wide",
+                    opts=[("° C, K, ° F", False, "Das sind die Symbole der Einheiten."),
+                          ("Grad Celsius, Kelvin, Grad Fahrenheit", False, "Das sind die Einheiten der Größe."),
+                          ("T", False, "T ist das Symbol der Größe, gesucht ist die Größe selbst."),
+                          ("Temperatur", True, None)]),
+               dict(q="Beschreibe eine mögliche Bestimmungsmöglichkeit (Messinstrument).",
+                    done="Richtig, zum Beispiel am Messbecher oder Messzylinder.",
+                    icon=word_card(["Volumen", "(Raum)"], bold=True, grey=True, size=20), icon_cls="wide",
+                    opts=[("V", False, "V ist das Symbol der Größe."),
+                          ("Liter, Milliliter, Kubikzentimeter", False, "Das sind die Einheiten des Volumens."),
+                          ("l, ml, cm³", False, "Das sind die Symbole der Einheiten."),
+                          ("Ablesen des Volumens an einer Skala", True, None)]),
+               dict(q="Wähle einen geeigneten Weg aus, um die Dichte von Festkörpern experimentell zu bestimmen.",
+                    done="Richtig, ρ = m / V: Masse durch Volumen.",
+                    icon=ICON_DICHTE_ZEILE, icon_cls="xl",
+                    opts=[("Masse und Volumen bestimmen; anschließend Masse mit Volumen addieren", False, "Masse und Volumen haben unterschiedliche Einheiten, man kann sie nicht addieren."),
+                          ("Masse und Volumen bestimmen; anschließend Volumen durch Masse teilen", False, "Genau umgekehrt: Die Einheit g/ml bedeutet Masse durch Volumen."),
+                          ("Masse und Volumen bestimmen; anschließend Masse durch Volumen teilen", True, None),
+                          ("Masse und Volumen bestimmen; anschließend Masse mit Volumen multiplizieren", False, "Die Einheit „Gramm pro Milliliter“ verrät, dass geteilt wird.")]),
+             ],
+             solution=["Hypothese: Die Dichte (ρ) eines Festkörpers lässt sich durch die Division der Masse (m) durch das Volumen (V) bestimmen, da ρ = m / V gilt (in g/ml).",
+                       "Auswertung: Die Hypothese konnte bestätigt werden, da alle Dichten über die gegebene Formel bestimmbar waren.",
+                       "Beispielergebnisse (PLA, ca. 15 % Füllung): Quader 0,45 g/ml · Zylinder 0,38 g/ml · Halbkugel 0,36 g/ml · Pyramide 0,36 g/ml · Kegel 0,36 g/ml · Prisma 0,41 g/ml. Alle liegen unter 1 g/ml, die Körper schwimmen also in Wasser.",
+                       'Volumina, Abb. 1:<img class="sol-fig" src="lp04-img/volumina-1.svg" alt="Volumenberechnung für Quader, Zylinder und Halbkugel" loading="lazy">',
+                       'Dichten, Abb. 1:<img class="sol-fig" src="lp04-img/dichte-1.svg" alt="Dichteberechnung für Quader, Zylinder und Halbkugel" loading="lazy">',
+                       'Volumina, Abb. 2:<img class="sol-fig" src="lp04-img/volumina-2.svg" alt="Volumenberechnung für Pyramide, Kegel und Prisma" loading="lazy">',
+                       'Dichten, Abb. 2:<img class="sol-fig" src="lp04-img/dichte-2.svg" alt="Dichteberechnung für Pyramide, Kegel und Prisma" loading="lazy">']),
         dict(no=5, sjw=5, kind="lernpfad", title="Schwimmen und Sinken bei Schiffen und Unterseebooten",
              goal="Du überträgst das Dichte-Prinzip auf große Gewässer: Warum trägt das Tote Meer besonders gut, und wie tauchen U-Boote gezielt auf und ab?",
              tasks=["Ordne die Dichte des Toten Meeres im Vergleich zu einem Süßwassersee zu und begründe mit dem hohen Salzgehalt.",
@@ -938,8 +1247,9 @@ def render_catchup(lp):
             opts += '<button class="qz-opt"%s>%s</button>' % (attr, text)
         text_block = '<div class="qz-text"><span class="qn">%d.</span>%s</div>' % (i, q["q"])
         if q.get("icon"):
-            text_block = ('<div class="qz-item-row"><div class="qz-icon-fig">%s</div>%s</div>'
-                          % (q["icon"], text_block))
+            cls = "qz-icon-fig" + (" " + q["icon_cls"] if q.get("icon_cls") else "")
+            text_block = ('<div class="qz-item-row"><div class="%s">%s</div>%s</div>'
+                          % (cls, q["icon"], text_block))
         items += (
             '<div class="qz-item">'
             '%s'
@@ -947,16 +1257,18 @@ def render_catchup(lp):
             '<div class="qz-hint"></div><div class="qz-done">%s</div>'
             '</div>'
         ) % (text_block, opts, q.get("done", "Richtig!"))
+    title = lp.get("catchup_title", "Plickers-Aufgaben zum Nachholen")
+    intro = lp.get("catchup_intro", "Diese Aufgaben habt ihr im Unterricht mit Plickers beantwortet. Wer gefehlt hat oder noch einmal üben möchte, kann sie hier in Ruhe nachholen.")
     return (
-        '<section class="lp-sec"><h2><span class="dot"></span>Plickers-Aufgaben zum Nachholen</h2>'
-        '<p class="vw-intro">Diese Aufgaben habt ihr im Unterricht mit Plickers beantwortet. Wer gefehlt hat oder noch einmal üben möchte, kann sie hier in Ruhe nachholen.</p>'
+        '<section class="lp-sec"><h2><span class="dot"></span>%s</h2>'
+        '<p class="vw-intro">%s</p>'
         '<div class="qz-wrap" data-qz>'
         '<div class="qz-progress"><span class="qz-count">0 / %d richtig</span>'
         '<span class="qz-bar"><span class="qz-fill"></span></span></div>'
         '%s'
         '<div class="qz-solved">✔ Stark, alle Plickers-Aufgaben nachgeholt!</div>'
         '</div></section>'
-    ) % (len(catchup), items)
+    ) % (esc(title), intro, len(catchup), items)
 
 # ---------------------------------------------------------------- Vorwissen (SVG-Figuren + Bild-Quiz)
 def render_vorwissen(lp):
@@ -1034,7 +1346,7 @@ def build_lp_page(u, lp):
         '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="UTF-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
         '<title>LP %02d · %s — Naturwissenschaften Klasse 5 und 6</title>\n' % (lp["no"], esc(lp["title"]))
-        + FONTS + '\n<style>\n' + THEME_CSS + '\n</style>\n</head>\n'
+        + FONTS + '\n<style>\n' + THEME_CSS + lp.get("extra_css", "") + '\n</style>\n</head>\n'
         '<body style="%s">\n' % style
         + '<div class="lp-page">\n'
         + '  <a class="back" href="../../index.html#u%d-content">← Zurück zur Kursübersicht</a>\n' % UNITS.index(u)
@@ -1047,9 +1359,12 @@ def build_lp_page(u, lp):
         + '    <p class="rlp">%s</p>\n' % render_tags(lp.get("tags", []))
         + '  </div>\n'
         + ('  %s\n' % render_vorwissen(lp) if lp.get("vorwissen") else '')
+        + "".join('  %s\n' % sec for sec in lp.get("pre_sections", []))
+        + ('  %s\n' % render_catchup(lp) if lp.get("catchup") and lp.get("catchup_top") else '')
         + '  <section class="lp-sec"><h2><span class="dot"></span>Aufgaben</h2><ul class="task-list">%s</ul></section>\n' % tasks
+        + "".join('  %s\n' % sec for sec in lp.get("sections", []))
         + ('  %s\n' % render_quiz(lp) if lp.get("quiz") else '')
-        + ('  %s\n' % render_catchup(lp) if lp.get("catchup") else '')
+        + ('  %s\n' % render_catchup(lp) if lp.get("catchup") and not lp.get("catchup_top") else '')
         + ('  %s\n' % tools if tools else '')
         + ('  %s\n' % fast if fast else '')
         + '  %s\n' % backup
