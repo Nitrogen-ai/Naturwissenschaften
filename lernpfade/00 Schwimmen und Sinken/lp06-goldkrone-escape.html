@@ -161,6 +161,9 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
 .tile.sel { border-color: var(--gold); background: #fff7e0; }
 .tile.ok { border-color: var(--green); background: var(--green-soft); }
 .tile.bad { border-color: var(--red); background: var(--red-soft); }
+.tile .res { display: block; min-height: 1.2em; margin-top: 0.2rem; font-weight: 600; }
+.tile.jump { animation: jump 0.45s ease-out; }
+@keyframes jump { 0% { transform: translateY(0); } 40% { transform: translateY(-14px); } 100% { transform: translateY(-4px); } }
 .steps { display: grid; gap: 0.5rem; }
 .stepbtn { display: flex; gap: 0.7rem; align-items: center; text-align: left; padding: 0.7rem 0.9rem; border: 2px solid var(--line); background: #fff; border-radius: 14px; cursor: pointer; min-height: 54px; }
 .stepbtn .nr { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: 'Fredoka', sans-serif; font-weight: 700;
@@ -289,7 +292,7 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   <div class="card task">
     <h3>🎬 Auftrag</h3>
     <ol>
-      <li>Schaut euch das Video der Sendung mit der Maus an (10 Minuten). Vielleicht zeigt es eure Lehrkraft auch für alle.
+      <li>Schaut euch das Video der Sendung mit der Maus an (10 Minuten). Vielleicht zeigt es eure Lehrperson auch für alle.
         <br><a href="https://kinder.wdr.de/tv/die-sendung-mit-der-maus/av/video-krone-des-hieron-100.html" target="_blank" rel="noopener"><b>▶ Video: Krone des Hieron</b></a> <span class="small">(WDR, Die Sendung mit der Maus)</span></li>
       <li>Beantwortet die vier Fragen. Jede Antwort hat einen <b>Buchstaben</b>.</li>
       <li>Die vier Buchstaben eurer Antworten ergeben der Reihe nach den Code für das Schloss.</li>
@@ -424,7 +427,7 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
 
   <div class="card">
     <h3 class="fred">🧰 Welche Materialien braucht ihr? <span class="pill">tippt alle richtigen an</span></h3>
-    <p class="small" style="margin:0.2rem 0 0.6rem">Denkt an Archimedes: Ihr braucht die <b>Masse</b> und das <b>Volumen</b> der Münzen.</p>
+    <p class="small" style="margin:0.2rem 0 0.6rem">Denkt an Archimedes: Was hat er bei Krone und Goldbarren gemessen und verglichen? Vorsicht, nicht alles hier ist nützlich.</p>
     <div class="tiles" id="tiles3"></div>
     <div class="fb" id="fb3c"></div>
   </div>
@@ -469,7 +472,7 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   <div class="chap-head"><div class="chap-no">4</div><div><small>SCHRIFTROLLE 4 · IM LABOR</small><h2>Messen wie Archimedes</h2></div></div>
 
   <div class="card scroll story">
-    <p>Jetzt wird es echt. Holt euch bei eurer Lehrkraft <b>eure Münzen</b>, einen <b>Messzylinder</b> und Wasser. Die Waage steht auf dem Pult.</p>
+    <p>Jetzt wird es echt. Holt euch bei eurer Lehrperson <b>eure Münzen</b>, einen <b>Messzylinder</b> und Wasser. Die Waage steht auf dem Pult.</p>
   </div>
 
   <div class="card task">
@@ -485,20 +488,20 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
 
   <div class="card">
     <h3 class="fred">📋 Messwerte</h3>
-    <p class="small" style="margin-bottom:0.6rem">Kommazahlen mit Komma eingeben, zum Beispiel 46,4.</p>
+    <p class="small" style="margin-bottom:0.6rem">Komma oder Punkt, beides geht (46,4 oder 46.4). Die Einheit dürft ihr mitschreiben oder weglassen.</p>
     <div class="mgrid">
       <label class="mfield">1-Cent-Münzen<input id="n1" inputmode="numeric" placeholder="Anzahl"></label>
       <label class="mfield">2-Cent-Münzen<input id="n2" inputmode="numeric" placeholder="Anzahl"></label>
       <label class="mfield">5-Cent-Münzen<input id="n5" inputmode="numeric" placeholder="Anzahl"></label>
-      <label class="mfield">Masse m <span class="unit">in g</span><input id="mm" inputmode="decimal"></label>
-      <label class="mfield">Wasserstand vorher <span class="unit">in ml</span><input id="v0" inputmode="decimal"></label>
-      <label class="mfield">Wasserstand nachher <span class="unit">in ml</span><input id="v1" inputmode="decimal"></label>
-      <label class="mfield">Volumen V <span class="unit">in ml</span><input id="vv" inputmode="decimal"></label>
-      <label class="mfield">Dichte ρ = m : V <span class="unit">in g/ml</span><input id="rr" inputmode="decimal"></label>
+      <label class="mfield">Masse m <span class="unit">in g</span><input id="mm" inputmode="decimal" autocomplete="off"></label>
+      <label class="mfield">Wasserstand vorher <span class="unit">in ml</span><input id="v0" inputmode="decimal" autocomplete="off"></label>
+      <label class="mfield">Wasserstand nachher <span class="unit">in ml</span><input id="v1" inputmode="decimal" autocomplete="off"></label>
+      <label class="mfield">Volumen V <span class="unit">in ml</span><input id="vv" inputmode="decimal" autocomplete="off"></label>
+      <label class="mfield">Dichte ρ = m : V <span class="unit">in g/ml</span><input id="rr" inputmode="decimal" autocomplete="off"></label>
     </div>
     <div style="margin-top:0.8rem"><button class="btn blue" id="checkMeas">🔎 Messung prüfen</button></div>
     <div class="check" id="measCheck"></div>
-    <div class="protokoll">📝 <span><b>Forscherprotokoll, Aufgabe 4 und 5:</b> Beobachtungen und Rechnung eintragen. Zeigt eure Dichte auch eurer Lehrkraft. Sie sammelt alle Werte an der Tafel.</span></div>
+    <div class="protokoll">📝 <span><b>Forscherprotokoll, Aufgabe 4 und 5:</b> Beobachtungen und Rechnung eintragen. Zeigt eure Dichte auch eurer Lehrperson. Sie sammelt alle Werte an der Tafel.</span></div>
   </div>
 
   <div class="card hidden" id="compareCard">
@@ -551,45 +554,68 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
 
   <div class="card scroll story">
     <p>Eine Messung allein hat immer kleine Fehler. Gute Forscherinnen und Forscher suchen deshalb einen <b>zweiten Beweis</b>.</p>
-    <p>Die Archivarin des Königs flüstert euch ein Geheimnis zu: <i>„Eisen wird von einem Magneten angezogen. Kupfer nicht. Und Gold und Silber auch nicht.“</i></p>
+    <p>Der König hat einen alten Zauberstein, der manche Dinge anzieht: einen <b>Magneten</b>. Was verrät er über eure Münzen?</p>
   </div>
 
   <div class="card task">
     <h3>🧲 Auftrag: Der Magnet-Test</h3>
     <ol>
-      <li>Holt euch bei eurer Lehrkraft einen Magneten.</li>
-      <li>Haltet den Magneten an eine <b>trockene</b> Münze. Probiert alle drei Sorten.</li>
+      <li>Holt euch bei eurer Lehrperson einen Magneten.</li>
+      <li>Haltet den Magneten an eine <b>trockene</b> Münze und hebt ihn langsam hoch. Probiert alle drei Sorten.</li>
       <li>Was beobachtet ihr?</li>
     </ol>
   </div>
 
   <div class="card">
     <div class="q" id="q5a"></div>
-    <div id="reveal5" class="hidden">
-      <div class="fig"><svg id="cross5" viewBox="0 0 640 250" role="img" aria-label="Querschnitt einer Cent-Münze"></svg>
-        <div class="figcap">Querschnitt einer 1-, 2- oder 5-Cent-Münze (Schema, nicht maßstabsgetreu)</div></div>
-      <p>Die Münzen haben einen <b>Kern aus Stahl</b>. Stahl besteht fast ganz aus <b>Eisen</b>. Nur außen sind sie mit einer dünnen Schicht <b>Kupfer</b> überzogen. Darum glänzen sie rötlich, werden aber vom Magneten angezogen. Und darum ist ihre Dichte (etwa 7,9 g/cm³) kleiner als die von Kupfer (8,9 g/cm³).</p>
-    </div>
+  </div>
+
+  <div class="card hidden" id="arch5">
+    <h3 class="fred">🗝️ Denkanstoß 1 · Die Schatzkammer des Königs</h3>
+    <p>In der Schatzkammer liegen Proben, bei denen man <b>sicher weiß</b>, woraus sie sind. Tippt jede Probe an und haltet den Magneten daran.</p>
+    <div class="tiles" id="tiles5"></div>
+    <div class="fb" id="fb5t"></div>
+    <div class="q hidden" id="q5b" style="margin-top:0.8rem"></div>
+  </div>
+
+  <div class="card hidden" id="think5">
+    <h3 class="fred">💭 Denkanstoß 2 · Zurück zu euren Münzen</h3>
+    <div class="q" id="q5c"></div>
+  </div>
+
+  <div class="card hidden" id="think5d">
+    <h3 class="fred">💭 Denkanstoß 3 · Aber sie sind doch rötlich!</h3>
+    <p>Eure Münzen glänzen wie Kupfer. Und eure Dichte war <b id="rho5">etwa 7,9</b> g/cm³. Schaut noch einmal auf euren Zahlenstrahl aus Schriftrolle 4.</p>
+    <div class="q" id="q5d"></div>
+  </div>
+
+  <div class="card hidden" id="reveal5">
+    <div class="fig"><svg id="cross5" viewBox="0 0 640 250" role="img" aria-label="Querschnitt einer Cent-Münze"></svg>
+      <div class="figcap">Querschnitt einer 1-, 2- oder 5-Cent-Münze (Schema, nicht maßstabsgetreu)</div></div>
+    <p>So sieht eine Münze aufgeschnitten aus. Außen: eine hauchdünne rötliche Schicht. Innen: ein Metall, das vom Magneten angezogen wird und eine Dichte von etwa 7,9 g/cm³ hat. <b>Welches Metall ist das?</b></p>
   </div>
 
   <div class="lock" id="lock5">
     <h3>🔒 Das letzte Schloss</h3>
-    <p>Woraus besteht der <b>Kern</b> der Münzen? Tippt das Wort ein (5 Buchstaben).</p>
+    <p>Aus welchem Metall ist der <b>Kern</b> der Münzen? Tippt das Wort ein (5 Buchstaben).</p>
     <div class="lock-row"><input id="code5" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code Schriftrolle 5"><button class="btn" data-lock="5">Öffnen</button></div>
     <div class="lock-msg" id="msg5"></div>
   </div>
 
   <p class="hints-title">💡 Hilfen</p>
   <details class="hint" data-h="5a"><summary>Tipp 1 · Magnet</summary><div class="hint-body">
-    <p>Haltet den Magneten ganz nah an die Münze. Hebt ihn an: Hängt die Münze daran? Dann steckt Eisen darin.</p>
-    <details class="hint" data-h="5b"><summary>Lösung</summary><div class="hint-body">
-      <p>Die Münzen werden angezogen. Sie haben einen Kern aus <b>STAHL</b> (Eisen) mit Kupferüberzug. Auch EISEN öffnet das Schloss.</p>
+    <p>Haltet den Magneten ganz nah an die Münze und hebt ihn langsam an: Hängt die Münze daran? Testet in der Schatzkammer <b>alle</b> Proben und vergleicht: Welche Probe verhält sich genauso wie eure Münzen?</p>
+    <details class="hint" data-h="5b"><summary>Tipp 2 · Zwei Beweise</summary><div class="hint-body">
+      <p>Beweis 1: Nur <b>eine</b> Probe aus der Schatzkammer wird angezogen, genau wie eure Münzen. Beweis 2: Auf eurem Zahlenstrahl lag euer Wert direkt neben einem Metall, und das war nicht Kupfer. Beide Beweise zeigen auf dasselbe Metall.</p>
+      <details class="hint" data-h="5c"><summary>Lösung</summary><div class="hint-body">
+        <p>Die Münzen werden angezogen, wie der Eisennagel. Innen sind sie aus <b>EISEN</b> (genauer: Stahl, das ist fast nur Eisen), außen haben sie eine dünne Kupferschicht. EISEN und STAHL öffnen das Schloss.</p>
+      </div></details>
     </div></details>
   </div></details>
 
   <div class="card laurel">
     <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★★</span></h3>
-    <p>Ist der Münz-Stahl ein <b>Schwindel</b> wie beim Goldschmied? Überlegt euch zu zweit: Warum stellt man Cent-Münzen wohl aus Stahl mit Kupferhaut her und nicht aus reinem Kupfer? Wählt alle passenden Gründe.</p>
+    <p>Ist das ein <b>Schwindel</b> wie beim Goldschmied? Überlegt euch zu zweit: Warum stellt man Cent-Münzen wohl mit einem anderen Metall innen und nur einer Kupferhaut außen her, und nicht aus reinem Kupfer? Wählt alle passenden Gründe.</p>
     <div class="opts" id="l5opts" style="margin-top:0.5rem"></div>
     <div style="margin-top:0.5rem"><button class="btn green" data-laurel="5">Prüfen</button></div>
     <div class="fb" id="lmsg5"></div>
@@ -601,7 +627,7 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   <div class="card scroll story" style="margin-top:1.4rem">
     <p class="verdict">SCHWINDEL AUFGEDECKT!</p>
     <p><b>Die Krone:</b> Sie war genauso schwer wie das Gold, hat aber mehr Wasser verdrängt. Ihre Dichte war kleiner als die von Gold. Der Goldschmied hatte Silber hineingemischt.</p>
-    <p><b>Die Münzen:</b> Ihre Dichte ist kleiner als 8,9 g/cm³, und sie werden vom Magneten angezogen. Sie sind <b>nicht</b> aus reinem Kupfer, sondern aus Stahl mit einem dünnen Kupferüberzug. Der Händler hat geschwindelt. Die Münzen selbst sind aber echt: Sie sollen genau so aussehen.</p>
+    <p><b>Die Münzen:</b> Ihre Dichte ist kleiner als 8,9 g/cm³, und sie werden vom Magneten angezogen. Sie sind <b>nicht</b> aus reinem Kupfer. Innen steckt <b>Eisen</b> (genauer: Stahl, das ist fast nur Eisen), außen eine dünne Kupferschicht. Der Händler hat geschwindelt. Die Münzen selbst sind aber echt: Sie sollen genau so aussehen.</p>
     <p><b>Unsere Hypothese</b> „Die Münzen haben die Dichte von Kupfer (8,9 g/cm³)“ wurde also <b>widerlegt</b>. Heureka!</p>
   </div>
 
@@ -616,7 +642,7 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
       <tr><td>Lorbeeren 🌿</td><td id="certLaurel" class="mono"></td></tr>
       <tr><td>Gemessene Dichte</td><td id="certRho" class="mono"></td></tr>
     </table>
-    <p class="small" style="margin-top:0.8rem">Zeigt diese Urkunde eurer Lehrkraft.</p>
+    <p class="small" style="margin-top:0.8rem">Zeigt diese Urkunde eurer Lehrperson.</p>
   </div>
 
   <div class="card task">
@@ -633,14 +659,14 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
 <!-- =============================================================== SPIELLEITUNG -->
 <section class="card sl hidden" id="slPanel">
   <h3 class="fred">🎓 Spielleitung</h3>
-  <p class="small">Nur für die Lehrkraft. Geöffnet über <span class="mono">?spielleitung</span> und PIN.</p>
+  <p class="small">Nur für die Lehrperson. Geöffnet über <span class="mono">?spielleitung</span> und PIN.</p>
   <table>
     <tr><th>Rolle</th><th>Code</th><th>Inhalt</th></tr>
     <tr><td>1</td><td class="mono">GOLD</td><td>4 Videofragen, Buchstaben der richtigen Antworten</td></tr>
     <tr><td>2</td><td class="mono">52 / 65</td><td>Gold 252 ml, Krone 265 ml, je 200 ml vorher; Deutung „weniger dichtes Metall“</td></tr>
     <tr><td>3</td><td class="mono">PLAN</td><td>Frage, Hypothese, Material, Reihenfolge (alle müssen stimmen)</td></tr>
     <tr><td>4</td><td class="mono">—</td><td>echte Messung, Plausibilitätsprüfung, nächstes Metall wählen</td></tr>
-    <tr><td>5</td><td class="mono">STAHL</td><td>auch EISEN; Magnet-Test</td></tr>
+    <tr><td>5</td><td class="mono">EISEN</td><td>auch STAHL; Magnet-Test, Schatzkammer (nur Eisen zieht an), 2 Denkanstöße</td></tr>
   </table>
   <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.7rem">
     <button class="btn ghost" id="slSkip">⏭ Aktuelle Rolle öffnen</button>
@@ -661,7 +687,12 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   function load() { try { var r = localStorage.getItem(KEY); if (r) { var o = JSON.parse(r); for (var k in o) S[k] = o[k]; return true; } } catch (e) {} return false; }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
   function $(id) { return document.getElementById(id); }
-  function num(s) { if (s == null) return NaN; s = String(s).trim().replace(/\s/g, "").replace(",", "."); if (s === "") return NaN; return Number(s); }
+  // tolerant: „46,4“, „46.4“, „46,4 g“, „≈ 7,7 g/ml“, „ca. 6ml“ → erste Zahl im Text
+  function num(s) {
+    if (s == null) return NaN;
+    var t = String(s).replace(/[\s\u00a0]/g, "").replace(/,/g, ".").match(/\d+(?:\.\d+)?|\.\d+/);
+    return t ? Number(t[0]) : NaN;
+  }
   function de(x, d) { return x.toFixed(d).replace(".", ","); }
   function norm(s) { return String(s || "").toUpperCase().replace(/[^A-ZÄÖÜ]/g, ""); }
 
@@ -881,8 +912,13 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
     { em: "💧", t: "Wasser", ok: true }, { em: "🔨", t: "Hammer", ok: false, why: "Nein! Die Münzen dürfen nicht kaputtgehen." },
     { em: "🌡️", t: "Thermometer", ok: false, why: "Die Temperatur braucht ihr hier nicht." },
     { em: "⏱️", t: "Stoppuhr", ok: false, why: "Die Zeit spielt keine Rolle." },
-    { em: "🔥", t: "Brenner", ok: false, why: "Einschmelzen ist verboten, wie bei der Krone." }
+    { em: "🔥", t: "Brenner", ok: false, why: "Einschmelzen ist verboten, wie bei der Krone." },
+    { em: "🔍", t: "Lupe", ok: false, why: "Genau hinsehen zeigt nur die Farbe. Und die Farbe ist kein Beweis." },
+    { em: "📏", t: "Geodreieck", ok: false, why: "Die Münzen sind flach und haben einen Rand mit Rillen. Ihr Volumen misst man viel einfacher anders." },
+    { em: "🧽", t: "Schwamm", ok: false, why: "Den braucht ihr höchstens zum Aufwischen, nicht zum Messen." }
   ];
+  // bei jedem Laden neu gemischt, damit die richtigen Kacheln nicht vorne stehen
+  for (var si = MAT.length - 1; si > 0; si--) { var sj = Math.floor(Math.random() * (si + 1)), st = MAT[si]; MAT[si] = MAT[sj]; MAT[sj] = st; }
   var matSel = {};
   (function () {
     var h = "";
@@ -954,31 +990,45 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
     { n: "Silber", r: 10.5 }, { n: "Blei", r: 11.3 }, { n: "Gold", r: 19.3 }
   ];
   var measOk = false, metalOk = false;
+  var soft = {};   // Warnungen, die beim zweiten Prüfen mit denselben Werten durchgelassen werden
   function setCheck(cls, html) { var c = $("measCheck"); c.className = "check show " + cls; c.innerHTML = html; }
+  function softStop(key, sig, html) {
+    if (soft[key] === sig) return false;          // gleiche Werte noch einmal geprüft: weiter
+    soft[key] = sig; setCheck("warn", html + "<br><span class=\"small\">Ihr habt nachgemessen und es bleibt so? Dann tippt noch einmal auf <b>Messung prüfen</b>.</span>");
+    return true;
+  }
   $("checkMeas").addEventListener("click", function () {
     var n1 = num($("n1").value) || 0, n2 = num($("n2").value) || 0, n5 = num($("n5").value) || 0;
     var m = num($("mm").value), v0 = num($("v0").value), v1 = num($("v1").value), V = num($("vv").value), r = num($("rr").value);
     var n = n1 + n2 + n5;
     measOk = false;
     if (n <= 0) return setCheck("bad", "Wie viele Münzen habt ihr? Tragt die Anzahl ein.");
-    if (isNaN(m)) return setCheck("bad", "Tragt die Masse m ein.");
+    if (isNaN(m) || m <= 0) return setCheck("bad", "Tragt die Masse m ein.");
     var mExp = n1 * COIN.n1 + n2 * COIN.n2 + n5 * COIN.n5;
-    if (m < mExp * 0.85 || m > mExp * 1.15) return setCheck("bad", "Hmm. " + n + " Münzen sollten zusammen etwa " + de(mExp, 1) + " g wiegen. Prüft die Anzahl und wiegt noch einmal. War die Waage auf 0?");
+    // Messbereich Masse: ±20 % (alte, abgenutzte oder schmutzige Münzen, ungenaue Waage)
+    if ((m < mExp * 0.8 || m > mExp * 1.2) &&
+        softStop("m", n + "|" + m, "Hmm. " + n + " Münzen wiegen zusammen ungefähr " + de(mExp, 0) + " g (erlaubt: " + de(mExp * 0.8, 0) + " bis " + de(mExp * 1.2, 0) + " g). Stimmt die Anzahl? War die Waage vorher auf 0? Waren die Münzen trocken?")) return;
     if (isNaN(v0) || isNaN(v1)) return setCheck("bad", "Tragt beide Wasserstände ein.");
-    if (v1 <= v0) return setCheck("bad", "Der Wasserstand nachher muss größer sein als vorher.");
-    if (isNaN(V)) return setCheck("bad", "Rechnet das Volumen aus: nachher − vorher.");
-    if (Math.abs(V - (v1 - v0)) > 0.05) return setCheck("bad", "Rechnet das Volumen noch einmal nach: " + de(v1, 1) + " ml − " + de(v0, 1) + " ml = ?");
-    if (isNaN(r)) return setCheck("bad", "Rechnet jetzt die Dichte aus: ρ = m : V.");
+    if (v1 <= v0) return setCheck("bad", "Der Wasserstand nachher muss größer sein als vorher. Habt ihr die beiden Felder vertauscht?");
+    if (isNaN(V)) { V = v1 - v0; $("vv").value = de(V, Math.round(V) === V ? 0 : 1); }   // vergessen? Das Spiel rechnet mit
+    if (Math.abs(V - (v1 - v0)) > 0.15) return setCheck("bad", "Rechnet das Volumen noch einmal nach: " + de(v1, 1) + " ml − " + de(v0, 1) + " ml = ?");
+    V = v1 - v0;
     var rTrue = m / V;
-    if (Math.abs(r - rTrue) > Math.max(0.15, rTrue * 0.03)) {
+    if (isNaN(r)) return setCheck("bad", "Rechnet jetzt die Dichte aus: ρ = m : V = " + de(m, 1) + " g : " + de(V, 1) + " ml.");
+    // gerundet auf Ganze oder eine Stelle, abgeschnitten statt gerundet: alles ok
+    if (Math.abs(r - rTrue) > Math.max(0.25, rTrue * 0.05) && Math.round(rTrue) !== r) {
       if (Math.abs(r - V / m) < 0.05) return setCheck("bad", "Aufgepasst: Ihr habt V : m gerechnet. Die Dichte ist Masse <b>geteilt durch</b> Volumen.");
       return setCheck("bad", "Die Dichte stimmt noch nicht. Rechnet " + de(m, 1) + " g : " + de(V, 1) + " ml mit dem Taschenrechner.");
     }
-    if (rTrue < 5.5 || rTrue > 11) return setCheck("warn", "Euer Wert (" + de(rTrue, 1) + " g/ml) ist sehr ungewöhnlich für Metall. Schaut in Tipp 3 und messt das Volumen noch einmal.");
+    // Messbereich Dichte: 15 Münzen verdrängen nur ≈ 6 ml, 1–2 ml Ablesefehler sind normal (≈ 4,5 bis 12 g/ml)
+    if (rTrue < 4.5 || rTrue > 12) {
+      if (softStop("r", m + "|" + v0 + "|" + v1, "Euer Wert (" + de(rTrue, 1) + " g/ml) ist ungewöhnlich. " + (rTrue > 12 ? "Das Volumen ist wahrscheinlich zu klein abgelesen: Liegen alle Münzen ganz unter Wasser? Habt ihr unten an der Wölbung abgelesen?" : "Das Volumen ist wahrscheinlich zu groß abgelesen: Hängen Luftblasen an den Münzen? Ist Wasser übergeschwappt?") + " Messt das Volumen noch einmal oder fragt eure Lehrperson.")) return;
+    }
     measOk = true; S.rho = Math.round(rTrue * 10) / 10; save();
     var near = METALS.reduce(function (a, b) { return Math.abs(b.r - rTrue) < Math.abs(a.r - rTrue) ? b : a; });
-    var note = near.n === "Kupfer" ? " Euer Wert liegt nah bei Kupfer. Aber Achtung: Kleine Ablesefehler verändern die Dichte stark. Schriftrolle 5 hat einen zweiten Beweis für euch." : "";
-    setCheck("ok", "Saubere Messung! Eure Dichte: <b>ρ ≈ " + de(rTrue, 1) + " g/ml</b> (= g/cm³)." + note);
+    var note = near.n === "Kupfer" ? " Euer Wert liegt nah bei Kupfer. Aber Achtung: Kleine Ablesefehler verändern die Dichte stark. Schriftrolle 5 hat einen zweiten Beweis für euch." :
+      (rTrue < 4.5 || rTrue > 12) ? " Euer Wert ist ein Ausreißer. Das passiert bei so kleinen Volumen. Vergleicht gleich mit den Werten der anderen Teams an der Tafel." : "";
+    setCheck("ok", (note.indexOf("Ausreißer") >= 0 ? "Messung gespeichert." : "Saubere Messung!") + " Eure Dichte: <b>ρ ≈ " + de(rTrue, 1) + " g/ml</b> (= g/cm³)." + note);
     drawScale(rTrue);
     $("compareCard").classList.remove("hidden");
     mc("q4opts", "", METALS.map(function (x) { return { t: x.n + " (" + de(x.r, 1) + " g/cm³)" }; }), function (k, b, el) {
@@ -1016,32 +1066,96 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   }
 
   // ============================================================ KAPITEL 5
+  var ok5 = { a: false, t: false, b: false, c: false, d: false };
   mc("q5a", "Was beobachtet ihr beim Magnet-Test?", [
     { t: "Die Münzen werden vom Magneten angezogen." },
     { t: "Die Münzen werden nicht angezogen." }
   ], function (k, b, el) {
-    if (k === 0) { judge(el, b, true, "Genau! Das kann reines Kupfer nicht. In den Münzen muss Eisen stecken."); $("reveal5").classList.remove("hidden"); drawCross(); }
-    else judge(el, b, false, "Probiert es noch einmal ganz nah: Hält die Münze am Magneten fest, wenn ihr ihn hochhebt? Fragt sonst eure Lehrkraft.");
+    if (k === 0) { judge(el, b, true, "Spannend! Kupfer, Gold und Silber … werden die auch angezogen? Findet es in der Schatzkammer heraus."); ok5.a = true; $("arch5").classList.remove("hidden"); }
+    else judge(el, b, false, "Probiert es noch einmal ganz nah: Hängt die Münze am Magneten, wenn ihr ihn langsam hochhebt? Probiert auch die anderen Münzsorten. Fragt sonst eure Lehrperson.");
   });
-  function drawCross() {
+
+  // Denkanstoß 1: Proben mit bekanntem Material, nur Eisen wird angezogen
+  var PROBEN = [
+    { em: "💍", t: "Goldring", stoff: "Gold", mag: false },
+    { em: "🥄", t: "Silberlöffel", stoff: "Silber", mag: false },
+    { em: "🔩", t: "Eisennagel", stoff: "Eisen", mag: true },
+    { em: "🟠", t: "Kupferdraht", stoff: "Kupfer", mag: false },
+    { em: "🥫", t: "Aluminiumdose", stoff: "Aluminium", mag: false }
+  ];
+  var tested = {};
+  (function () {
+    var h = "";
+    PROBEN.forEach(function (p, i) { h += '<button class="tile probe" data-p="' + i + '"><span class="em">' + p.em + '</span>' + p.t + '<span class="res small"></span></button>'; });
+    $("tiles5").innerHTML = h;
+    $("tiles5").querySelectorAll(".tile").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var i = Number(b.getAttribute("data-p")), p = PROBEN[i];
+        tested[i] = 1;
+        b.classList.remove("jump"); void b.offsetWidth;
+        if (p.mag) { b.classList.add("ok", "jump"); b.querySelector(".res").textContent = "🧲 Klack! Angezogen!"; }
+        else { b.classList.add("sel"); b.querySelector(".res").textContent = "nichts passiert"; }
+        var n = Object.keys(tested).length, f = $("fb5t");
+        if (n < PROBEN.length) { f.className = "fb"; f.textContent = "Getestet: " + n + " von " + PROBEN.length + "."; }
+        else { f.className = "fb ok"; f.textContent = "Alle Proben getestet!"; ok5.t = true; $("q5b").classList.remove("hidden"); }
+      });
+    });
+  })();
+  mc("q5b", "Welche Regel habt ihr in der Schatzkammer entdeckt?", [
+    { t: "Alle Metalle werden vom Magneten angezogen." },
+    { t: "Von diesen Metallen wird nur Eisen angezogen." },
+    { t: "Nur glänzende Dinge werden angezogen." }
+  ], function (k, b, el) {
+    var fb = ["Schaut noch einmal hin: Hat sich der Goldring bewegt? Und der Kupferdraht?", "Genau! Der Magnet ist ein Eisen-Detektor.", "Der Silberlöffel glänzt auch. Hat er sich bewegt?"];
+    judge(el, b, k === 1, fb[k]); ok5.b = k === 1;
+    if (ok5.b) $("think5").classList.remove("hidden");
+  });
+
+  // Denkanstoß 2: Schluss auf die Münzen
+  mc("q5c", "Eure Münzen werden angezogen. Was folgt daraus?", [
+    { t: "Die Münzen sind aus reinem Kupfer." },
+    { t: "Der Magnet ist kaputt." },
+    { t: "In den Münzen muss Eisen stecken." }
+  ], function (k, b, el) {
+    var fb = ["Dann hätten sie sich verhalten wie der Kupferdraht. Haben sie aber nicht!", "Beim Eisennagel hat er doch funktioniert.", "Heureka! Der Magnet hat das Eisen verraten."];
+    judge(el, b, k === 2, fb[k]); ok5.c = k === 2;
+    if (ok5.c) { if (S.rho) $("rho5").textContent = "etwa " + de(S.rho, 1); $("think5d").classList.remove("hidden"); }
+  });
+
+  // Denkanstoß 3: Farbe und Magnet passen zusammen
+  mc("q5d", "Wie passt beides zusammen: rötlicher Glanz und angezogen vom Magneten?", [
+    { t: "Eisen und Kupfer sind dasselbe Metall." },
+    { t: "Innen ist ein anderes Metall, außen nur eine ganz dünne Kupferschicht." },
+    { t: "Die Münzen werden rot, wenn Eisen rostet." }
+  ], function (k, b, el) {
+    var fb = ["Nein: In der Schatzkammer haben sie sich ganz verschieden verhalten.", "Richtig gedacht! Wie bei der Krone: außen schön, innen etwas anderes.", "Rost ist braun und bröselig, nicht glänzend."];
+    judge(el, b, k === 1, fb[k]); ok5.d = k === 1;
+    if (ok5.d) { $("reveal5").classList.remove("hidden"); drawCross(false); }
+  });
+  function drawCross(solved) {
     var s = '<rect x="60" y="80" width="520" height="90" rx="40" fill="#c4672f"/>' +
       '<rect x="72" y="92" width="496" height="66" rx="30" fill="#7d8790"/>' +
       '<g font-family="Fredoka,sans-serif" font-size="19" font-weight="600" fill="#3a2a14">' +
-      '<line x1="320" y1="125" x2="320" y2="210" stroke="#3a2a14" stroke-width="2"/><text x="320" y="232" text-anchor="middle">Kern aus Stahl (Eisen): magnetisch, ρ ≈ 7,9 g/cm³</text>' +
+      '<line x1="320" y1="125" x2="320" y2="210" stroke="#3a2a14" stroke-width="2"/><text x="320" y="232" text-anchor="middle">' +
+      (solved ? 'Kern aus Eisen (Stahl): magnetisch, ρ ≈ 7,9 g/cm³' : 'Kern: magnetisch, ρ ≈ 7,9 g/cm³') + '</text>' +
       '<line x1="110" y1="80" x2="140" y2="34" stroke="#3a2a14" stroke-width="2"/><text x="146" y="34">dünne Kupferschicht: rötlicher Glanz</text></g>' +
-      '<text x="320" y="132" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="18" font-weight="700" fill="#fff">STAHL</text>';
+      '<text x="320" y="134" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="' + (solved ? 18 : 28) + '" font-weight="700" fill="#fff">' + (solved ? 'EISEN' : '? ? ?') + '</text>';
     $("cross5").innerHTML = s;
   }
   function checkLock5() {
     var c = norm($("code5").value);
-    if (c === "STAHL" || c === "EISEN") { lockMsg(5, true, "Klick! Das letzte Siegel ist gebrochen!"); unlock(5); return; }
+    if (!ok5.a) return lockMsg(5, false, "Macht zuerst den Magnet-Test mit euren Münzen.");
+    if (!ok5.t || !ok5.b) return lockMsg(5, false, "Testet erst alle Proben in der Schatzkammer und findet die Regel.");
+    if (!ok5.c || !ok5.d) return lockMsg(5, false, "Beantwortet erst die Denkanstöße 2 und 3.");
+    if (c === "EISEN" || c === "STAHL") { $("reveal5").classList.remove("hidden"); drawCross(true); lockMsg(5, true, "Klick! Das letzte Siegel ist gebrochen! Stahl ist fast nur Eisen."); unlock(5); return; }
     if (c === "KUPFER") return lockMsg(5, false, "Kupfer ist nur die dünne Haut außen. Was steckt innen?");
-    lockMsg(5, false, "Das Schloss bleibt zu. Schaut euch den Querschnitt der Münze genau an.");
+    if (c === "GOLD" || c === "SILBER" || c.indexOf("ALU") === 0) return lockMsg(5, false, "Wurde diese Probe in der Schatzkammer vom Magneten angezogen?");
+    lockMsg(5, false, "Das Schloss bleibt zu. Welche Probe aus der Schatzkammer hat sich genauso verhalten wie eure Münzen?");
   }
   var L5 = [
-    { t: "Stahl ist viel billiger als Kupfer. Eine Münze aus reinem Kupfer wäre zu teuer.", ok: true },
-    { t: "Die Kupferschicht schützt den Stahl vor Rost.", ok: true },
-    { t: "Stahl ist schwerer als Kupfer, damit man die Münzen besser fühlt.", ok: false },
+    { t: "Das Metall innen ist viel billiger als Kupfer. Eine Münze aus reinem Kupfer wäre zu teuer.", ok: true },
+    { t: "Die Kupferschicht schützt das Metall innen vor Rost.", ok: true },
+    { t: "Das Metall innen ist schwerer als Kupfer, damit man die Münzen besser fühlt.", ok: false },
     { t: "Die Münzen sollen gefälscht aussehen.", ok: false }
   ];
   var l5sel = {};
@@ -1056,10 +1170,10 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
       if (w === "HEUREKA" || w === "EUREKA") laurelOk("1", true, "Lorbeer verdient! 🌿 „Heureka“ heißt „Ich hab’s gefunden!“");
       else laurelOk("1", false, "Nicht ganz. Das Wort beginnt mit H und steht auch im Namen dieser Schriftrolle 2.");
     }
-    if (id === "2a") { var x = num($("l2a").value); laurelOk("2a", Math.abs(x - 19.2) <= 0.051, Math.abs(x - 19.2) <= 0.051 ? "Lorbeer verdient! 🌿 1000 g : 52 ml ≈ 19,2 g/ml. Fast genau der Wert von Gold (19,3)." : "Noch nicht. Rechnet 1000 : 52 mit dem Taschenrechner und rundet."); }
-    if (id === "2b") { var y = num($("l2b").value); laurelOk("2b", Math.abs(y - 15.4) <= 0.051, Math.abs(y - 15.4) <= 0.051 ? "Lorbeer verdient! 🌿 1000 g : 65 ml ≈ 15,4 g/ml. Viel weniger als Gold!" : "Noch nicht. Rechnet 1000 : 65 und rundet auf eine Stelle."); }
+    if (id === "2a") { var x = num($("l2a").value); laurelOk("2a", Math.abs(x - 19.2) <= 0.25, Math.abs(x - 19.2) <= 0.25 ? "Lorbeer verdient! 🌿 1000 g : 52 ml ≈ 19,2 g/ml. Fast genau der Wert von Gold (19,3)." : "Noch nicht. Rechnet 1000 : 52 mit dem Taschenrechner und rundet."); }
+    if (id === "2b") { var y = num($("l2b").value); laurelOk("2b", Math.abs(y - 15.4) <= 0.25, Math.abs(y - 15.4) <= 0.25 ? "Lorbeer verdient! 🌿 1000 g : 65 ml ≈ 15,4 g/ml. Viel weniger als Gold!" : "Noch nicht. Rechnet 1000 : 65 und rundet auf eine Stelle."); }
     if (id === "2c") { var z = num($("l2c").value); laurelOk("2c", z === 300, z === 300 ? "Meisterhaft! 🌿 Die Krone mit 300 g Silber braucht 64,8 ml ≈ 65 ml. 300 g Gold sind verschwunden!" : "Sucht in der Tabelle das Volumen, das am besten zu 65 ml passt."); }
-    if (id === "4a") { var q = num($("l4a").value); var ok = Math.abs(q - 4.45) <= 0.06; laurelOk("4a", ok, ok ? "Lorbeer verdient! 🌿 8,9 g/cm³ · 0,5 cm³ ≈ 4,5 g. Die echte Münze wiegt nur 3,92 g." : "m = ρ · V, also 8,9 · 0,5 = ?"); }
+    if (id === "4a") { var q = num($("l4a").value); var ok = Math.abs(q - 4.45) <= 0.11; laurelOk("4a", ok, ok ? "Lorbeer verdient! 🌿 8,9 g/cm³ · 0,5 cm³ ≈ 4,5 g. Die echte Münze wiegt nur 3,92 g." : "m = ρ · V, also 8,9 · 0,5 = ?"); }
     if (id === "5") {
       var good = L5.every(function (o, i) { return !!l5sel[i] === o.ok; });
       laurelOk("5", good, good ? "Lorbeer verdient! 🌿 Billig und rostgeschützt. Die Münzen sollen genau so sein. Geschwindelt hat nur der Händler." : "Noch nicht ganz. Es sind genau zwei richtige Gründe.");

@@ -920,7 +920,7 @@ UNITS = [
              tasks=["Führe die Jodprobe (Lugol'sche Probe) an verschiedenen Lebensmitteln durch (z. B. Kartoffel, Brot, Traubenzucker).",
                     "Notiere, bei welchen Proben sich eine tiefblaue Färbung zeigt und schließe daraus auf den Stärkegehalt.",
                     "Ordne zu, welche Kohlenhydratquelle direkt vor einem Wettkampf am besten geeignet ist und warum."],
-             tools=[], fast="Erhitze etwas Haushaltszucker vorsichtig mit konzentrierter Schwefelsäure (nur als Lehrkraft-Demonstration!) und erkläre, warum dabei ein schwarzer Kohlenstoff-Rückstand entsteht.",
+             tools=[], fast="Erhitze etwas Haushaltszucker vorsichtig mit konzentrierter Schwefelsäure (nur als Demonstration durch die Lehrperson!) und erkläre, warum dabei ein schwarzer Kohlenstoff-Rückstand entsteht.",
              tags=["Experimentieren", "Nachweisverfahren"],
              quiz=[
                dict(q="Nenne eine geeignete Kohlenhydratquelle direkt vor einem Wettkampf.", done="Richtig — Traubenzucker liefert am schnellsten verfügbare Energie.",
