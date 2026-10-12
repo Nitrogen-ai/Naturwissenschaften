@@ -43,6 +43,7 @@ T = {
   "scratch": ("Scratch", "https://scratch.mit.edu/"),
   "makey": ("Makey Makey", "https://makeymakey.com/pages/how-to"),
   "jsfiddle": ("jsfiddle.net", "https://jsfiddle.net/"),
+  "maus": ("Video: Krone des Hieron (Die Sendung mit der Maus)", "https://kinder.wdr.de/tv/die-sendung-mit-der-maus/av/video-krone-des-hieron-100.html"),
 }
 
 # ---------------------------------------------------------------- Vorwissen-SVGs (Icon-Raster)
@@ -401,6 +402,26 @@ details.step[open] > summary::before { transform: rotate(90deg); }
 .sol-fig { display: block; width: 100%; height: auto; margin: 0.6rem 0; border-radius: 10px; border: 1px solid var(--line); }
 """
 
+SEC_LP06_GAME = (
+    '<section class="lp-sec"><div class="eg-card">'
+    '<div class="eg-crown" aria-hidden="true">👑</div>'
+    '<div><h2 class="eg-h">Escape Game: Goldkrone oder Schwindel?</h2>'
+    '<p>Syrakus, vor über 2200 Jahren: Hat der Goldschmied den König betrogen? Löst als Team von Archimedes fünf versiegelte Schriftrollen '
+    'und findet heraus, ob unsere Kupfermünzen wirklich aus Kupfer sind. Ihr braucht ein iPad, eure Münzen, einen Messzylinder, die Waage '
+    'und am Ende einen Magneten.</p>'
+    '<a class="eg-btn" href="lp06-goldkrone-escape.html">📜 Escape Game starten</a></div>'
+    '</div></section>')
+
+CSS_LP06 = """
+.eg-card { display: flex; gap: 1.1rem; align-items: flex-start; background: linear-gradient(180deg, #fff8e6 0%, #fbefd2 100%); border: 2px solid #e2cd9b; border-radius: 18px; padding: 1.1rem 1.2rem; }
+.eg-crown { font-size: 2.6rem; line-height: 1; }
+.eg-h { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; margin: 0 0 0.4rem; }
+.eg-card p { margin: 0 0 0.8rem; }
+.eg-btn { display: inline-block; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.05rem; text-decoration: none; background: #e0a92b; color: #3a2a14; padding: 0.65rem 1.15rem; border-radius: 14px; box-shadow: 0 4px 0 #b07d12; }
+.eg-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #b07d12; }
+@media (max-width: 600px) { .eg-card { flex-direction: column; } }
+"""
+
 # ---------------------------------------------------------------- Kursinhalt
 # Jedes LP: no, sjw, title, goal, tasks[], tools[keys], fast, tags[], solution[], kind, quiz(optional), vorwissen(optional)
 UNITS = [
@@ -751,26 +772,48 @@ UNITS = [
              solution=["Totes Meer: extrem hoher Salzgehalt → hohe Dichte → starker Auftrieb, Menschen treiben fast von selbst.",
                        "Ein Schiffsrumpf verdrängt sehr viel Wasser bei relativ wenig Masse (Hohlkörper) → seine mittlere Dichte liegt unter der von Wasser.",
                        "U-Boot: Ballasttanks mit Wasser fluten → Dichte steigt → Boot sinkt; Wasser mit Druckluft herauspressen → Dichte sinkt → Boot steigt."]),
-        dict(no=6, sjw=6, kind="lernpfad", title="Ölextraktion",
-             goal="Du gewinnst ätherisches Öl aus Gewürznelken durch Wasserdampfdestillation und erklärst, warum es auf dem Destillat schwimmt.",
-             tasks=["Baue gemeinsam einen einfachen Wasserdampfdestillations-Aufbau für Gewürznelken auf.",
-                    "Beobachte, wie sich das ätherische Öl vom übrig bleibenden Destillat (überwiegend Wasser) trennt.",
-                    "Begründe mit der Dichte, warum das ätherische Öl auf der Destillat-Oberfläche schwimmt."],
-             tools=[], fast="Recherchiere, wofür Nelkenöl traditionell verwendet wird, und stelle einen Bezug zu seinen chemischen Eigenschaften her.",
-             tags=["Experimentieren", "Trennverfahren"],
+        dict(no=6, sjw=6, kind="lernpfad", title="Goldkrone oder Schwindel?",
+             goal="Du prüfst wie Archimedes, ob ein Gegenstand wirklich aus dem behaupteten Material besteht, ohne ihn zu beschädigen: Du bestimmst die Dichte von Cent-Münzen über Masse und verdrängtes Volumen und überprüfst die Hypothese „Die Münzen sind aus Kupfer“.",
+             tasks=["Spielt zu zweit das Escape Game „Goldkrone oder Schwindel?“ auf eurem iPad (Knopf oben). Fünf Schriftrollen führen euch von der Krone des Königs Hieron bis zu den Kupfermünzen von heute.",
+                    "Schriftrolle 1: Schaut das Video „Krone des Hieron“ (Sendung mit der Maus) und beantwortet die Fragen zur Geschichte.",
+                    "Schriftrolle 2: Bestimmt im virtuellen Versuch, wie viel Wasser Goldbarren und Krone verdrängen, und entscheidet: Ist die Krone echt?",
+                    "Schriftrolle 3: Formuliert Forschungsfrage und Hypothese (Kupfer: ρ = 8,9 g/cm³) und plant den Versuch.",
+                    "Schriftrolle 4: Wiegt eure 1-, 2- und 5-Cent-Münzen, bestimmt ihr Volumen im Messzylinder und berechnet die Dichte ρ = m : V.",
+                    "Schriftrolle 5: Prüft eure Münzen mit dem Magneten und fällt das Urteil.",
+                    "Füllt parallel euer Forscherprotokoll aus: Forschungsfrage, Hypothese, Durchführung, Beobachtungen, Auswertung, Fehlerbetrachtung."],
+             tools=["maus"],
+             fast="Löst im Spiel die grünen Lorbeer-Aufgaben: Berechnet die Dichte der Krone, findet heraus, wie viel Gold der Goldschmied gestohlen hat, und messt die drei Münzsorten einzeln.",
+             tags=["Experimentieren", "Dichte", "Escape Game"],
+             extra_css=CSS_LP06,
+             pre_sections=[SEC_LP06_GAME],
              quiz=[
-               dict(q="Benenne die duftende Komponente in Nelken.", done="Richtig — ätherische Öle.",
-                    opts=[("ätherische Öle", True, None), ("Pflegeöle", False, "Pflegeöle sind kosmetische Produkte, kein Fachbegriff für Duftstoffe."),
-                          ("essentielle Öle", False, "Der korrekte deutsche Fachbegriff lautet ätherische Öle."), ("fettige Öle", False, "Ätherische Öle sind chemisch keine Fette.")]),
-               dict(q="Benenne die Gewinnungsmethode der ätherischen Öle.", done="Richtig — Wasserdampfdestillation.",
-                    opts=[("Wasserdampfdestillation", True, None), ("Destillation", False, "Genauer und richtig ist die Wasserdampfdestillation."),
-                          ("Chromatographie", False, "Chromatographie trennt Stoffgemische, gewinnt aber keine Öle im großen Maßstab."), ("Hochdruckkochen", False, "Das ist kein anerkanntes Trennverfahren für ätherische Öle.")]),
-               dict(q="Begründe das Schwimmen des ätherischen Öls auf der Destillat-Oberfläche.", done="Richtig — das Öl hat die geringere Dichte.",
-                    opts=[("ρ (ätherisches Öl) &lt; ρ (Destillat)", True, None), ("ρ (ätherisches Öl) &gt; ρ (Destillat)", False, "Wäre die Dichte höher, würde das Öl absinken."),
-                          ("ρ (ätherisches Öl) = ρ (Destillat)", False, "Bei gleicher Dichte würden sich beide vermischen, nicht trennen.")]),
+               dict(q="Goldbarren und Krone wiegen beide 1000 g. Die Krone verdrängt mehr Wasser. Was folgt daraus?", done="Richtig, die Krone hat eine kleinere Dichte als Gold.",
+                    opts=[("Die Krone hat eine größere Dichte als Gold.", False, "Mehr Platz bei gleicher Masse bedeutet: weniger dicht."),
+                          ("Die Krone hat eine kleinere Dichte als Gold.", True, None),
+                          ("Krone und Goldbarren haben dieselbe Dichte.", False, "Dann müssten beide gleich viel Wasser verdrängen."),
+                          ("Die Krone ist schwerer als der Goldbarren.", False, "Beide wiegen 1000 g, die Waage ist im Gleichgewicht.")]),
+               dict(q="Ein Messzylinder zeigt vorher 20 ml, mit 15 Münzen 26 ml. Wie groß ist das Volumen der Münzen?", done="Richtig, 26 ml − 20 ml = 6 ml.",
+                    opts=[("26 ml", False, "Das ist der Wasserstand nachher."), ("6 ml", True, None),
+                          ("20 ml", False, "Das ist der Wasserstand vorher."), ("46 ml", False, "Die Wasserstände werden subtrahiert, nicht addiert.")]),
+               dict(q="Berechne die Dichte der Münzen (m = 46,4 g, V = 6 ml).", done="Richtig, 46,4 g : 6 ml ≈ 7,7 g/cm³.",
+                    opts=[("etwa 0,13 g/cm³", False, "Das ist V : m. Die Dichte ist Masse geteilt durch Volumen."), ("etwa 7,7 g/cm³", True, None),
+                          ("etwa 278 g/cm³", False, "Hier wurde multipliziert statt geteilt."), ("etwa 52,4 g/cm³", False, "Masse und Volumen kann man nicht addieren.")]),
+               dict(q="Welches Metall passt am besten zur gemessenen Dichte der Münzen (7,7 g/cm³)?", done="Richtig, Eisen (7,9 g/cm³) liegt am nächsten.",
+                    opts=[("Kupfer (8,9 g/cm³)", False, "8,9 ist weiter von 7,7 entfernt als 7,9."), ("Aluminium (2,7 g/cm³)", False, "Viel zu leicht."),
+                          ("Eisen (7,9 g/cm³)", True, None), ("Gold (19,3 g/cm³)", False, "Viel zu dicht.")]),
+               dict(q="Warum hängen 1-, 2- und 5-Cent-Münzen am Magneten?", done="Richtig, sie haben einen Stahlkern mit Kupferüberzug.",
+                    opts=[("Kupfer wird von Magneten angezogen.", False, "Kupfer ist nicht magnetisch."),
+                          ("Sie haben einen Kern aus Stahl (Eisen) mit einer dünnen Kupferschicht.", True, None),
+                          ("Weil sie rötlich glänzen.", False, "Die Farbe hat mit Magnetismus nichts zu tun."),
+                          ("Weil sie beim Versuch nass geworden sind.", False, "Wasser macht nichts magnetisch.")]),
              ],
-             solution=["Wasserdampf löst die ätherischen Öle aus der Nelke; beim Abkühlen kondensieren Wasser und Öl gemeinsam, trennen sich aber, weil sie sich nicht mischen.",
-                       "Ätherisches Nelkenöl hat eine geringere Dichte als Wasser und schwimmt deshalb sichtbar oben auf."]),
+             solution=["Archimedes: Goldbarren und Krone wiegen je 1000 g. Der Goldbarren verdrängt 52 ml, die Krone 65 ml. Die Krone braucht bei gleicher Masse mehr Platz, hat also eine kleinere Dichte (ca. 15,4 statt 19,3 g/ml): Es wurde Silber beigemischt (ca. 300 g).",
+                       "Forschungsfrage: Bestehen die Kupfermünzen wirklich aus Kupfer?",
+                       "Hypothese: Wenn die Münzen aus reinem Kupfer bestehen, dann haben sie die Dichte 8,9 g/cm³.",
+                       "Durchführung: Die trockenen Münzen werden gezählt und gewogen. Ein Messzylinder wird etwa zur Hälfte mit Wasser gefüllt und der Wasserstand abgelesen. Die Münzen werden vorsichtig hineingleiten gelassen und der neue Wasserstand wird abgelesen.",
+                       "Beispielwerte (je 5 × 1, 2 und 5 Cent): m ≈ 46,4 g, V ≈ 6 ml, ρ = 46,4 g : 6 ml ≈ 7,7 g/cm³. Die Münzen werden vom Magneten angezogen.",
+                       "Schlussfolgerung: Die Hypothese konnte <b>widerlegt</b> werden, da die Dichte deutlich kleiner als 8,9 g/cm³ ist und nahe bei Eisen (7,9 g/cm³) liegt. Mit dem Magnet-Test zeigt sich: Die Münzen haben einen Kern aus Stahl und nur einen dünnen Kupferüberzug.",
+                       "Fehlerbetrachtung: Das Volumen ist mit ca. 6 ml sehr klein, ein Ablesefehler von 1 ml verändert die Dichte stark. Luftblasen, Wassertropfen und abgenutzte Münzen verfälschen den Wert zusätzlich."]),
       ]),
  # =================== 01 LEBENSMITTEL ===================
  dict(num="01", title="Lebensmittel",
