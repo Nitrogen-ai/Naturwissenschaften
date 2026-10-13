@@ -43,7 +43,8 @@ T = {
   "scratch": ("Scratch", "https://scratch.mit.edu/"),
   "makey": ("Makey Makey", "https://makeymakey.com/pages/how-to"),
   "jsfiddle": ("jsfiddle.net", "https://jsfiddle.net/"),
-  "maus": ("Video: Krone des Hieron (Die Sendung mit der Maus)", "https://kinder.wdr.de/tv/die-sendung-mit-der-maus/av/video-krone-des-hieron-100.html"),
+  "heureka": ("Video: Heureka – ich hab’s gefunden! (Studyflix)", "https://studyflix.de/allgemeinwissen/heureka-6591?topic_id=644"),
+  "heureka_ted": ("Vertiefung: Die wahre Geschichte hinter Archimedes’ Eureka! (TED-Ed, YouTube)", "https://www.youtube.com/watch?v=BOn3aChgrak"),
 }
 
 # ---------------------------------------------------------------- Vorwissen-SVGs (Icon-Raster)
@@ -775,14 +776,14 @@ UNITS = [
         dict(no=6, sjw=6, kind="lernpfad", title="Goldkrone oder Schwindel?",
              goal="Du prüfst wie Archimedes, ob ein Gegenstand wirklich aus dem behaupteten Material besteht, ohne ihn zu beschädigen: Du bestimmst die Dichte von Cent-Münzen über Masse und verdrängtes Volumen und überprüfst die Hypothese „Die Münzen sind aus Kupfer“.",
              tasks=["Spielt zu zweit das Escape Game „Goldkrone oder Schwindel?“ auf eurem iPad (Knopf oben). Fünf Schriftrollen führen euch von der Krone des Königs Hieron bis zu den Kupfermünzen von heute.",
-                    "Schriftrolle 1: Schaut das Video „Krone des Hieron“ (Sendung mit der Maus) und beantwortet die Fragen zur Geschichte.",
+                    "Schriftrolle 1: Schaut das Studyflix-Video „Heureka – ich hab’s gefunden!“ und beantwortet die Fragen zur Geschichte.",
                     "Schriftrolle 2: Bestimmt im virtuellen Versuch, wie viel Wasser Goldbarren und Krone verdrängen, und entscheidet: Ist die Krone echt?",
                     "Schriftrolle 3: Formuliert Forschungsfrage und Hypothese (Kupfer: ρ = 8,9 g/cm³) und plant den Versuch.",
                     "Schriftrolle 4: Wiegt eure 1-, 2- und 5-Cent-Münzen, bestimmt ihr Volumen im Messzylinder und berechnet die Dichte ρ = m : V.",
                     "Schriftrolle 5: Prüft eure Münzen mit dem Magneten und fällt das Urteil.",
                     "Füllt parallel euer Forscherprotokoll aus: Forschungsfrage, Hypothese, Durchführung, Beobachtungen, Auswertung, Fehlerbetrachtung."],
-             tools=["maus"],
-             fast="Löst im Spiel die grünen Lorbeer-Aufgaben: Berechnet die Dichte der Krone, findet heraus, wie viel Gold der Goldschmied gestohlen hat, und messt die drei Münzsorten einzeln.",
+             tools=["heureka", "heureka_ted"],
+             fast="Löst im Spiel die grünen Lorbeer-Aufgaben: Berechnet die Dichte der Krone, findet heraus, wie viel Gold der Goldschmied gestohlen hat, und messt die drei Münzsorten einzeln. Vertiefung: Schaut das TED-Ed-Video zur wahren Geschichte hinter Archimedes’ „Eureka!“.",
              tags=["Experimentieren", "Dichte", "Escape Game"],
              extra_css=CSS_LP06,
              pre_sections=[SEC_LP06_GAME],

@@ -292,8 +292,8 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   <div class="card task">
     <h3>🎬 Auftrag</h3>
     <ol>
-      <li>Schaut euch das Video der Sendung mit der Maus an (10 Minuten). Vielleicht zeigt es eure Lehrperson auch für alle.
-        <br><a href="https://kinder.wdr.de/tv/die-sendung-mit-der-maus/av/video-krone-des-hieron-100.html" target="_blank" rel="noopener"><b>▶ Video: Krone des Hieron</b></a> <span class="small">(WDR, Die Sendung mit der Maus)</span></li>
+      <li>Schaut euch das kurze Video zum Heureka-Moment an (2½ Minuten). Unter dem Video steht die Geschichte auch zum Nachlesen.
+        <br><a href="https://studyflix.de/allgemeinwissen/heureka-6591?topic_id=644" target="_blank" rel="noopener"><b>▶ Video: Heureka – ich hab’s gefunden!</b></a> <span class="small">(Studyflix)</span></li>
       <li>Beantwortet die vier Fragen. Jede Antwort hat einen <b>Buchstaben</b>.</li>
       <li>Die vier Buchstaben eurer Antworten ergeben der Reihe nach den Code für das Schloss.</li>
     </ol>
@@ -310,7 +310,7 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
 
   <p class="hints-title">💡 Hilfen</p>
   <details class="hint" data-h="1a"><summary>Tipp 1 · Wo steht das?</summary><div class="hint-body">
-    <p>Alle Antworten kommen im Video vor. Lest auch noch einmal die Geschichte auf der Startseite und oben in dieser Schriftrolle.</p>
+    <p>Die Antworten stehen im Video oder in der Geschichte: auf der Startseite und oben in dieser Schriftrolle (König Hieron spricht).</p>
     <details class="hint" data-h="1b"><summary>Tipp 2 · Frage 3 und 4</summary><div class="hint-body">
       <p>Frage 3: Der König hat gesagt, was mit der Krone auf keinen Fall passieren darf. Frage 4: Archimedes hat seine Idee, als er sich hinsetzt und das Wasser steigt.</p>
       <details class="hint" data-h="1c"><summary>Lösung</summary><div class="hint-body">
@@ -654,6 +654,13 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
     </ul>
     <p class="small" style="margin-top:0.6rem">Noch Zeit? Löst die Lorbeer-Aufgaben, die ihr ausgelassen habt. Ihr könnt oben über die Siegel zu jeder Schriftrolle zurückspringen.</p>
   </div>
+
+  <div class="card laurel">
+    <h3>🎬 Vertiefung: Was geschah wirklich in der Badewanne?</h3>
+    <p>Ist die Geschichte mit der Badewanne wirklich so passiert? Ein Forscher erzählt, was man über Archimedes und sein „Heureka!“ heute weiß.</p>
+    <p style="margin-top:0.5rem"><a href="https://www.youtube.com/watch?v=BOn3aChgrak" target="_blank" rel="noopener"><b>▶ Video: Die wahre Geschichte hinter Archimedes’ Eureka!</b></a> <span class="small">(TED-Ed auf Deutsch, knapp 5 Minuten, YouTube)</span></p>
+    <p class="small" style="margin-top:0.4rem">Denkt beim Schauen nach: Welche Teile der Geschichte sind sicher, welche wurden vielleicht ausgeschmückt?</p>
+  </div>
 </section>
 
 <!-- =============================================================== SPIELLEITUNG -->
@@ -662,7 +669,7 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   <p class="small">Nur für die Lehrperson. Geöffnet über <span class="mono">?spielleitung</span> und PIN.</p>
   <table>
     <tr><th>Rolle</th><th>Code</th><th>Inhalt</th></tr>
-    <tr><td>1</td><td class="mono">GOLD</td><td>4 Videofragen, Buchstaben der richtigen Antworten</td></tr>
+    <tr><td>1</td><td class="mono">GOLD</td><td>4 Fragen zu Studyflix-Video und Geschichte, Buchstaben der richtigen Antworten</td></tr>
     <tr><td>2</td><td class="mono">52 / 65</td><td>Gold 252 ml, Krone 265 ml, je 200 ml vorher; Deutung „weniger dichtes Metall“</td></tr>
     <tr><td>3</td><td class="mono">PLAN</td><td>Frage, Hypothese, Material, Reihenfolge (alle müssen stimmen)</td></tr>
     <tr><td>4</td><td class="mono">—</td><td>echte Messung, Plausibilitätsprüfung, nächstes Metall wählen</td></tr>
@@ -878,8 +885,8 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
 
   var Q2 = [
     { t: "Die Krone braucht mehr Platz als das Gold. Also steckt ein weniger dichtes Metall darin. Schwindel!", ok: true },
-    { t: "Die Krone braucht mehr Platz, weil sie schwerer ist als das Gold.", ok: false },
-    { t: "Beide verdrängen gleich viel Wasser. Die Krone ist echt.", ok: false }
+    { t: "Die Krone braucht mehr Platz als das Gold. Also steckt ein Metall mit höherer Dichte darin. Schwindel!", ok: false },
+    { t: "Krone und Gold verdrängen gleich viel Wasser. Daher haben sie die gleiche Dichte. Die Krone ist echt!", ok: false }
   ];
   var q2pick = null;
   mc("q2box", "Was bedeutet das für die Krone?", Q2, function (k, b, el) { markOnly(el, b); q2pick = k; });
