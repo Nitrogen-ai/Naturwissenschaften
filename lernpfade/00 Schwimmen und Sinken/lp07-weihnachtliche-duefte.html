@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weihnachtliche Düfte · Duftwerkstatt — Naturwissenschaften Klasse 5 und 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<!--
+  07 Weihnachtliche Düfte (Naturwissenschaften 5/6, 00 Schwimmen und Sinken)
+  Master: iCloud …/07 Weihnachtliche Düfte/Digital/weihnachtliche-duefte.html (+ lp07-img/)
+  Kopie im Repo: lernpfade/00 Schwimmen und Sinken/lp07-weihnachtliche-duefte.html (+ lp07-img/)
+  Sitzung 1: Orangenöl (Limonen, ρ = 0,84 g/cm³, schwimmt) · Lösungswort LIMONEN öffnet Sitzung 2
+  Sitzung 2: Nelkenöl (Eugenol, ρ = 1,06 g/cm³, sinkt) · Lösungswort EUGENOL, danach Zertifikat
+  Spielleitung: ?spielleitung, PIN ZIMTSTERN
+-->
+<style>
+:root {
+  --bg: #f7f1e6;
+  --paper: #fffbf3;
+  --paper-2: #f2e6d0;
+  --ink: #2f2219;
+  --ink-soft: #6a5444;
+  --line: rgba(47, 34, 25, 0.16);
+  --red: #b3262e;
+  --red-edge: #7f1a20;
+  --red-soft: #f9dcdc;
+  --pine: #2e7d4f;
+  --pine-edge: #1e5a37;
+  --pine-soft: #dff1e5;
+  --orange: #ec8a24;
+  --orange-edge: #b35f0e;
+  --orange-soft: #fde6c9;
+  --clove: #8a4b2a;
+  --clove-edge: #5e2f17;
+  --clove-soft: #f0dccd;
+  --gold: #d9a441;
+  --gold-edge: #a3771f;
+  --sky: #2f8fe0;
+  --water: #bfe3fa;
+  --violet: #8a5cf0;
+  --shadow: rgba(70, 40, 20, 0.15);
+  --acc: var(--orange);
+  --acc-edge: var(--orange-edge);
+  --acc-soft: var(--orange-soft);
+}
+body.run2 { --acc: var(--clove); --acc-edge: var(--clove-edge); --acc-soft: var(--clove-soft); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Nunito', system-ui, sans-serif; color: var(--ink); line-height: 1.55; font-size: 17px;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 8% 4%, rgba(236, 138, 36, 0.16) 0%, transparent 30%),
+    radial-gradient(circle at 94% 26%, rgba(46, 125, 79, 0.10) 0%, transparent 28%),
+    radial-gradient(circle at 50% 100%, rgba(179, 38, 46, 0.07) 0%, transparent 40%);
+  min-height: 100vh;
+}
+h1, h2, h3, .fred { font-family: 'Fredoka', 'Nunito', sans-serif; }
+a { color: var(--pine-edge); }
+button, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 8px; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 1.2rem 16px 5rem; }
+
+/* ---------- Kopfleiste ---------- */
+.topbar { position: sticky; top: 0; z-index: 20; background: rgba(247, 241, 230, 0.94); backdrop-filter: blur(6px); border-bottom: 1.5px solid var(--line); }
+.topbar-in { max-width: 900px; margin: 0 auto; padding: 0.5rem 16px; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+.tb-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: 0.4rem; }
+.run-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--acc-soft); color: var(--acc-edge); }
+.seals { display: flex; gap: 0.35rem; margin-left: auto; }
+.seal { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 0.95rem;
+  background: #e9dfcc; color: #a08b70; border: 2px solid #d9c9ad; cursor: default; }
+.seal.open { background: var(--acc); color: #fff; border-color: var(--acc-edge); box-shadow: 0 3px 0 var(--acc-edge); cursor: pointer; }
+.seal.now { background: #fff; color: var(--acc-edge); border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-soft); cursor: pointer; }
+.stat { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; color: var(--ink-soft); display: flex; gap: 0.7rem; }
+.stat span { white-space: nowrap; }
+
+/* ---------- Karten ---------- */
+.card { background: var(--paper); border: 1.5px solid var(--line); border-radius: 20px; padding: 1.2rem 1.25rem; margin: 1rem 0; box-shadow: 0 6px 0 var(--shadow); }
+.story-card { background: linear-gradient(180deg, #fffaf0 0%, #fbeedd 100%); border: 2px solid #e8d2b0; }
+.chap-head { display: flex; align-items: center; gap: 0.9rem; margin: 1.6rem 0 0.4rem; }
+.chap-no { width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; font-family: 'Fredoka', sans-serif;
+  font-weight: 700; font-size: 1.9rem; color: #fff; background: var(--acc); box-shadow: 0 5px 0 var(--acc-edge); }
+.chap-head h2 { font-size: clamp(1.35rem, 3.6vw, 1.85rem); line-height: 1.15; }
+.chap-head small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--ink-soft); letter-spacing: 0.04em; }
+.story p { margin: 0 0 0.7rem; }
+.story p:last-child { margin-bottom: 0; }
+.who { font-family: 'Fredoka', sans-serif; font-weight: 600; color: var(--red); }
+.task { border-left: 6px solid var(--sky); }
+.task h3 { font-size: 1.15rem; margin-bottom: 0.4rem; display: flex; gap: 0.5rem; align-items: center; }
+.task ol, .task ul, .card ul.l, .card ol.l { padding-left: 1.3rem; }
+.task li, .card li { margin: 0.25rem 0; }
+.journal { display: flex; gap: 0.6rem; align-items: flex-start; background: #eef6ff; border: 1.5px dashed #8dbbe8; border-radius: 14px; padding: 0.7rem 0.9rem; margin-top: 0.8rem; font-size: 0.95rem; }
+.journal b { color: #1f6fb8; }
+.front { display: flex; gap: 0.6rem; align-items: flex-start; background: #fff3e0; border: 1.5px dashed var(--orange); border-radius: 14px; padding: 0.7rem 0.9rem; margin-top: 0.8rem; font-size: 0.95rem; }
+.safety { display: flex; gap: 0.6rem; align-items: flex-start; background: var(--red-soft); border: 1.5px solid #e8a4a4; border-radius: 14px; padding: 0.7rem 0.9rem; margin-top: 0.8rem; font-size: 0.95rem; }
+
+/* ---------- Auswahlfragen ---------- */
+.q { margin: 0.9rem 0 1.1rem; }
+.q > p { font-weight: 700; margin-bottom: 0.45rem; }
+.opts { display: grid; gap: 0.5rem; }
+.opt { display: flex; align-items: center; gap: 0.7rem; text-align: left; width: 100%; padding: 0.7rem 0.9rem; border-radius: 14px; border: 2px solid var(--line);
+  background: #fff; cursor: pointer; min-height: 52px; transition: transform 0.08s ease; }
+.opt:active { transform: scale(0.99); }
+.opt .lt { flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; background: var(--paper-2); color: var(--ink-soft); }
+.opt.sel { border-color: var(--acc); background: #fff6ea; }
+.opt.sel .lt { background: var(--acc); color: #fff; }
+.opt.ok { border-color: var(--pine); background: var(--pine-soft); }
+.opt.ok .lt { background: var(--pine); color: #fff; }
+.opt.bad { border-color: var(--red); background: var(--red-soft); }
+.fb { font-size: 0.92rem; margin-top: 0.35rem; min-height: 1.2em; }
+.fb.ok { color: var(--pine-edge); font-weight: 700; }
+.fb.bad { color: var(--red); font-weight: 700; }
+
+/* ---------- Schloss ---------- */
+.lock { background: #2b1d14; color: #f6dfc0; border-radius: 20px; padding: 1.1rem 1.2rem; margin: 1rem 0; box-shadow: 0 6px 0 #170e08; }
+.lock h3 { display: flex; align-items: center; gap: 0.6rem; font-size: 1.15rem; color: #fff; margin-bottom: 0.3rem; }
+.lock p { font-size: 0.95rem; color: #ead2b0; }
+.lock-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.7rem; }
+.lock input { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.22em;
+  width: 11ch; padding: 0.55rem 0.7rem; border-radius: 12px; border: 3px solid var(--gold); background: #fffaf0; color: var(--ink); text-align: center; }
+.btn { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.05rem;
+  padding: 0.65rem 1.15rem; border-radius: 14px; border: none; cursor: pointer; background: var(--gold); color: #2f2219; box-shadow: 0 4px 0 var(--gold-edge); min-height: 48px; }
+.btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--gold-edge); }
+.btn.green { background: var(--pine); color: #fff; box-shadow: 0 4px 0 var(--pine-edge); }
+.btn.blue { background: var(--sky); color: #fff; box-shadow: 0 4px 0 #1f6fb8; }
+.btn.red { background: var(--red); color: #fff; box-shadow: 0 4px 0 var(--red-edge); }
+.btn.acc { background: var(--acc); color: #fff; box-shadow: 0 4px 0 var(--acc-edge); }
+.btn.ghost { background: #fff; color: var(--ink); box-shadow: 0 4px 0 var(--line); border: 1.5px solid var(--line); }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+.lock .q > p { color: #fff; margin-top: 0.7rem; }
+.lock .opt { color: var(--ink); }
+.lock-msg { margin-top: 0.6rem; font-weight: 700; min-height: 1.3em; }
+.lock-msg.bad { color: #ffb3a6; }
+.lock-msg.ok { color: #a6f0c2; }
+.sealword { display: inline-block; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.2em; background: #fffaf0; color: var(--ink); border: 3px solid var(--gold); border-radius: 12px; padding: 0.3rem 0.8rem; margin-top: 0.4rem; }
+.shake { animation: shake 0.4s; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-8px); } 40%,80% { transform: translateX(8px); } }
+
+/* ---------- Hilfen ---------- */
+details.hint { margin-top: 0.7rem; border: 1.5px solid var(--line); border-radius: 14px; background: #fff; }
+details.hint > summary { cursor: pointer; list-style: none; padding: 0.65rem 0.9rem; font-family: 'Fredoka', sans-serif; font-weight: 600; color: var(--gold-edge);
+  display: flex; align-items: center; gap: 0.5rem; min-height: 46px; }
+details.hint > summary::-webkit-details-marker { display: none; }
+details.hint > summary::before { content: "▸"; transition: transform 0.15s ease; }
+details.hint[open] > summary::before { transform: rotate(90deg); }
+.hint-body { padding: 0 0.9rem 0.75rem; }
+.hint-body > details.hint { margin: 0.6rem -0.9rem -0.75rem; border-left: none; border-right: none; border-bottom: none; border-radius: 0 0 14px 14px; }
+.hints-title { font-family: 'Fredoka', sans-serif; font-weight: 600; margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* ---------- Lorbeer ---------- */
+.laurel { border: 2px solid #b9d8a6; background: linear-gradient(180deg, #f4fbef 0%, #e6f4dc 100%); }
+.laurel h3 { color: #3f7a24; display: flex; align-items: center; gap: 0.5rem; font-size: 1.12rem; }
+.laurel.done { border-color: var(--pine); }
+.laurel.done h3::after { content: "✓ gelöst"; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; background: var(--pine); color: #fff; border-radius: 999px; padding: 0.1rem 0.5rem; margin-left: auto; }
+.stars { color: var(--gold-edge); letter-spacing: 0.1em; }
+.small { font-size: 0.88rem; color: var(--ink-soft); }
+.mono { font-family: 'JetBrains Mono', monospace; }
+.inl { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; padding: 0.45rem 0.6rem; border-radius: 12px; border: 2px solid var(--line); width: 9ch; background: #fff; color: var(--ink); }
+
+/* ---------- Grafiken ---------- */
+.fig { background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 0.6rem; margin: 0.8rem 0; }
+.fig svg, .fig img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.figcap { font-size: 0.85rem; color: var(--ink-soft); text-align: center; margin-top: 0.3rem; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; align-items: start; }
+@media (max-width: 640px) { .two { grid-template-columns: 1fr; } }
+.lab-ctrl { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin: 0.6rem 0 0.2rem; }
+
+/* ---------- Apparatur ---------- */
+.app-fig { max-width: 420px; margin: 0.8rem auto; }
+.labels { display: grid; gap: 0.5rem; }
+.lab { display: grid; grid-template-columns: 44px 1fr; gap: 0.5rem; align-items: center; }
+.lab .nr { width: 40px; height: 40px; border-radius: 10px; background: #fbf3c8; border: 2px solid #e2cf73; display: grid; place-items: center; font-family: 'Fredoka', sans-serif; font-weight: 700; }
+.lab select { width: 100%; padding: 0.6rem 0.7rem; border-radius: 12px; border: 2px solid var(--line); background: #fff; min-height: 48px; font-weight: 700; }
+.lab.ok select { border-color: var(--pine); background: var(--pine-soft); }
+.lab.bad select { border-color: var(--red); background: var(--red-soft); }
+.lab .why { grid-column: 2; font-size: 0.86rem; color: var(--pine-edge); }
+.numpad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.45rem; max-width: 420px; margin: 0.6rem auto; }
+.numpad button { min-height: 52px; border-radius: 12px; border: 2px solid #e2cf73; background: #fbf3c8; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.2rem; cursor: pointer; }
+.numpad button.used { opacity: 0.35; }
+.pathline { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; justify-content: center; min-height: 52px; font-family: 'Fredoka', sans-serif; font-weight: 700; }
+.pathline .pn { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--acc); color: #fff; }
+.pathline .ar { color: var(--ink-soft); }
+
+/* ---------- Kacheln / Reihenfolge ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.55rem; }
+.tile { border: 2px solid var(--line); background: #fff; border-radius: 14px; padding: 0.7rem 0.5rem; text-align: center; cursor: pointer; font-weight: 700; min-height: 84px; }
+.tile .em { font-size: 1.6rem; display: block; line-height: 1.2; }
+.tile.sel { border-color: var(--acc); background: #fff6ea; }
+.tile.ok { border-color: var(--pine); background: var(--pine-soft); }
+.tile.bad { border-color: var(--red); background: var(--red-soft); }
+.tile .ord { display: block; font-family: 'JetBrains Mono', monospace; color: var(--acc-edge); min-height: 1.2em; }
+
+/* ---------- Dichtekarten ---------- */
+.rho-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; margin: 0.6rem 0; }
+.rho-card { border-radius: 16px; padding: 0.7rem; text-align: center; border: 2px solid var(--line); background: #fff; }
+.rho-card .em { font-size: 1.8rem; line-height: 1.1; }
+.rho-card b { display: block; font-family: 'Fredoka', sans-serif; }
+.rho-card .v { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.05rem; }
+.rho-card.water { background: #eaf6fe; border-color: #9fd3f5; }
+.rho-card.limo { background: #fff4dc; border-color: #f5c46b; }
+.rho-card.eug { background: #f5e6da; border-color: #c99a78; }
+
+/* ---------- Tropftrichter ---------- */
+.funnel-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.8rem; align-items: center; }
+@media (max-width: 640px) { .funnel-wrap { grid-template-columns: 1fr; } }
+.funnel-ctrl { display: grid; gap: 0.55rem; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--line); border-radius: 14px; overflow: hidden; }
+.seg button { border: none; background: #fff; padding: 0.6rem 0.4rem; font-weight: 700; cursor: pointer; min-height: 48px; }
+.seg button.on { background: var(--acc); color: #fff; }
+.meter { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: #fff; border: 1.5px solid var(--line); border-radius: 12px; padding: 0.5rem 0.7rem; }
+
+/* ---------- Messen ---------- */
+.mgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+@media (max-width: 640px) { .mgrid { grid-template-columns: 1fr 1fr; } }
+.mfield { display: flex; flex-direction: column; gap: 0.2rem; font-weight: 700; font-size: 0.92rem; }
+.mfield input { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; padding: 0.5rem 0.6rem; border-radius: 12px; border: 2px solid var(--line); background: #fff; width: 100%; color: var(--ink); }
+.mfield input:focus { border-color: var(--acc); outline: none; }
+.mfield .unit { font-weight: 600; color: var(--ink-soft); font-size: 0.8rem; }
+.check { margin-top: 0.8rem; border-radius: 14px; padding: 0.7rem 0.9rem; font-weight: 700; display: none; }
+.check.show { display: block; }
+.check.ok { background: var(--pine-soft); color: var(--pine-edge); }
+.check.bad { background: var(--red-soft); color: #8f1f1f; }
+.check.warn { background: #fff3cf; color: #8a5a00; }
+
+/* ---------- Abschnitte ---------- */
+.chapter { display: none; }
+.chapter.show { display: block; animation: rise 0.35s ease; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.hidden { display: none !important; }
+
+/* ---------- Start ---------- */
+.hero { text-align: center; padding: 1.4rem 0 0.4rem; }
+.hero h1 { font-size: clamp(1.9rem, 6vw, 3rem); line-height: 1.05; }
+.hero h1 .r { color: var(--red); }
+.hero .sub { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.5rem; }
+.team { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.8rem 0; }
+@media (max-width: 520px) { .team { grid-template-columns: 1fr; } }
+.team input { font: inherit; font-weight: 700; padding: 0.7rem 0.8rem; border: 2px solid var(--line); border-radius: 12px; background: #fff; width: 100%; }
+.sessions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.4rem; }
+@media (max-width: 640px) { .sessions { grid-template-columns: 1fr; } }
+.sess { border-radius: 18px; padding: 1rem; border: 2px solid var(--line); background: #fff; }
+.sess h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.15rem; margin-bottom: 0.3rem; }
+.sess.s1 { border-color: #f5c46b; background: linear-gradient(180deg, #fffaf0, #fff0d8); }
+.sess.s2 { border-color: #c99a78; background: linear-gradient(180deg, #fffaf5, #f5e6da); }
+.sess .state { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; color: var(--pine-edge); min-height: 1.1em; }
+.sess .lock-row input { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.15em; width: 10ch;
+  padding: 0.5rem 0.6rem; border-radius: 12px; border: 3px solid var(--gold); background: #fffaf0; text-align: center; }
+
+/* ---------- Finale ---------- */
+.solword { text-align: center; margin: 0.6rem 0; }
+.solword span { display: inline-block; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: clamp(1.6rem, 6vw, 2.4rem); letter-spacing: 0.3em; padding: 0.4rem 0.9rem 0.4rem 1.2rem;
+  border: 4px double var(--acc-edge); border-radius: 16px; background: #fff; color: var(--acc-edge); }
+.cert { text-align: center; background: radial-gradient(circle at 50% 0%, #fffaf0 0%, #fbeedd 70%); border: 3px double var(--red); position: relative; overflow: hidden; }
+.cert h2 { font-size: clamp(1.45rem, 5vw, 2.1rem); color: var(--red); }
+.cert .names { font-family: 'Fredoka', sans-serif; font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0; }
+.cert table { margin: 0.8rem auto 0; border-collapse: collapse; font-size: 0.95rem; }
+.cert td { padding: 0.25rem 0.7rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cert .gift { margin-top: 0.9rem; padding: 0.6rem 0.8rem; border-radius: 14px; background: #fff3e0; border: 2px dashed var(--orange); font-weight: 700; }
+.cert-glass { width: 150px; height: auto; display: block; margin: 0.4rem auto 0; }
+.snow { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.cert > *:not(.snow) { position: relative; z-index: 1; }
+.snow i { position: absolute; top: -12px; width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px rgba(179,38,46,0.15); animation: fall linear infinite; opacity: 0.9; }
+@keyframes fall { to { transform: translateY(560px) translateX(20px); } }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes rest { 0%,100% { transform: translateY(0); } 50% { transform: translateY(1px); } }
+.bob { animation: bob 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .snow, .bob { animation: none !important; display: none; } .bob { display: inline; } }
+.fast { border: 2px solid #c9b6f5; background: linear-gradient(180deg, #f6f1ff 0%, #ece3ff 100%); }
+.fast h3 { color: #5b3bb5; display: flex; align-items: center; gap: 0.5rem; font-size: 1.12rem; }
+
+/* ---------- Spielleitung ---------- */
+.sl { border: 2px dashed var(--violet); background: #f3eefe; }
+.sl h3 { color: var(--violet); }
+.sl table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.5rem; }
+.sl td, .sl th { border-bottom: 1px solid rgba(138,92,240,0.25); padding: 0.3rem 0.4rem; text-align: left; vertical-align: top; }
+
+@media print {
+  .topbar, .lock, details.hint, .btn, .laurel, .sl { display: none !important; }
+  .chapter { display: block !important; }
+  body { background: #fff; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topbar" hidden>
+  <div class="topbar-in">
+    <span class="tb-title">🎄 Weihnachtliche Düfte <span class="run-badge" id="runBadge">Sitzung 1</span></span>
+    <span class="stat"><span id="st-time">⏱ 00:00</span><span id="st-hints">💡 0</span><span id="st-laurel">🌿 0</span></span>
+    <nav class="seals" id="seals" aria-label="Duftsiegel"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- =============================================================== START -->
+<section class="chapter show" id="c0">
+  <a href="lp07.html" style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:0.8rem;text-decoration:none">← Lernpfad 07</a>
+  <div class="hero">
+    <svg viewBox="0 0 240 130" width="240" height="130" aria-hidden="true" style="max-width:62%;height:auto">
+      <!-- Duftkugel mit Stopfen, Orange, Nelke -->
+      <circle cx="120" cy="74" r="44" fill="#dff1e5" stroke="#1e5a37" stroke-width="5"/>
+      <path d="M92,62 C100,46 118,40 134,44" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+      <rect x="111" y="18" width="18" height="16" rx="4" fill="#b3262e" stroke="#7f1a20" stroke-width="4"/>
+      <circle cx="120" cy="84" r="9" fill="#ec8a24" stroke="#b35f0e" stroke-width="3"/>
+      <circle cx="44" cy="92" r="26" fill="#ec8a24" stroke="#b35f0e" stroke-width="5"/>
+      <path d="M44,66 C48,58 56,56 62,58" fill="none" stroke="#2e7d4f" stroke-width="5" stroke-linecap="round"/>
+      <g transform="translate(196,64) rotate(18)">
+        <rect x="-4" y="0" width="8" height="46" rx="4" fill="#8a4b2a" stroke="#5e2f17" stroke-width="3"/>
+        <circle cx="0" cy="-6" r="10" fill="#8a4b2a" stroke="#5e2f17" stroke-width="3"/>
+        <path d="M-10,-2 L-15,8 M10,-2 L15,8 M-4,4 L-6,12 M4,4 L6,12" stroke="#5e2f17" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <path d="M150,26 l4,-8 l4,8 l-8,-4 h8 z" fill="#d9a441"/><path d="M78,20 l3,-6 l3,6 l-6,-3 h6 z" fill="#d9a441"/>
+    </svg>
+    <h1>Weihnachtliche<br><span class="r">Düfte</span></h1>
+    <p class="sub">LERNPFAD · 07 SCHWIMMEN UND SINKEN · NATURWISSENSCHAFTEN 5/6</p>
+  </div>
+
+  <div class="card story-card story">
+    <p><span class="who">Berlin, Anfang Dezember.</span> Auf dem Weihnachtsmarkt steht eine kleine Holzbude: die <b>Duftwerkstatt</b> von Meisterin Rosalie Zimt. Hier riecht es nach Orangen, Nelken und Tannengrün. Doch dieses Jahr sind ihre Duftfläschchen leer, und Rosalie braucht Hilfe.</p>
+    <p><span class="who">Rosalie Zimt:</span> „Ihr wollt Parfumeur:innen werden? Dann zeigt mir, dass ihr Düfte aus Pflanzen herauslocken könnt! In zwei Sitzungen gewinnen wir zwei Weihnachtsdüfte: zuerst <b>Orangenöl</b>, dann <b>Nelkenöl</b>. Aber passt auf: Die beiden Öle benehmen sich im Wasser ganz verschieden.“</p>
+    <p>Vorne im Raum läuft dafür eine echte <b>Wasserdampfdestillation</b>. Am Ende jeder Sitzung füllt ihr einen Tropfen des Duftöls in eure <b>Duftkugel</b>.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="fred" style="margin-bottom:0.3rem">So spielt ihr</h3>
+    <ul class="l">
+      <li>Ihr arbeitet zu zweit an <b>einem iPad</b>. Wechselt euch beim Tippen ab.</li>
+      <li>Jede Sitzung hat <b>fünf Duftsiegel</b>. Jedes Siegel öffnet ihr mit dem richtigen Code oder der richtigen Lösung.</li>
+      <li>Wenn ihr nicht weiterkommt: Öffnet die <b>Hilfen</b> 💡 von oben nach unten. Nehmt nur so viele, wie ihr braucht.</li>
+      <li>Ihr seid schnell? Die grünen <b>Lorbeer-Aufgaben</b> 🌿 sind für echte Profis. Sie sind freiwillig.</li>
+      <li>Euer <b>Duftjournal</b> auf Papier füllt ihr nebenbei aus. Das blaue Zeichen 📝 sagt euch, wann.</li>
+      <li>Das orange Zeichen 🧪 heißt: Jetzt geht ihr <b>nach vorne zur Apparatur</b>.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 class="fred">Wer forscht heute?</h3>
+    <div class="team">
+      <input id="name1" placeholder="Vorname 1" autocomplete="off" maxlength="24">
+      <input id="name2" placeholder="Vorname 2" autocomplete="off" maxlength="24">
+    </div>
+    <div class="sessions">
+      <div class="sess s1">
+        <h3>🍊 Sitzung 1: Orangenöl</h3>
+        <p class="small">Aus Orangenschalen wird Duftöl. Wo landet es im Wasser?</p>
+        <p class="state" id="s1state"></p>
+        <div class="lock-row"><button class="btn acc" id="start1" style="--acc:var(--orange);--acc-edge:var(--orange-edge)">🍊 Sitzung 1 starten</button></div>
+      </div>
+      <div class="sess s2">
+        <h3>🌰 Sitzung 2: Nelkenöl</h3>
+        <p class="small">Nur mit dem <b>Lösungswort aus Sitzung 1</b>. Ihr findet es in eurem Duftjournal.</p>
+        <p class="state" id="s2state"></p>
+        <div class="lock-row" id="s2lock"><input id="pass2" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Wort" aria-label="Lösungswort aus Sitzung 1"><button class="btn" id="pass2btn">🔓 Öffnen</button></div>
+        <div class="lock-msg" id="pass2msg" style="color:var(--red)"></div>
+        <div class="lock-row hidden" id="s2go"><button class="btn acc" id="start2" style="--acc:var(--clove);--acc-edge:var(--clove-edge)">🌰 Sitzung 2 starten</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================================================================== -->
+<!-- =============================================================== SITZUNG 1 · ORANGE ================== -->
+<!-- =================================================================================================== -->
+
+<!-- ------------------------------------------------ 1.1 Die Duftquelle -->
+<section class="chapter" id="r1c1">
+  <div class="chap-head"><div class="chap-no">1</div><div><small>SITZUNG 1 · DUFTSIEGEL 1</small><h2>Wo steckt der Orangenduft?</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Riecht mal an einer Orange. Und jetzt knickt ein Stück Schale direkt vor eurer Nase. Merkt ihr den Unterschied? Genau da sitzt mein Schatz!“</p>
+  </div>
+  <div class="card task">
+    <h3>🍊 Auftrag</h3>
+    <ol>
+      <li>Holt euch vorne ein Stück Orangenschale. Knickt es vor eurer Nase und haltet es dabei <b>von den Augen weg</b>. Beobachtet genau, was passiert.</li>
+      <li>Beantwortet die vier Fragen. Jede Antwort hat einen <b>Buchstaben</b>.</li>
+      <li>Die vier Buchstaben der richtigen Antworten ergeben der Reihe nach den Code.</li>
+    </ol>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 1:</b> Tragt ein, wie die Orangenschalen zerkleinert werden und wie viel Schale vorne in der Apparatur ist (die Lehrperson sagt es euch).</span></div>
+  </div>
+  <div class="card" id="quiz11"></div>
+  <div class="lock" id="lock11">
+    <h3>🔒 Duftsiegel 1</h3>
+    <p>Tippt die vier Buchstaben eurer Antworten ein (Frage 1 bis 4).</p>
+    <div class="lock-row"><input id="code11" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code Duftsiegel 1"><button class="btn" data-lock="1-1">Öffnen</button></div>
+    <div class="lock-msg" id="msg11"></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 1 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r1c1a"><summary>Impuls 1 · Denkanstoß · Wo sitzt das Öl?</summary><div class="hint-body">
+    <p>Knickt das Stück Orangenschale vor eurer Nase (weg von den Augen!). Haltet es gegen das Licht: Was spritzt heraus? Wo sitzt also das Duftöl? Für Frage 4: Denkt an Salatsoße. Was passiert mit Öl und Essig, wenn sie stehen bleiben?</p>
+    <details class="hint" data-h="r1c1b"><summary>Impuls 2 · Werkzeug · Oberfläche und Temperatur</summary><div class="hint-body">
+      <p>Vergleicht ein großes Stück Schale mit vielen kleinen Stücken: Wo kommt der Dampf an <b>mehr Stellen</b> heran? Wasserdampf wird nie heißer als etwa 100 °C, eine Pfanne schon. <br>Satzanfang fürs Journal: „Kleine Stücke haben zusammen mehr …“</p>
+      <details class="hint" data-h="r1c1c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>Das Öl sitzt in winzigen <b>Öldrüsen der bunten Schale</b>. Zerkleinern vergrößert die <b>Oberfläche</b>: Der Dampf erreicht mehr Öldrüsen. Wasserdampf ist schonend (höchstens etwa 100 °C). Öl und Wasser bilden zwei Schichten. Code: <b>D U F T</b>.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc1-1">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★</span></h3>
+    <p>Rosalie kauft für ihr Duftöl nur <b>unbehandelte Bio-Orangen</b>. Warum ist das für die Duftwerkstatt wichtig?</p>
+    <div id="l1-1"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 1.2 Die Duftmaschine -->
+<section class="chapter" id="r1c2">
+  <div class="chap-head"><div class="chap-no">2</div><div><small>SITZUNG 1 · DUFTSIEGEL 2</small><h2>Die Duftmaschine</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Mit der Pfanne würde ich meinen Duft verbrennen. Ich nehme lieber <b>Wasserdampf</b>! Der strömt durch die Schalen, nimmt das Öl mit und wird danach wieder abgekühlt. Diese Methode heißt <b>Wasserdampfdestillation</b>. Kennt ihr die Teile meiner Duftmaschine?“</p>
+  </div>
+  <div class="card task">
+    <h3>🔬 Auftrag</h3>
+    <ol>
+      <li>Schaut euch das Foto der Apparatur an. Vergleicht es mit der echten Apparatur vorne im Raum.</li>
+      <li>Wählt für jede Nummer das passende Gerät aus. Dann tippt auf <b>Prüfen</b>.</li>
+    </ol>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 2:</b> Füllt den Lückentext zur Apparatur aus.</span></div>
+  </div>
+  <div class="card">
+    <div class="fig app-fig"><img src="lp07-img/apparatur.jpg" alt="Foto der Wasserdampfdestillation mit den Nummern 1 bis 10" loading="lazy"></div>
+    <p class="figcap">Wasserdampfdestillation (hier mit Nelken). Unten kocht Wasser, oben liegt das Extraktionsgut.</p>
+    <div class="labels" id="labels12"></div>
+    <div style="margin-top:0.8rem"><button class="btn blue" id="check12">🔎 Prüfen</button></div>
+    <div class="check" id="fb12"></div>
+  </div>
+  <div class="lock hidden" id="lock12">
+    <h3>🔓 Duftsiegel 2 geöffnet</h3>
+    <p>Notiert das Siegelwort in eurem Duftjournal:</p>
+    <div class="sealword">DAMPF</div>
+    <div class="lock-row"><button class="btn" data-next="1-2">Weiter zu Duftsiegel 3 →</button></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 2 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r1c2a"><summary>Impuls 1 · Denkanstoß · Wo fängt alles an?</summary><div class="hint-body">
+    <p>Fangt im Foto <b>unten rechts</b> an: Was wird heiß? Was steht darauf? Folgt dann dem Glasrohr oben nach links bis zum Hahn.</p>
+    <details class="hint" data-h="r1c2b"><summary>Impuls 2 · Werkzeug · Wortspeicher</summary><div class="hint-body">
+      <p><b>Wortspeicher:</b> Rundkolben · Heizplatte · Extraktionsgut · Destillationsbrücke · Kühler · Schläuche · Tropftrichter · Becherglas · Schliffklammern · Stativ. Im Kühler steckt eine Glasspirale, durch die Schläuche fließt kaltes Wasser.</p>
+      <details class="hint" data-h="r1c2c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>1 Rundkolben (Wasser) · 2 Schliffklammern · 3 Destillationsbrücke · 4 Schläuche · 5 Stativ · 6 Kühler · 7 Tropftrichter · 8 Becherglas · 9 Heizplatte · 10 Extraktionsgut (Orangenschalen).</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc1-2">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★★</span></h3>
+    <p>Am Kühler (6) fließt das kalte Wasser <b>unten hinein</b> und <b>oben heraus</b>. Warum nicht andersherum?</p>
+    <div id="l1-2"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 1.3 Schwimmt oder sinkt? -->
+<section class="chapter" id="r1c3">
+  <div class="chap-head"><div class="chap-no">3</div><div><small>SITZUNG 1 · DUFTSIEGEL 3</small><h2>Wo ist mein Orangenöl?</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Im Tropftrichter sammeln sich Wasser und Öl. Sie mischen sich nicht, sondern bilden zwei Schichten. Aber welche Schicht ist mein kostbares Öl? Wenn ich den Hahn falsch öffne, fließt mein Duft ins Abwasser!“</p>
+  </div>
+  <div class="card">
+    <h3 class="fred">Die Dichte entscheidet</h3>
+    <div class="rho-cards">
+      <div class="rho-card water"><div class="em">💧</div><b>Wasser</b><span class="v">ρ = 1,00 g/cm³</span></div>
+      <div class="rho-card limo"><div class="em">🍊</div><b>Orangenöl</b><span class="small">(fast nur Limonen)</span><br><span class="v">ρ = 0,84 g/cm³</span></div>
+    </div>
+    <div id="q13"></div>
+  </div>
+  <div class="card task">
+    <h3>⚗️ Virtueller Versuch: Öl abtrennen</h3>
+    <ol>
+      <li>Wählt mit dem Schalter, wohin der Hahn tropft: ins <b>Becherglas</b> (Abwasser) oder in die <b>Duftkugel</b>.</li>
+      <li>Öffnet den Hahn und schließt ihn rechtzeitig wieder.</li>
+      <li>Ziel: <b>Fast alles Öl</b> in der Duftkugel, <b>fast kein Wasser</b>. Dann tippt auf <b>Fertig</b>.</li>
+    </ol>
+    <div class="funnel-wrap" style="margin-top:0.6rem">
+      <div class="fig" style="margin:0"><svg id="funnel13" viewBox="0 0 260 366" role="img" aria-label="Tropftrichter mit zwei Schichten"></svg></div>
+      <div class="funnel-ctrl">
+        <div class="seg" id="tgt13"><button data-t="beaker" class="on">🥛 Becherglas</button><button data-t="ball">🟢 Duftkugel</button></div>
+        <button class="btn acc" id="tap13">🔓 Hahn öffnen</button>
+        <div class="meter" id="meter13"></div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap"><button class="btn green" id="done13">✔ Fertig</button><button class="btn ghost" id="reset13">↺ Neu</button></div>
+      </div>
+    </div>
+    <div class="check" id="fb13"></div>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 3:</b> Zeichnet die beiden Schichten in den Tropftrichter und beschriftet sie.</span></div>
+  </div>
+  <div class="lock" id="lock13">
+    <h3>🔒 Duftsiegel 3</h3>
+    <p>Wo sammelt sich das Orangenöl im Tropftrichter? Tippt das Wort ein. (Das Schloss geht erst auf, wenn euer virtueller Versuch geklappt hat.)</p>
+    <div class="lock-row"><input id="code13" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code Duftsiegel 3"><button class="btn" data-lock="1-3">Öffnen</button></div>
+    <div class="lock-msg" id="msg13"></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 3 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r1c3a"><summary>Impuls 1 · Denkanstoß · Vergleicht die Zahlen</summary><div class="hint-body">
+    <p>Welche Zahl ist kleiner: 0,84 oder 1,00? Denkt an die schwimmende Orange aus Lernpfad 02: Was hat eine kleinere Dichte als Wasser?</p>
+    <details class="hint" data-h="r1c3b"><summary>Impuls 2 · Werkzeug · Der Hahn ist unten</summary><div class="hint-body">
+      <p>Kleinere Dichte als Wasser → <b>schwimmt oben</b>. Aus dem Hahn fließt immer zuerst die <b>untere</b> Schicht. Was muss also zuerst ins Becherglas, bevor ihr auf die Duftkugel umschaltet? <br><b>Wortspeicher fürs Journal:</b> schwimmt · Dichte · oben · untere · Wasser · Orangenöl</p>
+      <details class="hint" data-h="r1c3c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>0,84 &lt; 1,00: Orangenöl <b>schwimmt oben</b>. Erst das Wasser ins Becherglas ablassen, kurz vor der Grenze schließen, auf Duftkugel umschalten, dann das Öl. Zeichnung: oben schmale Schicht „Orangenöl“, darunter „Wasser“. Code: <b>OBEN</b>.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc1-3">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★</span></h3>
+    <p>Rosalie gießt vier Flüssigkeiten vorsichtig in ein hohes Glas. Tippt sie in der Reihenfolge an, in der sie sich <b>von oben nach unten</b> stapeln.</p>
+    <div class="tiles" id="l1-3"></div>
+    <div class="lock-row"><button class="btn green" id="l13check">Prüfen</button><button class="btn ghost" id="l13reset">↺</button></div>
+    <div class="fb" id="lmsg1-3"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 1.4 Ablesen -->
+<section class="chapter" id="r1c4">
+  <div class="chap-head"><div class="chap-no">4</div><div><small>SITZUNG 1 · DUFTSIEGEL 4</small><h2>Wie viel Duft steckt in der Schale?</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Ein Kilo Orangenschalen, und am Ende habe ich nur ein Schnapsgläschen voll Öl. Deshalb ist Duftöl so wertvoll! Messt genau nach, wie viel wir heute gewonnen haben.“</p>
+  </div>
+  <div class="card">
+    <h3 class="fred">Übung: Volumen an der Messpipette ablesen</h3>
+    <p>In der Messpipette ist unten Wasser, darüber die gelbe Ölschicht. Das Volumen des Öls ist der Unterschied zwischen <b>oberer</b> und <b>unterer</b> Grenze der Ölschicht.</p>
+    <div class="fig" style="max-width:420px;margin:0.8rem auto"><svg id="pip14" viewBox="0 0 320 300" role="img" aria-label="Messpipette mit Ölschicht"></svg></div>
+    <div class="lock-row"><label class="fred" for="pv14">Volumen des Öls:</label><input class="inl" id="pv14" inputmode="decimal" autocomplete="off"> <span>ml</span><button class="btn blue" id="pcheck14">Prüfen</button></div>
+    <div class="check" id="pfb14"></div>
+  </div>
+  <div class="card task">
+    <h3>🧪 An der Apparatur</h3>
+    <div class="front">🧪 <span>Geht nach vorne. Die Lehrperson zeigt euch die Messpipette mit dem <b>echten Orangenöl</b> und sagt euch, wie viel Orangenschale in der Apparatur war.</span></div>
+    <div class="mgrid" style="margin-top:0.8rem">
+      <label class="mfield">Masse der Orangenschalen <span class="unit">in g</span><input id="m14" inputmode="decimal" autocomplete="off"></label>
+      <label class="mfield">Volumen des Orangenöls <span class="unit">in ml</span><input id="v14" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <div class="lock-row"><button class="btn blue" id="check14">🔎 Eintragen</button><button class="btn ghost" id="ex14">Destillation noch nicht fertig? Beispielwerte nehmen</button></div>
+    <div class="check" id="fb14"></div>
+    <div id="q14" class="hidden"></div>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 4:</b> Tragt Masse und Volumen ein.</span></div>
+  </div>
+  <div class="lock hidden" id="lock14">
+    <h3>🔓 Duftsiegel 4 geöffnet</h3>
+    <p>Notiert als Siegel 4 euer Volumen:</p>
+    <div class="sealword" id="seal14w">V = … ml</div>
+    <div class="lock-row"><button class="btn" data-next="1-4">Weiter zu Duftsiegel 5 →</button></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 4 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r1c4a"><summary>Impuls 1 · Denkanstoß · Grenzen suchen</summary><div class="hint-body">
+    <p>Sucht in der Messpipette die <b>untere</b> und die <b>obere Grenze</b> der gelben Ölschicht. Lest beide Zahlen ab.</p>
+    <details class="hint" data-h="r1c4b"><summary>Impuls 2 · Werkzeug · Striche und Rechnung</summary><div class="hint-body">
+      <p>Zwischen zwei langen Strichen liegen 0,5 ml, zwischen zwei kurzen 0,1 ml. Rechnet: <b>obere Grenze − untere Grenze</b>. Beispiel: von 1,0 ml bis 1,3 ml sind es 0,3 ml.</p>
+      <details class="hint" data-h="r1c4c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>Übung: Die Ölschicht reicht von 1,0 ml bis 1,4 ml, also <b>0,4 ml</b>. Für das echte Öl tragt ihr die Werte der Lehrperson ein. Antwortsatz fürs Journal: „Aus … g Orangenschale wurden nur … ml Orangenöl gewonnen.“</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc1-4">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★★</span></h3>
+    <p>Wie schwer ist euer Orangenöl? Rechnet mit der Dichte: <b>m = ρ · V</b> = 0,84 g/ml · euer Volumen.</p>
+    <div class="lock-row"><input class="inl" id="l14in" inputmode="decimal" autocomplete="off"> <span>g</span><button class="btn green" id="l14check">Prüfen</button></div>
+    <div class="fb" id="lmsg1-4"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 1.5 Duftkugel -->
+<section class="chapter" id="r1c5">
+  <div class="chap-head"><div class="chap-no">5</div><div><small>SITZUNG 1 · DUFTSIEGEL 5</small><h2>Eure Duftkugel</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Ein einziger Tropfen reicht, und eure Kugel duftet tagelang nach Weihnachten. Aber Duftöle sind <b>reine Stoffe in hoher Konzentration</b>. Damit geht man vorsichtig um!“</p>
+  </div>
+  <div class="card">
+    <h3 class="fred">Sicherheitsregeln</h3>
+    <p>Welche Regeln gelten für eure Duftkugel? Tippt <b>alle richtigen</b> an und dann auf Prüfen.</p>
+    <div class="tiles" id="safe15"></div>
+    <div class="lock-row"><button class="btn blue" id="safe15check">🔎 Prüfen</button></div>
+    <div class="check" id="safe15fb"></div>
+  </div>
+  <div class="card task">
+    <h3>🧪 Abfüllen</h3>
+    <div class="front">🧪 <span>Geht mit eurer <b>Duftkugel</b> nach vorne. Die Lehrperson gibt mit der Pipette <b>einen Tropfen</b> Orangenöl hinein. Verschließt die Kugel sofort mit dem roten Stopfen. Neben der Apparatur liegt die <b>Duftkarte</b> mit dem Code für das letzte Siegel.</span></div>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 5:</b> Beschreibt den Duft mit drei Wörtern.</span></div>
+  </div>
+  <div class="lock" id="lock15">
+    <h3>🔒 Duftsiegel 5</h3>
+    <p>Code von der Duftkarte an der Apparatur (erst nach den Sicherheitsregeln):</p>
+    <div class="lock-row"><input id="code15" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code Duftsiegel 5"><button class="btn" data-lock="1-5">Öffnen</button></div>
+    <div class="lock-msg" id="msg15"></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 5 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r1c5a"><summary>Impuls 1 · Denkanstoß · Duft und Gefahr</summary><div class="hint-body">
+    <p>Riecht vorsichtig an eurer Kugel: Woran erinnert euch der Duft? Für die Regeln: Reines Duftöl kann die Haut reizen und brennt. Öl und Wasser mischen sich nicht.</p>
+    <details class="hint" data-h="r1c5b"><summary>Impuls 2 · Werkzeug · Duftwörter und falsche Regeln</summary><div class="hint-body">
+      <p><b>Duftwörter:</b> frisch · süß · fruchtig · spritzig · würzig · warm · weihnachtlich. Zwei Regeln im Spiel sind falsch: Die Kugel gehört nicht neben eine Kerze, und Wasser verdünnt das Öl nicht.</p>
+      <details class="hint" data-h="r1c5c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>Richtig: nicht auf Haut und Augen · Stopfen drauf · nicht essen oder trinken · Hände waschen. Duft z. B. frisch, süß, fruchtig. Der Code steht auf der <b>Duftkarte</b> an der Apparatur; fehlt sie, fragt die Lehrperson.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc1-5">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★</span></h3>
+    <p>Ein Tropfen hat ungefähr <b>0,05 ml</b>. Für wie viele Duftkugeln (je ein Tropfen) reicht euer Orangenöl aus Siegel 4?</p>
+    <div class="lock-row"><input class="inl" id="l15in" inputmode="numeric" autocomplete="off"> <span>Kugeln</span><button class="btn green" id="l15check">Prüfen</button></div>
+    <div class="fb" id="lmsg1-5"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ Ende Sitzung 1 -->
+<section class="chapter" id="r1end">
+  <div class="card story-card story" style="margin-top:1.4rem">
+    <p class="fred" style="font-size:1.6rem;color:var(--orange-edge);text-align:center;font-weight:700">Der Orangenduft ist gefangen! 🍊</p>
+    <p><span class="who">Rosalie Zimt:</span> „Wunderbar! Orangenöl ist <b>weniger dicht</b> als Wasser (0,84 statt 1,00 g/cm³). Deshalb schwimmt es oben im Tropftrichter, und ihr konntet zuerst das Wasser ablassen. Mein Orangenöl besteht fast nur aus einem Duftstoff. Sein Name ist euer Lösungswort.“</p>
+  </div>
+  <div class="card cert" style="border-color:var(--orange)">
+    <p class="small mono">LÖSUNGSWORT SITZUNG 1</p>
+    <div class="solword"><span style="color:var(--orange-edge);border-color:var(--orange-edge)">LIMONEN</span></div>
+    <p>📝 Schreibt das Lösungswort <b>jetzt</b> in euer Duftjournal. Mit ihm öffnet ihr in der nächsten Sitzung die <b>Nelken-Werkstatt</b>.</p>
+    <p class="names" id="r1Names" style="margin-top:0.6rem">…</p>
+    <p class="small">Lehrlinge der Duftwerkstatt · Sitzung 1</p>
+    <table>
+      <tr><td>Zeit</td><td id="r1Time" class="mono"></td></tr>
+      <tr><td>Hilfen</td><td id="r1Hints" class="mono"></td></tr>
+      <tr><td>Lorbeeren 🌿</td><td id="r1Laurel" class="mono"></td></tr>
+      <tr><td>Orangenöl</td><td id="r1Vol" class="mono"></td></tr>
+    </table>
+  </div>
+  <div class="card task">
+    <h3>📝 Zum Schluss: Euer Duftjournal</h3>
+    <ul>
+      <li><b>Antwortsatz:</b> Das Orangenöl schwimmt oben auf dem Wasser, weil …</li>
+      <li>Noch Zeit? Löst die Lorbeer-Aufgaben, die ihr ausgelassen habt. Über die Siegel oben springt ihr zurück.</li>
+    </ul>
+  </div>
+  <div class="card fast">
+    <h3>⚡ Schnellläufer:innen: Vorhersage für Sitzung 2</h3>
+    <p>Nächstes Mal destillieren wir <b>Gewürznelken</b>. Nelkenöl besteht vor allem aus <b>Eugenol</b> mit der Dichte <b>1,06 g/cm³</b>. Was sagt ihr voraus: Wo wird sich das Nelkenöl im Tropftrichter sammeln? Schreibt eure Vorhersage mit Begründung unten ins Duftjournal.</p>
+  </div>
+</section>
+
+<!-- =================================================================================================== -->
+<!-- =============================================================== SITZUNG 2 · NELKE =================== -->
+<!-- =================================================================================================== -->
+
+<!-- ------------------------------------------------ 2.1 Die Duftquelle -->
+<section class="chapter" id="r2c1">
+  <div class="chap-head"><div class="chap-no">1</div><div><small>SITZUNG 2 · DUFTSIEGEL 1</small><h2>Kleine Nägel voller Duft</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Willkommen zurück! Orangenduft allein ist noch kein Weihnachtsduft. Mir fehlt die <b>Nelke</b>. Ihr Name kommt von „Nägelchen“, schaut euch die Form an! Aber Vorsicht: Nelkenöl ist ein Dickkopf. Es macht im Wasser etwas ganz anderes als das Orangenöl.“</p>
+  </div>
+  <div class="card task">
+    <h3>🌰 Auftrag</h3>
+    <ol>
+      <li>Holt euch vorne zwei Gewürznelken. Riecht daran, reibt eine zwischen den Fingern und riecht noch einmal.</li>
+      <li>Beantwortet die fünf Fragen. Die fünf Buchstaben der richtigen Antworten ergeben den Code.</li>
+    </ol>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 6:</b> Tragt ein, wie die Nelken zerkleinert werden und wie viel Nelken in der Apparatur sind.</span></div>
+  </div>
+  <div class="card" id="quiz21"></div>
+  <div class="lock" id="lock21">
+    <h3>🔒 Duftsiegel 1</h3>
+    <p>Tippt die fünf Buchstaben eurer Antworten ein (Frage 1 bis 5).</p>
+    <div class="lock-row"><input id="code21" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code Duftsiegel 1"><button class="btn" data-lock="2-1">Öffnen</button></div>
+    <div class="lock-msg" id="msg21"></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 6 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r2c1a"><summary>Impuls 1 · Denkanstoß · Was ist eine Nelke?</summary><div class="hint-body">
+    <p>Seht euch eine Nelke genau an: ein Köpfchen mit vier Zacken, darin eine kleine Kugel. Woran erinnert euch das? An eine Blüte, die …</p>
+    <details class="hint" data-h="r2c1b"><summary>Impuls 2 · Werkzeug · Hart und ölreich</summary><div class="hint-body">
+      <p>Nelken sind hart und trocken: Welches Küchenwerkzeug zerreibt Gewürze? Mehr Öl in jedem Gramm heißt: Man braucht weniger Gramm. Eugenol betäubt leicht. <br>Satzanfang fürs Journal: „Nelken sind getrocknete …“</p>
+      <details class="hint" data-h="r2c1c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>Nelken sind <b>getrocknete Blütenknospen</b> des Gewürznelkenbaums, zerkleinert mit <b>Gewürzmühle oder Mörser</b>. Weniger Masse für gleich viel Öl · gegen Zahnschmerzen · zwei Schichten. Code: <b>N E L K E</b>.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc2-1">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★</span></h3>
+    <p>Der <b>Nelken-Test</b> der Gewürzhändler:innen: Man wirft Nelken in ein Glas Wasser. Gute, ölreiche Nelken sinken oder stehen senkrecht mit dem Köpfchen nach oben. Alte, ausgetrocknete Nelken treiben waagerecht oben. Probiert es vorne aus! Warum funktioniert der Test?</p>
+    <div id="l2-1"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 2.2 Der Weg des Dampfes -->
+<section class="chapter" id="r2c2">
+  <div class="chap-head"><div class="chap-no">2</div><div><small>SITZUNG 2 · DUFTSIEGEL 2</small><h2>Der Weg des Dampfes</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Die Teile meiner Duftmaschine kennt ihr schon. Heute will ich wissen, ob ihr den <b>Weg des Duftes</b> erklären könnt: von der Heizplatte bis in den Tropftrichter.“</p>
+  </div>
+  <div class="card task">
+    <h3>🔬 Auftrag</h3>
+    <ol>
+      <li>Tippt die Nummern in der Reihenfolge an, in der Wärme, Wasserdampf und Duftöl durch die Apparatur wandern. Beginnt bei der Heizplatte.</li>
+      <li>Ordnet dann jedem Ort zu, was dort passiert.</li>
+    </ol>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 7:</b> Zeichnet den Weg des Dampfes mit Pfeilen ein und beschriftet „verdampft“ und „kondensiert“.</span></div>
+  </div>
+  <div class="card">
+    <div class="fig app-fig"><img src="lp07-img/apparatur.jpg" alt="Foto der Wasserdampfdestillation mit den Nummern 1 bis 10" loading="lazy"></div>
+    <p class="fred" style="margin-top:0.4rem">Weg des Dampfes:</p>
+    <div class="pathline" id="path22"></div>
+    <div class="numpad" id="pad22"></div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center"><button class="btn blue" id="path22check">🔎 Weg prüfen</button><button class="btn ghost" id="path22reset">↺</button></div>
+    <div class="check" id="path22fb"></div>
+    <div id="what22" class="hidden" style="margin-top:0.8rem">
+      <p class="fred">Was passiert wo?</p>
+      <div class="labels" id="labels22"></div>
+      <div style="margin-top:0.8rem"><button class="btn blue" id="check22">🔎 Prüfen</button></div>
+      <div class="check" id="fb22"></div>
+    </div>
+  </div>
+  <div class="lock hidden" id="lock22">
+    <h3>🔓 Duftsiegel 2 geöffnet</h3>
+    <p>Notiert das Siegelwort in eurem Duftjournal:</p>
+    <div class="sealword">TROPFEN</div>
+    <div class="lock-row"><button class="btn" data-next="2-2">Weiter zu Duftsiegel 3 →</button></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 7 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r2c2a"><summary>Impuls 1 · Denkanstoß · Anfang und Ende</summary><div class="hint-body">
+    <p>Wo kommt die Wärme her? Dort beginnt der Weg (9). Wo kommen die Tropfen an? Dort endet er (7).</p>
+    <details class="hint" data-h="r2c2b"><summary>Impuls 2 · Werkzeug · Dazwischen</summary><div class="hint-body">
+      <p>Wasserkolben → Kolben mit Nelken → Glasbrücke → Kühler. <b>Verdampfen:</b> flüssig wird gasförmig (beim Erhitzen). <b>Kondensieren:</b> gasförmig wird wieder flüssig (beim Abkühlen).</p>
+      <details class="hint" data-h="r2c2c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p><b>9 → 1 → 10 → 3 → 6 → 7</b>. In 1 verdampft das Wasser, in 10 nimmt der Dampf das Duftöl mit, in 6 kondensiert der Dampf, in 7 sammeln sich die Tropfen in zwei Schichten.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc2-2">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★</span></h3>
+    <p>Ein Lehrling hat vergessen, den Wasserhahn für das Kühlwasser aufzudrehen. Was passiert?</p>
+    <div id="l2-2"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 2.3 Schwimmt oder sinkt? -->
+<section class="chapter" id="r2c3">
+  <div class="chap-head"><div class="chap-no">3</div><div><small>SITZUNG 2 · DUFTSIEGEL 3</small><h2>Der Dickkopf im Tropftrichter</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Letztes Jahr hat ein Lehrling das Nelkenöl genauso abgetrennt wie das Orangenöl. Erst Wasser weg, dann Öl in die Kugel … und am Ende war die Kugel voller Wasser und das Nelkenöl im Abfluss! Was hat er übersehen?“</p>
+  </div>
+  <div class="card">
+    <h3 class="fred">Die Dichte entscheidet</h3>
+    <div class="rho-cards">
+      <div class="rho-card water"><div class="em">💧</div><b>Wasser</b><span class="v">ρ = 1,00 g/cm³</span></div>
+      <div class="rho-card limo"><div class="em">🍊</div><b>Orangenöl</b><span class="small">(Limonen)</span><br><span class="v">ρ = 0,84 g/cm³</span></div>
+      <div class="rho-card eug"><div class="em">🌰</div><b>Nelkenöl</b><span class="small">(vor allem Eugenol)</span><br><span class="v">ρ = 1,06 g/cm³</span></div>
+    </div>
+    <div id="q23"></div>
+  </div>
+  <div class="card task">
+    <h3>⚗️ Virtueller Versuch: Nelkenöl abtrennen</h3>
+    <ol>
+      <li>Überlegt <b>vorher</b>, welche Schicht zuerst herausläuft.</li>
+      <li>Ziel: <b>Fast alles Nelkenöl</b> in der Duftkugel, <b>fast kein Wasser</b>. Dann tippt auf <b>Fertig</b>.</li>
+    </ol>
+    <div class="funnel-wrap" style="margin-top:0.6rem">
+      <div class="fig" style="margin:0"><svg id="funnel23" viewBox="0 0 260 366" role="img" aria-label="Tropftrichter mit zwei Schichten"></svg></div>
+      <div class="funnel-ctrl">
+        <div class="seg" id="tgt23"><button data-t="beaker" class="on">🥛 Becherglas</button><button data-t="ball">🟢 Duftkugel</button></div>
+        <button class="btn acc" id="tap23">🔓 Hahn öffnen</button>
+        <div class="meter" id="meter23"></div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap"><button class="btn green" id="done23">✔ Fertig</button><button class="btn ghost" id="reset23">↺ Neu</button></div>
+      </div>
+    </div>
+    <div class="check" id="fb23"></div>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 8:</b> Zeichnet die Schichten für das Nelkenöl ein und vergleicht mit dem Orangenöl.</span></div>
+  </div>
+  <div class="lock" id="lock23">
+    <h3>🔒 Duftsiegel 3</h3>
+    <p>Wo sammelt sich das Nelkenöl im Tropftrichter? Tippt das Wort ein. (Erst nach dem virtuellen Versuch.)</p>
+    <div class="lock-row"><input id="code23" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code Duftsiegel 3"><button class="btn" data-lock="2-3">Öffnen</button></div>
+    <div class="lock-msg" id="msg23"></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 8 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r2c3a"><summary>Impuls 1 · Denkanstoß · Vergleicht die Zahlen</summary><div class="hint-body">
+    <p>Ist 1,06 größer oder kleiner als 1,00? Erinnert euch an die Cent-Münzen aus Lernpfad 06: Was passiert mit Stoffen, die dichter sind als Wasser?</p>
+    <details class="hint" data-h="r2c3b"><summary>Impuls 2 · Werkzeug · Was kommt zuerst?</summary><div class="hint-body">
+      <p>Größer als 1,00 → <b>sinkt nach unten</b>. Aus dem Hahn fließt immer zuerst die untere Schicht. Liegt das Öl unten, muss die Duftkugel <b>sofort</b> unter den Hahn. Zeichnet im Journal das Nelkenöl unten in die Spitze, darüber Wasser.</p>
+      <details class="hint" data-h="r2c3c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>1,06 &gt; 1,00: Nelkenöl liegt <b>unten</b>, Orangenöl oben. Schalter auf Duftkugel, Hahn auf, an der Grenze schließen. <b>Nicht jedes Öl schwimmt!</b> Code: <b>UNTEN</b>.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc2-3">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★★</span></h3>
+    <p>Rosalie hat einen Trick: Sie löst sehr viel <b>Kochsalz</b> im Wasser des Tropftrichters. Salzwasser hat eine Dichte von etwa <b>1,2 g/cm³</b> (denkt an das Tote Meer aus Lernpfad 05). Was passiert mit dem Nelkenöl?</p>
+    <div id="l2-3"></div>
+  </div>
+  <div class="card laurel" id="lc2-4">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★★</span></h3>
+    <p>Für ihren Weihnachtsduft mischt Rosalie <b>gleich viel</b> Orangenöl und Nelkenöl. Die beiden Öle lösen sich ineinander. Was passiert, wenn sie einen Tropfen der Mischung auf Wasser gibt?</p>
+    <div id="l2-4"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ 2.4 Ausbeute -->
+<section class="chapter" id="r2c4">
+  <div class="chap-head"><div class="chap-no">4</div><div><small>SITZUNG 2 · DUFTSIEGEL 4</small><h2>Rechnen wie die Profis: die Ausbeute</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Profis wollen wissen, wie viel Prozent einer Pflanze am Ende Duftöl werden. Das nennt man <b>Ausbeute</b>. Dafür braucht ihr die <b>Masse</b> des Öls. Messen kann ich aber nur das Volumen … zum Glück kennt ihr die Dichte!“</p>
+  </div>
+  <div class="card">
+    <h3 class="fred">Übung: Ablesen</h3>
+    <p>Diesmal liegt das Öl <b>unten</b> in der Pipettenspitze, darüber Wasser. Die Striche sind feiner: zwischen zwei kurzen Strichen liegen 0,05 ml.</p>
+    <div class="fig" style="max-width:420px;margin:0.8rem auto"><svg id="pip24" viewBox="0 0 320 300" role="img" aria-label="Messpipette mit Ölschicht"></svg></div>
+    <div class="lock-row"><label class="fred" for="pv24">Volumen des Öls:</label><input class="inl" id="pv24" inputmode="decimal" autocomplete="off"> <span>ml</span><button class="btn blue" id="pcheck24">Prüfen</button></div>
+    <div class="check" id="pfb24"></div>
+  </div>
+  <div class="card task">
+    <h3>🧪 An der Apparatur</h3>
+    <div class="front">🧪 <span>Geht nach vorne. Die Lehrperson zeigt euch die Messpipette mit dem <b>echten Nelkenöl</b> und sagt euch, wie viel Nelken in der Apparatur waren.</span></div>
+    <div class="mgrid" style="margin-top:0.8rem">
+      <label class="mfield">Masse der Nelken <span class="unit">in g</span><input id="m24" inputmode="decimal" autocomplete="off"></label>
+      <label class="mfield">Volumen des Nelkenöls <span class="unit">in ml</span><input id="v24" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <ol class="l" style="margin-top:0.8rem">
+      <li><b>Masse des Öls:</b> m<sub>Öl</sub> = ρ · V = 1,06 g/ml · V</li>
+      <li><b>Ausbeute:</b> Masse des Öls : Masse der Nelken · 100 %</li>
+    </ol>
+    <div class="mgrid" style="margin-top:0.6rem">
+      <label class="mfield">Masse des Öls <span class="unit">in g</span><input id="mo24" inputmode="decimal" autocomplete="off"></label>
+      <label class="mfield">Ausbeute <span class="unit">in %</span><input id="a24" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <div class="lock-row"><button class="btn blue" id="check24">🔎 Prüfen</button><button class="btn ghost" id="ex24">Destillation noch nicht fertig? Beispielwerte nehmen</button></div>
+    <div class="check" id="fb24"></div>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 9:</b> Tragt Messwerte und Rechnung ein.</span></div>
+  </div>
+  <div class="lock hidden" id="lock24">
+    <h3>🔓 Duftsiegel 4 geöffnet</h3>
+    <p>Notiert als Siegel 4 eure Ausbeute:</p>
+    <div class="sealword" id="seal24w">… %</div>
+    <div class="lock-row"><button class="btn" data-next="2-4">Weiter zu Duftsiegel 5 →</button></div>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 9 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r2c4a"><summary>Impuls 1 · Denkanstoß · Was bedeutet die Dichte?</summary><div class="hint-body">
+    <p>Die Dichte 1,06 g/ml bedeutet: <b>1 ml</b> Nelkenöl wiegt <b>1,06 g</b>. Wie viel wiegen dann eure Milliliter? Für die Übung: Achtung, feine Striche (0,05 ml).</p>
+    <details class="hint" data-h="r2c4b"><summary>Impuls 2 · Werkzeug · Formeln</summary><div class="hint-body">
+      <p><b>m = ρ · V</b> (malnehmen). <b>Ausbeute</b> = Masse des Öls : Masse der Nelken · 100 %. Beispiel: 2 g Öl aus 40 g Nelken: 2 : 40 = 0,05 → 5 %.</p>
+      <details class="hint" data-h="r2c4c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>Übung: 1,25 ml − 0,55 ml = <b>0,7 ml</b>. Beispielwerte: 2,4 ml · 1,06 g/ml ≈ 2,5 g; 2,5 g : 40 g · 100 % ≈ <b>6,4 %</b>. Orangenschale lieferte nur etwa 1 %.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+</section>
+
+<!-- ------------------------------------------------ 2.5 Weihnachtsduft -->
+<section class="chapter" id="r2c5">
+  <div class="chap-head"><div class="chap-no">5</div><div><small>SITZUNG 2 · DUFTSIEGEL 5</small><h2>Der Weihnachtsduft</h2></div></div>
+  <div class="card story-card story">
+    <p><span class="who">Rosalie Zimt:</span> „Orange und Nelke zusammen, so riecht Weihnachten! Nelkenöl ist aber noch kräftiger als Orangenöl. Ein Tropfen reicht wirklich.“</p>
+  </div>
+  <div class="card">
+    <h3 class="fred">Sicherheitsregeln für Nelkenöl</h3>
+    <p>Tippt <b>alle richtigen</b> Regeln an und dann auf Prüfen.</p>
+    <div class="tiles" id="safe25"></div>
+    <div class="lock-row"><button class="btn blue" id="safe25check">🔎 Prüfen</button></div>
+    <div class="check" id="safe25fb"></div>
+  </div>
+  <div class="card task">
+    <h3>🧪 Abfüllen</h3>
+    <div class="front">🧪 <span>Geht mit eurer <b>Duftkugel</b> nach vorne. Die Lehrperson gibt <b>einen Tropfen</b> Nelkenöl hinein. Stopfen sofort drauf! Den Code für das letzte Siegel findet ihr wieder auf der <b>Duftkarte</b>.</span></div>
+    <div class="journal">📝 <span><b>Duftjournal, Aufgabe 10:</b> Vergleicht Orangenöl und Nelkenöl in der Tabelle.</span></div>
+  </div>
+  <div class="lock" id="lock25">
+    <h3>🔒 Duftsiegel 5</h3>
+    <p>Code von der Duftkarte an der Apparatur (erst nach den Sicherheitsregeln):</p>
+    <div class="lock-row"><input id="code25" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code Duftsiegel 5"><button class="btn" data-lock="2-5">Öffnen</button></div>
+    <div class="lock-msg" id="msg25"></div>
+  </div>
+  <p class="hints-title">💡 Hilfen <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r2c5a"><summary>Impuls 1 · Denkanstoß · Nelkenöl</summary><div class="hint-body">
+    <p>Nelkenöl betäubt und reizt. Was die Haut und den Mund betäubt, gehört nicht auf die Haut.</p>
+    <details class="hint" data-h="r2c5b"><summary>Impuls 2 · Werkzeug · Welche Regeln sind falsch?</summary><div class="hint-body">
+      <p>Zwei Regeln sind falsch: Nelkenöl tropft man nicht selbst gegen Zahnschmerzen auf, und Wasser verdünnt es nicht.</p>
+      <details class="hint" data-h="r2c5c"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>Richtig: nicht auf Haut, Augen und Mund · Stopfen drauf · weg von Kerzen und Heizung · Hände waschen. Der Code steht auf der Duftkarte vorne an der Apparatur.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card laurel" id="lc2-5">
+    <h3>🌿 Lorbeer-Aufgabe <span class="stars">★★</span></h3>
+    <p>Zahnärzt:innen benutzen eine Paste aus Zinkoxid und <b>Eugenol</b> für vorläufige Zahnfüllungen. Warum gerade Eugenol?</p>
+    <div id="l2-5"></div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------ Finale -->
+<section class="chapter" id="r2end">
+  <div class="card story-card story" style="margin-top:1.4rem">
+    <p class="fred" style="font-size:1.6rem;color:var(--red);text-align:center;font-weight:700">Es duftet nach Weihnachten! 🎄</p>
+    <p><span class="who">Rosalie Zimt:</span> „Ihr habt beide Öle gewonnen und richtig abgetrennt. <b>Orangenöl</b> (Limonen, 0,84 g/cm³) ist weniger dicht als Wasser und <b>schwimmt oben</b>. <b>Nelkenöl</b> (Eugenol, 1,06 g/cm³) ist dichter als Wasser und <b>sinkt nach unten</b>. Ob ein Öl schwimmt oder sinkt, verrät allein seine <b>Dichte</b>. Der Hauptduftstoff der Nelke ist euer letztes Lösungswort.“</p>
+    <div class="solword"><span style="color:var(--clove-edge);border-color:var(--clove-edge)">EUGENOL</span></div>
+  </div>
+  <div class="card cert" id="cert">
+    <div class="snow" aria-hidden="true" id="snow"></div>
+    <p class="small mono">ZERTIFIKAT</p>
+    <h2>Weihnachtliche Parfumeur:innen</h2>
+    <p class="names" id="certNames">…</p>
+    <p>haben in der Duftwerkstatt Orangenöl und Nelkenöl durch Wasserdampfdestillation gewonnen und mithilfe der Dichte vom Wasser getrennt.</p>
+    <svg class="cert-glass" viewBox="0 0 150 120" aria-hidden="true">
+      <path d="M30,10 L30,104 Q30,112 38,112 L112,112 Q120,112 120,104 L120,10" fill="#eaf6fe" stroke="#2f2219" stroke-width="3"/>
+      <rect x="31.5" y="40" width="87" height="70.5" fill="#bfe3fa"/>
+      <g class="bob"><ellipse cx="62" cy="38" rx="11" ry="5" fill="#f5b942" stroke="#b35f0e" stroke-width="2"/></g>
+      <ellipse cx="90" cy="106" rx="11" ry="4.5" fill="#a0602f" stroke="#5e2f17" stroke-width="2"/>
+      <text x="62" y="24" font-size="11" text-anchor="middle" font-family="Fredoka, sans-serif" fill="#b35f0e">Orange</text>
+      <text x="90" y="96" font-size="11" text-anchor="middle" font-family="Fredoka, sans-serif" fill="#5e2f17">Nelke</text>
+    </svg>
+    <table>
+      <tr><td>Orangenöl (Limonen)</td><td class="mono" id="certO">0,84 g/cm³ · schwimmt</td></tr>
+      <tr><td>Nelkenöl (Eugenol)</td><td class="mono" id="certN">1,06 g/cm³ · sinkt</td></tr>
+      <tr><td>Ausbeute Nelke</td><td class="mono" id="certA"></td></tr>
+      <tr><td>Hilfen</td><td class="mono" id="certHints"></td></tr>
+      <tr><td>Lorbeeren 🌿</td><td class="mono" id="certLaurel"></td></tr>
+    </table>
+    <p class="gift">🎁 Eure Duftkugel mit Orangen- und Nelkenduft dürft ihr mit nach Hause nehmen!</p>
+    <p class="small" style="margin-top:0.8rem">Macht ein Foto von diesem Zertifikat und zeigt es eurer Lehrperson.</p>
+  </div>
+  <div class="card task">
+    <h3>📝 Zum Schluss: Euer Duftjournal</h3>
+    <ul>
+      <li><b>Schlussfolgerung:</b> Ob ein Duftöl im Tropftrichter oben oder unten landet, hängt von … ab.</li>
+      <li>Noch Zeit? Löst die Lorbeer-Aufgaben, die ihr ausgelassen habt. Über die Siegel oben springt ihr zurück.</li>
+    </ul>
+  </div>
+  <p class="hints-title">💡 Hilfen · Duftjournal Aufgabe 10 <span class="small">(Impuls für Impuls öffnen, im Journal ankreuzen)</span></p>
+  <details class="hint" data-h="r2enda"><summary>Impuls 1 · Denkanstoß · Alles schon da</summary><div class="hint-body">
+    <p>Schaut in eure Journal-Aufgaben 3, 4, 8 und 9: Dort stehen fast alle Werte für die Vergleichstabelle schon.</p>
+    <details class="hint" data-h="r2endb"><summary>Impuls 2 · Werkzeug · Lösungswörter und Satzanfang</summary><div class="hint-body">
+      <p>Die Hauptduftstoffe sind eure <b>Lösungswörter</b>. Satzanfang: „… hängt von seiner … im Vergleich zur … des Wassers ab.“</p>
+      <details class="hint" data-h="r2endc"><summary>Impuls 3 · Lösungsweg</summary><div class="hint-body">
+        <p>Orangenöl: Limonen · 0,84 g/cm³ · oben · zuerst Wasser · ≈ 1 %. Nelkenöl: Eugenol · 1,06 g/cm³ · unten · zuerst Öl · ≈ 6 %. Schluss: Es hängt von der <b>Dichte im Vergleich zur Dichte des Wassers</b> ab.</p>
+      </div></details>
+    </div></details>
+  </div></details>
+  <div class="card fast">
+    <h3>⚡ Schnellläufer:innen: Euer eigener Weihnachtsduft</h3>
+    <p>Welche weiteren Pflanzen könnte man destillieren? Sucht euch zwei aus: <b>Zimtrinde</b> (Zimtöl ρ ≈ 1,05 g/cm³), <b>Sternanis</b> (Anisöl ρ ≈ 0,98 g/cm³), <b>Tannennadeln</b> (Fichtennadelöl ρ ≈ 0,88 g/cm³), <b>Zitronenschale</b> (Zitronenöl ρ ≈ 0,85 g/cm³). Sagt für jedes Öl voraus, ob es im Tropftrichter oben oder unten landet, und begründet mit der Dichte. Schreibt die Vorhersagen ins Duftjournal.</p>
+    <details class="hint"><summary>Lösung</summary><div class="hint-body"><p>Oben (kleiner als 1,00): Anisöl, Fichtennadelöl, Zitronenöl. Unten (größer als 1,00): Zimtöl. Anisöl liegt mit 0,98 sehr nah an Wasser, es trennt sich nur langsam.</p></div></details>
+  </div>
+</section>
+
+<!-- =============================================================== SPIELLEITUNG -->
+<section class="card sl hidden" id="slPanel">
+  <h3 class="fred">🎓 Spielleitung</h3>
+  <p class="small">Nur für die Lehrperson. Geöffnet über <span class="mono">?spielleitung</span> und PIN.</p>
+  <table>
+    <tr><th>Siegel</th><th>Sitzung 1 · Orange</th><th>Sitzung 2 · Nelke</th></tr>
+    <tr><td>1</td><td class="mono">DUFT</td><td class="mono">NELKE</td></tr>
+    <tr><td>2</td><td>Geräte 1, 3, 6, 7, 9, 10 → <span class="mono">DAMPF</span></td><td>Weg 9-1-10-3-6-7 + verdampft/kondensiert → <span class="mono">TROPFEN</span></td></tr>
+    <tr><td>3</td><td>Simulation + <span class="mono">OBEN</span></td><td>Simulation + <span class="mono">UNTEN</span></td></tr>
+    <tr><td>4</td><td>Übung 0,4 ml; echte Werte (Beispiel 120 g / 1,0 ml)</td><td>Übung 0,7 ml; m und Ausbeute (Beispiel 40 g / 2,4 ml → 6,4 %)</td></tr>
+    <tr><td>5</td><td>Duftkarte <span class="mono">ZESTE</span></td><td>Duftkarte <span class="mono">KNOSPE</span></td></tr>
+    <tr><td>Wort</td><td class="mono">LIMONEN</td><td class="mono">EUGENOL</td></tr>
+  </table>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.7rem">
+    <button class="btn ghost" id="slSkip">⏭ Aktuelles Siegel öffnen</button>
+    <button class="btn ghost" id="slUnlock2">🔓 Sitzung 2 freischalten</button>
+    <button class="btn ghost" id="slReset">↺ Neues Spiel (alles löschen)</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "nawi07-weihnachtliche-duefte-v1";
+  var S = { names: ["", ""], unlocked2: false, run: 1, cur: 0,
+    r: { 1: { open: 0, end: false, t0: 0, t1: 0, hints: {}, laurel: {}, vals: {} },
+         2: { open: 0, end: false, t0: 0, t1: 0, hints: {}, laurel: {}, vals: {} } } };
+  function load() { try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); if (o && o.r) { S = o; return true; } } } catch (e) {} return false; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function $(id) { return document.getElementById(id); }
+  function R() { return S.r[S.run]; }
+  function num(s) {
+    s = String(s == null ? "" : s).replace(/\s/g, "").replace(",", ".").replace(/[^0-9.\-]/g, "");
+    if (s === "" || s === "." || s === "-") return NaN;
+    return parseFloat(s);
+  }
+  function de(x, d) { return x.toFixed(d).replace(".", ","); }
+  function deAuto(x) { return x.toFixed(x < 10 ? 2 : 1).replace(/\.?0+$/, "").replace(".", ","); }
+  function norm(s) { return String(s || "").toUpperCase().replace(/[^A-ZÄÖÜ]/g, ""); }
+  var CH = 5;
+
+  /* ---------------------------------------------------- Navigation */
+  function chapterId(run, n) { return n === 0 ? "c0" : (n > CH ? "r" + run + "end" : "r" + run + "c" + n); }
+  function show(n) {
+    document.querySelectorAll(".chapter").forEach(function (c) { c.classList.remove("show"); });
+    var id = chapterId(S.run, n);
+    $(id).classList.add("show");
+    S.cur = n; save();
+    $("topbar").hidden = (n === 0);
+    document.body.classList.toggle("run2", S.run === 2);
+    $("runBadge").textContent = S.run === 1 ? "🍊 Sitzung 1" : "🌰 Sitzung 2";
+    renderSeals(); tick();
+    if (n > CH) fillEnd();
+    restore(n);
+    window.scrollTo(0, 0);
+  }
+  function restore(n) {
+    var r = R();
+    if (n === 2 && r.open >= 2) $("lock" + S.run + "2").classList.remove("hidden");
+    if (n === 4 && r.open >= 4) {
+      $("lock" + S.run + "4").classList.remove("hidden");
+      if (S.run === 1) { $("q14").classList.remove("hidden"); $("seal14w").textContent = "V = " + deAuto(r.vals.v) + " ml"; }
+      else $("seal24w").textContent = deAuto(r.vals.a) + " %";
+    }
+  }
+  function renderSeals() {
+    var h = "";
+    for (var i = 1; i <= CH; i++) {
+      var cls = i <= R().open ? "open" : (i === R().open + 1 ? "now" : "");
+      if (i === S.cur) cls = "now";
+      h += '<button class="seal ' + cls + '" data-seal="' + i + '" aria-label="Duftsiegel ' + i + '">' + i + "</button>";
+    }
+    $("seals").innerHTML = h;
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-seal]");
+    if (!b) return;
+    var n = Number(b.getAttribute("data-seal"));
+    if (n <= R().open + 1) show(n);
+  });
+  function unlock(n) {
+    if (R().open < n) R().open = n;
+    if (n === CH) { R().end = true; if (!R().t1) R().t1 = Date.now(); if (S.run === 1) S.unlocked2 = true; }
+    save(); renderSeals();
+  }
+  function goNext(n) { show(n < CH ? n + 1 : CH + 1); }
+  function lockMsg(id, ok, text) {
+    var m = $(id); m.className = "lock-msg " + (ok ? "ok" : "bad"); m.textContent = text;
+    if (!ok) { var l = m.closest(".lock"); l.classList.remove("shake"); void l.offsetWidth; l.classList.add("shake"); }
+  }
+
+  /* ---------------------------------------------------- Zeit, Hilfen, Lorbeeren */
+  function fmt(ms) { var s = Math.max(0, Math.floor(ms / 1000)); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); }
+  function nHints(run) { return Object.keys(S.r[run].hints).length; }
+  function nLaurel(run) { return Object.keys(S.r[run].laurel).length; }
+  function tick() {
+    var r = R(); if (!r.t0) return;
+    $("st-time").textContent = "⏱ " + fmt((r.t1 || Date.now()) - r.t0);
+    $("st-hints").textContent = "💡 " + nHints(S.run);
+    $("st-laurel").textContent = "🌿 " + nLaurel(S.run);
+  }
+  setInterval(tick, 1000);
+  document.querySelectorAll("details.hint[data-h]").forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      var run = d.closest(".chapter").id.charAt(1);
+      S.r[run].hints[d.getAttribute("data-h")] = 1; save(); tick();
+    });
+  });
+  function laurelDone(id) {
+    var run = id.charAt(0); S.r[run].laurel[id] = 1; save(); tick();
+    var c = $("lc" + id); if (c) c.classList.add("done");
+  }
+  function laurelMsg(id, ok, text) { var m = $("lmsg" + id); m.className = "fb " + (ok ? "ok" : "bad"); m.textContent = text; if (ok) laurelDone(id); }
+
+  /* ---------------------------------------------------- Auswahlfragen */
+  function mc(container, q, opts, onPick, letters) {
+    var el = typeof container === "string" ? $(container) : container;
+    var h = (q ? "<p>" + q + "</p>" : "") + '<div class="opts">';
+    opts.forEach(function (o, i) {
+      h += '<button class="opt" data-i="' + i + '"><span class="lt">' + (letters ? o.l : String.fromCharCode(65 + i)) + "</span><span>" + o.t + "</span></button>";
+    });
+    h += '</div><div class="fb"></div>';
+    el.innerHTML = h;
+    el.querySelectorAll(".opt").forEach(function (b) {
+      b.addEventListener("click", function () { onPick(Number(b.getAttribute("data-i")), b, el); });
+    });
+  }
+  function markOnly(el, b) { el.querySelectorAll(".opt").forEach(function (x) { x.classList.remove("sel", "ok", "bad"); }); b.classList.add("sel"); }
+  function judge(el, b, ok, text) {
+    el.querySelectorAll(".opt").forEach(function (x) { x.classList.remove("sel", "ok", "bad"); });
+    b.classList.add(ok ? "ok" : "bad");
+    var fb = el.querySelector(".fb"); fb.className = "fb " + (ok ? "ok" : "bad"); fb.textContent = text || (ok ? "Richtig!" : "Noch nicht.");
+  }
+  function laurelMC(id, opts) {
+    mc("l" + id, "", opts, function (k, b, el) {
+      judge(el, b, !!opts[k].ok, opts[k].fb);
+      if (opts[k].ok) laurelDone(id);
+    });
+  }
+  function quiz(container, prefix, Q) {
+    var h = "";
+    Q.forEach(function (_, i) { h += '<div class="q" id="' + prefix + i + '"></div>'; });
+    $(container).innerHTML = h;
+    Q.forEach(function (item, i) {
+      mc(prefix + i, (i + 1) + ". " + item.q, item.o, function (k, b, el) { markOnly(el, b); }, true);
+    });
+  }
+
+  /* ==================================================== SITZUNG 1 */
+  quiz("quiz11", "q11_", [
+    { q: "Wo steckt das Duftöl der Orange?", o: [
+      { l: "K", t: "im Fruchtsaft" },
+      { l: "D", t: "in winzigen Öldrüsen in der bunten Schale" },
+      { l: "S", t: "in den Kernen" },
+      { l: "M", t: "im weißen, weichen Teil unter der Schale" }] },
+    { q: "Warum wird die Schale vor der Destillation mit dem Zestenreißer zerkleinert?", o: [
+      { l: "U", t: "Kleine Stücke haben zusammen mehr Oberfläche. Der Dampf erreicht mehr Öldrüsen." },
+      { l: "A", t: "Damit die Schalen schwerer werden." },
+      { l: "I", t: "Damit die Schalen im Kolben schwimmen." }] },
+    { q: "Warum nimmt man Wasserdampf und erhitzt die Schalen nicht einfach in einer Pfanne?", o: [
+      { l: "B", t: "Weil Wasserdampf billiger ist als Strom." },
+      { l: "R", t: "Weil die Schalen in der Pfanne zu Saft werden." },
+      { l: "F", t: "Wasserdampf ist höchstens etwa 100 °C heiß. Das ist schonend, in der Pfanne würden die Duftstoffe verbrennen." }] },
+    { q: "Welche Eigenschaft hat das Orangenöl, die beim Abtrennen hilft?", o: [
+      { l: "E", t: "Es löst sich gut in Wasser." },
+      { l: "T", t: "Es mischt sich nicht mit Wasser. Öl und Wasser bilden zwei Schichten." },
+      { l: "O", t: "Es ist schwerer als jeder andere Stoff." }] }
+  ]);
+  function checkLock(id, code, accept, msgId, extraOk) {
+    var v = norm($(code).value);
+    if (extraOk && !extraOk()) return;
+    if (accept.indexOf(v) >= 0) { lockMsg(msgId, true, "Das Siegel bricht! Die nächste Aufgabe öffnet sich …"); var n = Number(id.split("-")[1]); unlock(n); setTimeout(function () { goNext(n); }, 900); }
+    else lockMsg(msgId, false, v.length ? "Falscher Code. Prüft eure Antworten noch einmal." : "Bitte zuerst einen Code eintippen.");
+  }
+  laurelMC("1-1", [
+    { t: "Bio-Orangen schmecken süßer.", fb: "Der Geschmack des Fruchtfleisches spielt für das Schalenöl keine Rolle." },
+    { t: "Normale Orangen haben oft Wachs und Mittel gegen Schimmel auf der Schale. Die würden mit ins Duftöl gelangen.", ok: 1, fb: "Genau! Wir destillieren ja die Schale, und alles, was darauf ist, kann mit ins Öl gelangen." },
+    { t: "Bio-Orangen haben eine dünnere Schale.", fb: "Die Dicke der Schale ist nicht der Grund." }
+  ]);
+
+  /* ---- 1.2 Geräte benennen */
+  var DEV = ["Rundkolben mit Wasser", "Destillationsbrücke", "Kühler", "Tropftrichter", "Heizplatte", "Rundkolben mit Orangenschalen (Extraktionsgut)", "Schliffklammer", "Becherglas", "Stativ", "Schlauch"];
+  var LAB12 = [
+    { n: 1, a: 0, why: "Hier kocht das Wasser und wird zu Dampf." },
+    { n: 3, a: 1, why: "Das Glasrohr führt den Dampf hinüber zum Kühler." },
+    { n: 6, a: 2, why: "Kaltes Wasser kühlt den Dampf, er wird wieder flüssig." },
+    { n: 7, a: 3, why: "Hier sammeln sich Wasser und Öl. Unten ist ein Hahn." },
+    { n: 9, a: 4, why: "Sie erhitzt das Wasser." },
+    { n: 10, a: 5, why: "Der Dampf strömt durch die Schalen und nimmt das Öl mit." }];
+  (function () {
+    var h = "";
+    LAB12.forEach(function (x, i) {
+      h += '<div class="lab" id="lab12_' + i + '"><span class="nr">' + x.n + '</span><select aria-label="Gerät Nummer ' + x.n + '"><option value="">– Gerät wählen –</option>';
+      DEV.forEach(function (d, j) { h += '<option value="' + j + '">' + d + "</option>"; });
+      h += '</select><span class="why"></span></div>';
+    });
+    $("labels12").innerHTML = h;
+  })();
+  $("check12").addEventListener("click", function () {
+    var good = 0;
+    LAB12.forEach(function (x, i) {
+      var row = $("lab12_" + i), v = row.querySelector("select").value, ok = v !== "" && Number(v) === x.a;
+      row.classList.remove("ok", "bad"); if (v !== "") row.classList.add(ok ? "ok" : "bad");
+      row.querySelector(".why").textContent = ok ? x.why : "";
+      if (ok) good++;
+    });
+    var fb = $("fb12");
+    if (good === LAB12.length) { fb.className = "check show ok"; fb.textContent = "Alle sechs Geräte stimmen! Das Siegel ist offen."; $("lock12").classList.remove("hidden"); unlock(2); }
+    else { fb.className = "check show bad"; fb.textContent = good + " von 6 richtig. Die roten Felder stimmen noch nicht."; }
+  });
+  laurelMC("1-2", [
+    { t: "Weil Wasser nur nach oben fließen kann.", fb: "Wasser kann im Schlauch in beide Richtungen fließen." },
+    { t: "So ist der Kühler immer ganz mit kaltem Wasser gefüllt, ohne Luftblasen. Und der Dampf trifft auf dem Weg nach unten auf immer kälteres Wasser.", ok: 1, fb: "Stark! Das nennt man Gegenstrom: Dampf und Kühlwasser strömen gegeneinander, so kühlt der Kühler am besten." },
+    { t: "Damit der Dampf schneller wieder nach oben steigt.", fb: "Der Dampf soll im Kühler gerade nicht weiter, sondern flüssig werden." }
+  ]);
+
+  /* ---- 1.3 / 2.3 Tropftrichter-Simulation */
+  function Funnel(cfg) {
+    var svg = $(cfg.svg), st, timer = null;
+    var X0 = 80, X1 = 180, YT = 40, YB = 230, PX = (YB - YT) / 30;
+    function reset() {
+      if (timer) { clearInterval(timer); timer = null; }
+      st = { layers: cfg.oilBottom ? [{ k: "o", v: 4 }, { k: "w", v: 22 }] : [{ k: "w", v: 22 }, { k: "o", v: 4 }],
+             tgt: "beaker", open: false, beaker: { w: 0, o: 0 }, ball: { w: 0, o: 0 } };
+      $(cfg.tgt).querySelectorAll("button").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-t") === "beaker"); });
+      $(cfg.tap).textContent = "🔓 Hahn öffnen";
+      draw();
+    }
+    function draw() {
+      var h = '<rect x="0" y="0" width="260" height="366" fill="#fffdf8"/>', BY = 342;
+      // Flüssigkeit
+      var y = YB;
+      st.layers.forEach(function (L) {
+        if (L.v <= 0.001) return;
+        var hh = L.v * PX; y -= hh;
+        h += '<rect x="' + (X0 + 3) + '" y="' + y.toFixed(1) + '" width="' + (X1 - X0 - 6) + '" height="' + hh.toFixed(1) + '" fill="' + (L.k === "w" ? "#bfe3fa" : cfg.oilColor) + '"/>';
+        if (L.k === "o") h += '<text x="' + ((X0 + X1) / 2) + '" y="' + (y + hh / 2 + 5).toFixed(1) + '" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="13" fill="' + cfg.oilText + '">' + (hh > 12 ? cfg.oilName : "") + "</text>";
+        else if (hh > 30) h += '<text x="' + ((X0 + X1) / 2) + '" y="' + (y + hh / 2 + 5).toFixed(1) + '" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="13" fill="#1f6fb8">Wasser</text>';
+      });
+      // Trichterglas
+      h += '<path d="M' + X0 + ',' + (YT - 20) + ' L' + X0 + ',' + YB + ' L' + ((X0 + X1) / 2 - 6) + ',' + (YB + 30) + ' L' + ((X0 + X1) / 2 - 6) + ',' + (YB + 52) + ' M' + X1 + ',' + (YT - 20) + ' L' + X1 + ',' + YB + ' L' + ((X0 + X1) / 2 + 6) + ',' + (YB + 30) + ' L' + ((X0 + X1) / 2 + 6) + ',' + (YB + 52) + '" fill="none" stroke="#2f2219" stroke-width="3" stroke-linejoin="round"/>';
+      h += '<path d="M' + X0 + ',' + YB + ' L' + ((X0 + X1) / 2) + ',' + (YB + 30) + ' L' + X1 + ',' + YB + '" fill="' + (st.layers[0].v > 0.001 ? (st.layers[0].k === "w" ? "#bfe3fa" : cfg.oilColor) : (st.layers[1].v > 0.001 ? (st.layers[1].k === "w" ? "#bfe3fa" : cfg.oilColor) : "none")) + '" opacity="0.9"/>';
+      // Hahn
+      var cx = (X0 + X1) / 2, hy = YB + 40;
+      h += '<rect x="' + (cx - 26) + '" y="' + (hy - 7) + '" width="52" height="14" rx="5" fill="' + (st.open ? "#2e7d4f" : "#ffffff") + '" stroke="#2f2219" stroke-width="2.5"/>';
+      h += '<text x="' + cx + '" y="' + (hy + 26) + '" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#6a5444">' + (st.open ? "Hahn offen" : "Hahn zu") + "</text>";
+      // Strahl
+      var tx = st.tgt === "ball" ? 205 : 55, ty = st.tgt === "ball" ? BY - 52 : YB + 80;
+      if (st.open && total() > 0.001) {
+        var c = st.layers[0].v > 0.001 ? st.layers[0].k : st.layers[1].k;
+        h += '<path d="M' + cx + ',' + (YB + 52) + ' Q' + cx + ',' + (YB + 70) + ' ' + tx + ',' + ty + '" fill="none" stroke="' + (c === "w" ? "#7cc4f0" : cfg.oilColor) + '" stroke-width="4" stroke-dasharray="3 5"/>';
+      }
+      // Becherglas
+      var bw = st.beaker.w + st.beaker.o;
+      h += '<path d="M25,' + (YB + 76) + ' L25,' + BY + ' L85,' + BY + ' L85,' + (YB + 76) + '" fill="#f5fbff" stroke="#2f2219" stroke-width="2.5"/>';
+      if (bw > 0) { var bh = Math.min(34, bw * 1.5); h += '<rect x="26.5" y="' + (BY - 1 - bh) + '" width="57" height="' + bh + '" fill="' + (st.beaker.o > 0.3 ? "#e7d7a8" : "#bfe3fa") + '"/>'; }
+      h += '<text x="55" y="' + (BY + 18) + '" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="12" fill="#2f2219">Becherglas</text>';
+      // Duftkugel
+      var KY = BY - 22;
+      h += '<circle cx="205" cy="' + KY + '" r="22" fill="#eaf6ee" stroke="#1e5a37" stroke-width="3"/><rect x="199" y="' + (KY - 29) + '" width="12" height="8" rx="2" fill="#b3262e"/>';
+      var bo = st.ball.o, bwt = st.ball.w;
+      if (bo + bwt > 0) {
+        var fh = Math.min(40, (bo + bwt) * 4.5);
+        h += '<clipPath id="cl' + cfg.svg + '"><circle cx="205" cy="' + KY + '" r="20.5"/></clipPath>';
+        var wy = BY - fh;
+        if (cfg.oilBottom) {
+          var oh = Math.min(fh, bo * 4.5);
+          h += '<g clip-path="url(#cl' + cfg.svg + ')"><rect x="183" y="' + (BY - oh) + '" width="44" height="' + oh + '" fill="' + cfg.oilColor + '"/><rect x="183" y="' + wy + '" width="44" height="' + (fh - oh) + '" fill="#bfe3fa"/></g>';
+        } else {
+          var wh = Math.min(fh, bwt * 4.5);
+          h += '<g clip-path="url(#cl' + cfg.svg + ')"><rect x="183" y="' + (BY - wh) + '" width="44" height="' + wh + '" fill="#bfe3fa"/><rect x="183" y="' + wy + '" width="44" height="' + (fh - wh) + '" fill="' + cfg.oilColor + '"/></g>';
+        }
+      }
+      h += '<text x="205" y="' + (BY + 18) + '" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="12" fill="#1e5a37">Duftkugel</text>';
+      svg.innerHTML = h;
+      $(cfg.meter).innerHTML = "Becherglas: " + de(st.beaker.w, 0) + " Teile Wasser, " + de(st.beaker.o, 1) + " Teile Öl<br>Duftkugel: " + de(st.ball.w, 1) + " Teile Wasser, " + de(st.ball.o, 1) + " Teile Öl";
+    }
+    function total() { return st.layers[0].v + st.layers[1].v; }
+    function stepFlow() {
+      var d = cfg.rate * 0.05;
+      while (d > 1e-6 && total() > 1e-6) {
+        var L = st.layers[0].v > 1e-6 ? st.layers[0] : st.layers[1];
+        var take = Math.min(d, L.v); L.v -= take; d -= take;
+        st[st.tgt][L.k] += take;
+      }
+      if (st.ball.w > 3) { closeTap(); fb("bad", "Die Duftkugel läuft voll Wasser! Wasser verdünnt das Öl nicht, es verdirbt euren Duft. Tippt auf „Neu“ und versucht es noch einmal."); }
+      if (total() <= 1e-6) closeTap();
+      draw();
+    }
+    function closeTap() { st.open = false; if (timer) { clearInterval(timer); timer = null; } $(cfg.tap).textContent = "🔓 Hahn öffnen"; draw(); }
+    function fb(cls, t) { var c = $(cfg.fb); c.className = "check show " + cls; c.textContent = t; }
+    $(cfg.tap).addEventListener("click", function () {
+      if (st.open) { closeTap(); return; }
+      if (total() <= 1e-6) return;
+      st.open = true; $(cfg.tap).textContent = "🔒 Hahn schließen"; $(cfg.fb).className = "check";
+      timer = setInterval(stepFlow, 50); draw();
+    });
+    $(cfg.tgt).querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        st.tgt = b.getAttribute("data-t");
+        $(cfg.tgt).querySelectorAll("button").forEach(function (x) { x.classList.toggle("on", x === b); });
+        draw();
+      });
+    });
+    $(cfg.reset).addEventListener("click", function () { reset(); $(cfg.fb).className = "check"; });
+    $(cfg.done).addEventListener("click", function () {
+      if (st.open) closeTap();
+      if (st.ball.o >= 3.0 && st.ball.w <= 1.5 && st.beaker.o <= 1.0) {
+        fb("ok", cfg.okText); R().vals[cfg.key] = 1; save();
+      } else if (st.ball.w > 1.5) {
+        fb("bad", "In der Duftkugel ist zu viel Wasser (" + de(st.ball.w, 1) + " Teile). " + cfg.waterHint);
+      } else if (st.beaker.o > 1.0) {
+        fb("bad", "Oh nein, " + de(st.beaker.o, 1) + " Teile Duftöl sind im Becherglas gelandet! " + cfg.lostHint);
+      } else {
+        fb("warn", "Es ist noch zu wenig Öl in der Duftkugel (" + de(st.ball.o, 1) + " von 4 Teilen). Macht weiter!");
+      }
+    });
+    reset();
+    return { ok: function () { return !!R().vals[cfg.key]; } };
+  }
+  var F13 = Funnel({ svg: "funnel13", tgt: "tgt13", tap: "tap13", meter: "meter13", done: "done13", reset: "reset13", fb: "fb13", key: "sim13",
+    oilBottom: false, rate: 2.2, oilColor: "#f5b942", oilText: "#7a4a00", oilName: "Orangenöl",
+    okText: "Perfekt getrennt! Erst lief das Wasser ins Becherglas, dann das Orangenöl in die Duftkugel. Profis nehmen das obere Öl übrigens oft auch mit einer Pipette ab.",
+    waterHint: "Welche Schicht kommt zuerst aus dem Hahn?", lostHint: "Schaltet rechtzeitig auf die Duftkugel um." });
+  mc("q13", "Was folgt aus den Dichten?", [
+    { t: "Orangenöl ist dichter als Wasser und sinkt nach unten." },
+    { t: "Orangenöl ist weniger dicht als Wasser und schwimmt oben." },
+    { t: "Orangenöl und Wasser mischen sich, es gibt nur eine Schicht." }], function (k, b, el) {
+      judge(el, b, k === 1, ["0,84 ist kleiner als 1,00. Schaut noch einmal genau hin.", "Richtig! 0,84 g/cm³ ist kleiner als 1,00 g/cm³.", "Öl und Wasser mischen sich nicht, das wisst ihr aus Siegel 1."][k]);
+    });
+  function simGate(f, msgId) { if (!f.ok()) { lockMsg(msgId, false, "Macht zuerst den virtuellen Versuch erfolgreich (Fertig tippen)."); return false; } return true; }
+  /* Lorbeer 1-3: Schichtung */
+  (function () {
+    var L = [{ t: "Honig", em: "🍯", r: 1.4 }, { t: "Orangenöl", em: "🍊", r: 0.84 }, { t: "Wasser", em: "💧", r: 1.0 }, { t: "Olivenöl", em: "🫒", r: 0.91 }];
+    var order = [];
+    function draw() {
+      var h = "";
+      L.forEach(function (x, i) { var p = order.indexOf(i); h += '<button class="tile' + (p >= 0 ? " sel" : "") + '" data-i="' + i + '"><span class="em">' + x.em + "</span>" + x.t + '<span class="ord">' + (p >= 0 ? (p + 1) + "." : "") + "</span></button>"; });
+      $("l1-3").innerHTML = h;
+      $("l1-3").querySelectorAll(".tile").forEach(function (b) {
+        b.addEventListener("click", function () { var i = Number(b.getAttribute("data-i")); if (order.indexOf(i) < 0) order.push(i); draw(); });
+      });
+    }
+    draw();
+    $("l13reset").addEventListener("click", function () { order = []; draw(); $("lmsg1-3").textContent = ""; });
+    $("l13check").addEventListener("click", function () {
+      if (order.length < 4) { laurelMsg("1-3", false, "Tippt alle vier Flüssigkeiten an."); return; }
+      var ok = order.join("") === "1320";
+      laurelMsg("1-3", ok, ok ? "Richtig: Orangenöl (0,84) oben, dann Olivenöl (0,91), Wasser (1,00) und ganz unten Honig (1,4). Je kleiner die Dichte, desto weiter oben."
+        : "Noch nicht. Die Flüssigkeit mit der kleinsten Dichte liegt ganz oben. Dichten: Honig 1,4 · Orangenöl 0,84 · Wasser 1,00 · Olivenöl 0,91 g/cm³.");
+    });
+  })();
+
+  /* ---- Messpipette (Übung) */
+  function pipette(svgId, lo, hi, oilBottom, fine, oilColor) {
+    var x = 150, w = 34, y0 = 270, y1 = 20, vmax = 2.0, px = (y0 - y1) / vmax;
+    function Y(v) { return y0 - v * px; }
+    var h = '<rect x="0" y="0" width="320" height="300" fill="#fffdf8"/>';
+    // Wasser bis 1,8 (bzw. unter dem Öl)
+    var wTop = oilBottom ? 1.8 : lo, wBot = oilBottom ? hi : 0;
+    h += '<rect x="' + (x - w / 2 + 2) + '" y="' + Y(wTop) + '" width="' + (w - 4) + '" height="' + (Y(wBot) - Y(wTop)) + '" fill="#bfe3fa"/>';
+    h += '<rect x="' + (x - w / 2 + 2) + '" y="' + Y(hi) + '" width="' + (w - 4) + '" height="' + (Y(lo) - Y(hi)) + '" fill="' + oilColor + '"/>';
+    h += '<rect x="' + (x - w / 2) + '" y="' + (y1 - 8) + '" width="' + w + '" height="' + (y0 - y1 + 16) + '" rx="6" fill="none" stroke="#2f2219" stroke-width="2.5"/>';
+    var step = fine ? 0.05 : 0.1;
+    for (var v = 0; v <= vmax + 1e-9; v += step) {
+      var vv = Math.round(v * 100) / 100, major = Math.abs(vv * 2 - Math.round(vv * 2)) < 1e-6, mid = !fine ? false : Math.abs(vv * 10 - Math.round(vv * 10)) < 1e-6;
+      var len = major ? 22 : (mid ? 14 : 9);
+      h += '<line x1="' + (x + w / 2) + '" x2="' + (x + w / 2 + len) + '" y1="' + Y(vv) + '" y2="' + Y(vv) + '" stroke="#8a3b12" stroke-width="' + (major ? 2.2 : 1.3) + '"/>';
+      if (major) h += '<text x="' + (x + w / 2 + 28) + '" y="' + (Y(vv) + 5) + '" font-family="JetBrains Mono, monospace" font-size="13" fill="#8a3b12">' + de(vv, 1) + "</text>";
+    }
+    h += '<text x="' + (x - w / 2 - 10) + '" y="' + (Y((lo + hi) / 2) + 5) + '" text-anchor="end" font-family="Fredoka, sans-serif" font-size="14" fill="#2f2219">Öl</text>';
+    h += '<text x="' + (x + w / 2 + 70) + '" y="' + (y1 - 2) + '" font-family="JetBrains Mono, monospace" font-size="11" fill="#6a5444">ml</text>';
+    $(svgId).innerHTML = h;
+  }
+  pipette("pip14", 1.0, 1.4, false, false, "#f5b942");
+  pipette("pip24", 0.55, 1.25, true, true, "#b5733f");
+  function pipCheck(inp, out, target, key, okText, badText) {
+    var v = num($(inp).value), c = $(out);
+    if (isNaN(v)) { c.className = "check show bad"; c.textContent = "Bitte eine Zahl eintippen."; return; }
+    if (Math.abs(v - target) <= 0.026) { c.className = "check show ok"; c.textContent = okText; R().vals[key] = 1; save(); }
+    else { c.className = "check show bad"; c.textContent = badText; }
+  }
+  $("pcheck14").addEventListener("click", function () { pipCheck("pv14", "pfb14", 0.4, "pip14", "Richtig: 1,4 ml − 1,0 ml = 0,4 ml.", "Noch nicht. Lest die untere und die obere Grenze der gelben Schicht ab und zieht sie voneinander ab."); });
+  $("pcheck24").addEventListener("click", function () { pipCheck("pv24", "pfb24", 0.7, "pip24", "Richtig: 1,25 ml − 0,55 ml = 0,7 ml.", "Noch nicht. Achtung, feine Striche: Zwischen zwei kurzen Strichen liegen 0,05 ml."); });
+
+  /* ---- weiche Plausibilitätsprüfung (zweites Prüfen mit gleichen Werten lässt durch) */
+  var soft = {};
+  function softStop(key, sig, out, html) {
+    if (soft[key] === sig) return false;
+    soft[key] = sig; var c = $(out); c.className = "check show warn"; c.innerHTML = html; return true;
+  }
+
+  /* ---- 1.4 echte Werte */
+  function done14(m, v) {
+    R().vals.m = m; R().vals.v = v; save();
+    var c = $("fb14"); c.className = "check show ok";
+    c.innerHTML = "Eingetragen: aus " + deAuto(m) + " g Orangenschale wurden " + deAuto(v) + " ml Orangenöl gewonnen. Das ist wirklich nicht viel!";
+    $("q14").classList.remove("hidden");
+  }
+  $("check14").addEventListener("click", function () {
+    var m = num($("m14").value), v = num($("v14").value), c = $("fb14");
+    if (!R().vals.pip14) { c.className = "check show bad"; c.textContent = "Löst zuerst oben die Übung zum Ablesen."; return; }
+    if (isNaN(m) || isNaN(v) || m <= 0 || v <= 0) { c.className = "check show bad"; c.textContent = "Bitte beide Werte als Zahl eintippen."; return; }
+    var sig = m + "|" + v;
+    if ((m < 20 || m > 1000 || v < 0.05 || v > 10) && softStop("w14", sig, "fb14",
+      "Ungewöhnliche Werte! Üblich sind etwa 50 bis 500 g Schale und 0,2 bis 5 ml Öl. Habt ihr Gramm und Milliliter vertauscht oder ein Komma vergessen? Wenn eure Werte stimmen, tippt noch einmal auf Eintragen.")) return;
+    done14(m, v);
+  });
+  $("ex14").addEventListener("click", function () {
+    $("m14").value = "120"; $("v14").value = "1,0";
+    if (!R().vals.pip14) { var c = $("fb14"); c.className = "check show bad"; c.textContent = "Löst zuerst oben die Übung zum Ablesen."; return; }
+    R().vals.example = 1; done14(120, 1.0);
+  });
+  mc("q14", "Warum ist echtes Orangenöl so teuer?", [
+    { t: "Weil Orangen nur im Winter wachsen." },
+    { t: "Weil man sehr viele Schalen braucht, um nur ein bisschen Öl zu gewinnen." },
+    { t: "Weil das Öl schwerer ist als Wasser." }], function (k, b, el) {
+      judge(el, b, k === 1, ["Orangen werden fast das ganze Jahr geerntet.", "Genau! Aus einem Kilo Schalen gewinnt man nur etwa 5 bis 20 ml Öl.", "Orangenöl ist sogar leichter (weniger dicht) als Wasser."][k]);
+      if (k === 1) { unlock(4); $("seal14w").textContent = "V = " + deAuto(R().vals.v) + " ml"; $("lock14").classList.remove("hidden"); }
+    });
+  $("l14check").addEventListener("click", function () {
+    var v = R().vals.v, x = num($("l14in").value);
+    if (!v) { laurelMsg("1-4", false, "Tragt zuerst oben euer Volumen ein."); return; }
+    var t = 0.84 * v;
+    if (!isNaN(x) && Math.abs(x - t) <= Math.max(0.05 * t, 0.011)) laurelMsg("1-4", true, "Richtig: m = 0,84 g/ml · " + deAuto(v) + " ml ≈ " + deAuto(t) + " g. Euer Öl wiegt weniger als gleich viel Wasser (" + deAuto(v) + " g).");
+    else laurelMsg("1-4", false, "Noch nicht. Rechnet 0,84 · " + deAuto(v) + ". Tipp: Das Ergebnis ist etwas kleiner als euer Volumen.");
+  });
+
+  /* ---- 1.5 Sicherheit + Duftkarte */
+  function safety(container, btn, out, list, key, okText) {
+    var sel = {};
+    var h = ""; list.forEach(function (x, i) { h += '<button class="tile" data-i="' + i + '"><span class="em">' + x.em + "</span>" + x.t + "</button>"; });
+    $(container).innerHTML = h;
+    $(container).querySelectorAll(".tile").forEach(function (b) {
+      b.addEventListener("click", function () { var i = b.getAttribute("data-i"); sel[i] = !sel[i]; b.classList.toggle("sel", !!sel[i]); b.classList.remove("ok", "bad"); });
+    });
+    $(btn).addEventListener("click", function () {
+      var wrong = 0, miss = 0;
+      list.forEach(function (x, i) {
+        var b = $(container).querySelector('[data-i="' + i + '"]'), s = !!sel[i];
+        b.classList.remove("ok", "bad");
+        if (s && x.ok) b.classList.add("ok"); else if (s && !x.ok) { b.classList.add("bad"); wrong++; } else if (!s && x.ok) miss++;
+      });
+      var c = $(out);
+      if (!wrong && !miss) { c.className = "check show ok"; c.textContent = okText; R().vals[key] = 1; save(); }
+      else c.className = "check show bad", c.textContent = (wrong ? wrong + " Regel(n) sind falsch (rot). " : "") + (miss ? "Es fehlen noch " + miss + " richtige Regel(n)." : "");
+    });
+  }
+  safety("safe15", "safe15check", "safe15fb", [
+    { em: "🖐️", t: "Öl nicht auf die Haut und nicht in die Augen", ok: 1 },
+    { em: "💧", t: "Mit Wasser verdünnen, damit es länger hält" },
+    { em: "🔴", t: "Kugel sofort mit dem Stopfen verschließen", ok: 1 },
+    { em: "🕯️", t: "Kugel neben eine Kerze stellen, damit sie stärker duftet" },
+    { em: "🚫", t: "Nicht essen und nicht trinken", ok: 1 },
+    { em: "🧼", t: "Danach Hände waschen", ok: 1 }], "safe15",
+    "Alles richtig! Reines Duftöl reizt die Haut, ist brennbar und mischt sich nicht mit Wasser.");
+  $("l15check").addEventListener("click", function () {
+    var v = R().vals.v, x = num($("l15in").value);
+    if (!v) { laurelMsg("1-5", false, "Tragt zuerst in Siegel 4 euer Volumen ein."); return; }
+    var t = v / 0.05;
+    if (!isNaN(x) && Math.abs(x - t) <= Math.max(1, 0.05 * t)) laurelMsg("1-5", true, "Richtig: " + deAuto(v) + " ml : 0,05 ml ≈ " + Math.round(t) + " Duftkugeln. Genug für den ganzen Kurs!");
+    else laurelMsg("1-5", false, "Noch nicht. Rechnet euer Volumen geteilt durch 0,05 ml. Tipp: In 1 ml passen 20 Tropfen.");
+  });
+
+  /* ==================================================== SITZUNG 2 */
+  quiz("quiz21", "q21_", [
+    { q: "Was sind Gewürznelken?", o: [
+      { l: "S", t: "Samen der Nelkenblume aus dem Garten" },
+      { l: "N", t: "getrocknete Blütenknospen des Gewürznelkenbaums" },
+      { l: "W", t: "kleine Wurzelstücke" },
+      { l: "R", t: "Stücke einer Baumrinde" }] },
+    { q: "Nelken sind hart und trocken. Womit zerkleinert man sie am besten?", o: [
+      { l: "Z", t: "mit dem Zestenreißer" },
+      { l: "E", t: "mit der Gewürzmühle oder im Mörser" },
+      { l: "A", t: "gar nicht, ganze Nelken geben genauso viel Öl" }] },
+    { q: "Nelken enthalten sehr viel Öl (bis zu 15 von 100 g). Orangenschalen nur etwa 1 von 100 g. Was bedeutet das?", o: [
+      { l: "M", t: "Für Nelkenöl braucht man mehr Masse als für Orangenöl." },
+      { l: "L", t: "Für gleich viel Öl braucht man viel weniger Nelken als Orangenschalen." },
+      { l: "T", t: "Nelkenöl ist dünnflüssiger." }] },
+    { q: "Wofür wird Nelkenöl seit Jahrhunderten benutzt?", o: [
+      { l: "K", t: "gegen Zahnschmerzen, weil es leicht betäubt" },
+      { l: "P", t: "als Klebstoff" },
+      { l: "B", t: "als Brennstoff für Laternen" }] },
+    { q: "Ihr schüttelt Nelkenöl mit Wasser und lasst es stehen. Was passiert?", o: [
+      { l: "I", t: "Es entsteht eine klare Mischung." },
+      { l: "E", t: "Es bilden sich wieder zwei Schichten." },
+      { l: "U", t: "Das Öl verschwindet." }] }
+  ]);
+  laurelMC("2-1", [
+    { t: "Ölreiche Nelken haben eine größere Dichte. Ausgetrocknete Nelken haben ihr Öl verloren und enthalten mehr Luft, deshalb ist ihre Dichte kleiner.", ok: 1, fb: "Stark! Der Nelken-Test ist eine Dichteprüfung, genau wie bei der Orange und der Goldkrone." },
+    { t: "Alte Nelken sind größer.", fb: "Die Größe allein entscheidet nicht, ob etwas schwimmt. Es kommt auf die Dichte an." },
+    { t: "Frische Nelken saugen sich schneller mit Wasser voll.", fb: "Für den Test reichen wenige Sekunden, das Wasser spielt dabei kaum eine Rolle." }
+  ]);
+  /* ---- 2.2 Weg des Dampfes */
+  (function () {
+    var PATH = [9, 1, 10, 3, 6, 7], path = [];
+    function draw() {
+      var h = path.length ? "" : '<span class="small">Tippt unten auf die Nummern …</span>';
+      path.forEach(function (n, i) { h += (i ? '<span class="ar">→</span>' : "") + '<span class="pn">' + n + "</span>"; });
+      $("path22").innerHTML = h;
+      var p = "";
+      for (var n = 1; n <= 10; n++) p += '<button data-n="' + n + '" class="' + (path.indexOf(n) >= 0 ? "used" : "") + '">' + n + "</button>";
+      $("pad22").innerHTML = p;
+      $("pad22").querySelectorAll("button").forEach(function (b) {
+        b.addEventListener("click", function () { var n = Number(b.getAttribute("data-n")); if (path.indexOf(n) < 0 && path.length < 8) { path.push(n); draw(); } });
+      });
+    }
+    draw();
+    $("path22reset").addEventListener("click", function () { path = []; draw(); $("path22fb").className = "check"; });
+    $("path22check").addEventListener("click", function () {
+      var c = $("path22fb"), ok = path.join("-") === PATH.join("-");
+      if (ok) { c.className = "check show ok"; c.textContent = "Richtig! Heizplatte → Wasser → Nelken → Brücke → Kühler → Tropftrichter."; $("what22").classList.remove("hidden"); R().vals.path = 1; save(); }
+      else {
+        var right = 0; for (var i = 0; i < path.length && path[i] === PATH[i]; i++) right++;
+        c.className = "check show bad";
+        c.textContent = path.length < 6 ? "Der Weg hat sechs Stationen. Schläuche, Klammern, Stativ und Becherglas gehören nicht dazu." : "Die ersten " + right + " Stationen stimmen. Ab Station " + (right + 1) + " geht der Weg anders weiter.";
+      }
+    });
+    var WHAT = ["verdampft (flüssig → gasförmig)", "nimmt das Duftöl mit", "kondensiert (gasförmig → flüssig)", "sammelt sich und trennt sich in zwei Schichten", "wird gewogen"];
+    var LAB = [{ n: 1, a: 0, nm: "Wasser im unteren Kolben" }, { n: 10, a: 1, nm: "Dampf bei den Nelken" }, { n: 6, a: 2, nm: "Dampf im Kühler" }, { n: 7, a: 3, nm: "Tropfen im Tropftrichter" }];
+    var h = "";
+    LAB.forEach(function (x, i) {
+      h += '<div class="lab" id="lab22_' + i + '"><span class="nr">' + x.n + '</span><select aria-label="' + x.nm + '"><option value="">' + x.nm + " …</option>";
+      WHAT.forEach(function (d, j) { h += '<option value="' + j + '">' + x.nm + " " + d + "</option>"; });
+      h += '</select><span class="why"></span></div>';
+    });
+    $("labels22").innerHTML = h;
+    $("check22").addEventListener("click", function () {
+      var good = 0;
+      LAB.forEach(function (x, i) {
+        var row = $("lab22_" + i), v = row.querySelector("select").value, ok = v !== "" && Number(v) === x.a;
+        row.classList.remove("ok", "bad"); if (v !== "") row.classList.add(ok ? "ok" : "bad"); if (ok) good++;
+      });
+      var c = $("fb22");
+      if (good === LAB.length) { c.className = "check show ok"; c.textContent = "Alles richtig! Verdampfen beim Erhitzen, Kondensieren beim Abkühlen."; $("lock22").classList.remove("hidden"); unlock(2); }
+      else { c.className = "check show bad"; c.textContent = good + " von 4 richtig."; }
+    });
+  })();
+  laurelMC("2-2", [
+    { t: "Gar nichts, der Dampf kühlt im Glas von allein ab.", fb: "Der Kühler ist aus dünnem Glas, ohne Kühlwasser bleibt er so heiß wie der Dampf." },
+    { t: "Der Dampf wird nicht wieder flüssig. Er strömt mit dem Duftöl aus der Apparatur in den Raum, und im Tropftrichter kommt kaum etwas an.", ok: 1, fb: "Genau! Dann riecht der ganze Raum nach Nelken, aber euer Öl ist verloren." },
+    { t: "Das Wasser im unteren Kolben hört auf zu kochen.", fb: "Die Heizplatte heizt weiter, das Wasser kocht weiter." }
+  ]);
+  /* ---- 2.3 */
+  mc("q23", "Was sagt ihr voraus?", [
+    { t: "Nelkenöl schwimmt oben, wie das Orangenöl. Öl schwimmt immer." },
+    { t: "Nelkenöl ist dichter als Wasser und sammelt sich unten." },
+    { t: "Nelkenöl und Wasser bilden keine Schichten." }], function (k, b, el) {
+      judge(el, b, k === 1, ["Vorsicht! „Öl schwimmt immer“ stimmt nicht. Vergleicht 1,06 und 1,00.", "Richtig! 1,06 g/cm³ ist größer als 1,00 g/cm³. Nicht jedes Öl schwimmt!", "Öl und Wasser mischen sich nicht, es gibt zwei Schichten."][k]);
+    });
+  var F23 = Funnel({ svg: "funnel23", tgt: "tgt23", tap: "tap23", meter: "meter23", done: "done23", reset: "reset23", fb: "fb23", key: "sim23",
+    oilBottom: true, rate: 2.0, oilColor: "#b5733f", oilText: "#ffffff", oilName: "Nelkenöl",
+    okText: "Perfekt! Diesmal kam das Nelkenöl zuerst aus dem Hahn, direkt in die Duftkugel. Das Wasser durfte im Trichter bleiben.",
+    waterHint: "Ihr habt zu lange gewartet. Wenn das Öl unten liegt, muss die Duftkugel sofort unter den Hahn, und an der Grenze schließt ihr.",
+    lostHint: "Das Nelkenöl liegt unten und kommt zuerst. Die Duftkugel muss von Anfang an unter den Hahn." });
+  laurelMC("2-3", [
+    { t: "Das Nelkenöl sinkt noch schneller.", fb: "Das Salzwasser wird dichter, nicht das Öl." },
+    { t: "Nichts, Salz hat mit der Dichte nichts zu tun.", fb: "Doch! Denkt an das Tote Meer: Salz macht Wasser dichter." },
+    { t: "Das Nelkenöl steigt nach oben, weil das Salzwasser (1,2) jetzt dichter ist als das Öl (1,06).", ok: 1, fb: "Genau! Entscheidend ist nicht die Dichte des Öls allein, sondern der Vergleich mit der Flüssigkeit darunter." }
+  ]);
+  laurelMC("2-4", [
+    { t: "Der Tropfen schwimmt. Die Dichte der Mischung liegt zwischen 0,84 und 1,06, etwa bei 0,95. Das ist weniger als Wasser.", ok: 1, fb: "Klasse gerechnet! (0,84 + 1,06) : 2 = 0,95 g/cm³, also schwimmt der Weihnachtsduft." },
+    { t: "Der Tropfen sinkt, weil Nelkenöl dabei ist.", fb: "Das Orangenöl macht die Mischung leichter. Rechnet den Mittelwert aus 0,84 und 1,06." },
+    { t: "Der Tropfen teilt sich in einen Orangen- und einen Nelkentropfen.", fb: "Die beiden Öle lösen sich ineinander, sie trennen sich nicht wieder." }
+  ]);
+  /* ---- 2.4 Ausbeute */
+  function check24(m, v, mo, a, viaExample) {
+    var c = $("fb24"), sig = [m, v, mo, a].join("|");
+    if (!R().vals.pip24) { c.className = "check show bad"; c.textContent = "Löst zuerst oben die Übung zum Ablesen."; return; }
+    if ([m, v].some(function (x) { return isNaN(x) || x <= 0; })) { c.className = "check show bad"; c.textContent = "Tragt zuerst die Masse der Nelken und das Volumen des Öls ein."; return; }
+    if (!viaExample && (m < 10 || m > 500 || v < 0.1 || v > 30) && softStop("w24", m + "|" + v, "fb24",
+      "Ungewöhnliche Werte! Üblich sind etwa 20 bis 200 g Nelken und 0,5 bis 10 ml Öl. Prüft Komma und Einheiten. Wenn alles stimmt, tippt noch einmal auf Prüfen.")) return;
+    var tm = 1.06 * v, ta = tm / m * 100;
+    if (isNaN(mo) || Math.abs(mo - tm) > Math.max(0.05 * tm, 0.011)) { c.className = "check show bad"; c.textContent = "Die Masse des Öls stimmt noch nicht. Rechnet 1,06 · " + deAuto(v) + "."; return; }
+    if (isNaN(a) || Math.abs(a - ta) > Math.max(0.06 * ta, 0.051)) { c.className = "check show bad"; c.textContent = "Die Masse stimmt! Die Ausbeute noch nicht: " + deAuto(mo) + " : " + deAuto(m) + " · 100 = ?"; return; }
+    R().vals.m = m; R().vals.v = v; R().vals.a = ta; if (viaExample) R().vals.example = 1; save();
+    var cmp = "";
+    var o = S.r[1].vals; if (o.m && o.v) { var oa = 0.84 * o.v / o.m * 100; cmp = " Zum Vergleich Orangenschale in Sitzung 1: " + deAuto(oa) + " %."; }
+    c.className = "check show ok"; c.textContent = "Richtig gerechnet! Ausbeute ≈ " + deAuto(ta) + " %." + cmp + " Nelken sind wahre Duftschatzkammern.";
+    $("seal24w").textContent = deAuto(ta) + " %"; $("lock24").classList.remove("hidden"); unlock(4);
+  }
+  $("check24").addEventListener("click", function () {
+    var m = num($("m24").value), v = num($("v24").value);
+    check24(m, v, num($("mo24").value), num($("a24").value), !!R().vals.exampleArmed && m === 40 && v === 2.4);
+  });
+  $("ex24").addEventListener("click", function () {
+    $("m24").value = "40"; $("v24").value = "2,4";
+    var c = $("fb24"); c.className = "check show warn"; c.textContent = "Beispielwerte eingetragen: 40 g Nelken, 2,4 ml Nelkenöl. Rechnet jetzt Masse des Öls und Ausbeute aus und tippt auf Prüfen.";
+    R().vals.exampleArmed = 1;
+  });
+  /* ---- 2.5 */
+  safety("safe25", "safe25check", "safe25fb", [
+    { em: "🖐️", t: "Nicht auf Haut, Augen und Mund", ok: 1 },
+    { em: "🦷", t: "Bei Zahnschmerzen selbst einen Tropfen auf den Zahn geben" },
+    { em: "🔴", t: "Kugel sofort mit dem Stopfen verschließen", ok: 1 },
+    { em: "🔥", t: "Kugel weg von Kerzen und Heizung", ok: 1 },
+    { em: "💧", t: "Mit Wasser auffüllen, damit der Duft milder wird" },
+    { em: "🧼", t: "Danach Hände waschen", ok: 1 }], "safe25",
+    "Alles richtig! Nelkenöl reizt in reiner Form Haut und Schleimhäute. Medizin gibt es nur in der Apotheke oder beim Zahnarzt.");
+  laurelMC("2-5", [
+    { t: "Weil es gut riecht und die Praxis dann nach Weihnachten duftet.", fb: "Der Duft ist ein netter Nebeneffekt, aber nicht der Grund." },
+    { t: "Weil es leicht betäubt und Keime abtötet.", ok: 1, fb: "Genau! Eugenol beruhigt den Zahnnerv und hemmt Bakterien. Deshalb riecht es beim Zahnarzt manchmal nach Nelken." },
+    { t: "Weil es den Zahn weiß färbt.", fb: "Eugenol färbt nicht, es wirkt auf Nerv und Keime." }
+  ]);
+
+  /* ---- Schlösser (Codes) */
+  var LOCKS = {
+    "1-1": { code: "code11", ok: ["DUFT"], msg: "msg11" },
+    "1-3": { code: "code13", ok: ["OBEN"], msg: "msg13", gate: function () { return simGate(F13, "msg13"); } },
+    "1-5": { code: "code15", ok: ["ZESTE", "ZESTEN"], msg: "msg15", gate: function () { if (!R().vals.safe15) { lockMsg("msg15", false, "Prüft zuerst oben die Sicherheitsregeln."); return false; } return true; } },
+    "2-1": { code: "code21", ok: ["NELKE"], msg: "msg21" },
+    "2-3": { code: "code23", ok: ["UNTEN"], msg: "msg23", gate: function () { return simGate(F23, "msg23"); } },
+    "2-5": { code: "code25", ok: ["KNOSPE", "KNOSPEN"], msg: "msg25", gate: function () { if (!R().vals.safe25) { lockMsg("msg25", false, "Prüft zuerst oben die Sicherheitsregeln."); return false; } return true; } }
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-lock]"); if (b) { var id = b.getAttribute("data-lock"), L = LOCKS[id]; checkLock(id, L.code, L.ok, L.msg, L.gate); return; }
+    var nx = e.target.closest("[data-next]"); if (nx) { goNext(Number(nx.getAttribute("data-next").split("-")[1])); }
+  });
+  Object.keys(LOCKS).forEach(function (id) {
+    var L = LOCKS[id];
+    $(L.code).addEventListener("keydown", function (e) { if (e.key === "Enter") checkLock(id, L.code, L.ok, L.msg, L.gate); });
+  });
+
+  /* ---- Abschluss */
+  function namesText() { var n = S.names.filter(function (x) { return x; }); return n.length ? n.join(" & ") : "Unser Team"; }
+  function fillEnd() {
+    if (S.run === 1) {
+      var r = S.r[1];
+      $("r1Names").textContent = namesText();
+      $("r1Time").textContent = fmt((r.t1 || Date.now()) - r.t0) + " min";
+      $("r1Hints").textContent = String(nHints(1));
+      $("r1Laurel").textContent = nLaurel(1) + " von 5";
+      $("r1Vol").textContent = r.vals.v ? deAuto(r.vals.v) + " ml aus " + deAuto(r.vals.m) + " g Schale" + (r.vals.example ? " (Beispiel)" : "") : "–";
+    } else {
+      var a = S.r[1], b = S.r[2];
+      $("certNames").textContent = namesText();
+      $("certO").textContent = "0,84 g/cm³ · schwimmt" + (a.vals.v ? " · " + deAuto(a.vals.v) + " ml" : "");
+      $("certN").textContent = "1,06 g/cm³ · sinkt" + (b.vals.v ? " · " + deAuto(b.vals.v) + " ml" : "");
+      $("certA").textContent = b.vals.a ? deAuto(b.vals.a) + " %" + (b.vals.example ? " (Beispiel)" : "") : "–";
+      var h1 = a.t0 ? nHints(1) : null, l1 = a.t0 ? nLaurel(1) : null;
+      $("certHints").textContent = (h1 === null ? "Sitzung 1: auf anderem iPad · " : "Sitzung 1: " + h1 + " · ") + "Sitzung 2: " + nHints(2);
+      $("certLaurel").textContent = l1 === null ? nLaurel(2) + " von 5 (Sitzung 2)" : (l1 + nLaurel(2)) + " von 10";
+      var sn = $("snow");
+      if (!sn.childNodes.length) for (var i = 0; i < 26; i++) {
+        var f = document.createElement("i");
+        f.style.left = (Math.random() * 100).toFixed(1) + "%"; f.style.animationDuration = (6 + Math.random() * 7).toFixed(1) + "s";
+        f.style.animationDelay = (-Math.random() * 10).toFixed(1) + "s"; var s = (4 + Math.random() * 5).toFixed(1); f.style.width = s + "px"; f.style.height = s + "px";
+        sn.appendChild(f);
+      }
+    }
+  }
+
+  /* ---- Start */
+  function startRun(run) {
+    S.names = [$("name1").value.trim(), $("name2").value.trim()];
+    S.run = run;
+    var r = S.r[run];
+    if (!r.t0) r.t0 = Date.now();
+    save();
+    show(r.end ? CH + 1 : Math.max(1, Math.min(CH, r.open + 1)));
+  }
+  function renderStart() {
+    $("name1").value = S.names[0] || ""; $("name2").value = S.names[1] || "";
+    var a = S.r[1], b = S.r[2];
+    $("s1state").textContent = a.end ? "✓ geschafft · Lösungswort LIMONEN" : (a.open ? "Duftsiegel " + a.open + " von 5 geöffnet" : "");
+    $("start1").textContent = a.t0 ? (a.end ? "🍊 Sitzung 1 ansehen" : "🍊 Sitzung 1 weiterspielen") : "🍊 Sitzung 1 starten";
+    $("s2lock").classList.toggle("hidden", S.unlocked2); $("s2go").classList.toggle("hidden", !S.unlocked2);
+    $("s2state").textContent = b.end ? "✓ geschafft · Zertifikat erhalten" : (b.open ? "Duftsiegel " + b.open + " von 5 geöffnet" : (S.unlocked2 ? "freigeschaltet" : ""));
+    $("start2").textContent = b.t0 ? (b.end ? "🌰 Zertifikat ansehen" : "🌰 Sitzung 2 weiterspielen") : "🌰 Sitzung 2 starten";
+  }
+  $("start1").addEventListener("click", function () { startRun(1); });
+  $("start2").addEventListener("click", function () { startRun(2); });
+  function tryPass() {
+    var v = norm($("pass2").value);
+    if (v === "LIMONEN" || v === "LIMONENE") { S.unlocked2 = true; save(); $("pass2msg").textContent = ""; renderStart(); }
+    else { $("pass2msg").textContent = v ? "Das ist nicht das Lösungswort aus Sitzung 1. Schaut in euer Duftjournal." : "Bitte das Lösungswort eintippen."; }
+  }
+  $("pass2btn").addEventListener("click", tryPass);
+  $("pass2").addEventListener("keydown", function (e) { if (e.key === "Enter") tryPass(); });
+
+  /* ---- Spielleitung */
+  if (/[?&]spielleitung\b/.test(location.search)) {
+    var p = $("slPanel"); p.classList.remove("hidden");
+    var pin = document.createElement("div");
+    pin.innerHTML = '<div class="lock-row" id="slPin"><input id="slPinIn" type="password" placeholder="PIN" style="font-family:JetBrains Mono,monospace;padding:0.5rem;border-radius:10px;border:2px solid #8a5cf0"><button class="btn ghost" id="slPinBtn">Öffnen</button></div>';
+    Array.prototype.forEach.call(p.children, function (c) { if (c.tagName !== "H3") c.classList.add("hidden"); });
+    p.appendChild(pin);
+    function openSL() {
+      if (norm($("slPinIn").value) === "ZIMTSTERN") { Array.prototype.forEach.call(p.children, function (c) { c.classList.remove("hidden"); }); pin.remove(); }
+    }
+    $("slPinBtn").addEventListener("click", openSL);
+    $("slPinIn").addEventListener("keydown", function (e) { if (e.key === "Enter") openSL(); });
+    $("slSkip").addEventListener("click", function () {
+      if (S.cur < 1 || S.cur > CH) return;
+      R().vals.sim13 = R().vals.sim23 = R().vals.safe15 = R().vals.safe25 = R().vals.pip14 = R().vals.pip24 = 1;
+      if (S.cur === 4 && !R().vals.v) { R().vals.v = S.run === 1 ? 1.0 : 2.4; R().vals.m = S.run === 1 ? 120 : 40; R().vals.example = 1; if (S.run === 2) R().vals.a = 1.06 * 2.4 / 40 * 100; }
+      unlock(S.cur); goNext(S.cur);
+    });
+    $("slUnlock2").addEventListener("click", function () { S.unlocked2 = true; save(); renderStart(); });
+    $("slReset").addEventListener("click", function () { try { localStorage.removeItem(KEY); } catch (e) {} location.href = location.pathname + "?spielleitung"; });
+  }
+
+  /* ---- Laden */
+  if (load()) {
+    Object.keys(S.r).forEach(function (run) { Object.keys(S.r[run].laurel).forEach(function (id) { var c = $("lc" + id); if (c) c.classList.add("done"); }); });
+    if (S.r[1].vals.v) { $("m14").value = de(S.r[1].vals.m, 0); $("v14").value = deAuto(S.r[1].vals.v); }
+  }
+  renderStart();
+})();
+</script>
+</body>
+</html>

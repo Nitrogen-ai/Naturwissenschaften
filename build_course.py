@@ -423,6 +423,38 @@ CSS_LP06 = """
 @media (max-width: 600px) { .eg-card { flex-direction: column; } }
 """
 
+SEC_LP07_GAME = (
+    '<section class="lp-sec"><div class="df-card">'
+    '<div class="df-ico" aria-hidden="true">🍊</div>'
+    '<div><h2 class="df-h">Lernpfad: Weihnachtliche Düfte</h2>'
+    '<p>Vorne im Raum läuft eine echte Wasserdampfdestillation. Löst zu zweit am iPad die fünf Duftsiegel der <b>Sitzung 1</b>, '
+    'trennt das Orangenöl vom Wasser und füllt am Ende einen Tropfen in eure Duftkugel. '
+    '<b>Notiert das Lösungswort</b> in eurem Duftjournal: Ihr braucht es in der nächsten Sitzung.</p>'
+    '<a class="df-btn" href="lp07-weihnachtliche-duefte.html">🍊 Duftwerkstatt öffnen</a></div>'
+    '</div></section>')
+
+SEC_LP08_GAME = (
+    '<section class="lp-sec"><div class="df-card df-clove">'
+    '<div class="df-ico" aria-hidden="true">🌰</div>'
+    '<div><h2 class="df-h">Lernpfad: Weihnachtliche Düfte, Sitzung 2</h2>'
+    '<p>Öffnet die Duftwerkstatt und tippt bei <b>Sitzung 2</b> das <b>Lösungswort aus Sitzung 1</b> ein (es steht in eurem Duftjournal). '
+    'Diesmal destillieren wir Gewürznelken. Vorsicht: Nelkenöl benimmt sich im Wasser ganz anders als Orangenöl! '
+    'Am Ende erhaltet ihr das Zertifikat als <b>Weihnachtliche Parfumeur:innen</b>.</p>'
+    '<a class="df-btn" href="lp07-weihnachtliche-duefte.html">🌰 Duftwerkstatt öffnen</a></div>'
+    '</div></section>')
+
+CSS_LP07 = """
+.df-card { display: flex; gap: 1.1rem; align-items: flex-start; background: linear-gradient(180deg, #fffaf0 0%, #fdebd2 100%); border: 2px solid #f5c46b; border-radius: 18px; padding: 1.1rem 1.2rem; }
+.df-card.df-clove { background: linear-gradient(180deg, #fffaf5 0%, #f5e6da 100%); border-color: #c99a78; }
+.df-ico { font-size: 2.6rem; line-height: 1; }
+.df-h { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; margin: 0 0 0.4rem; }
+.df-card p { margin: 0 0 0.8rem; }
+.df-btn { display: inline-block; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.05rem; text-decoration: none; background: #ec8a24; color: #fff; padding: 0.65rem 1.15rem; border-radius: 14px; box-shadow: 0 4px 0 #b35f0e; }
+.df-clove .df-btn { background: #8a4b2a; box-shadow: 0 4px 0 #5e2f17; }
+.df-btn:active { transform: translateY(2px); }
+@media (max-width: 600px) { .df-card { flex-direction: column; } }
+"""
+
 # ---------------------------------------------------------------- Kursinhalt
 # Jedes LP: no, sjw, title, goal, tasks[], tools[keys], fast, tags[], solution[], kind, quiz(optional), vorwissen(optional)
 UNITS = [
@@ -815,12 +847,80 @@ UNITS = [
                        "Beispielwerte (je 5 × 1, 2 und 5 Cent): m ≈ 46,4 g, V ≈ 6 ml, ρ = 46,4 g : 6 ml ≈ 7,7 g/cm³. Die Münzen werden vom Magneten angezogen.",
                        "Schlussfolgerung: Die Hypothese konnte <b>widerlegt</b> werden, da die Dichte deutlich kleiner als 8,9 g/cm³ ist und nahe bei Eisen (7,9 g/cm³) liegt. Mit dem Magnet-Test zeigt sich: Die Münzen haben einen Kern aus Stahl und nur einen dünnen Kupferüberzug.",
                        "Fehlerbetrachtung: Das Volumen ist mit ca. 6 ml sehr klein, ein Ablesefehler von 1 ml verändert die Dichte stark. Luftblasen, Wassertropfen und abgenutzte Münzen verfälschen den Wert zusätzlich."]),
+        dict(no=7, sjw=8, kind="lernpfad", title="Weihnachtliche Düfte I: Orangenöl",
+             goal="Du gewinnst aus Orangenschalen ätherisches Öl durch Wasserdampfdestillation und erklärst mit der Dichte, warum das Orangenöl (Limonen, ρ = 0,84 g/cm³) im Tropftrichter oben auf dem Wasser schwimmt.",
+             tasks=["Spielt zu zweit Sitzung 1 der Duftwerkstatt auf eurem iPad (Knopf oben). Vorne im Raum läuft parallel die echte Wasserdampfdestillation mit Orangenschalen.",
+                    "Duftsiegel 1: Findet heraus, wo das Duftöl in der Orange steckt und warum die Schale zerkleinert wird.",
+                    "Duftsiegel 2: Benennt die Geräte der Wasserdampfdestillation.",
+                    "Duftsiegel 3: Vergleicht die Dichten von Wasser und Orangenöl und trennt im virtuellen Tropftrichter das Öl vom Wasser.",
+                    "Duftsiegel 4: Lest das Volumen des gewonnenen Orangenöls ab.",
+                    "Duftsiegel 5: Füllt einen Tropfen Orangenöl in eure Duftkugel und notiert das Lösungswort im Duftjournal.",
+                    "Füllt parallel die Seiten 1 und 2 eures Duftjournals aus."],
+             tools=[],
+             fast="Löst im Spiel die grünen Lorbeer-Aufgaben: Gegenstromkühler, Flüssigkeiten nach Dichte stapeln, Masse des Öls mit m = ρ · V berechnen. Sagt am Ende voraus, wo sich Nelkenöl (1,06 g/cm³) sammeln wird.",
+             tags=["Experimentieren", "Dichte", "Trennverfahren"],
+             extra_css=CSS_LP07,
+             pre_sections=[SEC_LP07_GAME],
+             quiz=[
+               dict(q="Wo steckt das Duftöl der Orange?", done="Richtig, in winzigen Öldrüsen der bunten Schale.",
+                    opts=[("im Fruchtsaft", False, "Der Saft schmeckt nach Orange, das Duftöl sitzt aber in der Schale."),
+                          ("in winzigen Öldrüsen der bunten Schale", True, None),
+                          ("in den Kernen", False, "Knickt eine Schale vor der Nase: Dort spritzt das Öl heraus.")]),
+               dict(q="Warum wird Wasserdampf verwendet?", done="Richtig, Wasserdampf ist höchstens etwa 100 °C heiß und schont die Duftstoffe.",
+                    opts=[("Er ist höchstens etwa 100 °C heiß und schont die Duftstoffe.", True, None),
+                          ("Er macht die Schalen schwerer.", False, "Es geht um die Temperatur, nicht um die Masse."),
+                          ("Er löst das Öl im Wasser auf.", False, "Öl und Wasser mischen sich nicht.")]),
+               dict(q="Wasser hat ρ = 1,00 g/cm³, Orangenöl ρ = 0,84 g/cm³. Wo sammelt sich das Orangenöl im Tropftrichter?", done="Richtig, es schwimmt oben.",
+                    opts=[("oben", True, None), ("unten", False, "0,84 ist kleiner als 1,00: weniger dicht, also oben."),
+                          ("gleichmäßig im Wasser verteilt", False, "Öl und Wasser bilden zwei Schichten.")]),
+               dict(q="Was fließt aus dem Hahn des Tropftrichters zuerst heraus?", done="Richtig, immer die untere Schicht, hier das Wasser.",
+                    opts=[("die untere Schicht, hier das Wasser", True, None), ("die obere Schicht, hier das Öl", False, "Der Hahn sitzt unten."),
+                          ("beides gemischt", False, "Die Schichten bleiben getrennt, solange man nicht schüttelt.")]),
+             ],
+             solution=["Das Duftöl sitzt in winzigen Öldrüsen der bunten Orangenschale. Zerkleinern vergrößert die Oberfläche, der Dampf erreicht mehr Öldrüsen.",
+                       "Wasserdampfdestillation: Heizplatte (9) → Wasser im unteren Rundkolben (1) verdampft → Dampf strömt durch die Orangenschalen (10) und nimmt das Öl mit → Destillationsbrücke (3) → Kühler (6): der Dampf kondensiert → Tropftrichter (7): Wasser und Öl bilden zwei Schichten.",
+                       "Orangenöl besteht fast nur aus Limonen (ρ = 0,84 g/cm³). Es ist weniger dicht als Wasser (1,00 g/cm³) und schwimmt deshalb oben. Zum Abtrennen wird zuerst das Wasser über den Hahn abgelassen, dann das Öl.",
+                       "Die Ausbeute ist klein: aus etwa 100 g Schale gewinnt man nur etwa 1 ml Öl (rund 1 %). Deshalb ist echtes Duftöl wertvoll.",
+                       "Masse des Öls: m = ρ · V, z. B. 0,84 g/ml · 1,2 ml ≈ 1,0 g."]),
+        dict(no=8, sjw=9, kind="lernpfad", title="Weihnachtliche Düfte II: Nelkenöl",
+             goal="Du gewinnst aus Gewürznelken ätherisches Öl und erklärst mit der Dichte, warum das Nelkenöl (Eugenol, ρ = 1,06 g/cm³) im Gegensatz zum Orangenöl unten im Tropftrichter landet. Du berechnest die Masse des Öls und die Ausbeute.",
+             tasks=["Öffnet die Duftwerkstatt (Knopf oben) und schaltet Sitzung 2 mit dem Lösungswort aus Sitzung 1 frei. Vorne läuft die Wasserdampfdestillation mit Gewürznelken.",
+                    "Duftsiegel 1: Was sind Nelken, und wie zerkleinert man sie?",
+                    "Duftsiegel 2: Beschreibt den Weg des Dampfes und unterscheidet Verdampfen und Kondensieren.",
+                    "Duftsiegel 3: Vergleicht die Dichten und trennt das Nelkenöl im virtuellen Tropftrichter ab. Achtung, diesmal liegt das Öl unten!",
+                    "Duftsiegel 4: Berechnet die Masse des Öls (m = ρ · V) und die Ausbeute in Prozent.",
+                    "Duftsiegel 5: Füllt einen Tropfen Nelkenöl in eure Duftkugel und holt euch das Zertifikat.",
+                    "Füllt parallel die Seiten 3 und 4 eures Duftjournals aus."],
+             tools=[],
+             fast="Lorbeer-Aufgaben: Nelken-Test im Wasserglas, Salztrick (Salzwasser 1,2 g/cm³), Dichte einer Mischung aus Orangen- und Nelkenöl. Danach: Vorhersagen für Zimt-, Anis-, Fichtennadel- und Zitronenöl.",
+             tags=["Experimentieren", "Dichte", "Trennverfahren"],
+             extra_css=CSS_LP07,
+             pre_sections=[SEC_LP08_GAME],
+             quiz=[
+               dict(q="Wasser hat ρ = 1,00 g/cm³, Nelkenöl ρ = 1,06 g/cm³. Wo sammelt sich das Nelkenöl?", done="Richtig, unten, denn es ist dichter als Wasser.",
+                    opts=[("oben, wie jedes Öl", False, "Nicht jedes Öl schwimmt! Vergleicht 1,06 mit 1,00."), ("unten", True, None),
+                          ("es löst sich im Wasser", False, "Öl und Wasser bilden zwei Schichten.")]),
+               dict(q="Im Kühler wird der Dampf wieder flüssig. Wie heißt dieser Vorgang?", done="Richtig, Kondensieren.",
+                    opts=[("Verdampfen", False, "Verdampfen ist flüssig → gasförmig, das passiert im unteren Kolben."), ("Kondensieren", True, None),
+                          ("Schmelzen", False, "Schmelzen ist fest → flüssig.")]),
+               dict(q="Aus 40 g Nelken werden 2,4 ml Nelkenöl gewonnen (ρ = 1,06 g/ml). Wie groß ist die Masse des Öls?", done="Richtig, 1,06 · 2,4 ≈ 2,5 g.",
+                    opts=[("etwa 2,3 g", False, "Hier wurde geteilt. Masse = Dichte · Volumen."), ("etwa 2,5 g", True, None),
+                          ("etwa 42,4 g", False, "Masse der Nelken und Volumen des Öls darf man nicht addieren.")]),
+               dict(q="Rosalie löst viel Salz im Wasser (Salzwasser ρ ≈ 1,2 g/cm³). Was macht das Nelkenöl?", done="Richtig, jetzt ist das Salzwasser dichter als das Öl, das Öl steigt nach oben.",
+                    opts=[("Es steigt nach oben.", True, None), ("Es sinkt noch tiefer.", False, "Das Salzwasser wird dichter, nicht das Öl."),
+                          ("Nichts ändert sich.", False, "Denkt an das Tote Meer.")]),
+             ],
+             solution=["Gewürznelken sind getrocknete Blütenknospen des Gewürznelkenbaums. Sie werden mit Gewürzmühle oder Mörser zerkleinert und enthalten viel mehr Öl als Orangenschalen.",
+                       "Weg des Dampfes: 9 → 1 → 10 → 3 → 6 → 7. Im Rundkolben (1) verdampft das Wasser, bei den Nelken (10) nimmt der Dampf das Öl mit, im Kühler (6) kondensiert er, im Tropftrichter (7) trennen sich Wasser und Öl.",
+                       "Nelkenöl besteht vor allem aus Eugenol (ρ = 1,06 g/cm³). Es ist dichter als Wasser und sammelt sich unten. Deshalb wird diesmal zuerst das Öl über den Hahn abgelassen.",
+                       "Beispiel: 40 g Nelken, 2,4 ml Öl → m = 1,06 g/ml · 2,4 ml ≈ 2,5 g → Ausbeute = 2,5 g : 40 g · 100 % ≈ 6,4 % (Orangenschale: etwa 1 %).",
+                       "Schlussfolgerung: Ob ein Öl im Tropftrichter oben oder unten landet, hängt allein vom Vergleich seiner Dichte mit der Dichte des Wassers ab. In Salzwasser (1,2 g/cm³) würde auch das Nelkenöl schwimmen."]),
       ]),
  # =================== 01 LEBENSMITTEL ===================
  dict(num="01", title="Lebensmittel",
       key="#ff8a3d", key2="#d96a1f", tint="rgba(255,138,61,0.10)",
       lps=[
-        dict(no=7, sjw=7, kind="lernpfad", title="Nahrungsmittelrallye",
+        dict(no=9, sjw=10, kind="lernpfad", title="Nahrungsmittelrallye",
              goal="Du lernst die drei Hauptnährstoffe (Fette, Proteine, Kohlenhydrate) und die Mikronährstoffe (Vitamine, Mineralstoffe) kennen und ordnest sie echten Lebensmitteln zu.",
              tasks=["Ordne an Stationen verschiedene Lebensmittel den Hauptnährstoffen zu, die in ihnen überwiegen.",
                     "Unterscheide Makronährstoffe (Fette, Proteine, Kohlenhydrate) von Mikronährstoffen (z. B. Vitamin C, Kalium, Calcium).",
@@ -849,7 +949,7 @@ UNITS = [
              solution=["Makronährstoffe: Fette, Proteine, Kohlenhydrate — liefern Energie (Kalorien).",
                        "Mikronährstoffe: Vitamine, Mineralstoffe — liefern kaum Energie, sind aber lebensnotwendig.",
                        "Fett liefert ca. 9 kcal/g, Kohlenhydrate und Proteine je ca. 4 kcal/g."]),
-        dict(no=8, sjw=8, kind="lernpfad", title="Interessantes zu Fetten",
+        dict(no=10, sjw=11, kind="lernpfad", title="Interessantes zu Fetten",
              goal="Du unterscheidest gesunde von weniger gesunden Fetten und lernst eine chemische Nachweisprobe für Fette kennen.",
              tasks=["Ordne Fette und Öle korrekt als Makronährstoff ein und nenne Beispiele aus dem Alltag.",
                     "Führe die Fettfleckprobe an verschiedenen Lebensmittelproben durch und notiere, welche Proben Fett enthalten.",
@@ -872,7 +972,7 @@ UNITS = [
              ],
              solution=["Fettfleckprobe: Ein durchscheinender, bleibender Fleck auf Papier zeigt Fett an.",
                        "Ungesättigte Fettsäuren (z. B. in Nüssen, Fisch, Pflanzenölen) gelten als besonders gesundheitsförderlich, u. a. für Herz und Gehirn."]),
-        dict(no=9, sjw=9, kind="lernpfad", title="Energiehaushalt",
+        dict(no=11, sjw=12, kind="lernpfad", title="Energiehaushalt",
              goal="Du berechnest, wie viel Energie in einer Walnuss steckt, und vergleichst sie mit der Energie, die du beim Sport verbrauchst.",
              tasks=["Verbrenne (unter Aufsicht) eine Walnusshälfte und erhitze damit eine bekannte Menge Wasser.",
                     "Berechne aus der Temperaturerhöhung des Wassers, wie viel Energie in der Walnusshälfte steckt.",
@@ -893,7 +993,7 @@ UNITS = [
              ],
              solution=["Eine Walnusshälfte (ca. 2,9 g) liefert genug Energie, um 200 g Wasser von 20 °C fast bis zum Sieden (≈100 °C) zu erwärmen.",
                        "Dieselbe Energiemenge entspricht ungefähr mehreren Dutzend Kniebeugen oder einigen hundert Metern Joggen — Nahrungsenergie und Bewegungsenergie sind direkt vergleichbar."]),
-        dict(no=10, sjw=10, kind="lernpfad", title="Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers",
+        dict(no=12, sjw=13, kind="lernpfad", title="Denaturierung von Proteinen am Beispiel von pflanzlichen Baisers",
              goal="Du stellst veganes Baiser aus Kichererbsenwasser (Aquafaba) her und erklärst, was beim Schlagen und Erhitzen mit den Proteinen passiert.",
              tasks=["Schlage Aquafaba (Kichererbsenwasser) so lange, bis ein stabiler Eischnee-ähnlicher Schaum entsteht.",
                     "Beobachte und beschreibe, wie sich Aussehen und Konsistenz beim Schlagen verändern.",
@@ -916,7 +1016,7 @@ UNITS = [
              ],
              solution=["Aquafaba enthält gelöste Proteine, die sich beim Schlagen (mechanische Energie) an Luftbläschen anlagern und beim Backen (thermische Energie) endgültig ihre Struktur verändern.",
                        "Denaturierung ist nicht umkehrbar — daraus lässt sich kein flüssiges Aquafaba mehr zurückgewinnen, genauso wenig wie ein gekochtes Ei wieder roh wird."]),
-        dict(no=11, sjw=11, kind="lernpfad", title="Kohlenhydrate",
+        dict(no=13, sjw=14, kind="lernpfad", title="Kohlenhydrate",
              goal="Du weist mit der Jodprobe Stärke in Lebensmitteln nach und lernst, welche Kohlenhydrate wann sinnvoll sind.",
              tasks=["Führe die Jodprobe (Lugol'sche Probe) an verschiedenen Lebensmitteln durch (z. B. Kartoffel, Brot, Traubenzucker).",
                     "Notiere, bei welchen Proben sich eine tiefblaue Färbung zeigt und schließe daraus auf den Stärkegehalt.",
@@ -940,7 +1040,7 @@ UNITS = [
  dict(num="02", title="Fliegen",
       key="#8a5cf0", key2="#6a3fcf", tint="rgba(138,92,240,0.10)",
       lps=[
-        dict(no=12, sjw=12, kind="lernpfad", title="Schwimmende Steine und fliegende Teebeutel",
+        dict(no=14, sjw=15, kind="lernpfad", title="Schwimmende Steine und fliegende Teebeutel",
              goal="Du entdeckst mit zwei verblüffenden Experimenten (schwimmender Bimsstein, fliegender Teebeutel), dass Auftrieb ein Prinzip ist, das sowohl im Wasser als auch in der Luft gilt.",
              tasks=["Teste, ob ein Bimsstein in Wasser schwimmt oder sinkt, und erkläre es mit seiner extrem geringen Dichte (viele Luftbläschen).",
                     "Baue eine Teebeutel-Rakete: Entleere einen Teebeutel, stelle ihn aufrecht hin und zünde ihn oben mittig an.",
@@ -963,7 +1063,7 @@ UNITS = [
              ],
              solution=["Bimsstein: extrem viele eingeschlossene Luftbläschen senken seine Dichte unter die von Wasser — er schwimmt, obwohl er aus „Stein“ besteht.",
                        "Teebeutel-Rakete: heiße Luft im Inneren ist weniger dicht als die kalte Umgebungsluft (statischer Auftrieb); mittig angezündet entsteht zusätzlich ein Rückstoß-Effekt, der ihn höher fliegen lässt."]),
-        dict(no=13, sjw=13, kind="lernpfad", title="Flugprinzipien",
+        dict(no=15, sjw=16, kind="lernpfad", title="Flugprinzipien",
              goal="Du lernst mit dem Bernoulli-Prinzip den zweiten großen Auftriebs-Mechanismus kennen: schnell strömende Luft erzeugt Unterdruck.",
              tasks=["Baue den klassischen Papierstreifen- oder Tischtennisball-Versuch zum Bernoulli-Effekt auf und beobachte den Effekt.",
                     "Erkläre am Modell eines Flügels, wo die Luft schneller strömt und wo dadurch Unter- bzw. Überdruck entsteht.",
@@ -990,7 +1090,7 @@ UNITS = [
              solution=["Bernoulli-Prinzip: Strömt Luft schneller, sinkt der Druck an dieser Stelle (schnelle Strömung = Unterdruck).",
                        "An einer Tragfläche strömt die Luft oben (gewölbte Seite) schneller als unten — der Druckunterschied drückt den Flügel nach oben.",
                        "Daniel Bernoulli (1700–1782): Schweizer Mathematiker und Physiker, formulierte das nach ihm benannte Strömungsprinzip."]),
-        dict(no=14, sjw=14, kind="lernpfad", title="Flugexperimente",
+        dict(no=16, sjw=17, kind="lernpfad", title="Flugexperimente",
              goal="Du baust und testest eigene Flugobjekte (Papierflieger, Fallschirm, Rotor) und wertest ihre Flugleistung systematisch aus.",
              tasks=["Baue mindestens zwei unterschiedliche Papierflieger-Modelle und miss ihre Flugweite über je drei Würfe.",
                     "Baue einen Mini-Fallschirm aus Papier/Folie und Faden und miss seine Fallzeit aus konstanter Höhe.",
