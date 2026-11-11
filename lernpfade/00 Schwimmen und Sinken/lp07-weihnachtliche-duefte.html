@@ -86,6 +86,15 @@ button, select { font: inherit; color: inherit; }
 .chap-head small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--ink-soft); letter-spacing: 0.04em; }
 .story p { margin: 0 0 0.7rem; }
 .story p:last-child { margin-bottom: 0; }
+/* Vorlese-Knöpfe im Einstieg */
+.story p.voiced { display: flex; align-items: flex-start; gap: 0.8rem; }
+.story p.voiced > span.vtext { flex: 1; }
+.say { flex: none; width: 2.9rem; height: 2.9rem; border-radius: 50%; border: 2px solid #e8d2b0; background: var(--paper);
+  font-size: 1.3rem; line-height: 1; cursor: pointer; display: grid; place-items: center; box-shadow: 0 2px 6px var(--shadow);
+  -webkit-tap-highlight-color: transparent; }
+.say.rosalie { border-color: var(--red); }
+.say:active { transform: scale(0.95); }
+.say.playing { background: var(--red); border-color: var(--red); color: #fff; }
 .who { font-family: 'Fredoka', sans-serif; font-weight: 600; color: var(--red); }
 .task { border-left: 6px solid var(--sky); }
 .task h3 { font-size: 1.15rem; margin-bottom: 0.4rem; display: flex; gap: 0.5rem; align-items: center; }
@@ -323,8 +332,8 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
   </div>
 
   <div class="card story-card story">
-    <p><span class="who">Berlin, Anfang Dezember.</span> Auf dem Weihnachtsmarkt steht eine kleine Holzbude: die <b>Duftwerkstatt</b> von Meisterin Rosalie Zimt. Hier riecht es nach Orangen, Nelken und Tannengrün. Doch dieses Jahr sind ihre Duftfläschchen leer, und Rosalie braucht Hilfe.</p>
-    <p><span class="who">Rosalie Zimt:</span> „Ihr wollt Parfumeur:innen werden? Dann zeigt mir, dass ihr Düfte aus Pflanzen herauslocken könnt! In drei Sitzungen entwerft ihr zuerst <b>Flakons</b> für den 3D-Drucker, dann gewinnen wir zwei Weihnachtsdüfte: <b>Orangenöl</b> und <b>Nelkenöl</b>. Aber passt auf: Die beiden Öle benehmen sich im Wasser ganz verschieden.“</p>
+    <p class="voiced"><span class="vtext"><span class="who">Berlin, Anfang Dezember.</span> Auf dem Weihnachtsmarkt steht eine kleine Holzbude: die <b>Duftwerkstatt</b> von Meisterin Rosalie Zimt. Hier riecht es nach Orangen, Nelken und Tannengrün. Doch dieses Jahr sind ihre Duftfläschchen leer, und Rosalie braucht Hilfe.</span><button class="say" type="button" data-audio="lp07-img/intro-erzaehler.mp3" aria-label="Erzählung vorlesen" title="Erzählung anhören">🔊</button></p>
+    <p class="voiced"><span class="vtext"><span class="who">Rosalie Zimt:</span> „Ihr wollt Parfumeur:innen werden? Dann zeigt mir, dass ihr Düfte aus Pflanzen herauslocken könnt! In drei Sitzungen entwerft ihr zuerst <b>Flakons</b> für den 3D-Drucker, dann gewinnen wir zwei Weihnachtsdüfte: <b>Orangenöl</b> und <b>Nelkenöl</b>. Aber passt auf: Die beiden Öle benehmen sich im Wasser ganz verschieden.“</span><button class="say rosalie" type="button" data-audio="lp07-img/intro-rosalie.mp3" aria-label="Rosalie Zimt anhören" title="Rosalie Zimt anhören">🔊</button></p>
     <p>In den Duft-Sitzungen läuft vorne eine echte <b>Wasserdampfdestillation</b>, und am Ende füllt ihr einen Tropfen Duftöl in eure <b>Duftkugel</b>.</p>
   </div>
 
@@ -2223,6 +2232,18 @@ details.hint[open] > summary::before { transform: rotate(90deg); }
     if (S.r[1].vals.v) { $("m14").value = de(S.r[1].vals.m, 0); $("v14").value = deAuto(S.r[1].vals.v); }
   }
   renderStart();
+})();
+
+// Vorlese-Knöpfe im Einstieg: ein Klick spielt, zweiter Klick stoppt; nur eine Stimme gleichzeitig
+(() => {
+  const player = new Audio(); let active = null;
+  const reset = () => { if (active) { active.classList.remove('playing'); active.textContent = '🔊'; } active = null; };
+  player.addEventListener('ended', reset);
+  document.querySelectorAll('.say').forEach(btn => btn.addEventListener('click', () => {
+    if (active === btn) { player.pause(); reset(); return; }
+    reset(); player.src = btn.dataset.audio; player.currentTime = 0;
+    player.play().then(() => { active = btn; btn.classList.add('playing'); btn.textContent = '⏸'; }).catch(reset);
+  }));
 })();
 </script>
 </body>
