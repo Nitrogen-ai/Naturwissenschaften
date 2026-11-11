@@ -428,7 +428,7 @@ SEC_LP07_GAME = (
     '<div class="df-ico" aria-hidden="true">🍊</div>'
     '<div><h2 class="df-h">Lernpfad: Weihnachtliche Düfte, Sitzung 2</h2>'
     '<p>Vorne im Raum läuft eine echte Wasserdampfdestillation. Öffnet die Duftwerkstatt, schaltet <b>Sitzung 2</b> mit dem Lösungswort FLAKON frei und löst zu zweit die fünf Duftsiegel, '
-    'trennt das Orangenöl vom Wasser und füllt am Ende einen Tropfen in eure Duftkugel. '
+    'trennt das Orangenöl vom Wasser und füllt am Ende einen Tropfen in euren Duftkörper. '
     '<b>Notiert das Lösungswort</b> in eurem Duftjournal: Ihr braucht es in der nächsten Sitzung.</p>'
     '<a class="df-btn" href="lp07-weihnachtliche-duefte.html">🍊 Duftwerkstatt öffnen</a></div>'
     '</div></section>')
@@ -896,7 +896,7 @@ UNITS = [
                     "Duftsiegel 2: Benennt die Geräte der Wasserdampfdestillation.",
                     "Duftsiegel 3: Vergleicht die Dichten von Wasser und Orangenöl und trennt im virtuellen Tropftrichter das Öl vom Wasser.",
                     "Duftsiegel 4: Lest das Volumen des gewonnenen Orangenöls ab.",
-                    "Duftsiegel 5: Füllt einen Tropfen Orangenöl in eure Duftkugel und notiert das Lösungswort LIMONEN im Duftjournal.",
+                    "Duftsiegel 5: Füllt einen Tropfen Orangenöl in euren Duftkörper und notiert das Lösungswort LIMONEN im Duftjournal.",
                     "Füllt parallel die Seiten 3 und 4 eures Duftjournals aus."],
              tools=[],
              fast="Löst im Spiel die grünen Lorbeer-Aufgaben: Gegenstromkühler, Flüssigkeiten nach Dichte stapeln, Masse des Öls mit m = ρ · V berechnen. Sagt am Ende voraus, wo sich Nelkenöl (1,06 g/cm³) sammeln wird.",
@@ -931,7 +931,7 @@ UNITS = [
                     "Duftsiegel 2: Beschreibt den Weg des Dampfes und unterscheidet Verdampfen und Kondensieren.",
                     "Duftsiegel 3: Vergleicht die Dichten und trennt das Nelkenöl im virtuellen Tropftrichter ab. Achtung, diesmal liegt das Öl unten!",
                     "Duftsiegel 4: Berechnet die Masse des Öls (m = ρ · V) und die Ausbeute in Prozent.",
-                    "Duftsiegel 5: Füllt einen Tropfen Nelkenöl in eure Duftkugel und holt euch das Zertifikat.",
+                    "Duftsiegel 5: Füllt einen Tropfen Nelkenöl in euren Duftkörper und holt euch das Zertifikat.",
                     "Füllt parallel die Seiten 5 und 6 eures Duftjournals aus."],
              tools=[],
              fast="Lorbeer-Aufgaben: Nelken-Test im Wasserglas, Salztrick (Salzwasser 1,2 g/cm³), Dichte einer Mischung aus Orangen- und Nelkenöl. Danach: Vorhersagen für Zimt-, Anis-, Fichtennadel- und Zitronenöl.",
